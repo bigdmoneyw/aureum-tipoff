@@ -308,3 +308,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
  .past-versus{font-size:10px;padding:5px 8px}
  .past-result span{font-size:.81rem}
 }
+
+/* Non-action labels are typographic annotations, not simulated controls. */
+.pill,.pill.gold{display:inline-flex;align-items:center;border:0;border-left:2px solid #b9955d;border-radius:0;background:transparent;padding:2px 10px;color:#c9d6e1;cursor:default;user-select:text;pointer-events:none}
+.pill.gold{color:#eed19a;border-left-color:#e0b86e}
+.archive-home-ribbon,.archive-hero{display:none}
