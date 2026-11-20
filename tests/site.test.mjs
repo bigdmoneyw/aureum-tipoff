@@ -44,6 +44,26 @@ assert.equal(sourced.teamCount,30);
 assert.equal(sourced.metricCount,30);
 assert.equal(sourced.records.length,30);
 for(const team of sourced.records)for(const m of catalog.metrics)assert.ok(Number.isFinite(team.values[m.key]),team.code+' missing '+m.key);
+const games=JSON.parse(readFileSync('data/completed-games-2027.json','utf8'));
+const boxes=JSON.parse(readFileSync('data/game-boxscores-2027.json','utf8'));
+assert.equal(boxes.format,'aureum-game-boxscores-v1');
+assert.equal(boxes.availableGameCount,boxes.games.length);
+assert.equal(boxes.completedGameCount,games.count);
+assert.ok(boxes.availableGameCount>100,'Expected an audited season-wide archive');
+const scoreLookup=new Map(games.games.map(g=>[g.id,g]));
+for(const game of boxes.games){
+ const original=scoreLookup.get(game.id);
+ assert.ok(original&&game.hs===original.hs&&game.as===original.as,'Archived scores must match '+game.id);
+ assert.equal(Object.keys(game.homeStats.values).length,30);
+ assert.equal(Object.keys(game.awayStats.values).length,30);
+ for(const m of catalog.metrics){
+  assert.ok(game.homeStats.values[m.key]===null||Number.isFinite(game.homeStats.values[m.key]),game.id+' home '+m.key);
+  assert.ok(game.awayStats.values[m.key]===null||Number.isFinite(game.awayStats.values[m.key]),game.id+' away '+m.key);
+ }
+ assert.equal(game.homeStats.values.pointsPerGame,game.hs);
+ assert.equal(game.awayStats.values.pointsPerGame,game.as);
+}
+assert.ok(body.includes('Past Games'),'Completed-game navigation is labeled Past Games');
 const idPairs=[...js.matchAll(/([A-Z]{3}):161061\d{4}/g)];
 assert.equal(idPairs.length,30,'Expected 30 NBA team logo ids');
 assert.equal(new Set(idPairs.map(x=>x[1])).size,30,'Team logo ids must be unique');
