@@ -317,8 +317,8 @@ function setupArchive(){
  E('archiveSearch').addEventListener('input',renderArchive);renderArchive();
 }
 function patchLanguage(){
- var intro=root.querySelector('#matchups .section-intro');if(intro)intro.textContent='Compare two NBA teams using sourced 2026–27 win–loss records. These are descriptive statistics, not claims about the outcome of an upcoming game.';
- var gameTop=root.querySelector('#gameroom .game-schedule .section-top h3');if(gameTop)gameTop.textContent='Dated NBA scoreboard: results and schedule';
+
+ var gameTop=root.querySelector('#gameroom .game-schedule .section-top h3');if(gameTop)gameTop.textContent='Dated NBA scoreboard · results and schedule';
  var gameDesc=root.querySelector('#gameroom .game-schedule .section-top p');if(gameDesc)gameDesc.textContent='Provider-sourced game status and scores are displayed with a date, collection timestamp, and source attribution. This is a scoreboard, not an archive of Aureum pregame forecasts.';
  var guide=root.querySelector('#model .model-guide-links');if(guide)guide.setAttribute('aria-label','Explore research pages');
  var homeLabel=root.querySelector('#home .hub-path[data-go="intelligence"] .hub-path-note');if(homeLabel)homeLabel.textContent='Explore explained basketball factors; measurements appear only with a verified source.';
