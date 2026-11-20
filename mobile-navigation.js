@@ -7,6 +7,7 @@
  function setOpen(open){
   const active=!!open&&mq.matches;
   nav.classList.toggle('is-open',active);
+  document.body.classList.toggle('mobile-menu-open',active);
   toggle.setAttribute('aria-expanded',String(active));
   toggle.setAttribute('aria-label',active?'Close navigation':'Open navigation');
   const caption=toggle.querySelector('.menu-caption');if(caption)caption.textContent=active?'Close':'Menu';
