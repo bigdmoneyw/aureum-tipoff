@@ -211,3 +211,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
  .scout-monogram{font-size:40px}
  .league-main .teamgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Integrity: scenario comparisons must never look like measured win percentages */
+.readout-pair .stat{font:400 15px/1.55 'DM Sans',system-ui,sans-serif;color:#e7ebf2}
+.readout-pair .stat b{display:inline-block;margin-bottom:9px;font:700 16px 'DM Sans',system-ui,sans-serif}
+.readout-pair .stat strong{display:block;margin:8px 0;font:800 clamp(24px,3vw,35px) 'Outfit',system-ui,sans-serif}
+.studio-output .score{font-size:clamp(20px,3vw,30px);color:#ecd2a0}
+.studio-output .bar{display:none}
+.studio-output .scorecard{margin-bottom:12px}
+.verified-matchups .cols{margin:20px 0}
+.verified-matchups .team-picker-preview img{height:35px;width:35px;margin-right:3px}
