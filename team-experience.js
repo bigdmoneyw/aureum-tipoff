@@ -108,7 +108,7 @@ function showLearn(){
  const q=($('glossarySearch')?.value||'').toLowerCase().trim();
  const matches=catalog.filter(m=>(m.label+' '+m.brief+' '+m.explanation+' '+(m.whyItMatters||'')+' '+(learnMeasures[m.key]||'')).toLowerCase().includes(q));
  grid.innerHTML=matches.map(m=>'<article class="learn-metric"><h3>'+esc(m.label)+'</h3><p class="learn-explanation">'+esc(m.explanation)+'</p><div class="learn-why"><span class="learn-why-label">Why it matters</span><p>'+esc(m.whyItMatters||m.brief)+'</p></div><p class="learn-measure"><span>How it is measured</span>'+esc(learnMeasures[m.key]||'Measured from game totals')+'</p></article>').join('')||'<div class="empty">No matching statistic. Try another term.</div>';
- if($('glossaryCount'))$('glossaryCount').textContent=matches.length+' of 30 statistics explained · definitions and context only, no live team figures';
+ if($('glossaryCount'))$('glossaryCount').textContent=matches.length===catalog.length?'Basketball statistics explained · definitions only, no live figures':matches.length+' matching basketball statistics';
 }
 function renderGameRoomContext(){
  const el=$('gameRoomContext');if(!el)return;
