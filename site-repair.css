@@ -590,3 +590,6 @@ a,button{touch-action:manipulation}
  #teamDetails .metric-info:focus-within .metric-info-pop,
  #teamDetails .metric-info.is-open .metric-info-pop{display:block}
 }
+
+/* The information symbol is the icon; its mouse cursor is a standard pointer, never a question mark. */
+#teamDetails .metric-info-trigger,.past-stats-grid .metric-info-trigger{cursor:pointer}
