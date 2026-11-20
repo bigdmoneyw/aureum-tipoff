@@ -145,7 +145,7 @@ try{
   const options=await page.locator('#pastGameSelect option').all();
   if(options.length>2){
    const oldA=await page.locator('#pastGameReport .past-game-date').innerText();
-   await page.locator('#pastGameSelect').selectOption({index:2});
+   await page.locator('#pastGameSelect').selectOption({index:options.length-1});
    assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
    assert.notEqual(await page.locator('#pastGameReport .past-game-date').innerText(),oldA);
   }
