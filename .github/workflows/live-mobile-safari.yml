@@ -1,0 +1,25 @@
+name: Live iPhone Safari QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/live-mobile-safari.mjs'
+      - '.github/workflows/live-mobile-safari.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  iphone-safari-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test dependencies
+        run: npm install --no-save playwright
+      - name: Install Safari-compatible WebKit browser
+        run: npx playwright install --with-deps webkit
+      - name: Verify production domain on mobile Safari engine
+        run: node tests/live-mobile-safari.mjs
