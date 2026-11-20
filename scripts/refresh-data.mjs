@@ -113,20 +113,19 @@ async function refreshTeamStatistics(standingsData){
  for(const r of records){
   const t=byCode[r.code];if(!t)throw Error('Standings missing '+r.code);
   const n=(key)=>{const x=(t.stats||[]).find(y=>y.name===key);return Number(x?.value);};
-  if(r.statGamesPlayed===r.standingsGamesPlayed&&Number.isFinite(n('avgPointsAgainst'))&&Number.isFinite(n('pointDifferential'))){
-   r.values.oppPointsPerGame=n('avgPointsAgainst');
-   r.values.marginPerGame=n('pointDifferential')/r.standingsGamesPlayed;
-  }else{
-   r.values.oppPointsPerGame=null;
-   r.values.marginPerGame=null;
-  }
+  // Values sourced directly from ESPN standings represent the latest standings sample,
+  // while other team stats may be delayed by one or more games. Both periods are disclosed.
+  const pointsAgainst=n('avgPointsAgainst'),diff=n('pointDifferential');
+  if(!Number.isFinite(pointsAgainst)||!Number.isFinite(diff)||!r.standingsGamesPlayed)throw Error('Invalid opponent scoring in standings '+r.code);
+  r.values.oppPointsPerGame=pointsAgainst;
+  r.values.marginPerGame=diff/r.standingsGamesPlayed;
  }
  records.sort((a,b)=>a.code.localeCompare(b.code));
  if(records.length!==30)throw Error('Not all NBA teams have valid sourced statistics');
  const incomplete=records.flatMap(r=>catalog.filter(m=>r.values[m.key]===null).map(m=>r.code+':'+m.key));
  const snapshot={format:'aureum-team-statistics-v1',season:endSeason,competition:'NBA regular season',source:'ESPN team statistics + ESPN standings',
   retrievedAt:now.toISOString(),teamCount:records.length,metricCount:catalog.length,
-  incompleteFields:incomplete,notes:'30 metrics for each franchise. When ESPN standings and season team statistics count different games, opponent points/game and margin/game are withheld rather than combined from mismatched periods.',
+  incompleteFields:incomplete,notes:'All 30 metrics are sourced. Points allowed, score margin, wins and losses come from ESPN standings; other figures come from ESPN team season statistics. The two sources can differ by recently completed games, and the game-count difference is displayed per franchise.',
   records};
  write(root+'/teams-'+endSeason+'.json',snapshot);
  console.log('TEAM_STATS_AUDIT '+JSON.stringify({teams:records.length,metrics:catalog.length,incompleteFields:incomplete.length,laggingTeams:records.filter(r=>r.lagGames!==0).map(r=>[r.code,r.lagGames])}));
