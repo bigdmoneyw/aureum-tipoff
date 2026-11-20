@@ -1,0 +1,20 @@
+name: NBA Provider Audit
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '27 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cross-check-scoreboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cross-check historical result and current season data availability
+        run: node tests/provider-check.mjs
