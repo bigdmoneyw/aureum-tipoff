@@ -85,8 +85,75 @@ function renderTeams(){
  const section='<section class="team-spotlight">'+header+'<div class="spotlight-grid">'+['winPct','pointsPerGame','threePointPct','turnoversPerGame'].map(k=>spotlight(k,row)).join('')+'</div></section>';
  el.innerHTML=first+section+'<div class="metric-collection-heading"><div><span class="eyebrow">Deep dive / 30 statistics</span><h3>Explore every number.</h3></div><p>Hover over each <span class="info-symbol">i</span> to see a definition. Tap on phones.</p></div>'+categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid">'+c.keys.map(k=>tile(k,row)).join('')+'</div></section>').join('')+sourceNote(row);
  bindTeamTooltipInteractions(el);
- el.querySelectorAll('.team-profile-link').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go;}));
+ el.querySelectorAll('.team-profile-link').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.go==='compare'){const a=$('compareA'),other=$('compareB');if(a&&other){a.value=selected;if(other.value===selected)other.value=selected==='BOS'?'GSW':'BOS';renderCompare();}}location.hash=b.dataset.go;}));
 }
+
+/* Compare intentionally reuses the exact Teams 30-metric catalog, league range
+   and season snapshot. No pregame predictions or fabricated matchup adjustments. */
+function compareTeamHead(code,slot){
+ const seasonLabel=(seasonEnd-1)+'–'+String(seasonEnd).slice(-2);
+ return '<div class="team-profile-head compare-franchise-card compare-franchise-'+slot+'">'+
+  '<img class="team-profile-logo" src="'+logo(code)+'" alt="'+esc(shortNames[code])+' logo" loading="lazy">'+
+  '<div class="team-profile-intro"><span class="eyebrow">'+esc(seasonLabel)+' regular season / '+(slot==='first'?'Team one':'Team two')+'</span>'+
+  '<h2>'+esc(shortNames[code])+'</h2><p><span class="team-profile-count">30 sourced statistics</span> · '+esc(code)+'</p></div></div>';
+}
+function compareSpotlight(key,left,right){
+ const m=metric(key);if(!m)return '';
+ const a=left.values[key],b=right.values[key];
+ const all=stats.records.map(x=>x.values[key]).filter(Number.isFinite);
+ if(!all.length)return '';
+ const min=Math.min(...all),max=Math.max(...all),med=leagueMedian(key);
+ const pos=n=>!Number.isFinite(n)||max===min?50:Math.max(4,Math.min(96,100*(n-min)/(max-min)));
+ return '<article class="spotlight-metric compare-spotlight">'+
+  '<div class="spotlight-heading"><span>'+esc(m.label)+'</span>'+details(key,'compare-spotlight')+'</div>'+
+  '<div class="compare-spotlight-scores"><div><small>'+esc(left.code)+'</small><strong>'+esc(formatted(key,a))+'</strong></div>'+
+  '<span aria-hidden="true" class="compare-versus">vs</span><div><small>'+esc(right.code)+'</small><strong>'+esc(formatted(key,b))+'</strong></div></div>'+
+  '<div class="compare-range" role="img" aria-label="League range '+esc(formatted(key,min))+' to '+esc(formatted(key,max))+'; '+esc(left.code)+' '+esc(formatted(key,a))+' and '+esc(right.code)+' '+esc(formatted(key,b))+'">'+
+  '<span class="compare-range-point compare-range-first" style="left:'+pos(a).toFixed(1)+'%"></span>'+
+  '<span class="compare-range-point compare-range-second" style="left:'+pos(b).toFixed(1)+'%"></span></div>'+
+  '<div class="spotlight-range"><small>League low '+esc(formatted(key,min))+'</small><small>League high '+esc(formatted(key,max))+'</small></div>'+
+  '<p>League median: '+esc(formatted(key,med))+'</p></article>';
+}
+function compareMetric(key,left,right){
+ const m=metric(key);if(!m)return '';
+ return '<article class="team-metric compare-metric" data-stat="'+esc(key)+'">'+
+  '<div class="team-metric-label"><span>'+esc(m.label)+'</span>'+details(key,'compare')+'</div>'+
+  '<div class="compare-metric-values"><strong class="team-metric-value compare-value-first">'+esc(formatted(key,left.values[key]))+'</strong>'+
+  '<span class="compare-versus" aria-hidden="true">vs</span>'+
+  '<strong class="team-metric-value compare-value-second">'+esc(formatted(key,right.values[key]))+'</strong></div>'+
+  '<div class="compare-value-labels"><span>'+esc(left.code)+'</span><span>'+esc(right.code)+'</span></div></article>';
+}
+function compareCoverage(left,right){
+ const describe=r=>{
+  const lag=r.standingsGamesPlayed-r.statGamesPlayed;
+  return '<div><strong>'+esc(shortNames[r.code])+'</strong><span>Standings: '+r.standingsGamesPlayed+' completed games · season averages: '+r.statGamesPlayed+' games'+(lag?' · <em>Feeds differ by '+Math.abs(lag)+' game'+(Math.abs(lag)===1?'':'s')+'</em>':'')+'</span></div>';
+ };
+ return '<div class="compare-coverage"><div class="eyebrow">Data provenance / regular season</div><p>Both team profiles use the same source-verified '+esc((seasonEnd-1)+'–'+String(seasonEnd).slice(-2))+' NBA regular-season snapshot, retrieved '+esc(formattedTime(stats.retrievedAt))+'. Current values change when the provider updates.</p>'+
+  describe(left)+describe(right)+
+  '<p>Source: <a target="_blank" rel="noopener noreferrer" href="https://www.espn.com/nba/standings">ESPN standings</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.espn.com/nba/stats/team">ESPN team statistics</a>. Standings can update before season averages; each team’s coverage is shown above. These are descriptive season numbers, not predicted results, and neither team automatically wins a metric comparison simply by having the higher value.</p></div>';
+}
+function renderCompare(){
+ const el=$('compareData'),a=$('compareA')?.value,b=$('compareB')?.value;
+ if(!el)return;
+ if(!stats||!catalog.length){el.innerHTML='<div class="empty">Loading verified NBA current-season team statistics. No numbers will be estimated.</div>';return;}
+ if(!codes[a]||!codes[b]){el.innerHTML='<div class="empty">Choose two NBA franchises to compare.</div>';return;}
+ if(a===b){el.innerHTML='<div class="empty">Choose two different teams to compare their season statistics.</div>';return;}
+ const left=stats.records.find(r=>r.code===a),right=stats.records.find(r=>r.code===b);
+ if(!left||!right){el.innerHTML='<div class="empty">One or both franchises are missing from the verified season dataset.</div>';return;}
+ const pairHeader='<div class="compare-franchise-pair">'+compareTeamHead(a,'first')+'<span class="compare-franchise-separator" aria-hidden="true">VS</span>'+compareTeamHead(b,'second')+'</div>';
+ const summary='<section class="team-spotlight compare-spotlight-section"><div class="spotlight-intro"><div><span class="eyebrow">The quick read</span><h3>Four numbers. Two teams.</h3><p>The exact same four spotlight statistics as Teams, compared using the league-wide range.</p></div><span class="spotlight-note">League context · not a game prediction</span></div>'+
+  '<div class="spotlight-grid compare-spotlight-grid">'+['winPct','pointsPerGame','threePointPct','turnoversPerGame'].map(k=>compareSpotlight(k,left,right)).join('')+'</div></section>';
+ const full='<div class="metric-collection-heading"><div><span class="eyebrow">Deep dive / 30 statistics for each team</span><h3>Compare every number.</h3></div><p>Same categories, same statistics, same sourced season as Teams. Hover over <span class="info-symbol">i</span> for a quick explanation.</p></div>'+
+  '<div class="compare-legend" aria-label="Value order"><span><img src="'+logo(a)+'" alt="" loading="lazy">'+esc(shortNames[a])+'</span><span><img src="'+logo(b)+'" alt="" loading="lazy">'+esc(shortNames[b])+'</span></div>'+
+  categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid compare-metrics-grid">'+c.keys.map(k=>compareMetric(k,left,right)).join('')+'</div></section>').join('');
+ el.innerHTML=pairHeader+summary+full+compareCoverage(left,right);
+ bindTeamTooltipInteractions(el);
+}
+function swapCompareTeams(){
+ const first=$('compareA'),second=$('compareB');if(!first||!second)return;
+ const value=first.value;first.value=second.value;second.value=value;renderCompare();
+}
+
 function activateTeam(code,scroll){
  if(!codes[code])return;selected=code;
  document.querySelectorAll('#teamGrid [data-team]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.team===code)));
@@ -215,6 +282,8 @@ async function init(){
  window.addEventListener('aureum:select-team',e=>{if(e.detail?.team)activateTeam(e.detail.team,true);});
  $('glossarySearch')?.addEventListener('input',showLearn);
  ['gameAway','gameHome'].forEach(id=>$(id)?.addEventListener('change',renderGameRoomContext));
+ ['compareA','compareB'].forEach(id=>$(id)?.addEventListener('change',renderCompare));
+ $('compareSwap')?.addEventListener('click',swapCompareTeams);
  renderCompetitions();
  try{
   const raw=await getSnapshot('metric-catalog.json');
@@ -225,12 +294,13 @@ async function init(){
   const current=await getSnapshot('teams-'+seasonEnd+'.json');
   stats=seasonCheck(current);
   activateTeam(selected,false);
+  renderCompare();
   renderGameRoomContext();
   const help=$('teamSearch');
   if(help)help.setAttribute('aria-label','Find one of 30 NBA teams; choose a result to reveal 30 current statistics');
  }catch(e){
   if($('teamDetails'))$('teamDetails').innerHTML='<div class="empty">Unable to verify current-season team statistics: '+esc(e.message)+'. No numbers have been substituted.</div>';
-  showLearn();renderGameRoomContext();
+  showLearn();renderCompare();renderGameRoomContext();
  }
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
