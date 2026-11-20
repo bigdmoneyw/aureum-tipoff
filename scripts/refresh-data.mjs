@@ -138,5 +138,44 @@ for(let delta=-4;delta<=4;delta++){
  const raw=await get(base+'site/v2/sports/basketball/nba/scoreboard?dates='+compact);
  const x=scoreboard(raw,date);totalGames+=x.events.length;write(root+'/scoreboards/'+date+'.json',x);
 }
+
+/* Preserve completed results throughout the season for retrospective Scenarios.
+   Backfill only missing dates; refreshed recent dates are already handled above. */
+async function refreshCompletedGames(){
+ const seasonStart=new Date(Date.UTC(endSeason-1,9,20,17));
+ const todayNoon=new Date(Date.UTC(Number(part('year')),Number(part('month'))-1,Number(part('day')),17));
+ const files=[];
+ for(let t=seasonStart.getTime();t<=todayNoon.getTime();t+=86400000){
+  const date=dateET(new Date(t));const file=root+'/scoreboards/'+date+'.json';
+  if(!fs.existsSync(file)){
+   const api=base+'site/v2/sports/basketball/nba/scoreboard?dates='+date.replaceAll('-','');
+   const valid=scoreboard(await get(api),date);
+   write(file,valid);
+  }
+  files.push(file);
+ }
+ const rows=[],unique=new Set();
+ for(const file of files){
+  const snap=JSON.parse(fs.readFileSync(file,'utf8'));
+  if(snap.format!=='aureum-scoreboard-v1')throw Error('Invalid archived scoreboard '+file);
+  for(const e of snap.events||[]){
+   if(!e.status?.type?.completed||unique.has(e.id))continue;
+   const competitors=e.competitions?.[0]?.competitors||[];
+   const home=competitors.find(x=>x.homeAway==='home'),away=competitors.find(x=>x.homeAway==='away');
+   const hs=Number(home?.score),as=Number(away?.score);
+   const h=home?.team?.abbreviation,a=away?.team?.abbreviation;
+   if(!codes.has(h)||!codes.has(a)||h===a||!Number.isInteger(hs)||!Number.isInteger(as)||hs<0||as<0||hs===as)continue;
+   rows.push({id:String(e.id),date:e.date,home:h,away:a,hs,as,sourceAt:snap.retrievedAt});
+   unique.add(e.id);
+  }
+ }
+ rows.sort((a,b)=>new Date(b.date)-new Date(a.date));
+ if(rows.length<50&&todayNoon>new Date(Date.UTC(endSeason-1,10,1,17)))throw Error('Suspiciously incomplete completed-game season archive: '+rows.length);
+ write(root+'/completed-games-'+endSeason+'.json',{format:'aureum-completed-games-v1',season:endSeason,source:'ESPN dated scoreboard game results',retrievedAt:now.toISOString(),
+ count:rows.length,notes:'Completed games only; scores are historical observations, never pregame forecasts.',games:rows});
+ console.log('PAST_GAMES_AUDIT '+JSON.stringify({season:endSeason,count:rows.length,dates:files.length}));
+}
+await refreshCompletedGames();
+
 write(root+'/status.json',{format:'aureum-data-status-v1',source,retrievedAt:now.toISOString(),season:endSeason,dates:[-4,-3,-2,-1,0,1,2,3,4].map(n=>dateET(new Date(Date.UTC(Number(part('year')),Number(part('month'))-1,Number(part('day'))+n,17)))),gameCount:totalGames});
 console.log('PASS validated snapshots for 3 seasons and 9 dates ('+totalGames+' game rows)');
