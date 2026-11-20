@@ -1,0 +1,29 @@
+name: Probe Completed NBA Game Box Scores
+on:
+  push:
+    paths: ['.github/workflows/probe-game-boxscores.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read-only ESPN game boxscore coverage and schema
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const data=JSON.parse(fs.readFileSync('data/completed-games-2027.json','utf8'));
+          console.log('SOURCE_GAMES',data.count);
+          const samples=[data.games[0],data.games[Math.floor(data.games.length/2)],data.games.at(-1)];
+          for(const game of samples){
+            const url='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event='+encodeURIComponent(game.id);
+            const response=await fetch(url);const o=await response.json();
+            console.log('GAME',JSON.stringify({game,code:response.status,keys:Object.keys(o),boxscore:Object.keys(o.boxscore||{}),header:o.header?.competitions?.[0]?.competitors?.map(x=>({code:x.team?.abbreviation,id:x.id,score:x.score,homeAway:x.homeAway})),teams:o.boxscore?.teams?.map(t=>({id:t.team?.id,abbreviation:t.team?.abbreviation,name:t.team?.displayName,statistics:t.statistics?.map(s=>({name:s.name,displayValue:s.displayValue,label:s.label,abbreviation:s.abbreviation,value:s.value})).slice(0,45)}))}).slice(0,17000));
+          }
+          NODE
