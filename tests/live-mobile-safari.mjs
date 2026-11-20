@@ -38,6 +38,7 @@ try {
  await trigger.click();
  assert.equal(await page.locator('#teamDetails .metric-info.is-open').count(),1,'Touch tap should open Teams tooltip');
  assert.equal(await page.locator('#teamDetails .team-metric .metric-info-pop').first().isVisible(),true);
+ assert.equal(await page.locator('#teamDetails .team-metric .metric-info-pop').first().getAttribute('role'),'tooltip');
  await page.locator('#teamDetails h2').click();
  assert.equal(await page.locator('#teamDetails .metric-info.is-open').count(),0,'Tapping outside should close tooltip');
  await viewportTest('library');
