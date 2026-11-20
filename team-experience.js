@@ -95,10 +95,17 @@ async function loadPastGames(){
  const select=$('pastGameSelect'),body=$('pastGameReport'),coverage=$('pastGameCoverage');
  if(!select||!body)return;
  try{
+  let games=[];
+  try{
+   const all=await getSnapshot('completed-games-'+seasonEnd+'.json');
+   if(all.format!=='aureum-completed-games-v1'||all.season!==seasonEnd||!Array.isArray(all.games)||all.count!==all.games.length)throw Error('Completed-game archive failed validation');
+   games=all.games.filter(g=>codes[g.home]&&codes[g.away]&&g.home!==g.away&&Number.isInteger(g.hs)&&Number.isInteger(g.as)&&g.hs!==g.as);
+  }catch(e){/* Recent snapshots remain a safe fallback when the first season-wide backfill has not deployed. */}
+  if(!games.length){
   const status=await getSnapshot('status.json');
   const today=etDate(),dates=(status.dates||[]).filter(d=>d<=today).sort().reverse();
   const responses=await Promise.allSettled(dates.map(d=>getSnapshot('scoreboards/'+d+'.json')));
-  const games=[],seen=new Set();
+  const seen=new Set();
   for(let i=0;i<responses.length;i++){
    const x=responses[i];if(x.status!=='fulfilled'||x.value.requestedDate!==dates[i])continue;
    for(const e of x.value.events||[]){
@@ -112,8 +119,9 @@ async function loadPastGames(){
     seen.add(e.id);
    }
   }
+  }
   games.sort((a,b)=>new Date(b.date)-new Date(a.date));
-  if(!games.length)throw Error('No completed games in validated recent snapshots');
+  if(!games.length)throw Error('No completed games in verified season snapshots');
   select.innerHTML=games.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.away)+' at '+esc(g.home)+' · '+esc(new Date(g.date).toLocaleDateString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric'}))+'</option>').join('');
   const render=()=>{
    const g=games.find(x=>x.id===select.value);if(!g)return;
@@ -121,8 +129,8 @@ async function loadPastGames(){
    body.innerHTML='<div class="past-result"><div><img src="'+logo(g.away)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.away])+'</span><strong>'+g.as+'</strong></div><span class="past-versus">FINAL</span><div><img src="'+logo(g.home)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.home])+'</span><strong>'+g.hs+'</strong></div></div><div class="past-facts"><article><small>Winning team</small><strong>'+esc(shortNames[winner])+'</strong></article><article><small>Winning margin</small><strong>'+margin+' points</strong></article><article><small>Combined score</small><strong>'+total+' points</strong></article><article><small>Home team score</small><strong>'+g.hs+'</strong></article></div><p class="data-sources">Completed-game snapshot · '+esc(formattedTime(g.sourceAt))+'. These are measured outcomes, not what was knowable before tipoff. Game-level shooting and rebound data are not claimed without a verified box score.</p>';
   };
   select.addEventListener('change',render);render();
-  if(coverage)coverage.textContent=games.length+' verified completed games from recent sourced snapshots';
- }catch(e){body.innerHTML='<div class="empty">Past-game data is unavailable. No results have been fabricated. '+esc(e.message)+'</div>';if(coverage)coverage.textContent='Recent completed-game data unavailable';}
+  if(coverage)coverage.textContent=games.length+' verified completed games from sourced season records';
+ }catch(e){body.innerHTML='<div class="empty">Past-game data is unavailable. No results have been fabricated. '+esc(e.message)+'</div>';if(coverage)coverage.textContent='Completed-game data unavailable';}
 }
 async function init(){
  const grid=$('teamGrid');
