@@ -27,12 +27,18 @@ try{
  const page=await browser.newPage({viewport:{width:1440,height:900}});
  page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(r.url().startsWith(url)&&r.status()>=400)errors.push('Local asset '+r.status()+' '+r.url());});
- await check('home renders with a founder portrait and mission image',async()=>{
+ await check('home mission image and founder About relocation',async()=>{
   await page.goto(url,{waitUntil:'domcontentloaded'});
   await page.waitForSelector('#home.active');
-  for(const locator of ['#home .founder-portrait img','#home .mission-visual img']){await page.locator(locator).scrollIntoViewIfNeeded();await page.waitForFunction(selector=>{const x=document.querySelector(selector);return x&&x.complete&&x.naturalWidth>0;},locator,{timeout:15000});}
-  const good=await page.evaluate(()=>['#home .founder-portrait img','#home .mission-visual img'].every(q=>{let x=document.querySelector(q);return x&&x.complete&&x.naturalWidth>0;}));
-  assert.ok(good,'Founder or mission portrait did not load');
+  assert.equal(await page.locator('#home .founder-portrait').count(),0,'Founder must not appear on Home');
+  assert.equal(await page.locator('#home .btn-about').count(),1,'Home must link to About');
+  await page.locator('#home .mission-visual img').scrollIntoViewIfNeeded();
+  await page.waitForFunction(()=>document.querySelector('#home .mission-visual img')?.naturalWidth>0,null,{timeout:15000});
+  await page.locator('#home .btn-about').click();
+  await page.waitForSelector('#about.active');
+  assert.equal(await page.locator('#about .founder-story').count(),1);
+  await page.locator('#about .founder-portrait img').scrollIntoViewIfNeeded();
+  await page.waitForFunction(()=>document.querySelector('#about .founder-portrait img')?.naturalWidth>0,null,{timeout:15000});
  });
  await check('mission tabs update content',async()=>{
   await page.locator('[data-mission="evidence"]').click();
@@ -76,12 +82,13 @@ try{
   await page.waitForSelector('#teams.active');
   await page.waitForSelector('#teamDetails .team-metric',{timeout:20000});
   assert.equal(await page.locator('#teamDetails .team-metric').count(),30);
-  assert.equal(await page.locator('#teamDetails .metric-info summary').count(),30);
+  assert.equal(await page.locator('#teamDetails .team-metric .metric-info summary').count(),30);
+  assert.equal(await page.locator('#teamDetails .spotlight-metric').count(),4);
   const before=await page.locator('#teamDetails h2').innerText();
   await page.locator('#teamSearch').fill('Celtics');
   await page.locator('#teamGrid button[data-team="BOS"]').click();
   assert.match(await page.locator('#teamDetails h2').innerText(),/Boston Celtics/);
-  await page.locator('#teamDetails .metric-info summary').first().click();
+  await page.locator('#teamDetails .team-metric .metric-info summary').first().click();
   assert.equal(await page.locator('#teamDetails details[open]').count(),1);
   assert.ok((await page.locator('#teamDetails details[open] .metric-info-pop').innerText()).length>8);
  });
@@ -90,7 +97,11 @@ try{
   await page.waitForSelector('#library.active');
   await page.waitForSelector('#glossaryGrid .learn-metric',{timeout:20000});
   assert.equal(await page.locator('#glossaryGrid .learn-metric').count(),30);
+  assert.equal(await page.locator('#glossaryGrid .learn-metric .metric-info summary').count(),30);
   assert.equal(await page.locator('#glossaryGrid .team-metric-value').count(),0);
+  assert.equal(await page.locator('#glossaryGrid .learn-measure').count(),30);
+  await page.locator('#glossaryGrid .metric-info summary').first().click();
+  assert.equal(await page.locator('#glossaryGrid details[open]').count(),1);
   await page.locator('#glossarySearch').fill('rebound');
   assert.ok(await page.locator('#glossaryGrid .learn-metric').count()>0);
  });
