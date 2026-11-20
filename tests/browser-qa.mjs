@@ -64,7 +64,7 @@ try{
  await check('date-labelled results feed works',async()=>{
   await page.evaluate(()=>location.hash='live');
   await page.waitForSelector('#live.active');
-  await page.waitForFunction(()=>document.getElementById('liveFeedStatus')?.textContent?.includes('games passed'),null,{timeout:25000});
+  await page.waitForFunction(()=>document.getElementById('liveFeedStatus')?.textContent?.includes('games validated'),null,{timeout:25000});
   assert.ok(await page.locator('#liveResults .result-card').count()>=1,'No dated games shown');
  });
  await check('2024–25 season archive returns selectable records',async()=>{
