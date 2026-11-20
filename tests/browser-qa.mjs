@@ -64,10 +64,40 @@ try{
   const txt=await page.locator('#scoutReadout').innerText();
   assert.match(txt,/Current record/,'Current standings did not reach scouting page: '+txt);
  });
- await check('comparison provides sourced records',async()=>{
+ await check('Compare mirrors Teams with 30 sourced season metrics for each franchise',async()=>{
   await page.evaluate(()=>location.hash='compare');
   await page.waitForSelector('#compare.active');
-  await page.waitForFunction(()=>document.querySelector('#compareData')?.textContent?.includes('win rate'),null,{timeout:20000});
+  await page.waitForSelector('#compareData .compare-metric',{timeout:20000});
+  assert.equal(await page.locator('#compareData .compare-franchise-card').count(),2);
+  assert.equal(await page.locator('#compareData .compare-franchise-card .team-profile-logo').count(),2);
+  assert.equal(await page.locator('#compareData .compare-metric').count(),30);
+  assert.equal(await page.locator('#compareData .compare-value-first').count(),30);
+  assert.equal(await page.locator('#compareData .compare-value-second').count(),30);
+  assert.equal(await page.locator('#compareData .compare-metric .metric-info-trigger').count(),30);
+  assert.equal(await page.locator('#compareData .compare-spotlight').count(),4);
+  const snapshot=JSON.parse(fs.readFileSync('data/teams-2027.json','utf8'));
+  const record=code=>snapshot.records.find(r=>r.code===code);
+  const wins=await page.locator('#compareData .compare-metric[data-stat="wins"] .team-metric-value').allInnerTexts();
+  assert.deepEqual(wins,[String(record('GSW').values.wins),String(record('BOS').values.wins)],'Compare must show the exact same season wins as Teams');
+  const hover=page.locator('#compareData .compare-metric[data-stat="wins"] .metric-info-trigger');
+  const tooltip=page.locator('#compareData .compare-metric[data-stat="wins"] .metric-info-pop');
+  assert.equal(await tooltip.isVisible(),false);
+  await hover.hover();
+  assert.equal(await tooltip.isVisible(),true,'Compare tooltips must appear on hover, no click');
+  await page.mouse.move(0,0);
+  assert.equal(await tooltip.isVisible(),false);
+  await page.locator('#compareB').selectOption('NYK');
+  assert.match(await page.locator('#compareData .compare-franchise-second h2').innerText(),/New York Knicks/);
+  const selectedWins=await page.locator('#compareData .compare-metric[data-stat="wins"] .team-metric-value').allInnerTexts();
+  assert.deepEqual(selectedWins,[String(record('GSW').values.wins),String(record('NYK').values.wins)]);
+  await page.locator('#compareSwap').click();
+  assert.equal(await page.locator('#compareA').inputValue(),'NYK');
+  assert.equal(await page.locator('#compareB').inputValue(),'GSW');
+  const swapped=await page.locator('#compareData .compare-metric[data-stat="wins"] .team-metric-value').allInnerTexts();
+  assert.deepEqual(swapped,[String(record('NYK').values.wins),String(record('GSW').values.wins)]);
+  await page.locator('#compareB').selectOption('NYK');
+  assert.ok((await page.locator('#compareData .empty').innerText()).includes('different teams'),'Same-team comparison should not fabricate head-to-head values');
+  await page.locator('#compareB').selectOption('BOS');
  });
  await check('date-labelled results feed works',async()=>{
   await page.evaluate(()=>location.hash='live');
@@ -186,7 +216,7 @@ try{
   assert.equal(await page.locator('#siteNavigation').isVisible(),false);
  });
  await check('major pages fit 320px, 360px, 390px, 430px and 768px screens',async()=>{
-  const sizes=[320,360,390,430,768],routes=['home','about','teams','library','gameroom','matchups'];
+  const sizes=[320,360,390,430,768],routes=['home','about','teams','compare','library','gameroom','matchups'];
   await page.emulateMedia({reducedMotion:'reduce'});
   for(const width of sizes){
    await page.setViewportSize({width,height:812});
