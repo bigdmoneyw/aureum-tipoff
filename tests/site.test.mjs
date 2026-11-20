@@ -35,6 +35,10 @@ const catalog=JSON.parse(readFileSync('data/metric-catalog.json','utf8'));
 assert.equal(catalog.metrics.length,30,'Exactly 30 team statistics');
 assert.equal(new Set(catalog.metrics.map(x=>x.key)).size,30);
 for(const row of catalog.metrics)assert.ok(row.label&&row.brief&&row.explanation,'All 30 metrics must have brief and full explanations');
+for(const row of catalog.metrics){assert.ok(row.whyItMatters&&row.whyItMatters.length>55,'Missing why-it-matters explanation: '+row.key);assert.ok(row.explanation.trim().split(/\s+/).length>=44,'Definition too short: '+row.key);}
+const source=readFileSync('team-experience.js','utf8');
+assert.ok(source.includes('class="learn-explanation"')&&source.includes('class="learn-why"'),'Learn must render substantial explanations');
+assert.ok(!source.slice(source.indexOf('function showLearn(){'),source.indexOf('function renderGameRoomContext()')).includes('details('),'Learn should not render Teams tooltip icons');
 const sourced=JSON.parse(readFileSync('data/teams-2027.json','utf8'));
 assert.equal(sourced.teamCount,30);
 assert.equal(sourced.metricCount,30);
