@@ -93,6 +93,10 @@ try{
   const pop=page.locator('#teamDetails .team-metric .metric-info-pop').first();
   assert.equal(await pop.isVisible(),false,'Tooltip must start hidden');
   await trigger.hover();
+  const info=await trigger.evaluate(node=>{
+   const wrap=node.closest('.metric-info'),pop=wrap.querySelector('.metric-info-pop'),style=getComputedStyle(pop);
+   return {hoverButton:node.matches(':hover'),hoverWrapper:wrap.matches(':hover'),focused:wrap.matches(':focus-within'),opacity:style.opacity,visibility:style.visibility,display:style.display,rect:{top:pop.getBoundingClientRect().top,left:pop.getBoundingClientRect().left,width:pop.getBoundingClientRect().width},viewport:window.innerWidth,css:document.styleSheets.length};
+  });console.log('TOOLTIP_HOVER_DIAGNOSTIC '+JSON.stringify(info));
   assert.equal(await pop.isVisible(),true,'Hover alone must reveal the Teams tooltip');
   assert.ok((await pop.innerText()).length>8,'Tooltip should contain concise definition');
   assert.equal(await trigger.getAttribute('aria-expanded'),'false','Hover does not require a click');
