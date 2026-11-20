@@ -44,13 +44,29 @@ function tile(key,row){
  const m=metric(key);if(!m)return '';
  return '<article class="team-metric"><div class="team-metric-label"><span>'+esc(m.label)+'</span>'+details(key)+'</div><strong class="team-metric-value">'+esc(formatted(key,row.values[key]))+'</strong></article>';
 }
+function leagueMedian(k){
+ const values=stats.records.map(r=>r.values[k]).filter(Number.isFinite).sort((a,b)=>a-b);
+ if(!values.length)return null;
+ return values.length%2?values[(values.length-1)/2]:(values[values.length/2-1]+values[values.length/2])/2;
+}
+function spotlight(k,row){
+ const m=metric(k);
+ const list=stats.records.map(r=>r.values[k]).filter(Number.isFinite);
+ if(!m||list.length<25)return '';
+ const min=Math.min(...list),max=Math.max(...list),v=row.values[k],median=leagueMedian(k);
+ const position=max===min?50:Math.max(4,Math.min(96,(v-min)/(max-min)*100));
+ return '<article class="spotlight-metric"><div class="spotlight-heading"><span>'+esc(m.label)+'</span>'+details(k)+'</div><strong>'+esc(formatted(k,v))+'</strong><div class="spotlight-bar" role="img" aria-label="'+esc(m.label)+': '+esc(formatted(k,v))+'. League range '+esc(formatted(k,min))+' to '+esc(formatted(k,max))+'"><span style="left:'+position.toFixed(1)+'%"></span></div><div class="spotlight-range"><small>League low '+esc(formatted(k,min))+'</small><small>League high '+esc(formatted(k,max))+'</small></div><p>League median: '+esc(formatted(k,median))+'</p></article>';
+}
 function renderTeams(){
  const el=$('teamDetails');if(!el)return;
  if(!stats||!catalog.length){el.innerHTML='<div class="empty">Waiting for source-verified current-season team statistics. Numbers are not guessed.</div>';return;}
  const row=stats.records.find(r=>r.code===selected);if(!row){el.innerHTML='<div class="empty">No source record found for this team.</div>';return;}
- const first='<div class="team-profile-head"><img class="team-profile-logo" src="'+logo(selected)+'" alt="'+esc(shortNames[selected])+' logo" loading="lazy"><div><span class="eyebrow">2026–27 regular season · 30 sourced statistics</span><h2>'+esc(shortNames[selected])+'</h2><p>Current team profile · explanations open with <span class="info-symbol">i</span></p></div></div>';
- el.innerHTML=first+categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid">'+c.keys.map(k=>tile(k,row)).join('')+'</div></section>').join('')+sourceNote(row);
+ const first='<div class="team-profile-head"><img class="team-profile-logo" src="'+logo(selected)+'" alt="'+esc(shortNames[selected])+' logo" loading="lazy"><div class="team-profile-intro"><span class="eyebrow">2026–27 / NBA franchise profile</span><h2>'+esc(shortNames[selected])+'</h2><p><span class="team-profile-count">30 verified metrics</span> A clearer look at this team. Tap <span class="info-symbol">i</span> for a short definition.</p><div class="team-profile-actions"><button class="btn secondary team-profile-link" type="button" data-go="library">Understand the statistics ↗</button><button class="btn secondary team-profile-link" type="button" data-go="compare">Compare teams ↗</button></div></div></div>';
+ const header='<div class="spotlight-intro"><div><span class="eyebrow">The quick read</span><h3>Four numbers. A bigger picture.</h3><p>Compared with the current 30-team league range. Higher is not always better.</p></div><span class="spotlight-note">League comparison · not predictive importance</span></div>';
+ const section='<section class="team-spotlight">'+header+'<div class="spotlight-grid">'+['winPct','pointsPerGame','threePointPct','turnoversPerGame'].map(k=>spotlight(k,row)).join('')+'</div></section>';
+ el.innerHTML=first+section+'<div class="metric-collection-heading"><div><span class="eyebrow">Deep dive / 30 statistics</span><h3>Explore every number.</h3></div><p>Tap the <span class="info-symbol">i</span> on any card for a quick explanation.</p></div>'+categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid">'+c.keys.map(k=>tile(k,row)).join('')+'</div></section>').join('')+sourceNote(row);
  el.querySelectorAll('.metric-info').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)el.querySelectorAll('.metric-info').forEach(o=>{if(o!==d)o.open=false;});}));
+ el.querySelectorAll('.team-profile-link').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go;}));
 }
 function activateTeam(code,scroll){
  if(!codes[code])return;selected=code;
@@ -58,12 +74,23 @@ function activateTeam(code,scroll){
  renderTeams();
  if(scroll&&$('teamDetails')){$('teamDetails').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 }
+const learnMeasures={
+ wins:'Count of victories',losses:'Count of defeats',winPct:'Wins ÷ games × 100',
+ pointsPerGame:'Points ÷ games',oppPointsPerGame:'Opponent points ÷ games',marginPerGame:'(Points for − against) ÷ games',
+ fieldGoalPct:'Made shots ÷ attempted shots × 100',twoPointPct:'Made 2s ÷ attempted 2s × 100',threePointPct:'Made 3s ÷ attempted 3s × 100',freeThrowPct:'Made free throws ÷ attempted × 100',
+ effectiveFgPct:'(Made shots + 0.5 × made 3s) ÷ attempts × 100',threePointRate:'3-point attempts ÷ all shot attempts × 100',freeThrowRate:'Free-throw attempts ÷ shot attempts × 100',
+ fgMadePerGame:'Made shots ÷ games',fgAttemptedPerGame:'Shot attempts ÷ games',threeMadePerGame:'Made 3s ÷ games',threeTriedPerGame:'3-point attempts ÷ games',ftMadePerGame:'Made free throws ÷ games',ftTriedPerGame:'Free-throw attempts ÷ games',
+ reboundsPerGame:'Rebounds ÷ games',offReboundsPerGame:'Offensive rebounds ÷ games',defReboundsPerGame:'Defensive rebounds ÷ games',
+ assistsPerGame:'Assists ÷ games',turnoversPerGame:'Turnovers ÷ games',assistTurnoverRatio:'Assists ÷ turnovers',stealsPerGame:'Steals ÷ games',blocksPerGame:'Blocks ÷ games',foulsPerGame:'Fouls ÷ games',
+ twoMadePerGame:'Made 2s ÷ games',twoTriedPerGame:'2-point attempts ÷ games'
+};
 function showLearn(){
  if(!$('glossaryGrid')||!catalog.length)return;
  const q=($('glossarySearch')?.value||'').toLowerCase().trim();
- const rows=catalog.filter(m=>(m.label+' '+m.brief+' '+m.explanation).toLowerCase().includes(q));
- $('glossaryGrid').innerHTML=rows.map((m,i)=>'<article class="learn-metric"><span class="eyebrow">'+String(catalog.indexOf(m)+1).padStart(2,'0')+' / 30</span><h3>'+esc(m.label)+'</h3><strong>'+esc(m.brief)+'</strong><p>'+esc(m.explanation)+'</p></article>').join('')||'<div class="empty">No matching statistic. Try a different term.</div>';
- if($('glossaryCount'))$('glossaryCount').textContent=rows.length+' of 30 statistics explained · definitions only; no current team figures';
+ const rows=catalog.filter(m=>(m.label+' '+m.brief+' '+m.explanation+' '+(learnMeasures[m.key]||'')).toLowerCase().includes(q));
+ $('glossaryGrid').innerHTML=rows.map(m=>'<article class="learn-metric"><div class="learn-metric-top"><span class="eyebrow">'+String(catalog.indexOf(m)+1).padStart(2,'0')+' / 30</span>'+details(m.key)+'</div><h3>'+esc(m.label)+'</h3><p class="learn-measure">'+esc(learnMeasures[m.key]||'Measured from games')+'</p><p class="learn-one-liner">'+esc(m.brief)+'</p></article>').join('')||'<div class="empty">No matching statistic. Try a different term.</div>';
+ if($('glossaryCount'))$('glossaryCount').textContent=rows.length+' of 30 statistics · measurable definitions only, no current team values';
+ const area=$('glossaryGrid');area.querySelectorAll('.metric-info').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)area.querySelectorAll('.metric-info').forEach(o=>{if(o!==d)o.open=false;});}));
 }
 function renderGameRoomContext(){
  const el=$('gameRoomContext');if(!el)return;
