@@ -41,6 +41,8 @@ try{
   await page.waitForFunction(()=>document.querySelector('#about .founder-portrait img')?.naturalWidth>0,null,{timeout:15000});
  });
  await check('mission tabs update content',async()=>{
+  await page.evaluate(()=>location.hash='home');
+  await page.waitForSelector('#home.active');
   await page.locator('[data-mission="evidence"]').click();
   assert.match(await page.locator('#missionPanel').innerText(),/source behind/i);
  });
