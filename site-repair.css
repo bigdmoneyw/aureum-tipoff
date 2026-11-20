@@ -468,3 +468,13 @@ a,button{touch-action:manipulation}
  .metric-info-pop{max-width:calc(100vw - 46px)}
 }
 @media(prefers-reduced-motion:reduce){.team-metric,.spotlight-metric{transition:none}}
+
+/* Narrow phones: don't let long, numeric game cards force a two-column min-content width. */
+.game-context-metric{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.game-context-values{min-width:0}
+.game-context-values>span{min-width:0}
+@media(max-width:640px){
+ .game-context-grid{grid-template-columns:minmax(0,1fr)}
+ .game-context-metric{padding:17px}
+ .game-context-values span{font-size:clamp(24px,7vw,32px)}
+}
