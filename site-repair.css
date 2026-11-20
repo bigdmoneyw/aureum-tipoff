@@ -73,3 +73,141 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
  .about-visual-story,.founder-layout{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.hub-path,.team,.text-link{transition:none!important}}
+
+
+/* Editorial home architecture restored after missing style bundle */
+.editorial-hero{position:relative;overflow:hidden;min-height:610px}
+.hero-composition{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:30px}
+.hero-copy{position:relative;z-index:1}.hero-copy h1{max-width:690px}
+.hero-meta{display:flex;align-items:center;gap:10px;margin-top:36px;color:#bdc8d4;font-size:.83rem}
+.signal{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e3bf79;box-shadow:0 0 20px #d7ad6277}
+.hero-art{position:relative;height:470px;min-width:0;display:grid;place-items:center;isolation:isolate}
+.court-outline{position:absolute;inset:12% 10%;border:2px solid #c6a76c58;border-radius:50%;transform:rotate(-19deg)}
+.court-outline:before,.court-outline:after{content:"";position:absolute;inset:12%;border:1px solid #c6a76c44;border-radius:50%}
+.court-arc{position:absolute;inset:28%;border:1px solid #e4bf7b88;border-radius:50%}
+.court-ring{position:absolute;inset:43%;border:8px solid #d0a35688;border-radius:50%;box-shadow:0 0 80px #c18e3b55}
+.court-line{position:absolute;top:50%;left:0;width:100%;height:2px;background:#c6a76c55}
+.orbit-text{position:absolute;left:3%;top:15%;color:#dcbf84;font-size:.7rem;letter-spacing:.23em;transform:rotate(-16deg)}
+.art-number{font:800 clamp(110px,17vw,250px)/1 'Outfit',sans-serif;color:#d8b77524}
+.art-caption{position:absolute;right:0;bottom:17%;font-size:.75rem;letter-spacing:.16em;color:#dec58c}
+.editorial-rule{border-top:1px solid #3b3740;border-bottom:1px solid #3b3740;background:#101c2c}
+.rule-inner{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:16px;padding-bottom:16px;color:#dfca9f;font-size:.69rem;letter-spacing:.16em;font-weight:700}
+.hub-section{padding-top:100px;padding-bottom:95px}
+.hub-intro{display:grid;grid-template-columns:1fr minmax(0,.65fr);gap:12px 40px;align-items:end;padding-bottom:30px;border-bottom:1px solid #34445a}
+.hub-intro .eyebrow,.hub-intro h2{grid-column:1}
+.hub-intro h2,.discovery-lead h2,.mission-head h2,.fullbleed-inner h2,.founder-copy h2,.archive-home-inner h2{font:750 clamp(32px,5.8vw,69px)/1.08 'Outfit',sans-serif;letter-spacing:-.045em;margin:0}
+.hub-intro em,.discovery-lead em,.mission-head em,.fullbleed-inner em,.founder-copy em,.archive-home-inner em{font-style:normal;color:#e1bb75}
+.hub-intro p{grid-column:2;grid-row:1/span 2;color:#adbacb;max-width:360px}
+.hub-marker{display:none}
+.hub-journeys{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:23px}
+.hub-path{position:relative;appearance:none;border:1px solid #39485c;background:linear-gradient(145deg,#15243b,#101a2c);border-radius:18px;color:#fff;text-align:left;min-height:215px;padding:25px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.hub-path-feature{grid-column:span 2;min-height:270px;background:radial-gradient(circle at 85% 40%,#70502a65,transparent 42%),linear-gradient(140deg,#203047,#111a2c)}
+.hub-path-foot{grid-column:span 3;min-height:160px}
+.hub-path-index{font-size:.7rem;color:#d5b67b;letter-spacing:.15em;font-weight:800}
+.hub-path strong{display:block;font:750 clamp(22px,2.8vw,37px)/1.16 'Outfit',sans-serif;letter-spacing:-.02em}
+.hub-path-note{color:#c1ccd9;font-size:.87rem}
+.hub-path-art{position:absolute;right:10%;top:26%;font:850 clamp(80px,12vw,160px) 'Outfit',sans-serif;color:#cbb17a33;pointer-events:none}
+.discovery-flow{padding-top:80px;padding-bottom:100px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.discovery-lead p,.mission-head p,.fullbleed-inner p,.founder-copy p,.archive-home-inner p{color:#b8c6d4;max-width:570px;font-size:1.05rem;line-height:1.8}
+.discovery-visual{position:relative;min-height:330px;border:1px solid #394a60;border-radius:22px;background:radial-gradient(circle at 40% 35%,#71573449,transparent 56%),#121f32;padding:30px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.outline-word{font:850 clamp(70px,10vw,130px) 'Outfit',sans-serif;color:transparent;-webkit-text-stroke:1px #caab7a67}
+.story-number{font:700 54px 'Outfit',sans-serif;color:#e8c48a}
+.story-number span{font-size:20px;color:#aab6c5}
+.mini-grid{display:flex;gap:12px;flex-wrap:wrap}
+.mini-grid span{padding:8px 11px;border:1px solid #526077;border-radius:6px;color:#d5be8b;font-size:.72rem;letter-spacing:.12em}
+.mission-showcase{padding-top:35px;padding-bottom:115px}
+.mission-head{display:grid;grid-template-columns:1fr 1fr;gap:16px 60px;margin-bottom:35px}
+.mission-head .eyebrow,.mission-head h2{grid-column:1}.mission-head p:last-child{grid-column:2;grid-row:1/span 2;margin:0;align-self:end}
+.mission-stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.mission-visual{position:relative;overflow:hidden;border-radius:18px;min-height:330px;background:#142238;border:1px solid #34455b}
+.mission-visual img{height:100%;width:100%;object-fit:cover}
+.mission-overline{position:absolute;bottom:25px;left:23px;right:23px;font-size:.73rem;letter-spacing:.1em;color:#fff;text-shadow:0 2px 10px #000}
+.mission-interactive{background:#142238;border:1px solid #34455b;border-radius:18px;padding:27px}
+.mission-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.mission-tab{background:#101b2b;border:1px solid #36475b;border-radius:9px;color:#d8e1ea;padding:10px 12px;font-weight:700;font-size:.82rem}
+.mission-panel{min-height:134px;padding:8px 0}.mission-panel h3{font:750 23px 'Outfit',sans-serif;margin:7px 0}.mission-panel p{color:#b6c2ce}
+.fullbleed-story{background:linear-gradient(115deg,#1d2d43,#0a121e);border-top:1px solid #3a4b61;border-bottom:1px solid #3a4b61}
+.fullbleed-inner{display:flex;justify-content:space-between;align-items:center;gap:60px;padding-top:88px;padding-bottom:88px}
+.slash-display{font:850 clamp(100px,17vw,210px) 'Outfit',sans-serif;color:#be97545c;line-height:1}
+.archive-home-ribbon{background:#151f2f}.archive-home-inner{display:grid;grid-template-columns:1fr .7fr;gap:40px;align-items:center;padding-top:90px;padding-bottom:90px}
+.archive-home-art{font:800 clamp(85px,12vw,156px) 'Outfit';color:#a8864a;position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.archive-home-art i{width:80px;height:2px;background:#d2b177}
+.archive-home-art small{display:block;width:100%;font:700 12px 'DM Sans';letter-spacing:.15em;color:#d5c09c}
+.founder-story{padding:100px 0;background:#0a1322}
+.founder-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr);gap:70px;align-items:center}
+.founder-portrait{margin:0;position:relative;border-radius:22px;overflow:hidden;background:#152338;border:1px solid #3a4a5c}
+.founder-portrait img{width:100%;display:block;height:520px;object-fit:cover;object-position:center 22%}
+.founder-portrait figcaption{padding:13px 18px;color:#dec28f;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.founder-copy .eyebrow{margin-bottom:14px}
+.founder-copy h2{max-width:550px}.founder-copy strong{color:#f1c882}
+.founder-copy .founder-tags{display:flex;gap:10px;flex-wrap:wrap}
+.about-visual-story{display:grid;grid-template-columns:1fr .8fr;gap:35px;align-items:center;padding:30px;margin-bottom:45px;border:1px solid #39495d;background:#121f32;border-radius:20px}
+.about-visual-story img{width:100%;max-height:390px;object-fit:contain}
+.league-layout{display:grid;grid-template-columns:minmax(240px,.36fr) minmax(0,1fr);gap:40px}
+.league-side{position:sticky;top:110px;align-self:start}
+.league-side-note{font-size:.86rem;color:#aebdcd}
+.league-legend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;color:#b5c6d3;font-size:.73rem;letter-spacing:.04em}
+.league-main .teamgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.team{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:144px}
+.team .name{color:#e2e8ef;font-size:.91rem;line-height:1.3}
+.compare-data{margin-top:18px}
+.compare-empty{padding:25px;color:#b3c1d2}
+.scout-hero,.game-hero,.archive-hero{padding:66px 0;background:radial-gradient(circle at 85% 30%,#54402145,transparent 35%),linear-gradient(130deg,#192b41,#0a1321);border-bottom:1px solid #36485f}
+.scout-heading{display:flex;justify-content:space-between;gap:40px;align-items:center}
+.scout-hero h2,.game-hero h2,.archive-hero h2{font:800 clamp(36px,6vw,68px)/1.1 'Outfit',sans-serif;letter-spacing:-.04em;margin:18px 0}
+.scout-hero h2 em,.game-hero h2 em,.archive-hero h2 em{font-style:normal;color:#d4ac6b}
+.scout-monogram{display:grid;place-items:center;font:800 80px 'Outfit',sans-serif;color:#d0ab69;opacity:.85}
+.scout-body,.game-main{padding-top:42px;padding-bottom:70px}
+.scout-selector{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.scout-selector .control{min-width:270px;flex:1;max-width:450px}
+.scout-actions{display:flex;flex-wrap:wrap;gap:12px}
+.scout-readout{background:#122137;border:1px solid #36475e;padding:26px;border-radius:16px}
+.reading-note{display:block;margin-top:26px;padding:25px;border:1px solid #31445b;border-radius:15px}
+.reading-note p{color:#b9c7d6}
+.game-route{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.game-schedule{margin-bottom:50px}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:22px;flex-wrap:wrap;margin-bottom:20px}
+.section-top h3{font:700 clamp(25px,3vw,37px) 'Outfit';margin:8px 0}
+.section-top p{color:#b6c5d3;max-width:660px}
+.game-source-note{margin-top:35px;color:#b9c7d6;padding:25px;border-left:3px solid #d6b36f;background:#132237}
+.sensitivity{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;padding:26px;border:1px solid #34465d;border-radius:18px;background:#0f1c2e}
+.sensitivity h3{font:750 clamp(26px,3.7vw,44px)/1.2 'Outfit';margin:12px 0}
+.sensitivity h3 em{font-style:normal;color:#dabb7f}
+.sensitivity-intro p,.sensitivity-intro .small{color:#b9c7d5}
+.sensitivity-controls .btn{margin-top:18px}
+.archive-hero .wrap{display:flex;justify-content:space-between;gap:30px;align-items:center}
+.archive-season-pill{border:1px solid #b99d67;padding:12px 16px;color:#e8c886;border-radius:999px;font-weight:700;white-space:nowrap}
+.archive-lede{display:grid;grid-template-columns:1fr .75fr;gap:38px;padding:48px 0}
+.archive-lede h3{font:700 36px 'Outfit';margin:10px 0}
+.archive-lede p,.archive-provenance p{color:#b3c1cf}
+.archive-provenance{padding:20px;border-left:2px solid #d7ad62;background:#17253a}
+.archive-controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:18px 0 35px}
+.archive-controls input{padding:13px;border-radius:9px;color:#fff;background:#0c1828;border:1px solid #49576c;width:100%}
+.archive-feature{margin-top:24px;padding:24px;border:1px solid #40516a;border-radius:18px;background:#132237}
+.archive-legend{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0;font-size:.82rem;color:#b7c6d5}
+.archive-note{margin:36px 0;padding:25px;border:1px solid #465670;border-radius:15px}
+.archive-note strong{display:block;font:700 23px 'Outfit';margin:5px 0}
+.archive-note p{color:#b7c3d2}
+@media(max-width:1000px){
+ .hub-journeys{grid-template-columns:1fr 1fr}.hub-path-feature,.hub-path-foot{grid-column:span 2}
+ .league-layout{grid-template-columns:1fr}.league-side{position:static}
+ .league-main .teamgrid{grid-template-columns:repeat(3,1fr)}
+ .founder-layout{gap:30px}
+}
+@media(max-width:760px){
+ .hero-composition,.discovery-flow,.mission-head,.mission-stage,.founder-layout,.archive-home-inner,.sensitivity,.archive-lede{grid-template-columns:1fr}
+ .hero-art{height:270px}
+ .hub-section{padding-top:65px;padding-bottom:60px}
+ .hub-intro{display:block}.hub-intro p{max-width:100%}
+ .hub-journeys{grid-template-columns:1fr}.hub-path-feature,.hub-path-foot{grid-column:span 1}
+ .hub-path{min-height:170px}
+ .discovery-flow{padding-top:50px;padding-bottom:65px;gap:24px}
+ .mission-head p:last-child{grid-column:auto;grid-row:auto}
+ .fullbleed-inner{padding-top:58px;padding-bottom:58px}.slash-display{display:none}
+ .founder-story{padding:55px 0}
+ .founder-portrait img{height:auto;max-height:580px}
+ .archive-controls{grid-template-columns:1fr}
+ .archive-hero .wrap{flex-direction:column;align-items:flex-start}
+ .scout-monogram{font-size:40px}
+ .league-main .teamgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
