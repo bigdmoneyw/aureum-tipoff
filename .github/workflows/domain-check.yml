@@ -18,10 +18,18 @@ jobs:
         run: |
           echo "===== A records ====="
           dig +short aureumtipoff.com A || true
+          echo "===== Public 1.1.1.1 apex A ====="
+          dig @1.1.1.1 +short aureumtipoff.com A || true
+          echo "===== Authoritative Porkbun apex A ====="
+          dig @maceio.ns.porkbun.com +short aureumtipoff.com A || true
           echo "===== AAAA records ====="
           dig +short aureumtipoff.com AAAA || true
           echo "===== WWW CNAME ====="
           dig +short www.aureumtipoff.com CNAME || true
+          echo "===== Public 1.1.1.1 www CNAME ====="
+          dig @1.1.1.1 +short www.aureumtipoff.com CNAME || true
+          echo "===== Authoritative Porkbun www CNAME ====="
+          dig @maceio.ns.porkbun.com +short www.aureumtipoff.com CNAME || true
           echo "===== Nameservers ====="
           dig +short aureumtipoff.com NS || true
           echo "===== HTTP header response ====="
