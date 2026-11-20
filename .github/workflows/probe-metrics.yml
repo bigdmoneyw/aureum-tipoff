@@ -1,0 +1,39 @@
+name: Inspect NBA statistics provider schemas
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/probe-metrics.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Probe ESPN and league data shape (read-only)
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          const targets={
+            standings:'https://site.api.espn.com/apis/v2/sports/basketball/nba/standings?season=2027',
+            teamStats:'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/gs/statistics?season=2027',
+            teamStats2:'https://site.api.espn.com/apis/common/v3/sports/basketball/nba/teams/gs/statistics?season=2027',
+            leagueStats:'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/statistics?season=2027',
+            scoreboard:'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261118',
+            teamSummary:'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=401809100'
+          };
+          for(const [label,url] of Object.entries(targets)){
+            try{
+              const r=await fetch(url);const o=await r.json();const brief={status:r.status,topKeys:Object.keys(o),statusText:o.message||o.error,stats:[]};
+              if(label==='standings'){const arr=[];function dive(x){if(!x||typeof x!=='object')return;if(Array.isArray(x.standings?.entries))arr.push(...x.standings.entries);(x.children||[]).forEach(dive)}dive(o);brief.standingsEntries=arr.length;brief.stats=(arr[0]?.stats||[]).map(x=>({name:x.name,type:x.type,value:x.value,displayValue:x.displayValue}));}
+              else if(label==='scoreboard'){brief.events=o.events?.length;brief.first=o.events?.[0]?{id:o.events[0].id,notes:o.events[0].competitions?.[0]?.notes,season:o.events[0].season,week:o.events[0].week}:null;}
+              else if(label==='teamSummary'){brief.boxKeys=Object.keys(o.boxscore||{});brief.headers=o.boxscore?.players?.[0]?.statistics?.[0]?.labels;}
+              else {brief.preview=JSON.stringify(o).slice(0,1350);}
+              console.log('PROBE '+label+' '+JSON.stringify(brief).slice(0,6500));
+            }catch(e){console.log('PROBE '+label+' ERROR '+String(e));}
+          }
+          NODE
