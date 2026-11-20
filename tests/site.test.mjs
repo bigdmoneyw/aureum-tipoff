@@ -15,19 +15,31 @@ assert.ok(assets.includes('court-story.svg'),'Mission picture must be present');
 assert.ok(assets.includes('basketball-study.svg'),'About graphic must be present');
 assert.ok(assets.includes('site-repair.css'));
 assert.ok(assets.includes('site-repair.js'));
+assert.ok(assets.includes('team-experience.js'));
+assert.ok(!body.includes('id="archive"')&&!body.includes('data-page="archive"'),'History is removed');
 
 const pageIds=[...body.matchAll(/<section[^>]*class="page"[^>]*id="([^"]+)"/g)].map(x=>x[1]);
 assert.equal(new Set(pageIds).size,pageIds.length,'Page IDs must not repeat');
 for(const target of [...body.matchAll(/data-(?:page|go)="([^"]+)"/g)].map(x=>x[1]))
  assert.ok(pageIds.includes(target),'Broken route: '+target);
-for(const key of ['live','intelligence','archive','insights','scout','gameroom','compare','model','about','teams','matchups','library'])
+for(const key of ['live','intelligence','insights','scout','gameroom','compare','model','about','teams','matchups','library'])
  assert.ok(pageIds.includes(key),'Page missing '+key);
-for(const id of ['liveResults','scoreboardDate','scoreboardRefresh','scoutReadout','compareData','studioSave','studioSaved','archiveResults','archiveMetric','glossaryGrid'])
+for(const id of ['liveResults','scoreboardDate','scoreboardRefresh','scoutReadout','compareData','studioSave','studioSaved','teamDetails','pastGameSelect','gameRoomContext','competitionDesk','glossaryGrid'])
  assert.ok(html.includes('id="'+id+'"'),'UI target missing '+id);
 assert.ok(!html.includes('src="assets/'),'No stale assets prefix');
 assert.ok(!html.includes('src="live-data.js"'),'No missing compiled modules');
 
 new vm.Script(js,{filename:'site-repair.js'});
+new vm.Script(readFileSync('team-experience.js','utf8'),{filename:'team-experience.js'});
+const catalog=JSON.parse(readFileSync('data/metric-catalog.json','utf8'));
+assert.equal(catalog.metrics.length,30,'Exactly 30 team statistics');
+assert.equal(new Set(catalog.metrics.map(x=>x.key)).size,30);
+for(const row of catalog.metrics)assert.ok(row.label&&row.brief&&row.explanation,'All 30 metrics must have brief and full explanations');
+const sourced=JSON.parse(readFileSync('data/teams-2027.json','utf8'));
+assert.equal(sourced.teamCount,30);
+assert.equal(sourced.metricCount,30);
+assert.equal(sourced.records.length,30);
+for(const team of sourced.records)for(const m of catalog.metrics)assert.ok(Number.isFinite(team.values[m.key]),team.code+' missing '+m.key);
 const idPairs=[...js.matchAll(/([A-Z]{3}):161061\d{4}/g)];
 assert.equal(idPairs.length,30,'Expected 30 NBA team logo ids');
 assert.equal(new Set(idPairs.map(x=>x[1])).size,30,'Team logo ids must be unique');
