@@ -1,186 +1,216 @@
 {
   "version": 1,
-  "description": "Thirty current-season team statistics with concise, beginner-friendly definitions. No live figures appear on Learn.",
+  "description": "Thirty measurable NBA team statistics. Concise tooltips are shown only on Teams; detailed, readable explanations are shown directly on Learn. No live numbers appear on Learn.",
   "metrics": [
     {
       "key": "wins",
       "label": "Wins",
       "brief": "Games won.",
-      "explanation": "A win means the team finished a game with more points than its opponent. Only completed regular-season games count."
+      "explanation": "A win is recorded when a team finishes a game with more points than its opponent, including any extra time played if the score was tied at the end of regulation. The number shown is the total wins from completed regular-season games. It is a simple measure of results, but it does not explain how closely the games were contested or how difficult the opponents were.",
+      "whyItMatters": "Wins determine a team's position in the standings, but a record alone does not describe shooting efficiency, injuries, or strength of schedule."
     },
     {
       "key": "losses",
       "label": "Losses",
       "brief": "Games lost.",
-      "explanation": "A loss means the opponent scored more points when the game ended. It counts completed regular-season games."
+      "explanation": "A loss is recorded when a team finishes a game with fewer points than its opponent. If the teams are tied after the usual four quarters, they play extra time until there is a winner. The loss total counts completed regular-season games, not a team's missed shots or turnovers. Together with wins, it tells you how many games the team has played.",
+      "whyItMatters": "Losses matter for standings and playoff qualification. A team can still play well in a close defeat, so they do not tell the whole story."
     },
     {
       "key": "winPct",
       "label": "Win rate",
       "brief": "Wins divided by games played.",
-      "explanation": "A team's share of completed games won. For example, 6 wins in 10 games means a 60% win rate."
+      "explanation": "Win percentage tells you how often a team has won the games it has finished. Divide its wins by its completed games and multiply by 100. For instance, 12 wins in 20 games gives a 60% win rate. Unlike a raw win total, this lets you compare teams that have played different numbers of games.",
+      "whyItMatters": "Win rate is useful for standings comparisons, but it can hide whether the wins came against strong opponents or weaker ones."
     },
     {
       "key": "pointsPerGame",
       "label": "Points / game",
       "brief": "Average points scored per game.",
-      "explanation": "Points are earned by shooting: a free throw gives 1, most baskets give 2, and a long-range three-pointer gives 3."
+      "explanation": "Points per game is the average number of points a team scores. Every basket made during play is worth two points, or three if the shot is taken from behind the three-point line. A free throw, taken after certain fouls, is worth one point. Add all points scored in completed games, then divide by games played.",
+      "whyItMatters": "It summarizes scoring production, but teams with more possessions can score more simply because they get more chances."
     },
     {
       "key": "oppPointsPerGame",
       "label": "Opponent points / game",
       "brief": "Average points allowed each game.",
-      "explanation": "How many points the other team scores against this team on average. Fewer points allowed can signal stronger defense."
+      "explanation": "Opponent points per game is the average number of points other teams score against this team. It is calculated using points allowed across completed games, divided by games played. A low number may reflect effective defense, such as forcing difficult shots, preventing easy baskets, or limiting second chances after misses.",
+      "whyItMatters": "It is a helpful defensive starting point, but fast-paced teams face more scoring chances, so this number should be read with other defensive measures."
     },
     {
       "key": "marginPerGame",
       "label": "Score margin / game",
       "brief": "Average points scored minus points allowed.",
-      "explanation": "Positive means the team usually outscored opponents; negative means it was usually outscored. This is a description, not a forecast."
+      "explanation": "Scoring margin per game measures the average difference between the points a team scores and the points it allows. Subtract points conceded from points scored, then divide by completed games. A positive margin means the team has generally outscored its opponents; a negative margin means the reverse. One-point wins and twenty-point wins both count as wins, but their margins are different.",
+      "whyItMatters": "Margins reveal whether results tend to be convincing or close. They can provide context beyond win rate without guaranteeing a future result."
     },
     {
       "key": "fieldGoalPct",
       "label": "Field-goal %",
       "brief": "Share of shot attempts made.",
-      "explanation": "Field goals are baskets scored during play, worth 2 or 3 points. Free throws are not included."
+      "explanation": "Field-goal percentage shows the share of regular shot attempts that go into the basket. These attempts include both two-point shots and three-point shots, but not free throws. If a team makes 40 of its 80 shot attempts, its field-goal percentage is 50%. It measures shooting accuracy without considering that three-pointers score more points.",
+      "whyItMatters": "This is a basic view of shot-making. Pair it with three-point frequency or effective field-goal percentage to account for shot value."
     },
     {
       "key": "twoPointPct",
       "label": "2-point shot %",
       "brief": "Share of 2-point shots made.",
-      "explanation": "Measures success on shots taken inside the three-point line, excluding free throws."
+      "explanation": "Two-point percentage measures how often a team makes shots taken inside the three-point line. These include attempts near the basket and jump shots from closer range, but not free throws. Divide successful two-point baskets by all two-point attempts. Making 25 of 50 attempts means 50%. Shot locations matter because a layup and a difficult mid-range jumper are both worth two points.",
+      "whyItMatters": "It helps show how effective the team is inside the arc, although the kinds of shots taken influence the rate."
     },
     {
       "key": "threePointPct",
       "label": "3-point shot %",
       "brief": "Share of 3-point shots made.",
-      "explanation": "A three-pointer is a successful shot from behind the three-point line. This shows how often those attempts go in."
+      "explanation": "Three-point percentage measures the share of long-distance shots a team makes from behind the three-point line. These baskets are worth three points instead of two. If a team makes 12 of 30 attempts, its percentage is 40%. The figure describes accuracy, not how many threes the team chooses to take.",
+      "whyItMatters": "Three-point shooting can change a game's score quickly. Check both accuracy and attempts, especially when the sample of games is small."
     },
     {
       "key": "freeThrowPct",
       "label": "Free-throw %",
       "brief": "Share of free throws made.",
-      "explanation": "Free throws are uncontested 1-point attempts awarded after certain fouls. This is how often the team makes them."
+      "explanation": "Free-throw percentage tells you how often a team makes its free throws. A free throw is an unguarded shot from a marked line, usually awarded after certain fouls, and each made attempt earns one point. Divide made free throws by attempted free throws. For example, 16 makes from 20 attempts equals 80%.",
+      "whyItMatters": "Free throws can decide close games because they offer scoring opportunities without a defender contesting the shot."
     },
     {
       "key": "effectiveFgPct",
       "label": "Effective FG %",
       "brief": "Shot accuracy adjusted for 3-point value.",
-      "explanation": "Like field-goal percentage, but gives extra weight to made three-pointers because they score 3 points instead of 2."
+      "explanation": "Effective field-goal percentage adjusts ordinary shooting percentage to reflect that three-point baskets are worth more than two-point baskets. A made three-pointer counts as one and a half made baskets in the calculation, while attempts are counted normally. This allows teams that take different mixes of two- and three-point shots to be compared more fairly.",
+      "whyItMatters": "It is often more informative than raw field-goal percentage for understanding the scoring value created from a team's regular shot attempts."
     },
     {
       "key": "threePointRate",
       "label": "3-point attempt rate",
       "brief": "Share of shots attempted from three.",
-      "explanation": "Shows the team's reliance on long-range shooting: three-point attempts divided by all field-goal attempts."
+      "explanation": "Three-point attempt rate measures how many of a team's regular shots come from behind the three-point line. Divide its three-point attempts by all two- and three-point attempts. If 40 of 100 field-goal attempts are threes, the rate is 40%. This is about shot selection—not shooting accuracy.",
+      "whyItMatters": "It describes offensive style. A high rate may create more scoring upside, but its value depends on how well the team actually shoots."
     },
     {
       "key": "freeThrowRate",
       "label": "Free-throw attempt rate",
       "brief": "Free throws attempted per field-goal attempt.",
-      "explanation": "Shows how often a team gets free-throw attempts relative to its normal shots. A higher value isn't automatically better."
+      "explanation": "Free-throw attempt rate compares the number of free throws a team attempts with its regular shot attempts. Divide free-throw attempts by field-goal attempts. This is a ratio, so it does not mean the percentage of plays that resulted in a free throw. Teams often earn these attempts by attacking the basket and drawing fouls from defenders.",
+      "whyItMatters": "It gives insight into how frequently a team reaches the free-throw line, but the free throws must still be made to score points."
     },
     {
       "key": "fgMadePerGame",
       "label": "Field goals made / game",
       "brief": "Average made 2- and 3-point baskets.",
-      "explanation": "Counts successful shots during play (not free throws), averaged over all games."
+      "explanation": "Field goals made per game is the average number of successful shots during play, counting both two-point and three-point baskets. Free throws are excluded. Add up all made field goals and divide by the number of games played. Unlike field-goal percentage, this tells you the volume of made baskets rather than the share of attempts that succeeded.",
+      "whyItMatters": "It helps explain how many baskets produce a team's offense, but three-pointers and two-pointers have different point values."
     },
     {
       "key": "fgAttemptedPerGame",
       "label": "Field-goal tries / game",
       "brief": "Average 2- and 3-point shot attempts.",
-      "explanation": "Counts every attempted 2- or 3-point shot, successful or not, averaged across games."
+      "explanation": "Field-goal attempts per game is the average number of regular shots a team takes, including both two- and three-point attempts. Misses count because they are still attempts; free throws do not. Add all these attempts and divide by the games played. Attempts are influenced by possessions, offensive rebounds, turnovers, and game pace.",
+      "whyItMatters": "It shows shooting volume. More attempts can mean more chances to score, but not necessarily greater efficiency."
     },
     {
       "key": "threeMadePerGame",
       "label": "3-pointers made / game",
       "brief": "Average made 3-point baskets.",
-      "explanation": "Shows how many long-range shots go in each game, on average."
+      "explanation": "Three-pointers made per game is the average number of successful shots from beyond the three-point line. Add the team's made threes across completed games and divide by games played. Each made three-pointer contributes three points, so a team averaging 15 made threes gets an average of 45 points from those baskets alone.",
+      "whyItMatters": "It reveals how much long-distance scoring contributes to the offense, especially alongside three-point percentage and attempts."
     },
     {
       "key": "threeTriedPerGame",
       "label": "3-point tries / game",
       "brief": "Average attempted 3-point shots.",
-      "explanation": "Shows how many three-point shots a team takes in an average game."
+      "explanation": "Three-point attempts per game is the average number of shots a team takes from behind the three-point line. These attempts count whether the ball goes in or not. Add them across games and divide by games played. A team taking many threes is emphasizing shots worth three points, often as part of a spacing-based offense.",
+      "whyItMatters": "It shows how strongly a team relies on long-range opportunities. Attempts alone do not indicate whether that strategy works."
     },
     {
       "key": "ftMadePerGame",
       "label": "Free throws made / game",
       "brief": "Average made 1-point free throws.",
-      "explanation": "Shows how many points a team earns from successful free throws each game, on average."
+      "explanation": "Free throws made per game measures the average number of successful free throws a team earns each game. A made free throw is worth one point. Add all successful free throws across completed games and divide by games played. The number depends both on reaching the free-throw line and on making the attempts once there.",
+      "whyItMatters": "It helps show how much a team's scoring comes from fouls drawn rather than from ordinary two- and three-point shots."
     },
     {
       "key": "ftTriedPerGame",
       "label": "Free-throw tries / game",
       "brief": "Average free throws attempted.",
-      "explanation": "Shows how often a team attempts uncontested 1-point free throws per game."
+      "explanation": "Free-throw attempts per game measures how often a team gets to shoot free throws, averaged over its games. A player may receive these shots after a shooting foul or certain other rule violations. The number includes both made and missed attempts. It reflects opportunities, not the points actually scored.",
+      "whyItMatters": "Frequent attempts can help a team score while the game clock is stopped, but shooting accuracy determines how many points they produce."
     },
     {
       "key": "reboundsPerGame",
       "label": "Rebounds / game",
       "brief": "Average missed shots recovered.",
-      "explanation": "After a missed shot, a rebound is gaining control of the ball. A team can rebound on offense or defense."
+      "explanation": "A rebound happens when a player gains control of the ball after a missed shot. Rebounds per game adds offensive rebounds, which recover a teammate's miss, and defensive rebounds, which recover an opponent's miss, then averages them across games. A single possession can involve more than one shot and rebound.",
+      "whyItMatters": "Rebounding affects who gets the next chance to score. Total rebounds should be interpreted with the number of missed shots available."
     },
     {
       "key": "offReboundsPerGame",
       "label": "Offensive rebounds / game",
       "brief": "Average own-team misses recovered.",
-      "explanation": "When the shooting team recovers its own miss, it gets another chance to score."
+      "explanation": "An offensive rebound happens when the team that just missed a shot recovers the ball instead of letting the opponent take it. Offensive rebounds per game averages those recoveries across completed games. They can create another shot attempt during the same possession and can be especially valuable when the original miss was close to the basket.",
+      "whyItMatters": "Recovering misses gives an offense extra chances. The count also depends on how many shots the team misses in the first place."
     },
     {
       "key": "defReboundsPerGame",
       "label": "Defensive rebounds / game",
       "brief": "Average opponent misses recovered.",
-      "explanation": "When the defending team collects an opponent's miss, it usually gains possession."
+      "explanation": "A defensive rebound happens when a team grabs the ball after its opponent misses a shot. Defensive rebounds per game averages those recoveries across games. Securing the ball usually ends the opponent's possession and allows the defending team to begin its own attack, sometimes before the opponent is set on defense.",
+      "whyItMatters": "It reflects an important way to finish a defensive stop, but the number depends on how many opponent shots are missed."
     },
     {
       "key": "assistsPerGame",
       "label": "Assists / game",
       "brief": "Average passes leading directly to baskets.",
-      "explanation": "An assist is credited when a pass directly helps a teammate make a field goal."
+      "explanation": "An assist is credited when a player's pass directly sets up a teammate's made basket. Assists per game adds these credited passes and divides by completed games. An assist describes a connection between players, not every pass: a team can move the ball effectively without receiving an assist on each possession.",
+      "whyItMatters": "Assists can reveal how well scoring chances are created through passing, though different offensive styles produce different assist totals."
     },
     {
       "key": "turnoversPerGame",
       "label": "Turnovers / game",
       "brief": "Average times possession is lost.",
-      "explanation": "A turnover gives the ball to the opponent before the team can finish its possession with a shot."
+      "explanation": "A turnover occurs when a team loses possession of the ball without taking a shot that ends the play, such as through a bad pass, traveling violation, or a defender's steal. Turnovers per game averages these mistakes across completed games. Losing the ball means the opponent gets a chance to attack.",
+      "whyItMatters": "Fewer turnovers generally mean fewer wasted possessions, but teams that play faster or attempt risky passes may accumulate more."
     },
     {
       "key": "assistTurnoverRatio",
       "label": "Assists / turnover",
       "brief": "Assists divided by turnovers.",
-      "explanation": "Compares baskets created by passes with possessions lost. It describes ball movement and care, not just shooting."
+      "explanation": "The assist-to-turnover ratio compares credited assists with turnovers. Divide the number of assists by turnovers: 24 assists and 12 turnovers produce a ratio of 2.0. It combines two parts of offensive play—creating baskets for teammates and taking care of the ball. A higher ratio often reflects more assists relative to mistakes.",
+      "whyItMatters": "It is a useful ball-movement and decision-making indicator, but it does not directly measure shooting quality or the difficulty of passes."
     },
     {
       "key": "stealsPerGame",
       "label": "Steals / game",
       "brief": "Average takeaways from opponents.",
-      "explanation": "A steal happens when a defender legally takes the ball from an opposing team."
+      "explanation": "A steal is credited when a defensive player legally takes the ball from an opponent and causes a change of possession. Steals per game averages these takeaways across completed games. Examples include intercepting a pass or cleanly knocking the ball away and gaining control. A steal is one type of turnover caused by the defense.",
+      "whyItMatters": "Steals can spark fast scoring opportunities, but teams that gamble for steals may also give up open shots."
     },
     {
       "key": "blocksPerGame",
       "label": "Blocks / game",
       "brief": "Average opponent shots deflected.",
-      "explanation": "A blocked shot is when a defender legally touches a shot attempt and stops or changes its path."
+      "explanation": "A blocked shot happens when a defender legally touches a shot and prevents it from following its original path toward the basket. Blocks per game averages these plays across completed games. Blocking a shot does not automatically give the defense the ball: either team might recover it afterward.",
+      "whyItMatters": "Blocks can reflect rim protection and defensive presence, but contesting shots without blocking them is also valuable."
     },
     {
       "key": "foulsPerGame",
       "label": "Fouls / game",
       "brief": "Average rule violations penalized.",
-      "explanation": "A personal foul is illegal physical contact. Too many can give the opponent free throws and limit players' minutes."
+      "explanation": "A personal foul is usually called when a player makes illegal physical contact with an opponent, such as holding or pushing. Fouls per game averages the team's charged fouls across completed games. Some fouls award free throws to the opponent, while repeated fouls can force players to sit out or leave a game.",
+      "whyItMatters": "Foul totals help describe defensive discipline, but a low number by itself does not establish that a team's defense is effective."
     },
     {
       "key": "twoMadePerGame",
       "label": "2-pointers made / game",
       "brief": "Average made 2-point baskets.",
-      "explanation": "Counts successful field goals worth two points, excluding three-pointers and free throws."
+      "explanation": "Two-point field goals made per game is the average number of successful baskets taken inside the three-point line. Each of these baskets earns two points, whether it is a close layup or a jumper from farther out inside the arc. Add the team's made two-pointers and divide by completed games.",
+      "whyItMatters": "It shows how many of a team's made baskets come from two-point range, but it does not show how many shots were needed."
     },
     {
       "key": "twoTriedPerGame",
       "label": "2-point tries / game",
       "brief": "Average attempted 2-point shots.",
-      "explanation": "Counts all attempts from inside the three-point line, averaged over games."
+      "explanation": "Two-point field-goal attempts per game is the average number of shots a team takes inside the three-point line. It counts both made and missed attempts, including close-range shots and mid-range jumpers, but excludes free throws and three-point attempts. Add these shots across completed games and divide by the number of games.",
+      "whyItMatters": "It describes how often the offense attacks from inside the arc. Compare attempts with makes or accuracy to see how efficiently those chances are used."
     }
   ]
 }
