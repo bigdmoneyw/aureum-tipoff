@@ -1,0 +1,22 @@
+name: Inspect 30-team stat vocabulary
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/probe-stat-fields.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enumerate season team-stat fields and sample coverage
+        run: |
+          node --input-type=module <<'NODE'
+          const xs=['gs','bos','dal','atl','ny','la'];
+          for(const x of xs){
+            const r=await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/'+x+'/statistics?season=2027');const d=await r.json();
+            const cats=d.results?.stats?.categories||[];
+            console.log('TEAM '+x+' http='+r.status+' cats='+cats.length+' season='+JSON.stringify(d.season)+' team='+JSON.stringify(d.team).slice(0,400));
+            if(x==='gs')for(const cat of cats){console.log('CATEGORY '+cat.name+' FIELDS '+JSON.stringify((cat.stats||[]).map(s=>[s.name,s.displayName,s.value,s.displayValue])).slice(0,14000));}
+          }
+          NODE
