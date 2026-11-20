@@ -25,7 +25,7 @@ function standings(data,season){
   const pick=k=>Number(stats.find(s=>String(s.name||s.type||'').toLowerCase()===k)?.value);
   const wins=pick('wins'),losses=pick('losses');
   if(!codes.has(code)||!Number.isInteger(wins)||!Number.isInteger(losses)||wins<0||losses<0||wins+losses>100)continue;
-  if(!records.some(x=>x.code===code))records.push({code,wins,losses});
+  if(!records.some(x=>x.code===code))records.push({code,wins,losses,espnId:String(row.team?.id||'')});
  }
  if(records.length<29)throw Error('Incomplete '+season+' standings: '+records.length+' teams');
  records.sort((a,b)=>a.code.localeCompare(b.code));
@@ -54,7 +54,84 @@ const base='https://site.api.espn.com/apis/';
 for(const season of [endSeason,endSeason-1,endSeason-2]){
  const raw=await get(base+'v2/sports/basketball/nba/standings?season='+season);
  const x=standings(raw,season);write(root+'/standings-'+season+'.json',x);
+ if(season===endSeason)await refreshTeamStatistics(x);
 }
+
+async function refreshTeamStatistics(standingsData){
+ const catalog=JSON.parse(fs.readFileSync(root+'/metric-catalog.json','utf8')).metrics;
+ if(catalog.length!==30||new Set(catalog.map(m=>m.key)).size!==30)throw Error('Metric catalog must have exactly 30 unique keys');
+ if(standingsData.records.length!==30)throw Error('Need all 30 teams, not partial standings');
+ const records=[];
+ for(let i=0;i<standingsData.records.length;i+=5){
+  const group=standingsData.records.slice(i,i+5);
+  const results=await Promise.all(group.map(async row=>{
+   if(!/^\d+$/.test(row.espnId))throw Error('Missing ESPN team ID for '+row.code);
+   const url=base+'site/v2/sports/basketball/nba/teams/'+row.espnId+'/statistics?season='+endSeason;
+   const data=await get(url);
+   if(data.status!=='success'||Number(data.season?.year)!==endSeason||Number(data.season?.type)!==2)throw Error('Unexpected team stats season '+row.code);
+   const groups=data.results?.stats?.categories||[];
+   const stats=new Map(groups.flatMap(c=>c.stats||[]).map(x=>[x.name,x]));
+   const value=(k)=>{const n=Number(stats.get(k)?.value);if(!stats.has(k)||!Number.isFinite(n)||n<0)throw Error('Missing/invalid '+k+' for '+row.code);return n;};
+   const games=value('gamesPlayed');
+   if(!Number.isInteger(games)||games<1||games>90)throw Error('Invalid GP '+row.code);
+   const pct=(a,b)=>{if(!b)return null;return 100*a/b;};
+   const nGames=row.wins+row.losses;
+   const values={
+    wins:row.wins,losses:row.losses,winPct:nGames?pct(row.wins,nGames):null,
+    pointsPerGame:value('avgPoints'),oppPointsPerGame:null,marginPerGame:null,
+    fieldGoalPct:value('fieldGoalPct'),twoPointPct:value('twoPointFieldGoalPct'),threePointPct:value('threePointPct'),freeThrowPct:value('freeThrowPct'),
+    effectiveFgPct:pct(value('fieldGoalsMade')+0.5*value('threePointFieldGoalsMade'),value('fieldGoalsAttempted')),
+    threePointRate:pct(value('threePointFieldGoalsAttempted'),value('fieldGoalsAttempted')),
+    freeThrowRate:pct(value('freeThrowsAttempted'),value('fieldGoalsAttempted')),
+    fgMadePerGame:value('avgFieldGoalsMade'),fgAttemptedPerGame:value('avgFieldGoalsAttempted'),
+    threeMadePerGame:value('avgThreePointFieldGoalsMade'),threeTriedPerGame:value('avgThreePointFieldGoalsAttempted'),
+    ftMadePerGame:value('avgFreeThrowsMade'),ftTriedPerGame:value('avgFreeThrowsAttempted'),
+    reboundsPerGame:value('avgRebounds'),offReboundsPerGame:value('avgOffensiveRebounds'),defReboundsPerGame:value('avgDefensiveRebounds'),
+    assistsPerGame:value('avgAssists'),turnoversPerGame:value('avgTurnovers'),assistTurnoverRatio:value('assistTurnoverRatio'),
+    stealsPerGame:value('avgSteals'),blocksPerGame:value('avgBlocks'),foulsPerGame:value('avgFouls'),
+    twoMadePerGame:value('avgTwoPointFieldGoalsMade'),twoTriedPerGame:value('avgTwoPointFieldGoalsAttempted')
+   };
+   if(nGames){
+    // These measures come from the same ESPN team season-stat snapshot as PPG; keep the denominator aligned.
+    const teamStandings=stats.get('avgPointsAgainst');
+    // Opponent points and point differential are sourced from standings, not necessarily synchronized with team stats.
+   }
+   for(const [k,v] of Object.entries(values)){
+    if(v!==null&&(!Number.isFinite(v)||v<0&&k!=='marginPerGame'||/pct|rate/i.test(k)&&v>100.01))throw Error('Invalid metric '+k+' for '+row.code);
+   }
+   if(Object.keys(values).length!==30||catalog.some(m=>!(m.key in values)))throw Error('Catalog mismatch for '+row.code);
+   return {code:row.code,espnId:row.espnId,statGamesPlayed:games,standingsGamesPlayed:nGames,lagGames:nGames-games,
+    values,sourceUrl:'https://www.espn.com/nba/team/stats/_/name/'+(data.team?.abbreviation||row.code).toLowerCase(),sourceTeam:data.team?.displayName||row.code};
+  }));
+  records.push(...results);
+ }
+ // Avoid mixing different games-played denominators: points-against and margin belong to the standings feed;
+ // use them only when the two independent ESPN datasets cover the same number of games.
+ const full=await get(base+'v2/sports/basketball/nba/standings?season='+endSeason);
+ const rows=[];function walk(x){if(!x||typeof x!=='object')return;if(Array.isArray(x.standings?.entries))rows.push(...x.standings.entries);for(const y of x.children||[])walk(y);}walk(full);
+ const byCode=Object.fromEntries(rows.map(r=>[norm(r.team?.abbreviation),r]));
+ for(const r of records){
+  const t=byCode[r.code];if(!t)throw Error('Standings missing '+r.code);
+  const n=(key)=>{const x=(t.stats||[]).find(y=>y.name===key);return Number(x?.value);};
+  if(r.statGamesPlayed===r.standingsGamesPlayed&&Number.isFinite(n('avgPointsAgainst'))&&Number.isFinite(n('pointDifferential'))){
+   r.values.oppPointsPerGame=n('avgPointsAgainst');
+   r.values.marginPerGame=n('pointDifferential')/r.standingsGamesPlayed;
+  }else{
+   r.values.oppPointsPerGame=null;
+   r.values.marginPerGame=null;
+  }
+ }
+ records.sort((a,b)=>a.code.localeCompare(b.code));
+ if(records.length!==30)throw Error('Not all NBA teams have valid sourced statistics');
+ const incomplete=records.flatMap(r=>catalog.filter(m=>r.values[m.key]===null).map(m=>r.code+':'+m.key));
+ const snapshot={format:'aureum-team-statistics-v1',season:endSeason,competition:'NBA regular season',source:'ESPN team statistics + ESPN standings',
+  retrievedAt:now.toISOString(),teamCount:records.length,metricCount:catalog.length,
+  incompleteFields:incomplete,notes:'30 metrics for each franchise. When ESPN standings and season team statistics count different games, opponent points/game and margin/game are withheld rather than combined from mismatched periods.',
+  records};
+ write(root+'/teams-'+endSeason+'.json',snapshot);
+ console.log('TEAM_STATS_AUDIT '+JSON.stringify({teams:records.length,metrics:catalog.length,incompleteFields:incomplete.length,laggingTeams:records.filter(r=>r.lagGames!==0).map(r=>[r.code,r.lagGames])}));
+}
+
 let totalGames=0;
 for(let delta=-4;delta<=4;delta++){
  const d=new Date(Date.UTC(Number(part('year')),Number(part('month'))-1,Number(part('day'))+delta,17));
