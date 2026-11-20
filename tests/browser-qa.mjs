@@ -67,12 +67,46 @@ try{
   await page.waitForFunction(()=>document.getElementById('liveFeedStatus')?.textContent?.includes('games validated'),null,{timeout:25000});
   assert.ok(await page.locator('#liveResults .result-card').count()>=1,'No dated games shown');
  });
- await check('2024–25 season archive returns selectable records',async()=>{
-  await page.evaluate(()=>location.hash='archive');
-  await page.waitForSelector('#archive.active');
-  await page.locator('#archiveSeason').selectOption('2024-25');
-  await page.waitForSelector('#archiveResults .archive-row',{timeout:20000});
-  assert.ok(await page.locator('#archiveResults .archive-row').count()>=25);
+ await check('History removed from navigation and no history page',async()=>{
+  assert.equal(await page.locator('.nav [data-page="archive"]').count(),0);
+  assert.equal(await page.locator('#archive').count(),0);
+ });
+ await check('Teams page shows 30 sourced statistics and working info icons',async()=>{
+  await page.evaluate(()=>location.hash='teams');
+  await page.waitForSelector('#teams.active');
+  await page.waitForSelector('#teamDetails .team-metric',{timeout:20000});
+  assert.equal(await page.locator('#teamDetails .team-metric').count(),30);
+  assert.equal(await page.locator('#teamDetails .metric-info summary').count(),30);
+  const before=await page.locator('#teamDetails h2').innerText();
+  await page.locator('#teamSearch').fill('Celtics');
+  await page.locator('#teamGrid button[data-team="BOS"]').click();
+  assert.match(await page.locator('#teamDetails h2').innerText(),/Boston Celtics/);
+  await page.locator('#teamDetails .metric-info summary').first().click();
+  assert.equal(await page.locator('#teamDetails details[open]').count(),1);
+  assert.ok((await page.locator('#teamDetails details[open] .metric-info-pop').innerText()).length>8);
+ });
+ await check('Learn has all 30 plain-language definitions without team values',async()=>{
+  await page.evaluate(()=>location.hash='library');
+  await page.waitForSelector('#library.active');
+  await page.waitForSelector('#glossaryGrid .learn-metric',{timeout:20000});
+  assert.equal(await page.locator('#glossaryGrid .learn-metric').count(),30);
+  assert.equal(await page.locator('#glossaryGrid .team-metric-value').count(),0);
+  await page.locator('#glossarySearch').fill('rebound');
+  assert.ok(await page.locator('#glossaryGrid .learn-metric').count()>0);
+ });
+ await check('Scenarios show completed games not hypothetical future probabilities',async()=>{
+  await page.evaluate(()=>location.hash='matchups');
+  await page.waitForSelector('#matchups.active');
+  await page.waitForSelector('#pastGameSelect option',{timeout:20000});
+  assert.ok(await page.locator('#pastGameSelect option').count()>0);
+  assert.equal(await page.locator('#pastGameReport .past-facts article').count(),4);
+ });
+ await check('Game Room has NBA Cup and playoffs and verified team comparisons',async()=>{
+  await page.evaluate(()=>location.hash='gameroom');
+  await page.waitForSelector('#gameroom.active');
+  assert.equal(await page.locator('#competitionDesk .competition-card').count(),2);
+  await page.waitForSelector('#gameRoomContext .game-context-metric',{timeout:20000});
+  assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),4);
  });
  await check('hypothetical scenarios save and restore locally',async()=>{
   await page.evaluate(()=>location.hash='insights');
