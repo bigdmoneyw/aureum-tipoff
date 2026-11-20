@@ -313,3 +313,158 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .pill,.pill.gold{display:inline-flex;align-items:center;border:0;border-left:2px solid #b9955d;border-radius:0;background:transparent;padding:2px 10px;color:#c9d6e1;cursor:default;user-select:text;pointer-events:none}
 .pill.gold{color:#eed19a;border-left-color:#e0b86e}
 .archive-home-ribbon,.archive-hero{display:none}
+
+
+/* Mobile-first navigation and layout reliability */
+.mobile-menu-toggle{display:none}
+.topin{position:relative}
+html{scroll-padding-top:90px}
+.page,.wrap,.panel,.card,.league-main,.team-profile,.game-main,.two>*,.cols>*,.grid>*{min-width:0}
+img,video,svg{max-width:100%}
+button,a,select,input,summary{ -webkit-tap-highlight-color:transparent }
+a,button{touch-action:manipulation}
+#teamGrid button.team{display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;overflow:hidden}
+#teamGrid button.team .abbr{font-size:13px;letter-spacing:.15em}
+#teamGrid button.team .team-mark{height:70px;width:70px;max-width:75%;margin:0 auto;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
+#teamGrid button.team .name{font-size:clamp(13px,1.3vw,17px);font-weight:750;color:#eaf0f8;line-height:1.25}
+#teamGrid button.team .small{font-size:.7rem}
+#teamGrid button.team[aria-pressed=true]{box-shadow:inset 0 0 0 1px #dfb974,0 8px 28px #090e1d}
+.team-profile{border-top:none;margin-top:40px}
+.team-profile-head{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 17% 45%,rgba(214,166,87,.2),transparent 40%),linear-gradient(115deg,#24354c,#0c1728);padding:clamp(25px,4vw,49px)}
+.team-profile-head::after{position:absolute;inset:auto -10% -80% auto;content:"";width:70%;aspect-ratio:1;border:1px solid rgba(233,199,132,.16);border-radius:50%;pointer-events:none}
+.team-profile-logo{width:clamp(128px,18vw,205px);height:clamp(128px,18vw,205px);position:relative;z-index:1}
+.team-profile-intro{position:relative;z-index:1;flex:1;min-width:0}
+.team-profile-count{color:#f2d3a1;font-weight:800;white-space:nowrap}
+.team-profile-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.team-profile-actions .btn{font-size:.83rem;padding:10px 14px}
+.team-spotlight{margin:38px 0 46px}
+.spotlight-intro{display:flex;align-items:end;justify-content:space-between;gap:12px 30px;margin-bottom:20px;flex-wrap:wrap}
+.spotlight-intro h3,.metric-collection-heading h3{font:750 clamp(27px,4.4vw,44px)/1.12 'Outfit',sans-serif;margin:5px 0 8px;letter-spacing:-.03em}
+.spotlight-intro p,.metric-collection-heading p{color:#b7c7d7;max-width:650px;margin:0}
+.spotlight-note{font-size:.74rem;color:#e7c78e;padding:7px 0;border-bottom:1px solid #967b4f}
+.spotlight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.spotlight-metric{min-width:0;background:linear-gradient(135deg,#172b42,#0f1b2d);border:1px solid #354c62;border-radius:19px;padding:21px 19px;display:flex;flex-direction:column;gap:14px;overflow:visible}
+.spotlight-metric:nth-child(even){background:linear-gradient(135deg,#233042,#111d31)}
+.spotlight-heading{display:flex;align-items:start;gap:10px;justify-content:space-between;font-weight:700;color:#d0dbe6}
+.spotlight-metric>strong{font:800 clamp(28px,3.3vw,43px)/1 'Outfit',sans-serif;color:#f3d197;letter-spacing:-.035em;white-space:normal;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.spotlight-bar{height:9px;border-radius:999px;background:#34475b;margin-top:6px;position:relative}
+.spotlight-bar:after{content:"";position:absolute;inset:3px 2px;background:linear-gradient(90deg,transparent,#d5ad69);opacity:.32;border-radius:999px}
+.spotlight-bar>span{position:absolute;top:-5px;transform:translateX(-50%);height:19px;width:19px;background:#f0cf8b;border:3px solid #182638;box-shadow:0 0 0 1px #f0cf8b;border-radius:50%;z-index:1}
+.spotlight-range{display:flex;justify-content:space-between;gap:10px}
+.spotlight-range small{font-size:.67rem;color:#aebdcf}
+.spotlight-range small:last-child{text-align:right}
+.spotlight-metric>p{font-size:.83rem;color:#e4cc9e;margin:0}
+.metric-collection-heading{display:flex;align-items:end;justify-content:space-between;gap:12px 25px;flex-wrap:wrap;padding-top:23px;border-top:1px solid #46576b}
+.team-metric{transition:border-color .2s,background .2s}
+.team-metric:hover{border-color:#a88d60;background:#1a2a40}
+.team-metric-label span{font-weight:700}
+.metric-info summary{width:33px;height:33px;font-size:15px;min-width:33px}
+.metric-info-pop{width:min(242px,75vw);max-width:75vw}
+.team-metrics-grid{grid-template-columns:repeat(auto-fit,minmax(178px,1fr))}
+.team-metric-value{overflow-wrap:normal}
+#library .glossary-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.learn-metric{position:relative;min-height:172px;padding:22px 21px 23px}
+.learn-metric-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.learn-metric h3{margin:8px 0 13px;color:#f7dbab;font-size:21px}
+.learn-measure{color:#e8eff9!important;font-size:.89rem!important;line-height:1.45!important;font-weight:650;margin:0 0 9px!important}
+.learn-one-liner{color:#9eafc1!important;font-size:.82rem!important;margin:0!important}
+.learn-metric .metric-info-pop{text-align:left}
+#about .founder-story{padding-top:75px;padding-bottom:84px}
+#about .founder-layout{grid-template-columns:minmax(0,.78fr) minmax(0,1.1fr)}
+#about .founder-portrait{max-width:480px}
+#about .founder-copy h2{font-size:clamp(32px,4.6vw,56px)}
+#about .about-visual-story{margin-top:35px}
+@media(max-width:1100px){
+ .spotlight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .nav button{padding:10px 8px}
+ .brand{font-size:18px}
+}
+@media(max-width:850px){
+ .top{z-index:100}
+ .topin{display:flex;flex-wrap:nowrap!important;align-items:center;justify-content:space-between;min-height:66px!important;padding:10px 0!important;gap:8px}
+ .topin.wrap{padding-left:clamp(14px,4vw,25px)!important;padding-right:clamp(14px,4vw,25px)!important}
+ .brand{flex:0 1 auto;font-size:clamp(14px,3.8vw,19px);gap:7px;min-width:0;white-space:nowrap}
+ .brand .mark{width:35px;height:35px;min-width:35px;font-size:21px}
+ .mobile-menu-toggle{display:flex;align-items:center;gap:9px;padding:11px 13px;min-height:44px;min-width:44px;border:1px solid #71613e;border-radius:11px;background:#17263b;color:#f1d69f;font-weight:800;z-index:102}
+ .menu-bars{display:grid;gap:4px;width:16px}
+ .menu-bars i{height:2px;width:16px;background:#e5c38a;border-radius:2px}
+ .menu-caption{font-size:13px}
+ #siteNavigation{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;width:100%;max-width:none;max-height:calc(100dvh - 82px);overflow-y:auto;overflow-x:hidden;background:#0d192bed;border:1px solid #45536b;box-shadow:0 20px 35px #0009;border-radius:0 0 19px 19px;white-space:normal;padding:15px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:stretch;z-index:101}
+ #siteNavigation.is-open{display:grid}
+ #siteNavigation button{width:100%;min-height:49px;padding:11px 12px;text-align:left;font-size:14px;white-space:normal;border:1px solid #31475f;background:#14263b;border-radius:10px}
+ #siteNavigation button.active{border-color:#b69663;background:#2d3443}
+ body.mobile-menu-open{overflow:hidden}
+ .hero-composition{grid-template-columns:1fr;gap:0}
+ .hero-art{height:245px}
+ .hub-intro{grid-template-columns:1fr;display:block}
+ .hub-intro .eyebrow,.hub-intro h2,.hub-intro p{grid-column:auto;grid-row:auto}
+ .mission-stage,.mission-head,.founder-layout,#about .founder-layout{grid-template-columns:1fr}
+ .about-visual-story{grid-template-columns:1fr}
+ .fullbleed-inner{gap:14px}
+ .archive-home-inner{grid-template-columns:1fr}
+ .league-layout{grid-template-columns:1fr}
+ .league-side{position:static}
+ .section{padding-top:40px;padding-bottom:55px}
+ .team-profile-head{flex-wrap:wrap;align-items:center;gap:18px}
+ .game-context-grid{grid-template-columns:1fr 1fr}
+ .sensitivity,.studio-layout{grid-template-columns:1fr}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+ body{font-size:14px}
+ .wrap{padding-left:16px;padding-right:16px}
+ .hero{padding-top:38px}
+ .hero h1{font-size:clamp(37px,11.2vw,61px)}
+ .hero-copy .lead{font-size:16px}
+ .hero-art{height:210px}
+ .actions{gap:9px}
+ .actions .btn{flex:1 1 135px;text-align:center;min-height:44px}
+ .section-intro{font-size:14px}
+ .card,.panel{padding:18px}
+ .grid,.cols,.two,.mission-stage,.about-visual-story{grid-template-columns:1fr}
+ .hub-journeys{grid-template-columns:1fr}
+ .hub-path-feature,.hub-path-foot{grid-column:span 1}
+ #teamGrid.teamgrid,.league-main #teamGrid.teamgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ #teamGrid button.team{min-height:155px;padding:16px 7px}
+ #teamGrid button.team .team-mark{height:59px;width:59px}
+ .team-profile{margin-top:26px}
+ .team-profile-head{display:flex;flex-direction:column;align-items:flex-start;padding:24px 20px}
+ .team-profile-logo{height:126px;width:126px}
+ .team-profile-head h2{font-size:clamp(36px,9vw,51px)}
+ .spotlight-grid,.game-context-grid{grid-template-columns:1fr 1fr;gap:9px}
+ .spotlight-metric{padding:17px 12px;gap:12px}
+ .spotlight-metric>strong{font-size:clamp(23px,6.5vw,31px)}
+ .spotlight-heading{font-size:.8rem}
+ .spotlight-range{display:block}
+ .spotlight-range small{display:block}
+ .spotlight-range small:last-child{text-align:left}
+ .spotlight-note{font-size:.7rem}
+ .team-metrics-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .team-metric{padding:14px 11px;min-height:140px}
+ .team-metric-label{font-size:.8rem;gap:5px}
+ .team-metric-value{font-size:clamp(23px,6vw,29px)}
+ .metric-info summary{width:34px;height:34px;min-width:34px}
+ .metric-info-pop{width:192px;max-width:calc(100vw - 43px);right:-4px}
+ #library .glossary-grid{grid-template-columns:1fr}
+ .learn-metric{min-height:132px}
+ .founder-story{padding-top:35px}
+ #about .founder-story{padding-top:34px;padding-bottom:45px}
+ #about .founder-portrait img{height:auto;max-height:470px;object-position:center top}
+ #about .founder-copy h2{font-size:clamp(34px,9vw,49px)}
+ .game-context-names{grid-template-columns:1fr 1fr}
+ .past-result,.readout-pair{min-width:0}
+ .game-hero h2,.scout-hero h2{font-size:clamp(35px,9vw,55px)}
+ select,input[type=text],input[type=search],input[type=date],input:not([type]),textarea{font-size:16px}
+ .footerin{flex-direction:column}
+}
+@media(max-width:360px){
+ .brand{font-size:14px;letter-spacing:0}
+ .brand .mark{height:31px;width:31px;min-width:31px;font-size:18px}
+ .mobile-menu-toggle{padding:9px;gap:6px}
+ #siteNavigation{grid-template-columns:1fr}
+ .spotlight-grid{grid-template-columns:1fr}
+ .team-metric-label{font-size:.78rem}
+ .team-profile-head{padding:19px 16px}
+ .metric-info-pop{max-width:calc(100vw - 46px)}
+}
+@media(prefers-reduced-motion:reduce){.team-metric,.spotlight-metric{transition:none}}
