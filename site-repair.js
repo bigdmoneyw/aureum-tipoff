@@ -182,16 +182,6 @@ function setupScouting(){
  E('scoutGame').addEventListener('click',function(){E('gameAway').value=select.value;location.hash='gameroom';renderSensitivity();});
  updateScout();
 }
-function renderCompare(){
- var el=E('compareData');if(!el)return;var a=norm(E('compareA').value),b=norm(E('compareB').value);
- if(a===b){el.innerHTML=em('Choose two different teams to compare.');return;}
- el.innerHTML=em('Retrieving season records…');
- getStandings(seasonEnd()).then(function(s){if(a!==E('compareA').value||b!==E('compareB').value)return;
- var x=s.records[a],y=s.records[b];
- el.innerHTML='<div class="readout-pair"><div class="stat">'+image(a)+'<strong>'+esc(recordString(x))+'</strong><small>'+esc(pctString(x))+' win rate</small></div><div class="stat">'+image(b)+'<strong>'+esc(recordString(y))+'</strong><small>'+esc(pctString(y))+' win rate</small></div></div><p class="data-sources">Completed 2026–27 games only · '+esc(sourceName)+' · '+esc(s.obtained)+'. This does not establish a predicted winner.</p>';
- }).catch(function(e){el.innerHTML=em('Standings feed unavailable. '+esc(e.message));});
-}
-function setupCompare(){['compareA','compareB'].forEach(function(id){E(id).addEventListener('change',renderCompare);});renderCompare();}
 function statusText(c){var state=c.status&&c.status.type||{},s=state.shortDetail||state.detail||state.description||'';return String(s||'Scheduled');}
 function normalizeScoreboard(data,day){
  if(!data||!Array.isArray(data.events))throw Error('Scoreboard format is not recognized');
@@ -337,7 +327,7 @@ function accessibility(){
  var nav=root.querySelector('.nav');if(nav)nav.classList.add('mobile-nav');
 }
 function init(){
- patchLanguage();padSelectors();mission();startMatchup();setupGlossary();setupAtlas();setupScouting();setupCompare();setupStudio();setupArchive();setupGames();teamMedia();accessibility();
+ patchLanguage();padSelectors();mission();startMatchup();setupGlossary();setupAtlas();setupScouting();setupStudio();setupArchive();setupGames();teamMedia();accessibility();
  enhanceTeamGrid();if(E('teamGrid'))new MutationObserver(enhanceTeamGrid).observe(E('teamGrid'),{childList:true});
  if(E('year'))E('year').textContent=new Date().getFullYear();
 }
