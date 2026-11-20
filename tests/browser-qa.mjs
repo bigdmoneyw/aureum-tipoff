@@ -158,6 +158,10 @@ try{
     await page.evaluate(id=>location.hash=id,id);
     await page.waitForSelector('#'+id+'.active');
     const data=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,root:document.documentElement.scrollWidth,body:document.body.scrollWidth,page:document.querySelector('.page.active')?.scrollWidth}));
+    if(data.root>data.viewport+2){
+     const offenders=await page.evaluate(()=>Array.from(document.querySelectorAll('.page.active *')).filter(el=>{const r=el.getBoundingClientRect(),st=getComputedStyle(el);return st.display!=='none'&&st.visibility!=='hidden'&&(r.right>window.innerWidth+5||r.left< -5)&&r.width>0;}).slice(0,18).map(el=>({tag:el.tagName,id:el.id,cls:String(el.className).slice(0,85),right:Math.round(el.getBoundingClientRect().right),left:Math.round(el.getBoundingClientRect().left),width:Math.round(el.getBoundingClientRect().width),scrollWidth:el.scrollWidth})));
+     console.log('MOBILE_OVERFLOW_DIAGNOSTIC '+width+'/'+id+' '+JSON.stringify(offenders));
+    }
     assert.ok(data.root<=data.viewport+2,'Horizontal overflow at '+width+'px / '+id+': '+JSON.stringify(data));
     assert.ok(data.body<=data.viewport+2,'Body overflow at '+width+'px / '+id+': '+JSON.stringify(data));
    }
