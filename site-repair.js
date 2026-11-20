@@ -225,25 +225,25 @@ function setupGames(){
  E('scoreboardRefresh').addEventListener('click',loadGames);
  if(E('gameSwap'))E('gameSwap').addEventListener('click',function(){var a=E('gameAway').value;E('gameAway').value=E('gameHome').value;E('gameHome').value=a;renderSensitivity();});
  ['gameAway','gameHome','gameAwayAvailability','gameHomeAvailability'].forEach(function(id){if(E(id))E(id).addEventListener('change',renderSensitivity);});
- loadGames();renderSensitivity();
+ loadGames();renderSensitivity();setInterval(function(){if(document.visibilityState==='visible'&&E('scoreboardDate').value===etDate()&&['#live','#gameroom'].includes(location.hash))loadGames();},90000);
 }
 function renderSensitivity(){
  var el=E('gameSensitivityResult');if(!el)return;
  var a=E('gameAway').value,b=E('gameHome').value;
- el.innerHTML='<div class="research-banner"><strong>'+esc(name(a))+' vs '+esc(name(b))+'</strong><p>Availability selections represent hypothetical scenarios, not a verified player-specific injury effect. No trained, timestamped forecast is available, so the site does not output an invented probability. Use the sourced standings and completed-game results elsewhere for factual context.</p></div>';
+ var away=E('gameAwayAvailability').selectedOptions[0].textContent,home=E('gameHomeAvailability').selectedOptions[0].textContent;el.innerHTML='<div class="research-banner"><strong>'+esc(name(a))+' vs '+esc(name(b))+'</strong><p>Selected away scenario: '+esc(away)+'. Selected home scenario: '+esc(home)+'. These assumptions are not measured player effects. No trained, timestamped forecast is available, so the site does not output an invented win probability.</p></div>';
 }
 function studioState(){
  var ids=['studioAway','studioHome','studioAwayStrength','studioHomeStrength','studioAwayRest','studioHomeRest','studioAwayAbsence','studioHomeAbsence','studioHomeCourt'];return Object.fromEntries(ids.map(function(k){return [k,E(k).value];}));
 }
 function studioUpdate(){
  if(!E('studioAway'))return;var s=studioState(),A=+s.studioAwayStrength,B=+s.studioHomeStrength,rest=(+s.studioAwayRest-+s.studioHomeRest)*1.5,avail=(+s.studioHomeAbsence-+s.studioAwayAbsence)*7,home=+s.studioHomeCourt;
- var sum=(A-B)+rest+avail-home,pc=100/(1+Math.exp(-sum/16));pc=Math.round(pc);
+ var sum=(A-B)+rest+avail-home;
  E('studioAwayStrengthValue').textContent=A;E('studioHomeStrengthValue').textContent=B;E('studioHomeCourtValue').textContent=home;
  E('studioAwayName').textContent=name(s.studioAway);E('studioHomeName').textContent=name(s.studioHome);
  if(s.studioAway===s.studioHome){E('studioAwayPct').textContent='—';E('studioHomePct').textContent='—';E('studioHeadline').textContent='Choose two different teams';E('studioExplanation').textContent='A team cannot play itself.';return;}
- E('studioAwayPct').textContent=pc+'%';E('studioHomePct').textContent=(100-pc)+'%';E('studioBar').style.width=pc+'%';
- E('studioHeadline').textContent='Illustrative scenario — not a model forecast';
- E('studioExplanation').textContent='This hypothetical result reflects only your manual settings. It is not a sourced win probability, calibrated model, or measurement of any named NBA player.';
+ E('studioAwayPct').textContent=sum>1?'Higher':'Lower';E('studioHomePct').textContent=sum< -1?'Higher':'Lower';if(Math.abs(sum)<=1){E('studioAwayPct').textContent='Even';E('studioHomePct').textContent='Even';}E('studioBar').style.width='50%';
+ E('studioHeadline').textContent=Math.abs(sum)<=1?'Assumptions are balanced':('Manual inputs favor '+name(sum>0?s.studioAway:s.studioHome));
+ E('studioExplanation').textContent='This is a directional comparison of user-entered assumptions, not a win probability, an NBA statistic, or a calibrated game model. No unsupported percentages are reported.';
  E('studioFactors').innerHTML='<div class="factor-line">Manually entered relative strengths: '+A+' vs '+B+'</div><div class="factor-line">Rest setting difference: '+esc(s.studioAwayRest)+' vs '+esc(s.studioHomeRest)+' days</div><div class="factor-line">Hypothetical availability settings: '+esc(s.studioAwayAbsence)+' vs '+esc(s.studioHomeAbsence)+'</div><div class="factor-line">User-selected home adjustment: '+home+' scenario points (not measured)</div>';
 }
 var storageKey='aureumTipoffScenariosV2';var memoryScenarios=[];
@@ -307,7 +307,7 @@ function patchLanguage(){
  var arcIntro=root.querySelector('#archive .archive-lede p');if(arcIntro)arcIntro.textContent='Review sourced completed-season win–loss records and changes in winning percentage. Historical advanced statistics are not yet available as a verified dataset.';
  var archiveNote=root.querySelector('#archive .archive-provenance');if(archiveNote)archiveNote.innerHTML='<b>Archive source and limitations</b><p>Team season records are fetched from dated ESPN historical standings. Historical advanced efficiency or injury statistics are not substituted or invented.</p>';
  var oldAbout=root.querySelector('#about .about-visual-story img');if(oldAbout)oldAbout.src='basketball-study.svg';
- var badges=root.querySelectorAll('#gameroom .game-route .pill');if(badges[0])badges[0].textContent='DATED NBA SCORES';if(badges[1])badges[1].textContent='HYPOTHETICAL EXPLORER';
+ var homeRibbon=root.querySelector('#home .archive-home-ribbon p');if(homeRibbon)homeRibbon.textContent='Compare completed-season franchise win–loss records for 2024–25 and 2025–26 when the historical standings feed is available. The archive does not invent advanced statistics or claim game-level forecasting accuracy.';var modelFormula=root.querySelector('#model .panel[style]');if(modelFormula){var formulaTitle=modelFormula.querySelector('h3');if(formulaTitle)formulaTitle.textContent='No arbitrary prediction formula';var formulaText=modelFormula.querySelector('p');if(formulaText)formulaText.textContent='Past demonstration sliders were never fitted to real NBA outcomes. They are not an acceptable basis for published win probabilities. Sourced team records and actual results are displayed separately until a validated model is available.';var formulaBox=modelFormula.querySelector('div[style]');if(formulaBox)formulaBox.textContent='Publication standard: pregame data + chronological holdout testing + archived predictions';var formulaNote=modelFormula.querySelector('.notice');if(formulaNote)formulaNote.textContent='We do not publish an assumed home-court percentage, an invented strength rating, or a fabricated model accuracy statistic.';}var badges=root.querySelectorAll('#gameroom .game-route .pill');if(badges[0])badges[0].textContent='DATED NBA SCORES';if(badges[1])badges[1].textContent='HYPOTHETICAL EXPLORER';
  var info=root.querySelector('#model .grid .card:first-child');if(info)info.innerHTML='<div class="kicker">Current release</div><h3>Verified evidence before forecasts</h3><p>Live results and sourced standings are shown separately from educational scenarios. No validated NBA game-level forecast model or accuracy rate is claimed.</p>';
  var hc=root.querySelector('#insights label[for="studioHomeCourt"]');if(hc)hc.firstChild.textContent='User-defined home-court scenario adjustment ';
  var stampEl=E('homeDataStatus');if(stampEl)stampEl.textContent='Checking source availability…';
