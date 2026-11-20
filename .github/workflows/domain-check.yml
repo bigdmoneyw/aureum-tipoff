@@ -34,5 +34,11 @@ jobs:
           dig +short aureumtipoff.com NS || true
           echo "===== HTTP header response ====="
           curl --connect-timeout 8 --max-time 15 -sSI https://aureumtipoff.com/ || true
+          echo "===== Plain HTTP apex response (certificate-independent) ====="
+          curl --connect-timeout 8 --max-time 15 -sSI http://aureumtipoff.com/ || true
+          echo "===== Plain HTTP www response ====="
+          curl --connect-timeout 8 --max-time 15 -sSI http://www.aureumtipoff.com/ || true
+          echo "===== Verified HTTPS www response ====="
+          curl --connect-timeout 8 --max-time 15 -sSI https://www.aureumtipoff.com/ || true
           echo "===== GitHub Pages hostname ====="
           curl --connect-timeout 8 --max-time 15 -sSI https://bigdmoneyw.github.io/aureum-tipoff/ || true
