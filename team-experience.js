@@ -20,7 +20,7 @@ const isPercent=k=>['winPct','fieldGoalPct','twoPointPct','threePointPct','freeT
 const formatted=(k,n)=>n===null||n===undefined||!Number.isFinite(n)?'Not reported':k==='wins'||k==='losses'?String(n):isPercent(k)?n.toFixed(1)+'%':k==='marginPerGame'?(n>=0?'+':'')+n.toFixed(1):n.toFixed(1);
 const formattedTime=iso=>{try{return new Date(iso).toLocaleString('en-US',{timeZone:'America/New_York',dateStyle:'medium',timeStyle:'short'})+' ET';}catch(e){return 'Timestamp unavailable';}};
 const metric=k=>catalog.find(x=>x.key===k);
-const details=(k,scope='stat')=>{const m=metric(k);if(!m)return '';const id='metric-help-'+scope+'-'+k;return '<span class="metric-info"><button type="button" class="metric-info-trigger" aria-label="Explain '+esc(m.label)+'" aria-describedby="'+id+'" aria-expanded="false">i</button><span class="metric-info-pop" id="'+id+'" role="tooltip">'+esc(m.brief)+'</span></span>';};
+const details=(k,scope='stat',overriddenBrief='')=>{const m=metric(k);if(!m)return '';const id='metric-help-'+scope+'-'+k;return '<span class="metric-info"><button type="button" class="metric-info-trigger" aria-label="Explain '+esc(m.label)+'" aria-describedby="'+id+'" aria-expanded="false">i</button><span class="metric-info-pop" id="'+id+'" role="tooltip">'+esc(overriddenBrief||m.brief)+'</span></span>';};
 function getJSON(path){
  return fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});
 }
@@ -136,47 +136,77 @@ function renderCompetitions(){
  el.innerHTML='<article class="competition-card"><span class="eyebrow">Emirates NBA Cup 2026</span><h4>'+esc(cup)+'</h4><p>Group play: Oct 30–Nov 27. Quarterfinals: Dec 4–5. Semifinals: Dec 8–9. Final: Dec 11. Cup games count toward the regular season except the final.</p><a href="https://www.nba.com/nba-cup/2026" target="_blank" rel="noopener noreferrer">Official Cup schedule, standings and results ↗</a></article>'+
  '<article class="competition-card"><span class="eyebrow">NBA postseason 2027</span><h4>'+esc(playoffs)+'</h4><p>Regular season ends Apr 11, 2027. Play-in: Apr 13–16. NBA playoffs begin Apr 17. Current brackets and series results require an official source.</p><a href="https://www.nba.com/playoffs" target="_blank" rel="noopener noreferrer">Official playoff bracket and results ↗</a></article>';
 }
+
+const pastMeaning={
+ wins:'1 if this team won this game; otherwise 0.',
+ losses:'1 if this team lost this game; otherwise 0.',
+ winPct:'100% for a win; 0% for a loss in this one game.',
+ pointsPerGame:'Total points this team scored in this game.',
+ oppPointsPerGame:'Points the opponent scored in this game.',
+ marginPerGame:'This team’s points minus its opponent’s points.',
+ fieldGoalPct:'Made 2- and 3-point shots divided by attempts.',
+ twoPointPct:'Made 2-point shots divided by 2-point attempts.',
+ threePointPct:'Made 3-point shots divided by 3-point attempts.',
+ freeThrowPct:'Made free throws divided by attempts.',
+ effectiveFgPct:'Shot accuracy adjusted for the extra value of made 3s.',
+ threePointRate:'3-point attempts as a share of all field-goal attempts.',
+ freeThrowRate:'Free-throw attempts divided by field-goal attempts.',
+ assistTurnoverRatio:'Assists divided by total turnovers in this game.'
+};
+const pastTooltip=(k)=>pastMeaning[k]||metric(k)?.brief||'Verified individual-game statistic.';
+const pastNumber=(k,val)=>val===null||val===undefined?'N/A':formatted(k,val);
+function pastStatRow(k,g){
+ const m=metric(k);if(!m)return '';
+ const av=g.awayStats.values[k],hv=g.homeStats.values[k];
+ return '<article class="past-stat-row" data-stat="'+esc(k)+'"><strong class="past-stat-figure past-stat-away">'+esc(pastNumber(k,av))+'</strong>'+
+  '<div class="past-stat-term"><span>'+esc(m.label)+'</span>'+details(k,'past',pastTooltip(k))+'</div>'+
+  '<strong class="past-stat-figure past-stat-home">'+esc(pastNumber(k,hv))+'</strong></article>';
+}
+function renderPastGame(g,full){
+ const winner=g.hs>g.as?g.home:g.away;
+ const summary='<div class="past-game-date">'+esc(new Date(g.date).toLocaleDateString('en-US',{timeZone:'America/New_York',weekday:'long',month:'long',day:'numeric',year:'numeric'}))+'</div>'+
+ '<div class="past-result"><div><img src="'+logo(g.away)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.away])+'</span><strong>'+g.as+'</strong></div><span class="past-versus">FINAL</span><div><img src="'+logo(g.home)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.home])+'</span><strong>'+g.hs+'</strong></div></div>';
+ if(!full){
+  return summary+'<div class="past-stats-awaiting"><h3>Game statistics not yet verified</h3><p>The final result is sourced, but this game’s 30-stat box score is not yet available in the verified archive. Season averages are not substituted.</p></div>';
+ }
+ if(full.home!==g.home||full.away!==g.away||full.hs!==g.hs||full.as!==g.as)return summary+'<div class="past-stats-awaiting">Box-score validation failed for this game. Its statistics are withheld.</div>';
+ const comparison='<section class="past-stats-grid" aria-label="Thirty individual-game statistics for both teams">'+
+  '<div class="past-stat-intro"><div><span class="eyebrow">Head-to-head / game box score</span><h3>30 numbers. Both sides.</h3></div><p>These are values from this <strong>single completed game</strong>, not season averages. “Per game” means the total in this one game; a win/loss counts as 1 or 0. Hover over <span class="info-symbol">i</span> to learn what each stat means.</p></div>'+
+  '<div class="past-stat-team-head"><span><img src="'+logo(g.away)+'" alt="" loading="lazy">'+esc(shortNames[g.away])+'</span><span>Statistic</span><span><img src="'+logo(g.home)+'" alt="" loading="lazy">'+esc(shortNames[g.home])+'</span></div>'+
+  categories.map(c=>'<div class="past-stat-category"><h4>'+esc(c.title)+'</h4><div class="past-stat-rows">'+c.keys.map(k=>pastStatRow(k,full)).join('')+'</div></div>').join('')+
+  '<p class="data-sources">Source: <a target="_blank" rel="noopener noreferrer" href="'+esc(full.boxscoreUrl)+'">ESPN game box score ↗</a>. Each team’s shooting totals were cross-checked against the published final score. “N/A” means a calculation is undefined or unavailable—not zero. Values such as shooting accuracy are measured after the game and must not be interpreted as a pregame prediction.</p></section>';
+ return summary+comparison;
+}
 async function loadPastGames(){
  const select=$('pastGameSelect'),body=$('pastGameReport'),coverage=$('pastGameCoverage');
  if(!select||!body)return;
  try{
-  let games=[];
-  try{
-   const all=await getSnapshot('completed-games-'+seasonEnd+'.json');
-   if(all.format!=='aureum-completed-games-v1'||all.season!==seasonEnd||!Array.isArray(all.games)||all.count!==all.games.length)throw Error('Completed-game archive failed validation');
-   games=all.games.filter(g=>codes[g.home]&&codes[g.away]&&g.home!==g.away&&Number.isInteger(g.hs)&&Number.isInteger(g.as)&&g.hs!==g.as);
-  }catch(e){/* Recent snapshots remain a safe fallback when the first season-wide backfill has not deployed. */}
-  if(!games.length){
-  const status=await getSnapshot('status.json');
-  const today=etDate(),dates=(status.dates||[]).filter(d=>d<=today).sort().reverse();
-  const responses=await Promise.allSettled(dates.map(d=>getSnapshot('scoreboards/'+d+'.json')));
-  const seen=new Set();
-  for(let i=0;i<responses.length;i++){
-   const x=responses[i];if(x.status!=='fulfilled'||x.value.requestedDate!==dates[i])continue;
-   for(const e of x.value.events||[]){
-    const pair=e.competitions?.[0]?.competitors||[];
-    const h=pair.find(x=>x.homeAway==='home'),a=pair.find(x=>x.homeAway==='away');
-    const hc=h?.team?.abbreviation,ac=a?.team?.abbreviation;
-    if(!e.status?.type?.completed||!codes[hc]||!codes[ac]||seen.has(e.id))continue;
-    const hs=Number(h.score),as=Number(a.score);
-    if(!Number.isInteger(hs)||!Number.isInteger(as)||hs<0||as<0||hs===as)continue;
-    games.push({id:e.id,date:e.date,home:hc,away:ac,hs,as,sourceAt:x.value.retrievedAt});
-    seen.add(e.id);
-   }
-  }
-  }
+  const [list,boxscores]=await Promise.all([
+   getSnapshot('completed-games-'+seasonEnd+'.json'),
+   getSnapshot('game-boxscores-'+seasonEnd+'.json').catch(()=>null)
+  ]);
+  if(list.format!=='aureum-completed-games-v1'||list.season!==seasonEnd||!Array.isArray(list.games)||list.count!==list.games.length)throw Error('Completed scores failed validation');
+  const games=list.games.filter(g=>codes[g.home]&&codes[g.away]&&g.home!==g.away&&Number.isInteger(g.hs)&&Number.isInteger(g.as)&&g.hs!==g.as);
+  if(!games.length)throw Error('No validated completed games were found');
+  const verified=boxscores?.format==='aureum-game-boxscores-v1'&&boxscores.season===seasonEnd&&boxscores.metricCount===30&&Array.isArray(boxscores.games);
+  const byId=new Map((verified?boxscores.games:[]).filter(g=>g.homeStats?.values&&g.awayStats?.values&&catalog.every(m=>m.key in g.homeStats.values&&m.key in g.awayStats.values)).map(g=>[g.id,g]));
   games.sort((a,b)=>new Date(b.date)-new Date(a.date));
-  if(!games.length)throw Error('No completed games in verified season snapshots');
-  select.innerHTML=games.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.away)+' at '+esc(g.home)+' · '+esc(new Date(g.date).toLocaleDateString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric'}))+'</option>').join('');
-  const render=()=>{
+  select.innerHTML=games.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.away)+' at '+esc(g.home)+' · '+esc(new Date(g.date).toLocaleDateString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric'}))+(byId.has(g.id)?'':' · box score pending')+'</option>').join('');
+  const current=games.find(g=>byId.has(g.id));if(current)select.value=current.id;
+  const draw=()=>{
    const g=games.find(x=>x.id===select.value);if(!g)return;
-   const winner=g.hs>g.as?g.home:g.away,margin=Math.abs(g.hs-g.as),total=g.hs+g.as;
-   body.innerHTML='<div class="past-result"><div><img src="'+logo(g.away)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.away])+'</span><strong>'+g.as+'</strong></div><span class="past-versus">FINAL</span><div><img src="'+logo(g.home)+'" alt="" loading="lazy"><span>'+esc(shortNames[g.home])+'</span><strong>'+g.hs+'</strong></div></div><div class="past-facts"><article><small>Winning team</small><strong>'+esc(shortNames[winner])+'</strong></article><article><small>Winning margin</small><strong>'+margin+' points</strong></article><article><small>Combined score</small><strong>'+total+' points</strong></article><article><small>Home team score</small><strong>'+g.hs+'</strong></article></div><p class="data-sources">Completed-game snapshot · '+esc(formattedTime(g.sourceAt))+'. These are measured outcomes, not what was knowable before tipoff. Game-level shooting and rebound data are not claimed without a verified box score.</p>';
+   body.innerHTML=renderPastGame(g,byId.get(g.id));
   };
-  select.addEventListener('change',render);render();
-  if(coverage)coverage.textContent=games.length+' verified completed games from sourced season records';
- }catch(e){body.innerHTML='<div class="empty">Past-game data is unavailable. No results have been fabricated. '+esc(e.message)+'</div>';if(coverage)coverage.textContent='Completed-game data unavailable';}
+  select.addEventListener('change',draw);
+  bindTeamTooltipInteractions(body);
+  draw();
+  if(coverage)coverage.textContent=byId.size+' verified two-team box scores / '+games.length+' completed games';
+ }catch(e){
+  body.innerHTML='<div class="empty">Unable to validate the completed-game archive: '+esc(e.message)+'. No figures have been invented.</div>';
+  if(coverage)coverage.textContent='Game box scores are not available';
+ }
 }
+
 async function init(){
  const grid=$('teamGrid');
  if(grid){
@@ -186,12 +216,12 @@ async function init(){
  $('glossarySearch')?.addEventListener('input',showLearn);
  ['gameAway','gameHome'].forEach(id=>$(id)?.addEventListener('change',renderGameRoomContext));
  renderCompetitions();
- loadPastGames();
  try{
   const raw=await getSnapshot('metric-catalog.json');
   if(!Array.isArray(raw.metrics)||raw.metrics.length!==30||new Set(raw.metrics.map(x=>x.key)).size!==30)throw Error('30-metric glossary not verified');
   catalog=raw.metrics;
   showLearn();
+  loadPastGames();
   const current=await getSnapshot('teams-'+seasonEnd+'.json');
   stats=seasonCheck(current);
   activateTeam(selected,false);
