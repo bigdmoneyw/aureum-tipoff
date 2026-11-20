@@ -30,6 +30,7 @@ try{
  await check('home renders with a founder portrait and mission image',async()=>{
   await page.goto(url,{waitUntil:'domcontentloaded'});
   await page.waitForSelector('#home.active');
+  for(const locator of ['#home .founder-portrait img','#home .mission-visual img']){await page.locator(locator).scrollIntoViewIfNeeded();await page.waitForFunction(selector=>{const x=document.querySelector(selector);return x&&x.complete&&x.naturalWidth>0;},locator,{timeout:15000});}
   const good=await page.evaluate(()=>['#home .founder-portrait img','#home .mission-visual img'].every(q=>{let x=document.querySelector(q);return x&&x.complete&&x.naturalWidth>0;}));
   assert.ok(good,'Founder or mission portrait did not load');
  });
