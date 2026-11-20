@@ -18,3 +18,5 @@ jobs:
           node-version: '22'
       - name: Validate links, assets, scripts and NBA data parsers
         run: node tests/site.test.mjs
+      - name: Verify public branding and exclude third-party chat services
+        run: node tests/branding.test.mjs
