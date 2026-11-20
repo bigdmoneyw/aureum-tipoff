@@ -49,6 +49,17 @@ try {
  assert.equal(await page.locator('#glossaryGrid .learn-why').count(),30);
  await viewportTest('gameroom');
  await viewportTest('matchups');
+ await page.locator('#pastGameReport .past-stat-row').first().waitFor({timeout:30000});
+ assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
+ assert.equal(await page.locator('#pastGameReport .past-stat-away').count(),30);
+ assert.equal(await page.locator('#pastGameReport .past-stat-home').count(),30);
+ const gameHelp=page.locator('#pastGameReport .metric-info-trigger').first();
+ await gameHelp.click();
+ assert.equal(await page.locator('#pastGameReport .metric-info.is-open').count(),1);
+ assert.ok(await page.locator('#pastGameReport .metric-info-pop').first().isVisible());
+ await page.locator('#pastGameReport .past-result .past-versus').click();
+ assert.equal(await page.locator('#pastGameReport .metric-info.is-open').count(),0);
+
  assert.deepEqual(errors,[],'Uncaught Safari JavaScript exceptions');
  assert.deepEqual(broken,[],'Production asset failures');
  console.log('PASS: production HTTPS, iPhone Safari menu, founder, all 30 Teams and Learn metrics, icon taps, and mobile layouts');
