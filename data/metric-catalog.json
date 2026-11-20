@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "description": "Thirty current-season team statistics with concise, beginner-friendly definitions. No live figures appear on Learn.",
+  "metrics": [
+    {
+      "key": "wins",
+      "label": "Wins",
+      "brief": "Games won.",
+      "explanation": "A win means the team finished a game with more points than its opponent. Only completed regular-season games count."
+    },
+    {
+      "key": "losses",
+      "label": "Losses",
+      "brief": "Games lost.",
+      "explanation": "A loss means the opponent scored more points when the game ended. It counts completed regular-season games."
+    },
+    {
+      "key": "winPct",
+      "label": "Win rate",
+      "brief": "Wins divided by games played.",
+      "explanation": "A team's share of completed games won. For example, 6 wins in 10 games means a 60% win rate."
+    },
+    {
+      "key": "pointsPerGame",
+      "label": "Points / game",
+      "brief": "Average points scored per game.",
+      "explanation": "Points are earned by shooting: a free throw gives 1, most baskets give 2, and a long-range three-pointer gives 3."
+    },
+    {
+      "key": "oppPointsPerGame",
+      "label": "Opponent points / game",
+      "brief": "Average points allowed each game.",
+      "explanation": "How many points the other team scores against this team on average. Fewer points allowed can signal stronger defense."
+    },
+    {
+      "key": "marginPerGame",
+      "label": "Score margin / game",
+      "brief": "Average points scored minus points allowed.",
+      "explanation": "Positive means the team usually outscored opponents; negative means it was usually outscored. This is a description, not a forecast."
+    },
+    {
+      "key": "fieldGoalPct",
+      "label": "Field-goal %",
+      "brief": "Share of shot attempts made.",
+      "explanation": "Field goals are baskets scored during play, worth 2 or 3 points. Free throws are not included."
+    },
+    {
+      "key": "twoPointPct",
+      "label": "2-point shot %",
+      "brief": "Share of 2-point shots made.",
+      "explanation": "Measures success on shots taken inside the three-point line, excluding free throws."
+    },
+    {
+      "key": "threePointPct",
+      "label": "3-point shot %",
+      "brief": "Share of 3-point shots made.",
+      "explanation": "A three-pointer is a successful shot from behind the three-point line. This shows how often those attempts go in."
+    },
+    {
+      "key": "freeThrowPct",
+      "label": "Free-throw %",
+      "brief": "Share of free throws made.",
+      "explanation": "Free throws are uncontested 1-point attempts awarded after certain fouls. This is how often the team makes them."
+    },
+    {
+      "key": "effectiveFgPct",
+      "label": "Effective FG %",
+      "brief": "Shot accuracy adjusted for 3-point value.",
+      "explanation": "Like field-goal percentage, but gives extra weight to made three-pointers because they score 3 points instead of 2."
+    },
+    {
+      "key": "threePointRate",
+      "label": "3-point attempt rate",
+      "brief": "Share of shots attempted from three.",
+      "explanation": "Shows the team's reliance on long-range shooting: three-point attempts divided by all field-goal attempts."
+    },
+    {
+      "key": "freeThrowRate",
+      "label": "Free-throw attempt rate",
+      "brief": "Free throws attempted per field-goal attempt.",
+      "explanation": "Shows how often a team gets free-throw attempts relative to its normal shots. A higher value isn't automatically better."
+    },
+    {
+      "key": "fgMadePerGame",
+      "label": "Field goals made / game",
+      "brief": "Average made 2- and 3-point baskets.",
+      "explanation": "Counts successful shots during play (not free throws), averaged over all games."
+    },
+    {
+      "key": "fgAttemptedPerGame",
+      "label": "Field-goal tries / game",
+      "brief": "Average 2- and 3-point shot attempts.",
+      "explanation": "Counts every attempted 2- or 3-point shot, successful or not, averaged across games."
+    },
+    {
+      "key": "threeMadePerGame",
+      "label": "3-pointers made / game",
+      "brief": "Average made 3-point baskets.",
+      "explanation": "Shows how many long-range shots go in each game, on average."
+    },
+    {
+      "key": "threeTriedPerGame",
+      "label": "3-point tries / game",
+      "brief": "Average attempted 3-point shots.",
+      "explanation": "Shows how many three-point shots a team takes in an average game."
+    },
+    {
+      "key": "ftMadePerGame",
+      "label": "Free throws made / game",
+      "brief": "Average made 1-point free throws.",
+      "explanation": "Shows how many points a team earns from successful free throws each game, on average."
+    },
+    {
+      "key": "ftTriedPerGame",
+      "label": "Free-throw tries / game",
+      "brief": "Average free throws attempted.",
+      "explanation": "Shows how often a team attempts uncontested 1-point free throws per game."
+    },
+    {
+      "key": "reboundsPerGame",
+      "label": "Rebounds / game",
+      "brief": "Average missed shots recovered.",
+      "explanation": "After a missed shot, a rebound is gaining control of the ball. A team can rebound on offense or defense."
+    },
+    {
+      "key": "offReboundsPerGame",
+      "label": "Offensive rebounds / game",
+      "brief": "Average own-team misses recovered.",
+      "explanation": "When the shooting team recovers its own miss, it gets another chance to score."
+    },
+    {
+      "key": "defReboundsPerGame",
+      "label": "Defensive rebounds / game",
+      "brief": "Average opponent misses recovered.",
+      "explanation": "When the defending team collects an opponent's miss, it usually gains possession."
+    },
+    {
+      "key": "assistsPerGame",
+      "label": "Assists / game",
+      "brief": "Average passes leading directly to baskets.",
+      "explanation": "An assist is credited when a pass directly helps a teammate make a field goal."
+    },
+    {
+      "key": "turnoversPerGame",
+      "label": "Turnovers / game",
+      "brief": "Average times possession is lost.",
+      "explanation": "A turnover gives the ball to the opponent before the team can finish its possession with a shot."
+    },
+    {
+      "key": "assistTurnoverRatio",
+      "label": "Assists / turnover",
+      "brief": "Assists divided by turnovers.",
+      "explanation": "Compares baskets created by passes with possessions lost. It describes ball movement and care, not just shooting."
+    },
+    {
+      "key": "stealsPerGame",
+      "label": "Steals / game",
+      "brief": "Average takeaways from opponents.",
+      "explanation": "A steal happens when a defender legally takes the ball from an opposing team."
+    },
+    {
+      "key": "blocksPerGame",
+      "label": "Blocks / game",
+      "brief": "Average opponent shots deflected.",
+      "explanation": "A blocked shot is when a defender legally touches a shot attempt and stops or changes its path."
+    },
+    {
+      "key": "foulsPerGame",
+      "label": "Fouls / game",
+      "brief": "Average rule violations penalized.",
+      "explanation": "A personal foul is illegal physical contact. Too many can give the opponent free throws and limit players' minutes."
+    },
+    {
+      "key": "twoMadePerGame",
+      "label": "2-pointers made / game",
+      "brief": "Average made 2-point baskets.",
+      "explanation": "Counts successful field goals worth two points, excluding three-pointers and free throws."
+    },
+    {
+      "key": "twoTriedPerGame",
+      "label": "2-point tries / game",
+      "brief": "Average attempted 2-point shots.",
+      "explanation": "Counts all attempts from inside the three-point line, averaged over games."
+    }
+  ]
+}
