@@ -1,0 +1,194 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-11-21",
+  "retrievedAt": "2026-11-20T03:55:24.897Z",
+  "events": [
+    {
+      "id": "401910023",
+      "date": "2026-11-21T18:00Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 1:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "PHI"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "MIL"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910024",
+      "date": "2026-11-22T00:30Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 7:30 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "NYK"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "POR"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910025",
+      "date": "2026-11-22T01:00Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 8:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "DAL"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "LAC"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910026",
+      "date": "2026-11-22T01:00Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 8:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MIN"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "MEM"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910027",
+      "date": "2026-11-22T01:00Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 8:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "SAS"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "NOP"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910028",
+      "date": "2026-11-22T03:00Z",
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/21 - 10:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "SAC"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BOS"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

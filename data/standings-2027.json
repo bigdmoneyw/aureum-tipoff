@@ -1,0 +1,159 @@
+{
+  "format": "aureum-standings-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "season": 2027,
+  "sourceUrl": "https://www.espn.com/nba/standings",
+  "retrievedAt": "2026-11-20T03:55:24.897Z",
+  "records": [
+    {
+      "code": "ATL",
+      "wins": 9,
+      "losses": 6
+    },
+    {
+      "code": "BKN",
+      "wins": 3,
+      "losses": 11
+    },
+    {
+      "code": "BOS",
+      "wins": 11,
+      "losses": 4
+    },
+    {
+      "code": "CHA",
+      "wins": 4,
+      "losses": 10
+    },
+    {
+      "code": "CHI",
+      "wins": 4,
+      "losses": 10
+    },
+    {
+      "code": "CLE",
+      "wins": 8,
+      "losses": 8
+    },
+    {
+      "code": "DAL",
+      "wins": 8,
+      "losses": 7
+    },
+    {
+      "code": "DEN",
+      "wins": 8,
+      "losses": 5
+    },
+    {
+      "code": "DET",
+      "wins": 10,
+      "losses": 4
+    },
+    {
+      "code": "GSW",
+      "wins": 8,
+      "losses": 8
+    },
+    {
+      "code": "HOU",
+      "wins": 12,
+      "losses": 4
+    },
+    {
+      "code": "IND",
+      "wins": 5,
+      "losses": 10
+    },
+    {
+      "code": "LAC",
+      "wins": 4,
+      "losses": 10
+    },
+    {
+      "code": "LAL",
+      "wins": 13,
+      "losses": 3
+    },
+    {
+      "code": "MEM",
+      "wins": 12,
+      "losses": 4
+    },
+    {
+      "code": "MIA",
+      "wins": 9,
+      "losses": 6
+    },
+    {
+      "code": "MIL",
+      "wins": 1,
+      "losses": 15
+    },
+    {
+      "code": "MIN",
+      "wins": 11,
+      "losses": 5
+    },
+    {
+      "code": "NOP",
+      "wins": 5,
+      "losses": 11
+    },
+    {
+      "code": "NYK",
+      "wins": 9,
+      "losses": 6
+    },
+    {
+      "code": "OKC",
+      "wins": 9,
+      "losses": 6
+    },
+    {
+      "code": "ORL",
+      "wins": 6,
+      "losses": 8
+    },
+    {
+      "code": "PHI",
+      "wins": 13,
+      "losses": 3
+    },
+    {
+      "code": "PHX",
+      "wins": 7,
+      "losses": 7
+    },
+    {
+      "code": "POR",
+      "wins": 10,
+      "losses": 5
+    },
+    {
+      "code": "SAC",
+      "wins": 1,
+      "losses": 13
+    },
+    {
+      "code": "SAS",
+      "wins": 13,
+      "losses": 3
+    },
+    {
+      "code": "TOR",
+      "wins": 5,
+      "losses": 10
+    },
+    {
+      "code": "UTA",
+      "wins": 3,
+      "losses": 13
+    },
+    {
+      "code": "WAS",
+      "wins": 5,
+      "losses": 11
+    }
+  ]
+}
