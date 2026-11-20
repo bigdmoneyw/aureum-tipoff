@@ -44,13 +44,13 @@ assert.equal(sourced.teamCount,30);
 assert.equal(sourced.metricCount,30);
 assert.equal(sourced.records.length,30);
 for(const team of sourced.records)for(const m of catalog.metrics)assert.ok(Number.isFinite(team.values[m.key]),team.code+' missing '+m.key);
-const games=JSON.parse(readFileSync('data/completed-games-2027.json','utf8'));
+const completedGameArchive=JSON.parse(readFileSync('data/completed-games-2027.json','utf8'));
 const boxes=JSON.parse(readFileSync('data/game-boxscores-2027.json','utf8'));
 assert.equal(boxes.format,'aureum-game-boxscores-v1');
 assert.equal(boxes.availableGameCount,boxes.games.length);
-assert.equal(boxes.completedGameCount,games.count);
+assert.equal(boxes.completedGameCount,completedGameArchive.count);
 assert.ok(boxes.availableGameCount>100,'Expected an audited season-wide archive');
-const scoreLookup=new Map(games.games.map(g=>[g.id,g]));
+const scoreLookup=new Map(completedGameArchive.games.map(g=>[g.id,g]));
 for(const game of boxes.games){
  const original=scoreLookup.get(game.id);
  assert.ok(original&&game.hs===original.hs&&game.as===original.as,'Archived scores must match '+game.id);
