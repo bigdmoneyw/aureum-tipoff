@@ -97,7 +97,7 @@ try{
  await check('Scenarios show completed games not hypothetical future probabilities',async()=>{
   await page.evaluate(()=>location.hash='matchups');
   await page.waitForSelector('#matchups.active');
-  await page.waitForSelector('#pastGameSelect option',{timeout:20000});
+  await page.waitForSelector('#pastGameSelect option',{state:'attached',timeout:20000});
   assert.ok(await page.locator('#pastGameSelect option').count()>0);
   assert.equal(await page.locator('#pastGameReport .past-facts article').count(),4);
  });
