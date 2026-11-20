@@ -20,7 +20,7 @@ const isPercent=k=>['winPct','fieldGoalPct','twoPointPct','threePointPct','freeT
 const formatted=(k,n)=>n===null||n===undefined||!Number.isFinite(n)?'Not reported':k==='wins'||k==='losses'?String(n):isPercent(k)?n.toFixed(1)+'%':k==='marginPerGame'?(n>=0?'+':'')+n.toFixed(1):n.toFixed(1);
 const formattedTime=iso=>{try{return new Date(iso).toLocaleString('en-US',{timeZone:'America/New_York',dateStyle:'medium',timeStyle:'short'})+' ET';}catch(e){return 'Timestamp unavailable';}};
 const metric=k=>catalog.find(x=>x.key===k);
-const details=k=>{const m=metric(k);if(!m)return '';return '<details class="metric-info"><summary aria-label="What does '+esc(m.label)+' mean?" title="What does this mean?">i</summary><div class="metric-info-pop">'+esc(m.brief)+'</div></details>';};
+const details=(k,scope='stat')=>{const m=metric(k);if(!m)return '';const id='metric-help-'+scope+'-'+k;return '<span class="metric-info"><button type="button" class="metric-info-trigger" aria-label="Explain '+esc(m.label)+'" aria-describedby="'+id+'" aria-expanded="false">i</button><span class="metric-info-pop" id="'+id+'" role="tooltip">'+esc(m.brief)+'</span></span>';};
 function getJSON(path){
  return fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});
 }
@@ -57,15 +57,34 @@ function spotlight(k,row){
  const position=max===min?50:Math.max(4,Math.min(96,(v-min)/(max-min)*100));
  return '<article class="spotlight-metric"><div class="spotlight-heading"><span>'+esc(m.label)+'</span>'+details(k)+'</div><strong>'+esc(formatted(k,v))+'</strong><div class="spotlight-bar" role="img" aria-label="'+esc(m.label)+': '+esc(formatted(k,v))+'. League range '+esc(formatted(k,min))+' to '+esc(formatted(k,max))+'"><span style="left:'+position.toFixed(1)+'%"></span></div><div class="spotlight-range"><small>League low '+esc(formatted(k,min))+'</small><small>League high '+esc(formatted(k,max))+'</small></div><p>League median: '+esc(formatted(k,median))+'</p></article>';
 }
+
+function bindTeamTooltipInteractions(el){
+ if(el.dataset.tooltipsBound)return;
+ el.dataset.tooltipsBound='true';
+ const close=()=>el.querySelectorAll('.metric-info.is-open').forEach(x=>{x.classList.remove('is-open');const b=x.querySelector('.metric-info-trigger');if(b)b.setAttribute('aria-expanded','false');});
+ el.addEventListener('click',event=>{
+  const button=event.target.closest('.metric-info-trigger');
+  if(!button||!el.contains(button))return;
+  const wrapper=button.closest('.metric-info'),open=wrapper.classList.contains('is-open');
+  close();
+  if(!open){wrapper.classList.add('is-open');button.setAttribute('aria-expanded','true');}
+ });
+ document.addEventListener('pointerdown',event=>{
+  if(!el.contains(event.target)||!event.target.closest('.metric-info'))close();
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){close();if(document.activeElement?.classList.contains('metric-info-trigger'))document.activeElement.blur();}});
+ window.addEventListener('hashchange',close);
+}
+
 function renderTeams(){
  const el=$('teamDetails');if(!el)return;
  if(!stats||!catalog.length){el.innerHTML='<div class="empty">Waiting for source-verified current-season team statistics. Numbers are not guessed.</div>';return;}
  const row=stats.records.find(r=>r.code===selected);if(!row){el.innerHTML='<div class="empty">No source record found for this team.</div>';return;}
- const first='<div class="team-profile-head"><img class="team-profile-logo" src="'+logo(selected)+'" alt="'+esc(shortNames[selected])+' logo" loading="lazy"><div class="team-profile-intro"><span class="eyebrow">2026–27 / NBA franchise profile</span><h2>'+esc(shortNames[selected])+'</h2><p><span class="team-profile-count">30 verified metrics</span> A clearer look at this team. Tap <span class="info-symbol">i</span> for a short definition.</p><div class="team-profile-actions"><button class="btn secondary team-profile-link" type="button" data-go="library">Understand the statistics ↗</button><button class="btn secondary team-profile-link" type="button" data-go="compare">Compare teams ↗</button></div></div></div>';
+ const first='<div class="team-profile-head"><img class="team-profile-logo" src="'+logo(selected)+'" alt="'+esc(shortNames[selected])+' logo" loading="lazy"><div class="team-profile-intro"><span class="eyebrow">2026–27 / NBA franchise profile</span><h2>'+esc(shortNames[selected])+'</h2><p><span class="team-profile-count">30 verified metrics</span> A clearer look at this team. Hover over <span class="info-symbol">i</span> for a quick definition (or tap on mobile).</p><div class="team-profile-actions"><button class="btn secondary team-profile-link" type="button" data-go="library">Understand the statistics ↗</button><button class="btn secondary team-profile-link" type="button" data-go="compare">Compare teams ↗</button></div></div></div>';
  const header='<div class="spotlight-intro"><div><span class="eyebrow">The quick read</span><h3>Four numbers. A bigger picture.</h3><p>Compared with the current 30-team league range. Higher is not always better.</p></div><span class="spotlight-note">League comparison · not predictive importance</span></div>';
  const section='<section class="team-spotlight">'+header+'<div class="spotlight-grid">'+['winPct','pointsPerGame','threePointPct','turnoversPerGame'].map(k=>spotlight(k,row)).join('')+'</div></section>';
- el.innerHTML=first+section+'<div class="metric-collection-heading"><div><span class="eyebrow">Deep dive / 30 statistics</span><h3>Explore every number.</h3></div><p>Tap the <span class="info-symbol">i</span> on any card for a quick explanation.</p></div>'+categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid">'+c.keys.map(k=>tile(k,row)).join('')+'</div></section>').join('')+sourceNote(row);
- el.querySelectorAll('.metric-info').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)el.querySelectorAll('.metric-info').forEach(o=>{if(o!==d)o.open=false;});}));
+ el.innerHTML=first+section+'<div class="metric-collection-heading"><div><span class="eyebrow">Deep dive / 30 statistics</span><h3>Explore every number.</h3></div><p>Hover over each <span class="info-symbol">i</span> to see a definition. Tap on phones.</p></div>'+categories.map(c=>'<section class="metric-section" aria-label="'+esc(c.title)+'"><h3>'+esc(c.title)+'</h3><div class="team-metrics-grid">'+c.keys.map(k=>tile(k,row)).join('')+'</div></section>').join('')+sourceNote(row);
+ bindTeamTooltipInteractions(el);
  el.querySelectorAll('.team-profile-link').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go;}));
 }
 function activateTeam(code,scroll){
@@ -85,12 +104,11 @@ const learnMeasures={
  twoMadePerGame:'Made 2s ÷ games',twoTriedPerGame:'2-point attempts ÷ games'
 };
 function showLearn(){
- if(!$('glossaryGrid')||!catalog.length)return;
+ const grid=$('glossaryGrid');if(!grid||!catalog.length)return;
  const q=($('glossarySearch')?.value||'').toLowerCase().trim();
- const rows=catalog.filter(m=>(m.label+' '+m.brief+' '+m.explanation+' '+(learnMeasures[m.key]||'')).toLowerCase().includes(q));
- $('glossaryGrid').innerHTML=rows.map(m=>'<article class="learn-metric"><div class="learn-metric-top"><span class="eyebrow">'+String(catalog.indexOf(m)+1).padStart(2,'0')+' / 30</span>'+details(m.key)+'</div><h3>'+esc(m.label)+'</h3><p class="learn-measure">'+esc(learnMeasures[m.key]||'Measured from games')+'</p><p class="learn-one-liner">'+esc(m.brief)+'</p></article>').join('')||'<div class="empty">No matching statistic. Try a different term.</div>';
- if($('glossaryCount'))$('glossaryCount').textContent=rows.length+' of 30 statistics · measurable definitions only, no current team values';
- const area=$('glossaryGrid');area.querySelectorAll('.metric-info').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)area.querySelectorAll('.metric-info').forEach(o=>{if(o!==d)o.open=false;});}));
+ const matches=catalog.filter(m=>(m.label+' '+m.brief+' '+m.explanation+' '+(m.whyItMatters||'')+' '+(learnMeasures[m.key]||'')).toLowerCase().includes(q));
+ grid.innerHTML=matches.map(m=>'<article class="learn-metric"><div class="learn-metric-top"><span class="eyebrow">'+String(catalog.indexOf(m)+1).padStart(2,'0')+' / 30</span></div><h3>'+esc(m.label)+'</h3><p class="learn-explanation">'+esc(m.explanation)+'</p><div class="learn-why"><span class="learn-why-label">Why it matters</span><p>'+esc(m.whyItMatters||m.brief)+'</p></div><p class="learn-measure"><span>How it is measured</span>'+esc(learnMeasures[m.key]||'Measured from game totals')+'</p></article>').join('')||'<div class="empty">No matching statistic. Try another term.</div>';
+ if($('glossaryCount'))$('glossaryCount').textContent=matches.length+' of 30 statistics explained · definitions and context only, no live team figures';
 }
 function renderGameRoomContext(){
  const el=$('gameRoomContext');if(!el)return;
