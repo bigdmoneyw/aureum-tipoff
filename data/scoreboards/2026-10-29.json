@@ -1,0 +1,101 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-10-29",
+  "retrievedAt": "2026-11-20T06:38:09.554Z",
+  "events": [
+    {
+      "id": "401909893",
+      "date": "2026-10-30T00:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "ATL"
+              },
+              "score": "114"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "CLE"
+              },
+              "score": "111"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909894",
+      "date": "2026-10-30T00:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "NOP"
+              },
+              "score": "132"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "SAC"
+              },
+              "score": "120"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909895",
+      "date": "2026-10-30T02:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "POR"
+              },
+              "score": "103"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "MEM"
+              },
+              "score": "124"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-10-22",
+  "retrievedAt": "2026-11-20T06:38:09.554Z",
+  "events": [
+    {
+      "id": "401909093",
+      "date": "2026-10-22T23:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "PHI"
+              },
+              "score": "114"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "CLE"
+              },
+              "score": "106"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909094",
+      "date": "2026-10-23T01:30Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "OKC"
+              },
+              "score": "96"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "DEN"
+              },
+              "score": "84"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

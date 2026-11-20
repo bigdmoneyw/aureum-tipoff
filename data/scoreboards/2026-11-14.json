@@ -1,0 +1,163 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-11-14",
+  "retrievedAt": "2026-11-20T06:38:09.554Z",
+  "events": [
+    {
+      "id": "401909980",
+      "date": "2026-11-15T00:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "NOP"
+              },
+              "score": "108"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "DEN"
+              },
+              "score": "116"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909981",
+      "date": "2026-11-15T00:30Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "CLE"
+              },
+              "score": "127"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "DAL"
+              },
+              "score": "117"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909982",
+      "date": "2026-11-15T01:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MIA"
+              },
+              "score": "137"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "DET"
+              },
+              "score": "117"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909983",
+      "date": "2026-11-15T01:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MEM"
+              },
+              "score": "129"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BKN"
+              },
+              "score": "110"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909984",
+      "date": "2026-11-15T01:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MIN"
+              },
+              "score": "106"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "CHI"
+              },
+              "score": "117"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

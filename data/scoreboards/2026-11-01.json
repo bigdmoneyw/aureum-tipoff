@@ -1,0 +1,132 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-11-01",
+  "retrievedAt": "2026-11-20T06:38:09.554Z",
+  "events": [
+    {
+      "id": "401909903",
+      "date": "2026-11-01T20:30Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "ORL"
+              },
+              "score": "97"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BOS"
+              },
+              "score": "108"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909904",
+      "date": "2026-11-01T22:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "IND"
+              },
+              "score": "90"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BKN"
+              },
+              "score": "98"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909905",
+      "date": "2026-11-02T01:30Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "GSW"
+              },
+              "score": "124"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "LAC"
+              },
+              "score": "112"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401909906",
+      "date": "2026-11-02T02:00Z",
+      "status": {
+        "type": {
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
+        }
+      },
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "LAL"
+              },
+              "score": "131"
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "TOR"
+              },
+              "score": "125"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
