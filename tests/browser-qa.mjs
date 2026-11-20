@@ -133,6 +133,34 @@ try{
   const o=await page.evaluate(()=>({body:document.body.scrollWidth,view:window.innerWidth}));
   assert.ok(o.body<=o.view+6,'Mobile overflow: '+JSON.stringify(o));
  });
+ await check('phone menu opens, navigates to About, then closes',async()=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.evaluate(()=>location.hash='home');
+  await page.waitForSelector('#home.active');
+  assert.equal(await page.locator('#mobileMenuToggle').isVisible(),true);
+  assert.equal(await page.locator('#siteNavigation').isVisible(),false);
+  await page.locator('#mobileMenuToggle').click();
+  assert.equal(await page.locator('#mobileMenuToggle').getAttribute('aria-expanded'),'true');
+  assert.equal(await page.locator('#siteNavigation [data-page="about"]').isVisible(),true);
+  await page.locator('#siteNavigation [data-page="about"]').click();
+  await page.waitForSelector('#about.active');
+  assert.equal(await page.locator('#mobileMenuToggle').getAttribute('aria-expanded'),'false');
+  assert.equal(await page.locator('#siteNavigation').isVisible(),false);
+ });
+ await check('major pages fit 320px, 360px, 390px, 430px and 768px screens',async()=>{
+  const sizes=[320,360,390,430,768],routes=['home','about','teams','library','gameroom','matchups'];
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for(const width of sizes){
+   await page.setViewportSize({width,height:812});
+   for(const id of routes){
+    await page.evaluate(id=>location.hash=id,id);
+    await page.waitForSelector('#'+id+'.active');
+    const data=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,root:document.documentElement.scrollWidth,body:document.body.scrollWidth,page:document.querySelector('.page.active')?.scrollWidth}));
+    assert.ok(data.root<=data.viewport+2,'Horizontal overflow at '+width+'px / '+id+': '+JSON.stringify(data));
+    assert.ok(data.body<=data.viewport+2,'Body overflow at '+width+'px / '+id+': '+JSON.stringify(data));
+   }
+  }
+ });
  assert.deepEqual(errors,[],'Uncaught browser errors or missing local files');
  console.log(checks.join('\n'));
  console.log('PASS browser QA: '+checks.length+' checks, no uncaught errors');
