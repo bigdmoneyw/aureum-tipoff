@@ -112,6 +112,7 @@ try{
   await page.waitForSelector('#glossaryGrid .learn-metric',{timeout:20000});
   assert.equal(await page.locator('#glossaryGrid .learn-metric').count(),30);
   assert.equal(await page.locator('#glossaryGrid .metric-info').count(),0,'No i controls belong in Learn');
+  assert.equal(await page.locator('#glossaryGrid .learn-metric .eyebrow').count(),0,'No 01/30 counters should appear on Learn');
   assert.equal(await page.locator('#glossaryGrid .team-metric-value').count(),0,'Learn must not contain current team values');
   assert.equal(await page.locator('#glossaryGrid .learn-measure').count(),30);
   assert.equal(await page.locator('#glossaryGrid .learn-explanation').count(),30);
@@ -121,12 +122,33 @@ try{
   await page.locator('#glossarySearch').fill('rebound');
   assert.ok(await page.locator('#glossaryGrid .learn-metric').count()>0);
  });
- await check('Scenarios show completed games not hypothetical future probabilities',async()=>{
+ await check('Past Games displays 30 real boxscore metrics for EACH of two teams',async()=>{
   await page.evaluate(()=>location.hash='matchups');
   await page.waitForSelector('#matchups.active');
+  assert.match(await page.locator('.nav [data-page="matchups"]').innerText(),/Past Games/);
   await page.waitForSelector('#pastGameSelect option',{state:'attached',timeout:20000});
-  assert.ok(await page.locator('#pastGameSelect option').count()>0);
-  assert.equal(await page.locator('#pastGameReport .past-facts article').count(),4);
+  assert.ok(await page.locator('#pastGameSelect option').count()>=100,'Expected season-long completed game archive');
+  await page.waitForSelector('#pastGameReport .past-stat-row',{timeout:25000});
+  assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
+  assert.equal(await page.locator('#pastGameReport .past-stat-away').count(),30);
+  assert.equal(await page.locator('#pastGameReport .past-stat-home').count(),30);
+  assert.equal(await page.locator('#pastGameReport .metric-info-trigger').count(),30);
+  assert.ok((await page.locator('#pastGameCoverage').innerText()).includes('verified two-team box scores'));
+  const hover=page.locator('#pastGameReport .metric-info-trigger').first(),tooltip=page.locator('#pastGameReport .metric-info-pop').first();
+  assert.equal(await tooltip.isVisible(),false);
+  await hover.hover();assert.equal(await tooltip.isVisible(),true,'Past Games i should explain statistic on hover');
+  assert.equal(await hover.evaluate(x=>getComputedStyle(x).cursor),'pointer','No question-mark cursor');
+  await page.mouse.move(0,0);
+  const nums=await page.locator('#pastGameReport .past-stat-row[data-stat="pointsPerGame"] .past-stat-figure').allInnerTexts();
+  assert.equal(nums.length,2);
+  assert.ok(nums.every(x=>/^\d+\.0$/.test(x)||/^\d+$/.test(x)),'Real game scores expected: '+nums);
+  const options=await page.locator('#pastGameSelect option').all();
+  if(options.length>2){
+   const oldA=await page.locator('#pastGameReport .past-game-date').innerText();
+   await page.locator('#pastGameSelect').selectOption({index:2});
+   assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
+   assert.notEqual(await page.locator('#pastGameReport .past-game-date').innerText(),oldA);
+  }
  });
  await check('Game Room has NBA Cup and playoffs and verified team comparisons',async()=>{
   await page.evaluate(()=>location.hash='gameroom');
