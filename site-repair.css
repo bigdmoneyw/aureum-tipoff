@@ -577,3 +577,16 @@ a,button{touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){
  #teamDetails .metric-info-pop{transition:none}
 }
+
+/* Instant hover/focus tooltip: avoid visibility transitions delaying the first hover frame. */
+#teamDetails .metric-info .metric-info-pop{
+ display:none;opacity:1;visibility:visible;transform:none;transition:none
+}
+#teamDetails .metric-info:hover .metric-info-pop,
+#teamDetails .metric-info:focus-within .metric-info-pop,
+#teamDetails .metric-info.is-open .metric-info-pop{display:block}
+@media(max-width:640px){
+ #teamDetails .metric-info:hover:not(:focus-within):not(.is-open) .metric-info-pop{display:none}
+ #teamDetails .metric-info:focus-within .metric-info-pop,
+ #teamDetails .metric-info.is-open .metric-info-pop{display:block}
+}
