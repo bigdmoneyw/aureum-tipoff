@@ -18,10 +18,28 @@ var sourceName='ESPN scoreboard and standings (independent third-party feed)';
 var api='https://site.api.espn.com/apis/';
 var standingsCache={};var fetchedStandings=null;var latestGames=[];
 function fetchJson(url){
- var controller=new AbortController(), timer=setTimeout(function(){controller.abort();},12000);
- return fetch(url,{signal:controller.signal,cache:'no-store'}).then(function(resp){if(!resp.ok)throw Error('Data provider HTTP '+resp.status);return resp.json();}).finally(function(){clearTimeout(timer);});
+ var candidates=[],match;
+ if((match=url.match(/\/standings\?season=(\d{4})/))){
+  candidates.push('https://raw.githubusercontent.com/bigdmoneyw/aureum-tipoff/main/data/standings-'+match[1]+'.json');
+  candidates.push('data/standings-'+match[1]+'.json');
+ }
+ if((match=url.match(/\/scoreboard\?dates=(\d{8})/))){
+  var day=match[1].slice(0,4)+'-'+match[1].slice(4,6)+'-'+match[1].slice(6,8);
+  candidates.push('https://raw.githubusercontent.com/bigdmoneyw/aureum-tipoff/main/data/scoreboards/'+day+'.json');
+  candidates.push('data/scoreboards/'+day+'.json');
+ }
+ candidates.push(url);
+ function attempt(i){
+  if(i>=candidates.length)return Promise.reject(Error('Source and validated snapshots are unreachable'));
+  var controller=new AbortController(),timer=setTimeout(function(){controller.abort();},11000);
+  return fetch(candidates[i],{signal:controller.signal,cache:'no-store'}).then(function(resp){if(!resp.ok)throw Error('HTTP '+resp.status);return resp.json();}).then(function(data){if(!data||typeof data!=='object')throw Error('Invalid JSON object');return data;}).catch(function(){return attempt(i+1);}).finally(function(){clearTimeout(timer);});
+ }
+ return attempt(0);
 }
 function entriesFromStandings(data){
+ if(data&&data.format==='aureum-standings-v1'&&Array.isArray(data.records)){
+  var out={};data.records.forEach(function(r){var code=norm(r.code),w=Number(r.wins),l=Number(r.losses);if(nbaIds[code]&&Number.isInteger(w)&&Number.isInteger(l)&&w>=0&&l>=0&&w+l<=100)out[code]={code:code,w:w,l:l,pct:w+l?w/(w+l):null};});return out;
+ }
  var found=[],visited=new Set();
  function recur(x){if(!x||typeof x!=='object'||visited.has(x))return;visited.add(x);if(x.standings&&Array.isArray(x.standings.entries))found.push.apply(found,x.standings.entries);if(Array.isArray(x.children))x.children.forEach(recur);}
  recur(data);var records={};
@@ -35,7 +53,7 @@ function entriesFromStandings(data){
  return records;
 }
 function getStandings(year){
- if(!standingsCache[year])standingsCache[year]=fetchJson(api+'v2/sports/basketball/nba/standings?season='+year).then(function(d){var records=entriesFromStandings(d);if(Object.keys(records).length<15)throw Error('Standings returned fewer than 15 valid teams');return {records:records,year:year,obtained:stamp()};}).catch(function(err){delete standingsCache[year];throw err;});
+ if(!standingsCache[year])standingsCache[year]=fetchJson(api+'v2/sports/basketball/nba/standings?season='+year).then(function(d){if(d.format==='aureum-standings-v1'&&Number(d.season)!==year)throw Error('Snapshot season mismatch');var records=entriesFromStandings(d);if(Object.keys(records).length<29)throw Error('Standings returned fewer than 29 valid teams');return {records:records,year:year,obtained:d.retrievedAt?new Date(d.retrievedAt).toLocaleString('en-US',{timeZone:'America/New_York',dateStyle:'medium',timeStyle:'short'})+' ET':stamp()};}).catch(function(err){delete standingsCache[year];throw err;});
  return standingsCache[year];
 }
 function seasonEnd(){var d=etDate().split('-'),y=Number(d[0]),m=Number(d[1]);return m>=10?y+1:y;}
@@ -177,6 +195,7 @@ function setupCompare(){['compareA','compareB'].forEach(function(id){E(id).addEv
 function statusText(c){var state=c.status&&c.status.type||{},s=state.shortDetail||state.detail||state.description||'';return String(s||'Scheduled');}
 function normalizeScoreboard(data,day){
  if(!data||!Array.isArray(data.events))throw Error('Scoreboard format is not recognized');
+ if(data.requestedDate&&data.requestedDate!==day)throw Error('Dated snapshot does not match requested date');
  var seen=new Set(),arr=[];
  data.events.forEach(function(ev){
   if(!ev||!ev.id||seen.has(String(ev.id))||!Array.isArray(ev.competitions)||!ev.competitions.length)return;
@@ -197,12 +216,12 @@ function gameCard(g){
  var status=completed?'Final':active?'In progress':'Scheduled';
  return '<article class="result-card"><span class="live-state">'+status+'</span><div class="result-match"><div class="result-team">'+image(g.away,'team-logo')+'<b>'+esc(name(g.away))+'</b><strong class="result-points">'+score(g.aScore)+'</strong></div><div class="result-separator">–</div><div class="result-team">'+image(g.home,'team-logo')+'<b>'+esc(name(g.home))+'</b><strong class="result-points">'+score(g.hScore)+'</strong></div></div><div class="result-meta">'+esc(g.status)+'<span class="game-time">'+esc(g.date.toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}))+'</span></div></article>';
 }
-function renderGames(games,day){
- latestGames=games;var html=games.length?'<div class="live-grid">'+games.map(gameCard).join('')+'</div>':em('No NBA games were returned for this date. No games have been invented.');
- html+='<p class="data-sources">Source: '+esc(sourceName)+'. Date: '+esc(day)+'. Retrieved '+esc(stamp())+'. The feed is third-party and may update or become unavailable. Scores are shown only when the provider marks a game in progress or complete.</p>';
+function renderGames(games,day,meta){
+ latestGames=games;var collectionTime=meta&&meta.retrievedAt?new Date(meta.retrievedAt).toLocaleString('en-US',{timeZone:'America/New_York',dateStyle:'medium',timeStyle:'short'})+' ET':stamp();var html=games.length?'<div class="live-grid">'+games.map(gameCard).join('')+'</div>':em('No NBA games were returned for this date. No games have been invented.');
+ html+='<p class="data-sources">Source: '+esc(sourceName)+'. Date: '+esc(day)+'. Snapshot collected '+esc(collectionTime)+'. Published snapshot scores are periodically refreshed, not real-time. Games are shown only when the source marks a game in progress or complete.</p>';
  ['liveResults','gameForecastList'].forEach(function(id){if(E(id))E(id).innerHTML=html;});
- if(E('liveFeedStatus'))E('liveFeedStatus').textContent=games.length+' games passed source-format and date validation · updated '+stamp();
- if(E('homeDataStatus'))E('homeDataStatus').textContent='Scoreboard retrieved from ESPN · '+games.length+' games on '+day+' · '+stamp();
+ if(E('liveFeedStatus'))E('liveFeedStatus').textContent=games.length+' games validated · source snapshot '+collectionTime;
+ if(E('homeDataStatus'))E('homeDataStatus').textContent='Sourced NBA scoreboard snapshot · '+games.length+' games on '+day+' · '+collectionTime;
 }
 function loadGames(){
  var input=E('scoreboardDate');if(!input)return;
@@ -211,7 +230,7 @@ function loadGames(){
  if(E('gameForecastList'))E('gameForecastList').innerHTML=em('Retrieving sourced results and schedules…');
  var btn=E('scoreboardRefresh');if(btn)btn.disabled=true;
  fetchJson(api+'site/v2/sports/basketball/nba/scoreboard?dates='+day.replace(/-/g,'')).then(function(data){
-  if(input.value!==day)return;var games=normalizeScoreboard(data,day);renderGames(games,day);
+  if(input.value!==day)return;var games=normalizeScoreboard(data,day);renderGames(games,day,data);
  }).catch(function(err){
   var warning=em('The results feed could not be verified for '+esc(day)+'. Scores and schedules are unavailable rather than estimated. '+esc(err.message))+'<p class="data-sources">Check <a href="https://www.nba.com/games" target="_blank" rel="noopener noreferrer">NBA.com games</a> for official results.</p>';
   ['liveResults','gameForecastList'].forEach(function(id){if(E(id))E(id).innerHTML=warning;});
@@ -310,7 +329,7 @@ function patchLanguage(){
  var homeRibbon=root.querySelector('#home .archive-home-ribbon p');if(homeRibbon)homeRibbon.textContent='Compare completed-season franchise win–loss records for 2024–25 and 2025–26 when the historical standings feed is available. The archive does not invent advanced statistics or claim game-level forecasting accuracy.';var modelFormula=root.querySelector('#model .panel[style]');if(modelFormula){var formulaTitle=modelFormula.querySelector('h3');if(formulaTitle)formulaTitle.textContent='No arbitrary prediction formula';var formulaText=modelFormula.querySelector('p');if(formulaText)formulaText.textContent='Past demonstration sliders were never fitted to real NBA outcomes. They are not an acceptable basis for published win probabilities. Sourced team records and actual results are displayed separately until a validated model is available.';var formulaBox=modelFormula.querySelector('div[style]');if(formulaBox)formulaBox.textContent='Publication standard: pregame data + chronological holdout testing + archived predictions';var formulaNote=modelFormula.querySelector('.notice');if(formulaNote)formulaNote.textContent='We do not publish an assumed home-court percentage, an invented strength rating, or a fabricated model accuracy statistic.';}var badges=root.querySelectorAll('#gameroom .game-route .pill');if(badges[0])badges[0].textContent='DATED NBA SCORES';if(badges[1])badges[1].textContent='HYPOTHETICAL EXPLORER';
  var info=root.querySelector('#model .grid .card:first-child');if(info)info.innerHTML='<div class="kicker">Current release</div><h3>Verified evidence before forecasts</h3><p>Live results and sourced standings are shown separately from educational scenarios. No validated NBA game-level forecast model or accuracy rate is claimed.</p>';
  var hc=root.querySelector('#insights label[for="studioHomeCourt"]');if(hc)hc.firstChild.textContent='User-defined home-court scenario adjustment ';
- var stampEl=E('homeDataStatus');if(stampEl)stampEl.textContent='Checking source availability…';
+ var dataIntro=root.querySelector('#live .section-intro');if(dataIntro)dataIntro.textContent='Explore timestamped NBA game-result snapshots and schedules. Data is collected periodically from ESPN, validated for format and game date, and never represented as instantaneous when it is not.';var stampEl=E('homeDataStatus');if(stampEl)stampEl.textContent='Checking source availability…';
 }
 function accessibility(){
  root.querySelectorAll('button:not([type])').forEach(function(b){b.setAttribute('type','button');});
