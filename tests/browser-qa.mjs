@@ -79,31 +79,41 @@ try{
   assert.equal(await page.locator('.nav [data-page="archive"]').count(),0);
   assert.equal(await page.locator('#archive').count(),0);
  });
- await check('Teams page shows 30 sourced statistics and working info icons',async()=>{
+ await check('Teams shows all 30 info icons on hover without clicking',async()=>{
   await page.evaluate(()=>location.hash='teams');
   await page.waitForSelector('#teams.active');
   await page.waitForSelector('#teamDetails .team-metric',{timeout:20000});
   assert.equal(await page.locator('#teamDetails .team-metric').count(),30);
-  assert.equal(await page.locator('#teamDetails .team-metric .metric-info summary').count(),30);
+  assert.equal(await page.locator('#teamDetails .team-metric .metric-info-trigger').count(),30);
   assert.equal(await page.locator('#teamDetails .spotlight-metric').count(),4);
-  const before=await page.locator('#teamDetails h2').innerText();
   await page.locator('#teamSearch').fill('Celtics');
   await page.locator('#teamGrid button[data-team="BOS"]').click();
   assert.match(await page.locator('#teamDetails h2').innerText(),/Boston Celtics/);
-  await page.locator('#teamDetails .team-metric .metric-info summary').first().click();
-  assert.equal(await page.locator('#teamDetails details[open]').count(),1);
-  assert.ok((await page.locator('#teamDetails details[open] .metric-info-pop').innerText()).length>8);
+  const trigger=page.locator('#teamDetails .team-metric .metric-info-trigger').first();
+  const pop=page.locator('#teamDetails .team-metric .metric-info-pop').first();
+  assert.equal(await pop.isVisible(),false,'Tooltip must start hidden');
+  await trigger.hover();
+  assert.equal(await pop.isVisible(),true,'Hover alone must reveal the Teams tooltip');
+  assert.ok((await pop.innerText()).length>8,'Tooltip should contain concise definition');
+  assert.equal(await trigger.getAttribute('aria-expanded'),'false','Hover does not require a click');
+  await page.mouse.move(1,1);
+  assert.equal(await pop.isVisible(),false,'Tooltip should disappear on mouse leave');
+  await trigger.focus();
+  assert.equal(await pop.isVisible(),true,'Keyboard focus also reveals tooltip');
+  await trigger.blur();
  });
- await check('Learn has all 30 plain-language definitions without team values',async()=>{
+ await check('Learn has 30 substantial visible explanations but no i icons',async()=>{
   await page.evaluate(()=>location.hash='library');
   await page.waitForSelector('#library.active');
   await page.waitForSelector('#glossaryGrid .learn-metric',{timeout:20000});
   assert.equal(await page.locator('#glossaryGrid .learn-metric').count(),30);
-  assert.equal(await page.locator('#glossaryGrid .learn-metric .metric-info summary').count(),30);
-  assert.equal(await page.locator('#glossaryGrid .team-metric-value').count(),0);
+  assert.equal(await page.locator('#glossaryGrid .metric-info').count(),0,'No i controls belong in Learn');
+  assert.equal(await page.locator('#glossaryGrid .team-metric-value').count(),0,'Learn must not contain current team values');
   assert.equal(await page.locator('#glossaryGrid .learn-measure').count(),30);
-  await page.locator('#glossaryGrid .metric-info summary').first().click();
-  assert.equal(await page.locator('#glossaryGrid details[open]').count(),1);
+  assert.equal(await page.locator('#glossaryGrid .learn-explanation').count(),30);
+  assert.equal(await page.locator('#glossaryGrid .learn-why').count(),30);
+  const paragraphs=await page.locator('#glossaryGrid .learn-explanation').allInnerTexts();
+  assert.ok(paragraphs.every(p=>p.trim().split(/\s+/).length>=44),'Every Learn definition should have meaningful explanatory detail');
   await page.locator('#glossarySearch').fill('rebound');
   assert.ok(await page.locator('#glossaryGrid .learn-metric').count()>0);
  });
