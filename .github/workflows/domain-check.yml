@@ -1,0 +1,30 @@
+name: Custom Domain DNS Diagnostics
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/domain-check.yml'
+      - 'CNAME'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  domain-diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Inspect authoritative DNS and public routing
+        shell: bash
+        run: |
+          echo "===== A records ====="
+          dig +short aureumtipoff.com A || true
+          echo "===== AAAA records ====="
+          dig +short aureumtipoff.com AAAA || true
+          echo "===== WWW CNAME ====="
+          dig +short www.aureumtipoff.com CNAME || true
+          echo "===== Nameservers ====="
+          dig +short aureumtipoff.com NS || true
+          echo "===== HTTP header response ====="
+          curl --connect-timeout 8 --max-time 15 -sSI https://aureumtipoff.com/ || true
+          echo "===== GitHub Pages hostname ====="
+          curl --connect-timeout 8 --max-time 15 -sSI https://bigdmoneyw.github.io/aureum-tipoff/ || true
