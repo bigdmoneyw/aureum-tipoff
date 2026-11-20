@@ -1,0 +1,20 @@
+name: Aureum Site Quality Checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  site-smoke-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout published source
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate links, assets, scripts and NBA data parsers
+        run: node tests/site.test.mjs
