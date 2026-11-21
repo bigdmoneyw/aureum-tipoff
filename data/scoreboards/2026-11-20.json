@@ -2,16 +2,16 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-20",
-  "retrievedAt": "2026-11-20T21:46:14.844Z",
+  "retrievedAt": "2026-11-21T03:10:07.258Z",
   "events": [
     {
       "id": "401909305",
       "date": "2026-11-21T00:00Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 7:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -22,14 +22,14 @@
               "team": {
                 "abbreviation": "ATL"
               },
-              "score": ""
+              "score": "111"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "CHA"
               },
-              "score": ""
+              "score": "97"
             }
           ]
         }
@@ -40,9 +40,9 @@
       "date": "2026-11-21T00:30Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 7:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -53,14 +53,14 @@
               "team": {
                 "abbreviation": "BKN"
               },
-              "score": ""
+              "score": "111"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "ORL"
               },
-              "score": ""
+              "score": "113"
             }
           ]
         }
@@ -71,9 +71,9 @@
       "date": "2026-11-21T00:30Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 7:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -84,14 +84,14 @@
               "team": {
                 "abbreviation": "CLE"
               },
-              "score": ""
+              "score": "128"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "IND"
               },
-              "score": ""
+              "score": "119"
             }
           ]
         }
@@ -102,9 +102,9 @@
       "date": "2026-11-21T00:30Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 7:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -115,14 +115,14 @@
               "team": {
                 "abbreviation": "DET"
               },
-              "score": ""
+              "score": "102"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "TOR"
               },
-              "score": ""
+              "score": "105"
             }
           ]
         }
@@ -134,8 +134,8 @@
       "status": {
         "type": {
           "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 8:00 PM EST"
+          "state": "in",
+          "shortDetail": "3:58 - 4th"
         }
       },
       "competitions": [
@@ -146,14 +146,14 @@
               "team": {
                 "abbreviation": "CHI"
               },
-              "score": ""
+              "score": "89"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "WAS"
               },
-              "score": ""
+              "score": "95"
             }
           ]
         }
@@ -165,8 +165,8 @@
       "status": {
         "type": {
           "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 8:00 PM EST"
+          "state": "in",
+          "shortDetail": "4:42 - 4th"
         }
       },
       "competitions": [
@@ -177,14 +177,14 @@
               "team": {
                 "abbreviation": "OKC"
               },
-              "score": ""
+              "score": "108"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "NOP"
               },
-              "score": ""
+              "score": "105"
             }
           ]
         }
@@ -196,8 +196,8 @@
       "status": {
         "type": {
           "completed": false,
-          "state": "pre",
-          "shortDetail": "11/20 - 9:30 PM EST"
+          "state": "in",
+          "shortDetail": "2.8 - 1st"
         }
       },
       "competitions": [
@@ -208,14 +208,14 @@
               "team": {
                 "abbreviation": "UTA"
               },
-              "score": ""
+              "score": "23"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "PHX"
               },
-              "score": ""
+              "score": "24"
             }
           ]
         }

@@ -3,18 +3,18 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-20T21:46:14.844Z",
+  "retrievedAt": "2026-11-21T03:10:07.258Z",
   "records": [
     {
       "code": "ATL",
-      "wins": 9,
+      "wins": 10,
       "losses": 6,
       "espnId": "1"
     },
     {
       "code": "BKN",
       "wins": 3,
-      "losses": 11,
+      "losses": 12,
       "espnId": "17"
     },
     {
@@ -26,7 +26,7 @@
     {
       "code": "CHA",
       "wins": 4,
-      "losses": 10,
+      "losses": 11,
       "espnId": "30"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "code": "CLE",
-      "wins": 8,
+      "wins": 9,
       "losses": 8,
       "espnId": "5"
     },
@@ -74,7 +74,7 @@
     {
       "code": "IND",
       "wins": 5,
-      "losses": 10,
+      "losses": 11,
       "espnId": "11"
     },
     {
@@ -133,7 +133,7 @@
     },
     {
       "code": "ORL",
-      "wins": 6,
+      "wins": 7,
       "losses": 8,
       "espnId": "19"
     },
