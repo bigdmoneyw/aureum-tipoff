@@ -68,7 +68,7 @@ function context(code,date){
  return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate,margin:(t.margins||[]).reduce((s,x)=>s+x,0)/((t.margins||[]).length+4),load:(t.dates||[]).filter(d=>dayValue(date)-dayValue(d)>=1&&dayValue(date)-dayValue(d)<=7).length,opponent:(t.opponents||[]).reduce((s,x)=>s+x-1500,0)/((t.opponents||[]).length+4)};
 }
 const factorRows=[
- ['pace','Game speed','Slower game','Faster game','A faster game gives both teams more chances to score. Which team benefits depends on how well they play at that speed.'],
+ ['pace','Game speed','Struggles at expected speed','Comfortable at expected speed','A faster game gives both teams more chances to score. Which team benefits depends on how well they play at that speed.'],
  ['travel','Travel and fatigue','Long or difficult travel','Easy travel','Travel can reduce recovery time and energy before a game.'],
  ['rotation','Lineup familiarity','Unfamiliar lineup','Familiar lineup','Players who have played together know each other’s positioning and tendencies.'],
  ['bench','Bench depth','Limited substitutes','Strong substitutes','Reliable substitutes help maintain performance when starters rest.'],
@@ -87,8 +87,22 @@ const factorRows=[
 ];
 const shifts=[['0','No added effect'],['-50','Large disadvantage'],['-25','Moderate disadvantage'],['-10','Small disadvantage'],['10','Small advantage'],['25','Moderate advantage'],['50','Large advantage']];
 const options=list=>list.map(([v,l])=>'<option value="'+esc(v)+'">'+esc(l)+'</option>').join('');
+const factorScale=[[-25,'−','Disadvantage'],[0,'•','No adjustment'],[25,'+','Advantage']];
+function factorDial(key,label,low,high,side){
+ const group='factor-'+key+'-'+side;
+ return '<div class="factor-side factor-side-'+side.toLowerCase()+'"><span class="factor-mobile-team" data-factor-team="'+side+'">Team '+side+'</span><div class="factor-dial" role="group" aria-label="Team '+side+' — '+esc(label)+'">'+factorScale.map(([v,symbol,meaning])=>'<label class="factor-option" title="'+esc(v<0?low:v>0?high:meaning)+'"><input type="radio" name="'+group+'" id="'+group+'-'+(v<0?'low':v>0?'high':'neutral')+'" value="'+v+'" aria-label="'+esc(v<0?low:v>0?high:meaning)+'" '+(v===0?'checked':'')+'><span class="factor-orb" aria-hidden="true">'+symbol+'</span></label>').join('')+'</div><span class="factor-state" id="'+group+'-state" aria-live="polite">No adjustment</span></div>';
+}
 function makeFactors(){
- $('forecastFactors').innerHTML=factorRows.map(([key,label,low,high,why])=>'<div class="forecast-factor"><div><label>'+esc(label)+'<select id="factor-'+key+'-condition">'+options([['normal','Normal / no assumption'],['aLow','Team A: '+low],['aHigh','Team A: '+high],['bLow','Team B: '+low],['bHigh','Team B: '+high]])+'</select></label><p>'+esc(why)+'</p></div><label>How much does it favor Team A?<select id="factor-'+key+'-shift">'+options(shifts)+'</select><span class="small">Illustrative, not a measured effect.</span></label></div>').join('');
+ const groups=[['Recovery & readiness',['pace','travel','rotation','bench','altitude']],['Offensive matchup',['shooting','rim','pressure','transition','ballmovement']],['Defense & possessions',['rebounding','fouls','defense']],['Strategy & circumstances',['fit','coaching','motivation']]];
+ $('forecastFactors').innerHTML='<div class="factor-board-header"><div><img id="factorLogoA" alt=""><strong data-factor-team="A">Team A</strong></div><span>Game conditions</span><div><img id="factorLogoB" alt=""><strong data-factor-team="B">Team B</strong></div></div><p class="factor-board-key"><span>− Disadvantage</span><span>• No adjustment</span><span>+ Advantage</span></p>'+groups.map(([title,keys])=>'<section class="factor-group"><h5>'+esc(title)+'</h5>'+keys.map(key=>{const [,label,low,high,why]=factorRows.find(r=>r[0]===key);return '<div class="forecast-factor" data-factor="'+key+'">'+factorDial(key,label,low,high,'A')+'<div class="factor-center"><h6>'+esc(label)+'</h6><p>'+esc(why)+'</p></div>'+factorDial(key,label,low,high,'B')+'</div>';}).join('')+'</section>').join('');
+}
+function readFactor(key,side,low,high){
+ const choice=document.querySelector('input[name="factor-'+key+'-'+side+'"]:checked');
+ const value=Number(choice?.value)||0;
+ const label=value<0?low:value>0?high:'No adjustment';
+ const status=$('factor-'+key+'-'+side+'-state');
+ if(status){status.textContent=label;status.dataset.level=value<0?'low':value>0?'high':'neutral';}
+ return {value,label};
 }
 function sourceRoster(code){
  if(rosterCache.has(code)&&fresh(rosterCache.get(code).retrievedAt,8))return rosterCache.get(code);
@@ -189,6 +203,7 @@ function readPlayerEffects(side,code){
 }
 function drawTeamHeads(){
  const {a,b}=state();
+ for(const [side,c] of [['A',a],['B',b]]){document.querySelectorAll('[data-factor-team="'+side+'"]').forEach(el=>el.textContent=name(c));const img=$('factorLogo'+side);if(img&&teams[c])img.src=logo(c);}
  $('forecastTeamPair').innerHTML=[['A',a],['B',b]].map(([label,c])=>'<article class="forecast-franchise"><img src="'+logo(c)+'" alt="'+esc(name(c))+' logo"><div><span class="eyebrow">TEAM '+label+'</span><h4>'+esc(name(c))+'</h4></div></article>').join('');
 }
 function render(){
@@ -210,9 +225,8 @@ function render(){
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
  const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
  for(const [key,label,low,high,why] of factorRows){
-  const control=$('factor-'+key+'-condition'),choice=control.value,ctrl=$('factor-'+key+'-shift');
-  ctrl.disabled=choice==='normal';
-  if(choice!=='normal')manual.push({label,shift:Number(ctrl.value)||0,why:control.selectedOptions[0].textContent+'. '+why+' The amount comes from your selected assumption.'});
+  const left=readFactor(key,'A',low,high),right=readFactor(key,'B',low,high);
+  if(left.value||right.value)manual.push({label,shift:left.value-right.value,why:name(a)+': '+left.label+'. '+name(b)+': '+right.label+'. '+why+' Equal assumptions cancel out; any change is illustrative.'});
  }
  const restA=$('forecastRestA').value,restB=$('forecastRestB').value,formA=$('forecastFormA').value,formB=$('forecastFormB').value;
  $('forecastRestNote').textContent=a+': '+formatRest(l.rest,l.restKnown)+' · '+b+': '+formatRest(rr.rest,rr.restKnown)+' based on completed games. Future intervening games are not assumed.';
@@ -253,7 +267,7 @@ function render(){
 }
 function resetAssumptions(){
  for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';
- for(const [k] of factorRows){$('factor-'+k+'-condition').value='normal';$('factor-'+k+'-shift').value='0';}
+ for(const [k,,low,high] of factorRows)for(const side of ['A','B']){const neutral=$('factor-'+k+'-'+side+'-neutral');if(neutral)neutral.checked=true;readFactor(k,side,low,high);}
  for(const side of ['A','B'])for(let i=1;i<=3;i++){const p='player'+side+i;if($(p+'Name')){$(p+'Name').value='';$(p+'Status').value='reported';$(p+'Shift').value='auto';}}
  $('forecastNotes').value='';if($('forecastCustomShift'))$('forecastCustomShift').value='0';render();
 }
@@ -302,6 +316,7 @@ function init(){
  $('forecastReset').addEventListener('click',resetAssumptions);
  $('forecastRefreshRoster').addEventListener('click',async()=>{await loadData(true);await loadSelectedRoster(true);});
  $('gameroom').addEventListener('change',e=>{
+  if(e.target.id.startsWith('factor-')){for(const [k,,low,high] of factorRows)for(const side of ['A','B'])readFactor(k,side,low,high);}
   if(e.target.id.startsWith('forecast')||e.target.id.startsWith('factor-')||e.target.id.startsWith('player'))render();
  });
  loadData(true).then(()=>loadSelectedRoster(true,false));loadFixtures();
