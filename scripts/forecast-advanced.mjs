@@ -95,19 +95,21 @@ function playerFit(rows,w){
 }
 export function buildAdvanced(history,current,playerHistory,now){
  let state=blank(),historical=[];
- if(history.length!==2||history.some(h=>h.games.length<1200))throw Error('Two complete historical seasons required');
- for(const h of history){const z=gameRows(h.games,state,h.season);historical.push(...z.rows);state=newSeason(state);}
- const cutSeason=history.at(-1).season;
- const dates=[...new Set(historical.filter(r=>r.season===cutSeason).map(r=>r.date))].sort();
- const cut=dates[Math.floor(dates.length*.75)];
- const learn=historical.filter(r=>r.date<cut),valid=historical.filter(r=>r.date>=cut);
- // Candidate selection never accesses the current-season holdout.
- const candidates=[.008,.025,.075,.15].flatMap(l=>[false,true].map(wide=>{const w=fit(learn,l,wide);return {lambda:l,wide,brier:score(valid,w).brier};})).sort((a,b)=>a.brier-b.brier);
- const chosen=candidates[0],weights=fit(historical,chosen.lambda,chosen.wide),simple=fit(historical,.04,false);
+ const completeHistory=history.length===2&&history.every(h=>h.games.length>=1200);
+ if(completeHistory)for(const h of history){const z=gameRows(h.games,state,h.season);historical.push(...z.rows);state=newSeason(state);}
  const results=gameRows(current.games,state,current.season,{today:etDay(now),players:new Map((playerHistory?.games||[]).map(g=>[g.id,g]))});
- const base=mean(historical.map(r=>r.y)),test=score(results.rows,weights,base),simpleTest=score(results.rows,simple,base);
- if(results.rows.length<60)throw Error('Not enough current-season evaluation games');
- const playerModel=playerFit(results.playerRows,weights);
+ const currentDates=[...new Set(results.rows.map(r=>r.date))].sort(),cutCurrent=currentDates[Math.floor(currentDates.length*.7)];
+ const training=completeHistory?historical:results.rows.filter(r=>r.date<cutCurrent);
+ const holdout=completeHistory?results.rows:results.rows.filter(r=>r.date>=cutCurrent);
+ const dates=[...new Set(training.map(r=>r.date))].sort(),cut=dates[Math.floor(dates.length*.75)];
+ const learn=training.filter(r=>r.date<cut),valid=training.filter(r=>r.date>=cut);
+ if(learn.length<40||valid.length<20||holdout.length<25)throw Error('Insufficient chronological sample');
+ const candidates=[.008,.025,.075,.15].flatMap(l=>[false,true].map(wide=>{const w=fit(learn,l,wide);return {lambda:l,wide,brier:score(valid,w).brier};})).sort((a,b)=>a.brier-b.brier);
+ const chosen=candidates[0],weights=fit(training,chosen.lambda,chosen.wide),simple=fit(training,.04,false);
+ const base=mean(training.filter(r=>r.venue===1).map(r=>r.y)),test=score(holdout,weights,base),simpleTest=score(holdout,simple,base);
+ // The player-model holdout must follow team coefficient training when history is unavailable.
+ const eligiblePlayers=completeHistory?results.playerRows:results.playerRows.filter(r=>r.date>=cutCurrent);
+ const playerModel=playerFit(eligiblePlayers,weights);
  const playerProfiles=Object.fromEntries(Object.entries(results.playerState).filter(([id,p])=>p.minutes.length>=3).map(([id,p])=>[id,{team:p.team,lastDate:p.lastDate,games:p.games,averageMinutes:round(mean(p.minutes)),averagePoints:round(mean(p.points)),sample:p.minutes.length}]));
- return {format:'aureum-forecast-v2',version,season:current.season,retrievedAt:now.toISOString(),sourceArchiveCollectedAt:current.retrievedAt,weights,state,todayState:results.todayState,todayDate:etDay(now),throughDate:current.games.map(g=>etDay(g.date)).sort().at(-1),historicalGameCount:sum(history.map(h=>h.games.length)),archiveGames:current.games.length,featureNames:names,selection:{...chosen,validationGames:valid.length,validationFrom:cut,candidates},backtest:{trainingGames:historical.length,trainingThrough:historical.at(-1).date,testFrom:results.rows[0].date,testThrough:results.rows.at(-1).date,...test,simpleBrier:simpleTest.brier,simpleAccuracy:simpleTest.accuracy,method:'Historical-only model selection and training, tested on current-season games with features from earlier dates only.'},playerModel,playerProfiles,playerCoverage:playerHistory?.games?.length||0,limitations:'Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.'};
+ return {format:'aureum-forecast-v2',version,season:current.season,retrievedAt:now.toISOString(),sourceArchiveCollectedAt:current.retrievedAt,weights,state,todayState:results.todayState,todayDate:etDay(now),throughDate:current.games.map(g=>etDay(g.date)).sort().at(-1),historicalGameCount:completeHistory?sum(history.map(h=>h.games.length)):0,archiveGames:current.games.length,featureNames:names,selection:{...chosen,validationGames:valid.length,validationFrom:cut,candidates},backtest:{trainingGames:training.length,trainingThrough:training.at(-1).date,testFrom:holdout[0].date,testThrough:holdout.at(-1).date,...test,simpleBrier:simpleTest.brier,simpleAccuracy:simpleTest.accuracy,method:completeHistory?'Historical-only model selection and training, tested on current-season games with features from earlier dates only.':'Current-season chronological training, internal date-blocked model selection, and later holdout. Earlier-season source archive unavailable.'},playerModel,playerProfiles,playerCoverage:playerHistory?.games?.length||0,limitations:'Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.'};
 }
