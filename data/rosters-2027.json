@@ -1,17 +1,17 @@
 {
   "format": "aureum-rosters-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-21T07:47:19.770Z",
+  "retrievedAt": "2026-11-21T07:50:33.887Z",
   "source": "ESPN NBA team rosters and dated injury report",
   "injuryFeedAvailable": true,
-  "injurySourceTimestamp": "2026-11-21T07:47:18Z",
+  "injurySourceTimestamp": "2026-11-21T07:50:22Z",
   "teams": [
     {
       "code": "ATL",
       "espnId": "1",
       "name": "Atlanta Hawks",
-      "retrievedAt": "2026-11-21T07:47:19.191Z",
-      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "retrievedAt": "2026-11-21T07:50:33.636Z",
+      "providerTimestamp": "2026-11-21T07:50:26Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -170,8 +170,8 @@
       "code": "BKN",
       "espnId": "17",
       "name": "Brooklyn Nets",
-      "retrievedAt": "2026-11-21T07:47:19.289Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.672Z",
+      "providerTimestamp": "2026-11-21T07:50:27Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -314,8 +314,8 @@
       "code": "BOS",
       "espnId": "2",
       "name": "Boston Celtics",
-      "retrievedAt": "2026-11-21T07:47:19.291Z",
-      "providerTimestamp": "2026-11-21T07:47:06Z",
+      "retrievedAt": "2026-11-21T07:50:33.664Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -451,8 +451,8 @@
       "code": "CHA",
       "espnId": "30",
       "name": "Charlotte Hornets",
-      "retrievedAt": "2026-11-21T07:47:19.308Z",
-      "providerTimestamp": "2026-11-21T07:47:16Z",
+      "retrievedAt": "2026-11-21T07:50:33.689Z",
+      "providerTimestamp": "2026-11-21T07:50:23Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -603,8 +603,8 @@
       "code": "CHI",
       "espnId": "4",
       "name": "Chicago Bulls",
-      "retrievedAt": "2026-11-21T07:47:19.295Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.690Z",
+      "providerTimestamp": "2026-11-21T07:50:23Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -751,8 +751,8 @@
       "code": "CLE",
       "espnId": "5",
       "name": "Cleveland Cavaliers",
-      "retrievedAt": "2026-11-21T07:47:19.316Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.737Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -899,8 +899,8 @@
       "code": "DAL",
       "espnId": "6",
       "name": "Dallas Mavericks",
-      "retrievedAt": "2026-11-21T07:47:19.340Z",
-      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "retrievedAt": "2026-11-21T07:50:33.755Z",
+      "providerTimestamp": "2026-11-21T07:50:23Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1059,8 +1059,8 @@
       "code": "DEN",
       "espnId": "7",
       "name": "Denver Nuggets",
-      "retrievedAt": "2026-11-21T07:47:19.353Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.772Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1192,8 +1192,8 @@
       "code": "DET",
       "espnId": "8",
       "name": "Detroit Pistons",
-      "retrievedAt": "2026-11-21T07:47:19.355Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.790Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1352,8 +1352,8 @@
       "code": "GSW",
       "espnId": "9",
       "name": "Golden State Warriors",
-      "retrievedAt": "2026-11-21T07:47:19.359Z",
-      "providerTimestamp": "2026-11-21T07:47:16Z",
+      "retrievedAt": "2026-11-21T07:50:33.784Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1512,8 +1512,8 @@
       "code": "HOU",
       "espnId": "10",
       "name": "Houston Rockets",
-      "retrievedAt": "2026-11-21T07:47:19.350Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.791Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1645,8 +1645,8 @@
       "code": "IND",
       "espnId": "11",
       "name": "Indiana Pacers",
-      "retrievedAt": "2026-11-21T07:47:19.352Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.766Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1790,8 +1790,8 @@
       "code": "LAC",
       "espnId": "12",
       "name": "LA Clippers",
-      "retrievedAt": "2026-11-21T07:47:19.386Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.812Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1945,8 +1945,8 @@
       "code": "LAL",
       "espnId": "13",
       "name": "Los Angeles Lakers",
-      "retrievedAt": "2026-11-21T07:47:19.384Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.812Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2092,8 +2092,8 @@
       "code": "MEM",
       "espnId": "29",
       "name": "Memphis Grizzlies",
-      "retrievedAt": "2026-11-21T07:47:19.669Z",
-      "providerTimestamp": "2026-11-21T07:47:18Z",
+      "retrievedAt": "2026-11-21T07:50:33.818Z",
+      "providerTimestamp": "2026-11-21T07:50:27Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2256,8 +2256,8 @@
       "code": "MIA",
       "espnId": "14",
       "name": "Miami Heat",
-      "retrievedAt": "2026-11-21T07:47:19.394Z",
-      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "retrievedAt": "2026-11-21T07:50:33.822Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2389,8 +2389,8 @@
       "code": "MIL",
       "espnId": "15",
       "name": "Milwaukee Bucks",
-      "retrievedAt": "2026-11-21T07:47:19.397Z",
-      "providerTimestamp": "2026-11-21T07:47:04Z",
+      "retrievedAt": "2026-11-21T07:50:33.815Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2529,8 +2529,8 @@
       "code": "MIN",
       "espnId": "16",
       "name": "Minnesota Timberwolves",
-      "retrievedAt": "2026-11-21T07:47:19.409Z",
-      "providerTimestamp": "2026-11-21T07:47:18Z",
+      "retrievedAt": "2026-11-21T07:50:33.820Z",
+      "providerTimestamp": "2026-11-21T07:50:27Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2670,8 +2670,8 @@
       "code": "NOP",
       "espnId": "3",
       "name": "New Orleans Pelicans",
-      "retrievedAt": "2026-11-21T07:47:19.700Z",
-      "providerTimestamp": "2026-11-21T07:47:05Z",
+      "retrievedAt": "2026-11-21T07:50:33.850Z",
+      "providerTimestamp": "2026-11-21T07:50:25Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2822,8 +2822,8 @@
       "code": "NYK",
       "espnId": "18",
       "name": "New York Knicks",
-      "retrievedAt": "2026-11-21T07:47:19.704Z",
-      "providerTimestamp": "2026-11-21T07:47:05Z",
+      "retrievedAt": "2026-11-21T07:50:33.846Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2959,8 +2959,8 @@
       "code": "OKC",
       "espnId": "25",
       "name": "Oklahoma City Thunder",
-      "retrievedAt": "2026-11-21T07:47:19.703Z",
-      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "retrievedAt": "2026-11-21T07:50:33.855Z",
+      "providerTimestamp": "2026-11-21T07:50:25Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3119,8 +3119,8 @@
       "code": "ORL",
       "espnId": "19",
       "name": "Orlando Magic",
-      "retrievedAt": "2026-11-21T07:47:19.725Z",
-      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "retrievedAt": "2026-11-21T07:50:33.852Z",
+      "providerTimestamp": "2026-11-21T07:50:31Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3264,8 +3264,8 @@
       "code": "PHI",
       "espnId": "20",
       "name": "Philadelphia 76ers",
-      "retrievedAt": "2026-11-21T07:47:19.702Z",
-      "providerTimestamp": "2026-11-21T07:47:17Z",
+      "retrievedAt": "2026-11-21T07:50:33.856Z",
+      "providerTimestamp": "2026-11-21T07:50:30Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3417,8 +3417,8 @@
       "code": "PHX",
       "espnId": "21",
       "name": "Phoenix Suns",
-      "retrievedAt": "2026-11-21T07:47:19.699Z",
-      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "retrievedAt": "2026-11-21T07:50:33.844Z",
+      "providerTimestamp": "2026-11-21T07:50:26Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3554,8 +3554,8 @@
       "code": "POR",
       "espnId": "22",
       "name": "Portland Trail Blazers",
-      "retrievedAt": "2026-11-21T07:47:19.754Z",
-      "providerTimestamp": "2026-11-21T07:47:08Z",
+      "retrievedAt": "2026-11-21T07:50:33.883Z",
+      "providerTimestamp": "2026-11-21T07:50:24Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3703,8 +3703,8 @@
       "code": "SAC",
       "espnId": "23",
       "name": "Sacramento Kings",
-      "retrievedAt": "2026-11-21T07:47:19.763Z",
-      "providerTimestamp": "2026-11-21T07:47:11Z",
+      "retrievedAt": "2026-11-21T07:50:33.887Z",
+      "providerTimestamp": "2026-11-21T07:50:26Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3844,8 +3844,8 @@
       "code": "SAS",
       "espnId": "24",
       "name": "San Antonio Spurs",
-      "retrievedAt": "2026-11-21T07:47:19.747Z",
-      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "retrievedAt": "2026-11-21T07:50:33.883Z",
+      "providerTimestamp": "2026-11-21T07:50:27Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3985,8 +3985,8 @@
       "code": "TOR",
       "espnId": "28",
       "name": "Toronto Raptors",
-      "retrievedAt": "2026-11-21T07:47:19.749Z",
-      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "retrievedAt": "2026-11-21T07:50:33.885Z",
+      "providerTimestamp": "2026-11-21T07:50:26Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4130,8 +4130,8 @@
       "code": "UTA",
       "espnId": "26",
       "name": "Utah Jazz",
-      "retrievedAt": "2026-11-21T07:47:19.761Z",
-      "providerTimestamp": "2026-11-21T07:47:12Z",
+      "retrievedAt": "2026-11-21T07:50:33.884Z",
+      "providerTimestamp": "2026-11-21T07:50:28Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4278,8 +4278,8 @@
       "code": "WAS",
       "espnId": "27",
       "name": "Washington Wizards",
-      "retrievedAt": "2026-11-21T07:47:19.770Z",
-      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "retrievedAt": "2026-11-21T07:50:33.879Z",
+      "providerTimestamp": "2026-11-21T07:50:26Z",
       "injuryFeedAvailable": true,
       "players": [
         {
