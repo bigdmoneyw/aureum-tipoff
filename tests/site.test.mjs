@@ -31,6 +31,21 @@ assert.ok(!html.includes('src="live-data.js"'),'No missing compiled modules');
 
 new vm.Script(js,{filename:'site-repair.js'});
 new vm.Script(readFileSync('team-experience.js','utf8'),{filename:'team-experience.js'});
+new vm.Script(readFileSync('game-room.js','utf8'),{filename:'game-room.js'});
+const roster=JSON.parse(readFileSync('data/rosters-2027.json','utf8'));
+assert.equal(roster.teams.length,30,'Thirty current roster snapshots');
+const rosterIds=roster.teams.flatMap(team=>team.players.map(player=>player.id));
+assert.equal(rosterIds.length,new Set(rosterIds).size,'Player membership must not conflict between teams');
+for(const team of roster.teams)assert.ok(team.players.length>=8&&team.players.length<=35);
+const model=JSON.parse(readFileSync('data/forecast-2027.json','utf8'));
+assert.equal(model.format,'aureum-forecast-v1');
+assert.equal(model.weights.length,4);
+assert.ok(model.weights.every(Number.isFinite));
+assert.equal(Object.keys(model.state).length,30);
+assert.ok(model.backtest.trainingThrough<model.backtest.testFrom,'No date overlap between training and holdout');
+assert.ok(model.backtest.games>=25&&model.backtest.brier>=0&&model.backtest.brier<=1);
+for(const id of ['forecastDate','forecastFixture','forecastVenue','forecastFactors','forecastPlayers','forecastRefreshRoster','forecastCustomShift','forecastReset','forecastValidation'])
+ assert.ok(html.includes('id="'+id+'"'),'Game Room control missing '+id);
 const catalog=JSON.parse(readFileSync('data/metric-catalog.json','utf8'));
 assert.equal(catalog.metrics.length,30,'Exactly 30 team statistics');
 assert.equal(new Set(catalog.metrics.map(x=>x.key)).size,30);
