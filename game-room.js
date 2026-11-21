@@ -182,48 +182,64 @@ function drawTeamHeads(){
  $('forecastTeamPair').innerHTML=[['A',a],['B',b]].map(([label,c])=>'<article class="forecast-franchise"><img src="'+logo(c)+'" alt="'+esc(name(c))+' logo"><div><span class="eyebrow">TEAM '+label+'</span><h4>'+esc(name(c))+'</h4></div></article>').join('');
 }
 function render(){
- const {a,b,venue,date}=state();
- const root=$('forecastResult');
- if(!teams[a]||!teams[b]||!date||date<today()||a===b){root.innerHTML='<div class="empty">Choose two different teams and today or a future game date. Completed games belong in Past Games.</div>';return;}
+ const {a,b,venue,date}=state(),root=$('forecastResult');
+ if(!teams[a]||!teams[b]||!date||date<today()||date>season()+'-06-30'||a===b){root.innerHTML='<div class="empty">Choose two different teams and a date from today through the end of the current NBA season. Finished games are in Past Games.</div>';return;}
+ const fixture=fixtures.find(g=>g.id===$('forecastFixture').value);
+ if(fixture&&Date.parse(fixture.tipoff)<=Date.now()){root.innerHTML='<div class="empty">This scheduled game has reached its starting time. Pregame estimates are no longer available.</div>';return;}
  if(!model){root.innerHTML='<div class="empty">No verified forecast model is available yet. No probability is substituted.</div>';return;}
- const r=model.backtest;
- $('forecastValidation').innerHTML='<strong>Retrospective validation · '+r.games+' later games held out</strong> · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-rate baseline '+r.baselineBrier.toFixed(3)+') · Training: '+r.trainingGames+' earlier games · Test: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'.<p>Model: '+esc(model.version)+' · Snapshot '+esc(time(model.retrievedAt))+' · Final results through '+esc(model.throughDate)+'. A small retrospective evaluation is not prospective calibration, player-impact validation, or a guarantee. Lower Brier score is better. Model trained on home-designated matchups; neutral venue is an extrapolation.</p>';
+ const r=model.backtest,w=model.weights,advanced=w.length===7;
+ const pm=model.playerModel;
+ $('forecastValidation').innerHTML='<strong>Model evaluation</strong> · '+r.games+' held-out games · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-team baseline '+r.baselineBrier.toFixed(3)+') · '+r.trainingGames+' training games.<p>Test dates: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'. Data refreshed '+esc(time(model.retrievedAt))+'. Last completed results: '+esc(model.throughDate)+'. These are retrospective results, not a guarantee. '+(pm?(pm.enabled?'The conditional playing-time experiment improved its own held-out sample, but actual participation was observed after games.':'The playing-time experiment did not qualify for automatic player impact. Manual injury scenarios remain separate.'):'Player impact is not independently validated.')+'</p>';
  if(!fresh(model.retrievedAt,8)||!fresh(model.sourceArchiveCollectedAt,8)){
-  root.innerHTML='<div class="empty">Forecast data is older than eight hours or has an invalid timestamp. The probability is withheld until a fresh model/source is available.</div>';return;
+  root.innerHTML='<div class="empty">Forecast data is older than eight hours or its timestamp is invalid. The estimate is withheld until fresh data is available.</div>';return;
  }
  if(model.throughDate>=date&&!(model.todayState&&model.todayDate===date)){
-  root.innerHTML='<div class="empty">The model snapshot lacks a valid pre-date state for this selection. A pregame estimate is withheld to avoid looking ahead.</div>';return;
+  root.innerHTML='<div class="empty">A valid pregame snapshot is unavailable for this date. No probability is shown.</div>';return;
  }
  const l=context(a,date),rr=context(b,date);
- if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Insufficient current-season games for both franchises.</div>';return;}
- const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b);
- const manual=[];
- for(const [key,label] of factorRows){
-  const choice=$('factor-'+key+'-condition').value,ctrl=$('factor-'+key+'-shift');
+ if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
+ const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
+ for(const [key,label,low,high,why] of factorRows){
+  const control=$('factor-'+key+'-condition'),choice=control.value,ctrl=$('factor-'+key+'-shift');
   ctrl.disabled=choice==='normal';
-  if(choice==='normal')continue;
-  manual.push({label,shift:Number(ctrl.value)||0});
+  if(choice!=='normal')manual.push({label,shift:Number(ctrl.value)||0,why:control.selectedOptions[0].textContent+'. '+why+' The amount comes from your selected assumption.'});
  }
  const restA=$('forecastRestA').value,restB=$('forecastRestB').value,formA=$('forecastFormA').value,formB=$('forecastFormB').value;
- $('forecastRestNote').textContent=a+': '+formatRest(l.rest,l.restKnown)+' · '+b+': '+formatRest(rr.rest,rr.restKnown)+' from latest known completed dates. Future intervening games are not assumed.';
- $('forecastFormNote').textContent=a+': '+l.recentWins+' wins in '+l.recentGames+' recent games · '+b+': '+rr.recentWins+' in '+rr.recentGames+'. Auto uses real results and modest smoothing.';
- const w=model.weights;
- const baseParts=[['Home court',w[0]*venue],['Current learned team strength',w[1]*(l.rating-rr.rating)/100],['Recent form',w[2]*(l.form-rr.form)],['Rest difference',w[3]*(l.rest-rr.rest)/3]];
- const baseLogit=baseParts.reduce((sum,x)=>sum+x[1],0);
+ $('forecastRestNote').textContent=a+': '+formatRest(l.rest,l.restKnown)+' · '+b+': '+formatRest(rr.rest,rr.restKnown)+' based on completed games. Future intervening games are not assumed.';
+ $('forecastFormNote').textContent=a+': '+l.recentWins+' wins in '+l.recentGames+' recent games · '+b+': '+rr.recentWins+' in '+rr.recentGames+'.';
+ const f=n=>Number(n).toFixed(1),sign=n=>(n>=0?'+':'')+f(n);
+ const nameA=name(a),nameB=name(b);
+ const baseParts=[
+  {label:'Home court',value:w[0]*venue,why:venue===0?'Neither team is assigned home advantage.':name(venue===1?a:b)+' plays at home. Familiar surroundings and less travel may help; the model learned the typical association from past games.'},
+  {label:'Overall team strength',value:w[1]*(l.rating-rr.rating)/100,why:'The rating rises after wins, especially against strong opponents, and falls after losses. '+a+' has a rating of '+Math.round(l.rating)+'; '+b+' has '+Math.round(rr.rating)+'.'},
+  {label:'Recent wins',value:w[2]*(l.form-rr.form),why:a+' won '+l.recentWins+' of its last '+l.recentGames+' games; '+b+' won '+rr.recentWins+' of '+rr.recentGames+'. The model considers whether recent success adds useful information beyond team strength.'},
+  {label:'Rest and recovery',value:w[3]*(l.rest-rr.rest)/3,why:a+' has '+formatRest(l.rest,l.restKnown)+'; '+b+' has '+formatRest(rr.rest,rr.restKnown)+'. Recovery time may affect energy and preparation.'}
+ ];
+ if(advanced)baseParts.push(
+  {label:'Recent scoring margin',value:w[4]*(l.margin-rr.margin)/10,why:'Winning by more or losing by less indicates stronger recent performance. Recent margins are smoothed to limit overreaction: '+a+' '+sign(l.margin)+', '+b+' '+sign(rr.margin)+' points.'},
+  {label:'Schedule congestion',value:w[5]*(l.load-rr.load)/5,why:a+' played '+l.load+' games in the preceding seven days; '+b+' played '+rr.load+'. Crowded schedules may leave less time to recover.'},
+  {label:'Recent opponent strength',value:w[6]*(l.opponent-rr.opponent)/100,why:'Recent opponents are compared by their ratings before those games. Facing stronger teams can put recent outcomes in context.'}
+ );
+ const baseLogit=baseParts.reduce((sum,x)=>sum+x.value,0);
  const proposedFormA=formA==='auto'?l.form:(+formA+2)/14,proposedFormB=formB==='auto'?rr.form:(+formB+2)/14;
  const proposedRestA=restA==='auto'?l.rest:+restA,proposedRestB=restB==='auto'?rr.rest:+restB;
- // An assumption about rating strength is hypothetical, not learned player value.
- const custom=Number($('forecastCustomShift')?.value)||0;
- const rawShift=manual.reduce((s,x)=>s+x.shift,0)+pA.sum-pB.sum+clamp(custom,-100,100);
- const shift=clamp(rawShift,-150,150),scenarioDiff=(l.rating-rr.rating+shift)/100;
- const scenarioParts=[w[0]*venue,w[1]*scenarioDiff,w[2]*(proposedFormA-proposedFormB),w[3]*(proposedRestA-proposedRestB)/3];
- const adjustedLogit=scenarioParts.reduce((s,x)=>s+x,0),base=sig(baseLogit),adjusted=sig(adjustedLogit);
- const fictional=shift!==0||restA!=='auto'||restB!=='auto'||formA!=='auto'||formB!=='auto';
- const pct=p=>(p*100).toFixed(1)+'%';
- const line=(p,cls)=>'<div class="forecast-prob '+cls+'"><div><span>'+esc(name(a))+'</span><strong>'+pct(p)+'</strong></div><div class="forecast-prob-track"><span style="width:'+clamp(100*p,0,100).toFixed(2)+'%"></span></div><div><span>'+esc(name(b))+'</span><strong>'+pct(1-p)+'</strong></div></div>';
- const contribution=(label,x)=>'<div class="forecast-contribution"><span>'+esc(label)+'</span><strong>'+((x>=0?'+':'')+x.toFixed(3))+'</strong></div>';
- const warnings=[...pA.warnings,...pB.warnings,...(Math.abs(rawShift)>150?['Combined subjective rating adjustment is capped at 150 points in either direction.']:[])];
- root.innerHTML='<div class="forecast-result-card"><span class="eyebrow">Source-based statistical baseline</span><h4>Estimated win probabilities</h4>'+line(base,'baseline')+'<p>Conditional on the selected venue and only the historical rating, recent form and rest features. The model has no fitted player availability effect.</p><div class="forecast-breakdown">'+baseParts.map(x=>contribution(x[0],x[1])).join('')+'</div><p class="small">Contributions are log-odds for Team A, not percentage-point changes. Positive increases the model estimate for A; negative decreases it. Rest coefficients may be unstable in the small training sample.</p><div class="forecast-scenario"><span class="eyebrow">Optional hypothetical scenario · not validated</span><h4>'+ (fictional?'With your numerical assumptions':'No numerical assumptions applied')+'</h4>'+line(adjusted,'scenario')+'<p>Net assumed Team A rating change relative to Team B: <strong>'+ (shift>=0?'+':'')+shift+' rating points.</strong> Subjective inputs are applied only here; labels and notes alone do not alter the baseline. '+(fictional?'This is a sensitivity estimate, not a verified player-adjusted forecast.':'Use the controls to explore how assumptions would change the estimate.')+'</p>'+warnings.map(x=>'<p class="forecast-warning">'+esc(x)+'</p>').join('')+'</div></div>';
+ const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=w[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
+ const custom=clamp(Number($('forecastCustomShift')?.value)||0,-100,100);
+ const assumptions=[...manual,...pA.reasons,...pB.reasons.map(x=>({...x,shift:-x.shift})),...(custom?[{label:'Custom numerical assumption',shift:custom,why:'This is the extra advantage or disadvantage you entered, rather than a measured effect.'}]:[])];
+ const rawShift=assumptions.reduce((sum,x)=>sum+x.shift,0),shift=clamp(rawShift,-150,150);
+ const adjustedLogit=baseLogit+w[1]*shift/100+formChange+restChange,base=sig(baseLogit),adjusted=sig(adjustedLogit);
+ const pct=x=>(x*100).toFixed(1)+'%',points=x=>(x>=0?'+':'')+(x*100).toFixed(1)+' percentage points';
+ const line=(p,cls)=>'<div class="forecast-prob '+cls+'"><div><span>'+esc(nameA)+'</span><strong>'+pct(p)+'</strong></div><div class="forecast-prob-track"><span style="width:'+clamp(100*p,0,100).toFixed(2)+'%"></span></div><div><span>'+esc(nameB)+'</span><strong>'+pct(1-p)+'</strong></div></div>';
+ const reason=(label,why,delta)=>'<article class="forecast-reason"><div><h5>'+esc(label)+'</h5><span class="forecast-impact">'+esc(points(delta))+' for '+esc(a)+'</span></div><p>'+esc(why)+(Math.abs(delta)<.0005?' The model assigns no meaningful additional change here.':'')+'</p></article>';
+ // Counterfactual: remove one contribution while holding all other inputs fixed.
+ // Effects do not sum to total probability due to nonlinear logistic transformation.
+ const factors=baseParts.map(x=>({...x,delta:base-sig(baseLogit-x.value)})).sort((x,y)=>Math.abs(y.delta)-Math.abs(x.delta));
+ const scenarioRows=assumptions.map(x=>({...x,delta:adjusted-sig(baseLogit+w[1]*clamp(rawShift-x.shift,-150,150)/100+formChange+restChange)}));
+ if(formA!=='auto'||formB!=='auto')scenarioRows.push({label:'Assumed recent form',why:'You changed the number of wins in ten games. This only changes the part of the model that uses recent wins.',delta:adjusted-sig(adjustedLogit-formChange)});
+ if(restA!=='auto'||restB!=='auto')scenarioRows.push({label:'Assumed rest',why:'You changed the days available for recovery. The amount is based on the learned rest relationship, not a guaranteed effect.',delta:adjusted-sig(adjustedLogit-restChange)});
+ const warnings=[...pA.warnings,...pB.warnings,...(Math.abs(rawShift)>150?['Combined manual assumptions are limited to prevent extreme stacked changes.']:[])];
+ const favorite=Math.abs(base-.5)<.005?'The model sees a nearly even matchup.':name(base>.5?a:b)+' is the model’s estimated favorite.';
+ root.innerHTML='<div class="forecast-result-card"><span class="eyebrow">Statistical baseline · before the game</span><h4>'+esc(favorite)+'</h4>'+line(base,'baseline')+'<p>'+esc(fixture?'Selected sourced upcoming game.':'Custom matchup scenario; not necessarily a scheduled game.')+' These estimates use measured earlier game conditions, not confirmed lineups.</p><h4 class="forecast-why-title">Why the model favors one team</h4><p>Each change shows how much Team A’s estimated chance differs from a calculation with that factor removed. Positive favors '+esc(a)+'; negative favors '+esc(b)+'. These are model associations, not proven causes, and the numbers do not add together.</p><div class="forecast-breakdown forecast-reason-list">'+factors.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div><div class="forecast-scenario"><span class="eyebrow">Your what-if matchup · assumptions</span><h4>'+esc(adjusted>.505?nameA+' is favored under these inputs':adjusted<.495?nameB+' is favored under these inputs':'Nearly even under these inputs')+'</h4>'+line(adjusted,'scenario')+'<p>Change from statistical baseline: <strong>'+esc(points(adjusted-base))+' for '+esc(a)+'</strong>. Player and tactical effects without validated evidence remain hypothetical. This is not a confirmed injury-adjusted prediction.</p>'+ (scenarioRows.length?'<div class="forecast-breakdown forecast-reason-list">'+scenarioRows.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div>':'<p>No additional assumptions selected. Change a game condition or select a player above to explore the difference.</p>')+warnings.map(x=>'<p class="forecast-warning">'+esc(x)+'</p>').join('')+'</div></div>';
 }
 function resetAssumptions(){
  for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';
@@ -235,7 +251,7 @@ async function loadFixtures(){
  const date=$('forecastDate').value,seq=++fixtureRequest;
  $('forecastFixture').innerHTML='<option value="">Custom matchup</option>';
  fixtures=[];$('forecastFixtureNote').textContent='Checking sourced upcoming games for '+date+'…';
- if(!date||date<today())return;
+ if(!date||date<today()||date>season()+'-06-30')return;
  try{
   const d=isLocal?await snapshot('scoreboards/'+date+'.json'):await json(api+'scoreboard?dates='+date.replaceAll('-','')).catch(()=>snapshot('scoreboards/'+date+'.json'));
   if(seq!==fixtureRequest)return;
@@ -254,7 +270,7 @@ function syncPair(clearFixture=true){
 }
 function init(){
  const date=$('forecastDate');
- date.value=today();date.min=today();
+ date.value=today();date.min=today();date.max=season()+'-06-30';
  for(const side of ['A','B'])$('forecastForm'+side).innerHTML='<option value="auto">Auto · completed games</option>'+options(Array.from({length:11},(_,i)=>[i,i+' of 10 (assumed)']));
  makeFactors();
  drawTeamHeads();
