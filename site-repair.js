@@ -179,7 +179,7 @@ function setupScouting(){
  root.addEventListener('click',function(e){var b=e.target.closest('[data-team]');if(b&&teamIndex[b.dataset.team]){select.value=b.dataset.team;updateScout();}});
  window.addEventListener('aureum:select-team',function(e){if(e.detail&&e.detail.team&&teamIndex[e.detail.team]){select.value=e.detail.team;updateScout();}});
  E('scoutCompare').addEventListener('click',function(){E('compareA').value=select.value;E('compareA').dispatchEvent(new Event('change'));location.hash='compare';});
- E('scoutGame').addEventListener('click',function(){E('gameAway').value=select.value;location.hash='gameroom';renderSensitivity();});
+ E('scoutGame').addEventListener('click',function(){E('gameAway').value=select.value;E('gameAway').dispatchEvent(new Event('change'));location.hash='gameroom';});
  updateScout();
 }
 function statusText(c){var state=c.status&&c.status.type||{},s=state.shortDetail||state.detail||state.description||'';return String(s||'Scheduled');}
