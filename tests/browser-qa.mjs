@@ -189,7 +189,9 @@ try{
   await page.locator('#forecastResult .forecast-prob.baseline strong').first().waitFor({timeout:30000});
   await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
   assert.ok(await page.locator('#playerB1Name option').count()>8);
-  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),5);
+  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
+  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
+  assert.ok((await page.locator('#forecastResult .forecast-reason').first().innerText()).includes('percentage points'));
   const read=()=>page.locator('#forecastResult .forecast-prob.baseline strong').first().innerText();
   const adjusted=()=>page.locator('#forecastResult .forecast-prob.scenario strong').first().innerText();
   const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
@@ -198,6 +200,7 @@ try{
   await page.locator('#playerA1Shift').selectOption('-25');
   assert.equal(await read(),base,'User injury assumption must not change source-based baseline');
   assert.notEqual(await adjusted(),base,'Separate scenario should react to player adjustment');
+  assert.match(await page.locator('#forecastResult .forecast-scenario').innerText(),/assumed not to play/);
   await page.locator('#forecastReset').click();
   assert.equal(await adjusted(),base);
   await page.locator('#factor-travel-condition').selectOption('aLow');
