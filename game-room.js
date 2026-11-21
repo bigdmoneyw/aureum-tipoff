@@ -35,17 +35,19 @@ async function snapshot(file){
  return json(raw).catch(()=>json(local));
 }
 function validModel(d){
- if(d?.format!=='aureum-forecast-v1'||d.season!==season()||d.version!=='aureum-elo-rest-form-v1'||!Array.isArray(d.weights)||d.weights.length!==4||!d.weights.every(Number.isFinite)||!d.backtest||d.backtest.games<25||!Number.isFinite(d.backtest.brier))throw Error('Invalid forecast snapshot');
- for(const code of Object.keys(teams)){
-  const s=d.state?.[code];
+ const advanced=d?.format==='aureum-forecast-v2'&&d.version==='aureum-conditions-v2';
+ if((!advanced&&!(d?.format==='aureum-forecast-v1'&&d.version==='aureum-elo-rest-form-v1'))||d.season!==season()||!Array.isArray(d.weights)||d.weights.length!==(advanced?7:4)||!d.weights.every(Number.isFinite)||!d.backtest||d.backtest.games<25||!Number.isFinite(d.backtest.brier))throw Error('Invalid forecast snapshot');
+ for(const states of [d.state,d.todayState||d.state])for(const code of Object.keys(teams)){
+  const s=states?.[code];
   if(!s||!Number.isFinite(s.rating)||!Number.isInteger(s.games)||!Array.isArray(s.results)||s.results.length>10||!s.results.every(n=>n===0||n===1))throw Error('Invalid team model state '+code);
+  if(advanced&&['margins','dates','opponents'].some(k=>!Array.isArray(s[k])||s[k].length>10))throw Error('Invalid extended team history');
  }
  return d;
 }
 async function loadData(force=false){
  if(!force&&Date.now()-lastModelFetch<120000)return;
  lastModelFetch=Date.now();
- try{model=validModel(await snapshot('forecast-'+season()+'.json'));}catch(e){if(!model)model=null;}
+ try{model=validModel(await snapshot('forecast-v2-'+season()+'.json'));}catch(e){try{model=validModel(await snapshot('forecast-'+season()+'.json'));}catch(e){if(!model)model=null;}}
  try{const r=await snapshot('rosters-'+season()+'.json');if(r.format!=='aureum-rosters-v1'||r.season!==season()||r.teams.length!==30)throw Error('Invalid roster snapshot');rosters=r;}catch(e){}
  render();
 }
@@ -53,19 +55,30 @@ const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-t
 function context(code,date){
  const sourceState=date===model.todayDate&&model.todayState?model.todayState:model.state;
  const t=sourceState[code],recentGames=t.results.length,recentWins=t.results.reduce((a,b)=>a+b,0),known=!!t.lastDate;
- return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate};
+ return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate,margin:(t.margins||[]).reduce((s,x)=>s+x,0)/((t.margins||[]).length+4),load:(t.dates||[]).filter(d=>dayValue(date)-dayValue(d)>=1&&dayValue(date)-dayValue(d)<=7).length,opponent:(t.opponents||[]).reduce((s,x)=>s+x-1500,0)/((t.opponents||[]).length+4)};
 }
 const factorRows=[
- ['pace','Expected pace','Slower / half-court style','Faster / more possessions'],
- ['travel','Travel & schedule load','Difficult travel','Favorable travel'],
- ['rotation','Lineup continuity','Disrupted rotation','Stable rotation'],
- ['bench','Bench depth','Thin bench','Strong bench'],
- ['fit','Matchup style fit','Difficult style matchup','Favorable style matchup']
+ ['pace','Game speed','Slower game','Faster game','A faster game gives both teams more chances to score. Which team benefits depends on how well they play at that speed.'],
+ ['travel','Travel and fatigue','Long or difficult travel','Easy travel','Travel can reduce recovery time and energy before a game.'],
+ ['rotation','Lineup familiarity','Unfamiliar lineup','Familiar lineup','Players who have played together know each other’s positioning and tendencies.'],
+ ['bench','Bench depth','Limited substitutes','Strong substitutes','Reliable substitutes help maintain performance when starters rest.'],
+ ['fit','Playing-style matchup','Difficult matchup','Favorable matchup','One team’s style can exploit another team’s weaknesses.'],
+ ['shooting','Outside shooting matchup','Poor shooting opportunities','Good shooting opportunities','Open long-range shots can reward a good shooting team.'],
+ ['rim','Scoring near the basket','Difficult inside scoring','Easy inside scoring','Getting close to the basket can create high-quality scoring chances.'],
+ ['pressure','Handling defensive pressure','Struggles against pressure','Handles pressure well','Pressure can force mistakes and take away scoring chances.'],
+ ['rebounding','Second chances','Weak rebounding matchup','Strong rebounding matchup','Recovering missed shots creates extra opportunities to score.'],
+ ['transition','Fast breaks','Vulnerable to fast breaks','Strong fast-break matchup','Scoring before opponents organize their defense can create easy baskets.'],
+ ['fouls','Foul trouble risk','Higher foul risk','Lower foul risk','Fouls can give opponents free throws and force important players to sit.'],
+ ['coaching','Tactical preparation','Unfavorable preparation','Favorable preparation','A well-matched game plan can help players exploit weaknesses.'],
+ ['motivation','Competitive circumstances','Unfavorable circumstances','Favorable circumstances','Urgency and focus may affect effort, but neither is a measured guarantee.'],
+ ['altitude','Arena conditions','Unfamiliar conditions','Familiar conditions','Unfamiliar altitude or surroundings may affect comfort and recovery.'],
+ ['ballmovement','Passing and teamwork','Disrupted ball movement','Effective ball movement','Good passing can create easier shots and reduce wasted possessions.'],
+ ['defense','Defensive matchup','Poor defensive fit','Strong defensive fit','A team that matches up well defensively may limit its opponent’s scoring chances.']
 ];
-const shifts=[['0','No assigned effect'],['-50','−50 assumed rating points'],['-25','−25 assumed rating points'],['-10','−10 assumed rating points'],['10','+10 assumed rating points'],['25','+25 assumed rating points'],['50','+50 assumed rating points']];
+const shifts=[['0','No added effect'],['-50','Large disadvantage'],['-25','Moderate disadvantage'],['-10','Small disadvantage'],['10','Small advantage'],['25','Moderate advantage'],['50','Large advantage']];
 const options=list=>list.map(([v,l])=>'<option value="'+esc(v)+'">'+esc(l)+'</option>').join('');
 function makeFactors(){
- $('forecastFactors').innerHTML=factorRows.map(([key,label,low,high])=>'<div class="forecast-factor"><label>'+esc(label)+'<select id="factor-'+key+'-condition">'+options([['normal','Normal / unspecified'],['aLow','Team A: '+low],['aHigh','Team A: '+high],['bLow','Team B: '+low],['bHigh','Team B: '+high]])+'</select></label><label>Assumed A relative to B (rating points)<select id="factor-'+key+'-shift">'+options(shifts)+'</select></label></div>').join('');
+ $('forecastFactors').innerHTML=factorRows.map(([key,label,low,high,why])=>'<div class="forecast-factor"><div><label>'+esc(label)+'<select id="factor-'+key+'-condition">'+options([['normal','Normal / no assumption'],['aLow','Team A: '+low],['aHigh','Team A: '+high],['bLow','Team B: '+low],['bHigh','Team B: '+high]])+'</select></label><p>'+esc(why)+'</p></div><label>How much does it favor Team A?<select id="factor-'+key+'-shift">'+options(shifts)+'</select><span class="small">Illustrative, not a measured effect.</span></label></div>').join('');
 }
 function sourceRoster(code){
  if(rosterCache.has(code)&&fresh(rosterCache.get(code).retrievedAt,8))return rosterCache.get(code);
@@ -79,7 +92,7 @@ function savedPlayers(){
  }
  return all;
 }
-const statusOptions=[['reported','Use report / no assumption'],['available','Assume available'],['limited','Assume limited minutes'],['out','Assume unavailable']];
+const statusOptions=[['reported','Show report only'],['available','Plays normally'],['limited','Plays fewer minutes'],['out','Does not play']];
 function drawPlayers(preserve=true){
  const st=state(),old=preserve?savedPlayers():{A:{},B:{}};
  $('forecastPlayers').innerHTML=['A','B'].map(side=>{
@@ -89,7 +102,7 @@ function drawPlayers(preserve=true){
   const info=valid?(t.mode==='live'?'Live roster retrieved ':'Roster snapshot retrieved ')+time(t.retrievedAt)+' · '+roster.length+' players · '+(t.injuryFeedAvailable?reportCount+' reported entries':'injury feed unavailable'):'Current roster unavailable or older than 8 hours. No player names substituted.';
   return '<div class="forecast-player-team"><div class="forecast-player-head"><img src="'+logo(c)+'" alt=""><div><h4>'+esc(name(c))+'</h4><p>'+esc(info)+'</p></div></div>'+Array.from({length:3},(_,j)=>{
    const i=j+1,prefix='player'+side+i;
-   return '<article class="forecast-player-card"><label>Player '+i+'<select id="'+prefix+'Name" class="forecast-player-choice" '+(!valid?'disabled':'')+'><option value="">Select a roster player (optional)</option>'+options(roster.map(p=>[p.id,p.name+(p.position?' · '+p.position:'')+(p.report?.status?' · '+p.report.status:'')]))+'</select></label><p class="forecast-report" id="'+prefix+'Report">Select a player to view the dated report, if available.</p><div class="forecast-two"><label>Availability assumption<select id="'+prefix+'Status">'+options(statusOptions)+'</select></label><label>Assumed strength impact<select id="'+prefix+'Shift">'+options(shifts)+'</select></label></div></article>';
+   return '<article class="forecast-player-card"><label>Player '+i+'<select id="'+prefix+'Name" class="forecast-player-choice" '+(!valid?'disabled':'')+'><option value="">Select a roster player (optional)</option>'+options(roster.map(p=>[p.id,p.name+(p.position?' · '+p.position:'')+(p.report?.status?' · '+p.report.status:'')]))+'</select></label><p class="forecast-report" id="'+prefix+'Report">Select a player to view the dated report, if available.</p><div class="forecast-two"><label>Availability assumption<select id="'+prefix+'Status">'+options(statusOptions)+'</select></label><label>Assumed strength impact<select id="'+prefix+'Shift">'+options([['auto','Estimate from past playing time'],...shifts])+'</select></label></div></article>';
   }).join('')+'</div>';
  }).join('');
  for(const side of ['A','B'])for(let i=1;i<=3;i++){
@@ -141,17 +154,26 @@ function readPlayerEffects(side,code){
   const status=$(prefix+'Status').value,shift=$(prefix+'Shift'),p=roster?.players.find(x=>x.id===s.value),out=$(prefix+'Report');
   shift.disabled=!p||status==='reported';
   if(!p){out.textContent='Select a current roster player. No adjustment is applied.';continue;}
-  const report=p.report;
-  out.textContent=report?'Provider report: '+report.status+' · '+time(report.date)+' (verify for this game).':roster.injuryFeedAvailable?'No matching dated report. Availability is unknown.':'Injury feed unavailable. Availability is unknown.';
-  if(used.has(p.id)){warnings.push(p.name+' was selected twice; only the first selection is used.');continue;}
+  const report=p.report,profile=model?.playerProfiles?.[p.id],validProfile=profile&&profile.team===code&&profile.sample>=3;
+  out.textContent=(report?'Provider report: '+report.status+' · '+time(report.date)+'.':roster.injuryFeedAvailable?'No matching dated report; availability unknown.':'Injury feed unavailable.')+(validProfile?' Recent role: '+profile.averageMinutes.toFixed(1)+' minutes and '+profile.averagePoints.toFixed(1)+' points per appearance ('+profile.sample+' appearances).':' Not enough recent appearances for a current-team estimate.');
+  if(used.has(p.id)){warnings.push(p.name+' appears twice; counted once.');continue;}
   used.add(p.id);
-  if(status!=='reported'){
-   const n=Number(shift.value)||0;
-   const effective=(status==='out'||status==='limited')?Math.min(0,n):n;
-   if(effective!==n)warnings.push('A limited or unavailable player cannot get a positive availability adjustment.');
-   sum+=effective;
-   reasons.push({label:name(code)+' · '+p.name+' / '+status,shift:effective});
+  if(status==='reported'||status==='available'&&!Number(shift.value))continue;
+  let effect=0,why='';
+  if(shift.value==='auto'){
+   if(validProfile&&model?.playerModel?.enabled&&(status==='out'||status==='limited')){
+    // Convert the fitted conditional logit coefficient to rating-equivalent units.
+    const absentFraction=status==='out'?1:.5;
+    effect=-model.playerModel.beta*profile.averageMinutes/48*absentFraction/Math.max(.01,model.weights[1])*100;
+    why=p.name+' usually plays about '+profile.averageMinutes.toFixed(0)+' minutes. '+(status==='out'?'Missing all of them':'Assuming half those minutes are lost')+' removes part of the usual rotation; the model uses a fitted historical playing-time relationship. This is conditional, not a proven individual injury effect.';
+   }else{why='There is no qualified automatic estimate for this selection. Choose an illustrative disadvantage manually if appropriate.';}
+  }else{
+   const raw=Number(shift.value)||0;
+   effect=status==='out'||status==='limited'?Math.min(0,raw):raw;
+   if(effect!==raw)warnings.push('An unavailable or limited player cannot receive a positive impact.');
+   why=p.name+(status==='out'?' is assumed not to play.':status==='limited'?' is assumed to play fewer minutes.':' is assumed to play normally.')+' Your selected advantage or disadvantage is an illustration, not an observed injury effect.';
   }
+  sum+=effect;reasons.push({label:p.name+' · '+name(code),shift:effect,why});
  }
  return {sum,warnings,reasons};
 }
@@ -206,7 +228,7 @@ function render(){
 function resetAssumptions(){
  for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';
  for(const [k] of factorRows){$('factor-'+k+'-condition').value='normal';$('factor-'+k+'-shift').value='0';}
- for(const side of ['A','B'])for(let i=1;i<=3;i++){const p='player'+side+i;if($(p+'Name')){$(p+'Name').value='';$(p+'Status').value='reported';$(p+'Shift').value='0';}}
+ for(const side of ['A','B'])for(let i=1;i<=3;i++){const p='player'+side+i;if($(p+'Name')){$(p+'Name').value='';$(p+'Status').value='reported';$(p+'Shift').value='auto';}}
  $('forecastNotes').value='';if($('forecastCustomShift'))$('forecastCustomShift').value='0';render();
 }
 async function loadFixtures(){
