@@ -203,9 +203,14 @@ try{
   assert.match(await page.locator('#forecastResult .forecast-scenario').innerText(),/assumed not to play/);
   await page.locator('#forecastReset').click();
   assert.equal(await adjusted(),base);
-  await page.locator('#factor-travel-condition').selectOption('aLow');
-  await page.locator('#factor-travel-shift').selectOption('-10');
-  assert.notEqual(await adjusted(),base);
+  assert.equal(await page.locator('#forecastFactors input[type=radio]').count(),96);
+  await page.locator('#factor-travel-A-low').check();
+  assert.ok(parseFloat(await adjusted())<parseFloat(base),'Team A disadvantage lowers A estimate');
+  await page.locator('#factor-travel-B-low').check();
+  assert.equal(await adjusted(),base,'Equal team assumptions cancel');
+  await page.locator('#factor-travel-A-neutral').check();
+  assert.ok(parseFloat(await adjusted())>parseFloat(base),'Team B disadvantage raises A estimate');
+  assert.equal(await read(),base,'Mirrored inputs do not change baseline');
   await page.locator('#forecastReset').click();
   await page.locator('#forecastCustomShift').fill('25');
   await page.locator('#forecastCustomShift').dispatchEvent('change');
