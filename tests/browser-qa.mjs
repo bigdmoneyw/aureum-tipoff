@@ -180,12 +180,40 @@ try{
    assert.notEqual(await page.locator('#pastGameReport .past-game-date').innerText(),oldA);
   }
  });
- await check('Game Room has NBA Cup and playoffs and verified team comparisons',async()=>{
+ await check('Game Room current roster, conditions, baseline, separate user assumptions and all 30 reference metrics',async()=>{
   await page.evaluate(()=>location.hash='gameroom');
   await page.waitForSelector('#gameroom.active');
   assert.equal(await page.locator('#competitionDesk .competition-card').count(),2);
   await page.waitForSelector('#gameRoomContext .game-context-metric',{timeout:20000});
-  assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),4);
+  assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),30);
+  await page.locator('#forecastResult .forecast-prob.baseline strong').first().waitFor({timeout:30000});
+  await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
+  assert.ok(await page.locator('#playerB1Name option').count()>8);
+  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),5);
+  const read=()=>page.locator('#forecastResult .forecast-prob.baseline strong').first().innerText();
+  const adjusted=()=>page.locator('#forecastResult .forecast-prob.scenario strong').first().innerText();
+  const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
+  await page.locator('#playerA1Name').selectOption({index:1});
+  await page.locator('#playerA1Status').selectOption('out');
+  await page.locator('#playerA1Shift').selectOption('-25');
+  assert.equal(await read(),base,'User injury assumption must not change source-based baseline');
+  assert.notEqual(await adjusted(),base,'Separate scenario should react to player adjustment');
+  await page.locator('#forecastReset').click();
+  assert.equal(await adjusted(),base);
+  await page.locator('#factor-travel-condition').selectOption('aLow');
+  await page.locator('#factor-travel-shift').selectOption('-10');
+  assert.notEqual(await adjusted(),base);
+  await page.locator('#forecastReset').click();
+  await page.locator('#forecastCustomShift').fill('25');
+  await page.locator('#forecastCustomShift').dispatchEvent('change');
+  assert.notEqual(await adjusted(),base);
+  await page.locator('#forecastReset').click();
+  const oldA=await page.locator('#gameAway').inputValue(),oldB=await page.locator('#gameHome').inputValue();
+  await page.locator('#gameSwap').click();
+  assert.equal(await page.locator('#gameAway').inputValue(),oldB);
+  assert.equal(await page.locator('#gameHome').inputValue(),oldA);
+  assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),30);
+  await page.locator('#gameAway').selectOption(oldA);await page.locator('#gameHome').selectOption(oldB);
  });
  await check('hypothetical scenarios save and restore locally',async()=>{
   await page.evaluate(()=>location.hash='insights');
