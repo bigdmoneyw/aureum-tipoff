@@ -64,7 +64,7 @@ function gameRows(list,state,season,opts={}){
    const box=opts.players?.get(g.id);
    if(box)for(const [team,players] of Object.entries(box.players))for(const p of players){
     if(!p.played||p.min<=0)continue;
-    const prev=playerState[p.id]||{minutes:[],points:[],games:0};
+    const prev=playerState[p.id]?.team===team?playerState[p.id]:{minutes:[],points:[],games:0};
     prev.team=team;prev.lastDate=date;prev.games++;prev.minutes.push(p.min);prev.points.push(p.pts);
     if(prev.minutes.length>10){prev.minutes.shift();prev.points.shift();}
     playerState[p.id]=prev;
@@ -78,25 +78,28 @@ function newSeason(state){
  for(const c of codes)next[c].rating=1500+.65*(state[c].rating-1500);
  return next;
 }
-function playerFit(rows,w){
+function playerFit(rows,w,priorRows=[]){
+ const historical=priorRows.length>=500;
  if(rows.length<60)return {enabled:false,reason:'Insufficient historical individual player coverage.',games:rows.length};
  const dates=[...new Set(rows.map(r=>r.date))].sort(),cut=dates[Math.floor(dates.length*.65)];
- const train=rows.filter(r=>r.date<cut),test=rows.filter(r=>r.date>=cut);
+ const train=historical?priorRows:rows.filter(r=>r.date<cut),test=historical?rows:rows.filter(r=>r.date>=cut);
  if(train.length<35||test.length<20)return {enabled:false,reason:'Insufficient chronological player holdout.',games:test.length};
  let beta=0;
+ const logit=r=>Math.log(predict(w,r.x,r.venue)/(1-predict(w,r.x,r.venue)));
  for(let i=0;i<800;i++){
-  const g=mean(train.map(r=>(sig(Math.log(predict(w,r.x,r.venue)/(1-predict(w,r.x,r.venue)))+beta*r.missingMinutes)-r.y)*r.missingMinutes));
+  const g=mean(train.map(r=>(sig(logit(r)+beta*r.missingMinutes)-r.y)*r.missingMinutes));
   beta=Math.max(0,Math.min(2,beta-.15*(g+.08*beta)));
  }
  const base=test.map(r=>predict(w,r.x,r.venue));
  const p=test.map((r,i)=>sig(Math.log(base[i]/(1-base[i]))+beta*r.missingMinutes));
  const brier=mean(test.map((r,i)=>(p[i]-r.y)**2)),baseBrier=mean(test.map((r,i)=>(base[i]-r.y)**2));
- return {enabled:beta>.001&&brier<baseBrier,beta,trainingGames:train.length,games:test.length,testFrom:cut,testThrough:test.at(-1).date,brier,baselineBrier:baseBrier,method:'Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not individual causal impact or a prospective injury forecast.'};
+ // Even a better retrospective conditional score is not prospective injury validation.
+ return {enabled:beta>.001&&brier<baseBrier,beta,trainingGames:train.length,games:test.length,trainingThrough:train.at(-1).date,testFrom:test[0].date,testThrough:test.at(-1).date,brier,baselineBrier:baseBrier,previousSeasonTraining:historical,method:'Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast.'};
 }
-export function buildAdvanced(history,current,playerHistory,now){
- let state=blank(),historical=[];
+export function buildAdvanced(history,current,playerHistory,now,previousPlayerHistory=null){
+ let state=blank(),historical=[],priorPlayers=[];
  const completeHistory=history.length===2&&history.every(h=>h.games.length>=1200);
- if(completeHistory)for(const h of history){const z=gameRows(h.games,state,h.season);historical.push(...z.rows);state=newSeason(state);}
+ if(completeHistory)for(const h of history){const playerMap=previousPlayerHistory?.season===h.season?new Map(previousPlayerHistory.games.map(g=>[g.id,g])):null;const z=gameRows(h.games,state,h.season,{players:playerMap});historical.push(...z.rows);priorPlayers.push(...z.playerRows);state=newSeason(state);}
  const results=gameRows(current.games,state,current.season,{today:etDay(now),players:new Map((playerHistory?.games||[]).map(g=>[g.id,g]))});
  const currentDates=[...new Set(results.rows.map(r=>r.date))].sort(),cutCurrent=currentDates[Math.floor(currentDates.length*.7)];
  const training=completeHistory?historical:results.rows.filter(r=>r.date<cutCurrent);
@@ -109,7 +112,7 @@ export function buildAdvanced(history,current,playerHistory,now){
  const base=mean(training.filter(r=>r.venue===1).map(r=>r.y)),test=score(holdout,weights,base),simpleTest=score(holdout,simple,base);
  // The player-model holdout must follow team coefficient training when history is unavailable.
  const eligiblePlayers=completeHistory?results.playerRows:results.playerRows.filter(r=>r.date>=cutCurrent);
- const playerModel=playerFit(eligiblePlayers,weights);
+ const playerModel=playerFit(eligiblePlayers,weights,priorPlayers);
  const playerProfiles=Object.fromEntries(Object.entries(results.playerState).filter(([id,p])=>p.minutes.length>=3).map(([id,p])=>[id,{team:p.team,lastDate:p.lastDate,games:p.games,averageMinutes:round(mean(p.minutes)),averagePoints:round(mean(p.points)),sample:p.minutes.length}]));
- return {format:'aureum-forecast-v2',version,season:current.season,retrievedAt:now.toISOString(),sourceArchiveCollectedAt:current.retrievedAt,weights,state,todayState:results.todayState,todayDate:etDay(now),throughDate:current.games.map(g=>etDay(g.date)).sort().at(-1),historicalGameCount:completeHistory?sum(history.map(h=>h.games.length)):0,archiveGames:current.games.length,featureNames:names,selection:{...chosen,validationGames:valid.length,validationFrom:cut,candidates},backtest:{trainingGames:training.length,trainingThrough:training.at(-1).date,testFrom:holdout[0].date,testThrough:holdout.at(-1).date,...test,simpleBrier:simpleTest.brier,simpleAccuracy:simpleTest.accuracy,method:completeHistory?'Historical-only model selection and training, tested on current-season games with features from earlier dates only.':'Current-season chronological training, internal date-blocked model selection, and later holdout. Earlier-season source archive unavailable.'},playerModel,playerProfiles,playerCoverage:playerHistory?.games?.length||0,limitations:'Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.'};
+ return {format:'aureum-forecast-v2',version,season:current.season,retrievedAt:now.toISOString(),sourceArchiveCollectedAt:current.retrievedAt,weights,state,todayState:results.todayState,todayDate:etDay(now),throughDate:current.games.map(g=>etDay(g.date)).sort().at(-1),historicalGameCount:completeHistory?sum(history.map(h=>h.games.length)):0,archiveGames:current.games.length,featureNames:names,selection:{...chosen,validationGames:valid.length,validationFrom:cut,candidates},backtest:{trainingGames:training.length,trainingThrough:training.at(-1).date,testFrom:holdout[0].date,testThrough:holdout.at(-1).date,...test,simpleBrier:simpleTest.brier,simpleAccuracy:simpleTest.accuracy,method:completeHistory?'Historical-only model selection and training, tested on current-season games with features from earlier dates only.':'Current-season chronological training, internal date-blocked model selection, and later holdout. Earlier-season source archive unavailable.'},playerModel,playerProfiles,playerCoverage:playerHistory?.games?.length||0,historicalPlayerCoverage:previousPlayerHistory?.games?.length||0,limitations:'Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.'};
 }
