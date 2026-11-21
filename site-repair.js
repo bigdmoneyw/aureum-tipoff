@@ -232,14 +232,7 @@ function setupGames(){
  if(!E('scoreboardDate'))return;E('scoreboardDate').value=etDate();
  E('scoreboardDate').addEventListener('change',loadGames);
  E('scoreboardRefresh').addEventListener('click',loadGames);
- if(E('gameSwap'))E('gameSwap').addEventListener('click',function(){var a=E('gameAway').value;E('gameAway').value=E('gameHome').value;E('gameHome').value=a;renderSensitivity();});
- ['gameAway','gameHome','gameAwayAvailability','gameHomeAvailability'].forEach(function(id){if(E(id))E(id).addEventListener('change',renderSensitivity);});
- loadGames();renderSensitivity();setInterval(function(){if(document.visibilityState==='visible'&&E('scoreboardDate').value===etDate()&&['#live','#gameroom'].includes(location.hash))loadGames();},90000);
-}
-function renderSensitivity(){
- var el=E('gameSensitivityResult');if(!el)return;
- var a=E('gameAway').value,b=E('gameHome').value;
- var away=E('gameAwayAvailability').selectedOptions[0].textContent,home=E('gameHomeAvailability').selectedOptions[0].textContent;el.innerHTML='<div class="research-banner"><strong>'+esc(name(a))+' vs '+esc(name(b))+'</strong><p>Selected away scenario: '+esc(away)+'. Selected home scenario: '+esc(home)+'. These assumptions are not measured player effects. No trained, timestamped forecast is available, so the site does not output an invented win probability.</p></div>';
+ loadGames();setInterval(function(){if(document.visibilityState==='visible'&&E('scoreboardDate').value===etDate()&&['#live','#gameroom'].includes(location.hash))loadGames();},90000);
 }
 function studioState(){
  var ids=['studioAway','studioHome','studioAwayStrength','studioHomeStrength','studioAwayRest','studioHomeRest','studioAwayAbsence','studioHomeAbsence','studioHomeCourt'];return Object.fromEntries(ids.map(function(k){return [k,E(k).value];}));
