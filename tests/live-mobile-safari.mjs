@@ -69,6 +69,11 @@ try {
  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
  const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
+ await page.locator('#factor-travel-A-low').check();
+ assert.ok(parseFloat(await page.locator('#forecastResult .scenario strong').first().innerText())<parseFloat(pBase));
+ await page.locator('#factor-travel-B-low').check();
+ assert.equal(await page.locator('#forecastResult .scenario strong').first().innerText(),pBase);
+ await page.locator('#forecastReset').click();
  await page.locator('#forecastCustomShift').fill('25');
  await page.locator('#forecastCustomShift').dispatchEvent('change');
  assert.equal(await page.locator('#forecastResult .baseline strong').first().innerText(),pBase);
