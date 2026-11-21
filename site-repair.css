@@ -899,3 +899,17 @@ a,button{touch-action:manipulation}
  #gameroom .forecast-panel{padding:13px}
  #gameroom .forecast-prob strong{font-size:30px}
 }
+
+/* Readable probability explanations and adjustable game-day factors. */
+#gameroom .forecast-reason-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#gameroom .forecast-reason{min-width:0;border:1px solid #41556e;border-radius:14px;background:#101e31;padding:17px}
+#gameroom .forecast-reason>div{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#gameroom .forecast-reason h5{font-size:15px;color:#f2e0bc;margin:0}
+#gameroom .forecast-reason .forecast-impact{font-size:12px;font-weight:800;color:#f0cf94;white-space:normal}
+#gameroom .forecast-reason p{font-size:13px;line-height:1.65;color:#c2d1e2;margin:10px 0 0}
+#gameroom .forecast-why-title{font-size:clamp(20px,2.6vw,28px);margin-top:28px;margin-bottom:8px}
+#gameroom .forecast-factor>div{min-width:0}
+#gameroom .forecast-factor p{margin:7px 0 0}
+#gameroom .forecast-factor label .small{font-size:11px;color:#aebed0}
+#gameroom .forecast-notes input{max-width:100%;min-height:44px;border-radius:10px;background:#101d30;border:1px solid #4a5d74;color:#eaf1f8;padding:10px;font-size:16px}
+@media(max-width:760px){#gameroom .forecast-reason-list{grid-template-columns:minmax(0,1fr)}#gameroom .forecast-reason{padding:14px}}
