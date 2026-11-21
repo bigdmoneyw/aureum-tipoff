@@ -36,8 +36,11 @@ export function buildForecast(archive,now){
  }
  const dates=[...days.keys()].sort();
  const rows=[];
+ let priorDayState=null;
+ const currentDay=etDay(now);
  // All games on a date use the pre-date state. No same-date outcome can leak into features.
  for(const d of dates){
+  if(d===currentDay)priorDayState=JSON.parse(JSON.stringify(state));
   const games=days.get(d);const changes=[];
   for(const g of games){
    const h=context(state,g.home,d),a=context(state,g.away,d),y=g.hs>g.as?1:0;
@@ -61,5 +64,5 @@ export function buildForecast(archive,now){
  const report=evaluate(test,weights,base);
  return {format:'aureum-forecast-v1',version,season:archive.season,retrievedAt:now.toISOString(),sourceArchiveCollectedAt:archive.retrievedAt,source:'ESPN archived completed scores',features:featureNames,weights,state,
  backtest:{method:'Date-blocked chronological holdout; features use only outcomes on earlier dates. Coefficients fitted on early dates only. No injuries or subjective adjustments included.',trainingGames:train.length,trainingThrough:train.at(-1).date,testFrom:splitDate,testThrough:test.at(-1).date,...report},
- archiveGames:seen.size,throughDate:dates.at(-1),limitations:'Retrospective small-sample test, not prospectively locked forecasts or guaranteed future performance. Home-court neutral/swap extrapolation; player and qualitative assumptions not learned.'};
+ archiveGames:seen.size,throughDate:dates.at(-1),todayState:priorDayState||JSON.parse(JSON.stringify(state)),todayDate:currentDay,limitations:'Retrospective small-sample test, not prospectively locked forecasts or guaranteed future performance. Home-court neutral/swap extrapolation; player and qualitative assumptions not learned.'};
 }
