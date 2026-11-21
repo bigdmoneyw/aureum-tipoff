@@ -10,16 +10,18 @@ for(const y of [season-2,season-1]){
  if(fs.existsSync(file)){const old=JSON.parse(fs.readFileSync(file));if(old.games?.length>=1200)continue;}
  const games=new Map();
  // Date windows smaller than a full month avoid provider event limits.
- for(let t=Date.UTC(y-1,9,1);t<=Date.UTC(y,3,30);t+=14*864e5){
-  const start=new Date(t).toISOString().slice(0,10).replaceAll('-',''),end=new Date(Math.min(t+13*864e5,Date.UTC(y,3,30))).toISOString().slice(0,10).replaceAll('-','');
-  const raw=await get('scoreboard?dates='+start+'-'+end+'&limit=500');
-  if(!Array.isArray(raw.events))throw Error('No events '+start);
-  for(const e of raw.events){
-   if(+e.season?.year!==y||+e.season?.type!==2||!e.status?.type?.completed)continue;
+ const days=[];for(let t=Date.UTC(y-1,9,1);t<=Date.UTC(y,3,30);t+=864e5)days.push(new Date(t).toISOString().slice(0,10).replaceAll('-',''));
+ for(let i=0;i<days.length;i+=10){
+  const batch=await Promise.all(days.slice(i,i+10).map(day=>get('scoreboard?dates='+day)));
+  for(const raw of batch){
+   if(!Array.isArray(raw.events))throw Error('No events');
+   for(const e of raw.events){
+   if((e.season?.year!==undefined&&+e.season.year!==y)||(e.season?.type!==undefined&&+e.season.type!==2)||!e.status?.type?.completed)continue;
    const c=e.competitions?.[0],h=c?.competitors?.find(x=>x.homeAway==='home'),a=c?.competitors?.find(x=>x.homeAway==='away');
    const home=norm(h?.team?.abbreviation),away=norm(a?.team?.abbreviation),hs=+h?.score,as=+a?.score;
    if(!codes.has(home)||!codes.has(away)||home===away||!Number.isInteger(hs)||!Number.isInteger(as)||hs===as||Math.min(hs,as)<0||!Number.isFinite(Date.parse(e.date)))continue;
    games.set(String(e.id),{id:String(e.id),date:e.date,home,away,hs,as,neutral:c.neutralSite===true,season:y});
+  }
   }
  }
  if(games.size<1200||games.size>1250)throw Error('Unexpected regular season coverage '+y+' '+games.size);
