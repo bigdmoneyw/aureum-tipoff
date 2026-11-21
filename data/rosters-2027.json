@@ -1,0 +1,4434 @@
+{
+  "format": "aureum-rosters-v1",
+  "season": 2027,
+  "retrievedAt": "2026-11-21T07:47:19.770Z",
+  "source": "ESPN NBA team rosters and dated injury report",
+  "injuryFeedAvailable": true,
+  "injurySourceTimestamp": "2026-11-21T07:47:18Z",
+  "teams": [
+    {
+      "code": "ATL",
+      "espnId": "1",
+      "name": "Atlanta Hawks",
+      "retrievedAt": "2026-11-21T07:47:19.191Z",
+      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4397183",
+          "name": "Aaron Wiggins",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4873201",
+          "name": "Asa Newell",
+          "position": "F",
+          "jersey": "14",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T21:16Z",
+            "comment": "Newell underwent surgery Tuesday for a plantar plate tear in his left great toe, and he will be re-evaluated in approximately four months, Brad Rowland of the Locked On Podcast Network reports."
+          }
+        },
+        {
+          "id": "2490149",
+          "name": "CJ McCollum",
+          "position": "G",
+          "jersey": "3",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T21:08Z",
+            "comment": "McCollum (calf) will miss at least four weeks, per Brad Rowland of the Locked On Podcast Network."
+          }
+        },
+        {
+          "id": "4280151",
+          "name": "Corey Kispert",
+          "position": "F",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "2578185",
+          "name": "Dorian Finney-Smith",
+          "position": "F",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4869342",
+          "name": "Dyson Daniels",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "5105571",
+          "name": "Henri Veesaar",
+          "position": "C",
+          "jersey": "13",
+          "report": {
+            "status": "Out",
+            "date": "2026-09-21T19:50Z",
+            "comment": "Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday."
+          }
+        },
+        {
+          "id": "4701230",
+          "name": "Jalen Johnson",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4431714",
+          "name": "Jalen Wilson",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "3146557",
+          "name": "Jock Landale",
+          "position": "C",
+          "jersey": "31",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T22:07Z",
+            "comment": "Landale (hip) won't play in Friday's game against the Hornets, Brad Rowland of the Locked On Podcast Network reports."
+          }
+        },
+        {
+          "id": "5149077",
+          "name": "Kingston Flemings",
+          "position": "G",
+          "jersey": "4",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:15Z",
+            "comment": "Flemings (back) is out for Friday's game against the Hornets, Brad Rowland of the Locked On Podcast Network reports."
+          }
+        },
+        {
+          "id": "4397020",
+          "name": "Luguentz Dort",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4712863",
+          "name": "Mouhamed Gueye",
+          "position": "F",
+          "jersey": "18",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-13T00:06Z",
+            "comment": "Gueye (foot) is ready to begin on-court activities and will be re-evaluated in four weeks, Brad Rowland of the Locked On Podcast Network reports."
+          }
+        },
+        {
+          "id": "4278039",
+          "name": "Nickeil Alexander-Walker",
+          "position": "G",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "4431680",
+          "name": "Onyeka Okongwu",
+          "position": "F",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "4684443",
+          "name": "Rafael Castro",
+          "position": "F",
+          "jersey": "",
+          "report": null
+        },
+        {
+          "id": "4431941",
+          "name": "RayJ Dennis",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "5106262",
+          "name": "Zuby Ejiofor",
+          "position": "F",
+          "jersey": "20",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "BKN",
+      "espnId": "17",
+      "name": "Brooklyn Nets",
+      "retrievedAt": "2026-11-21T07:47:19.289Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5242502",
+          "name": "Ben Saraf",
+          "position": "G",
+          "jersey": "77",
+          "report": null
+        },
+        {
+          "id": "5174655",
+          "name": "Chaney Johnson",
+          "position": "F",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "5107173",
+          "name": "Danny Wolf",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4432194",
+          "name": "Day'Ron Sharpe",
+          "position": "C",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "5037873",
+          "name": "Drake Powell",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "5175643",
+          "name": "Egor Demin",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4702670",
+          "name": "Grant Nelson",
+          "position": "F",
+          "jersey": "16",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:18Z",
+            "comment": "Nelson (ankle) has been ruled out for Friday's game against Orlando."
+          }
+        },
+        {
+          "id": "4687718",
+          "name": "Josh Minott",
+          "position": "F",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4870564",
+          "name": "Joshua Jefferson",
+          "position": "F",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "3064514",
+          "name": "Julius Randle",
+          "position": "F",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4702177",
+          "name": "Keon Ellis",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4278104",
+          "name": "Michael Porter Jr.",
+          "position": "F",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "5101761",
+          "name": "Mikel Brown Jr.",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "3150844",
+          "name": "Moritz Wagner",
+          "position": "C",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4712896",
+          "name": "Noah Clowney",
+          "position": "F",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "5279130",
+          "name": "Nolan Traore",
+          "position": "G",
+          "jersey": "10",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T02:25Z",
+            "comment": "Traore (hamstring) won't return to Friday's game against Orlando, Meghan Triplett of YES Network reports. He finished with four points (2-6 FG, 0-2 3Pt) and two assists over 18 minutes."
+          }
+        },
+        {
+          "id": "3907823",
+          "name": "Terance Mann",
+          "position": "G",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "5105626",
+          "name": "Tyler Bilodeau",
+          "position": "F",
+          "jersey": "34",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "BOS",
+      "espnId": "2",
+      "name": "Boston Celtics",
+      "retrievedAt": "2026-11-21T07:47:19.291Z",
+      "providerTimestamp": "2026-11-21T07:47:06Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4702745",
+          "name": "Amari Williams",
+          "position": "F",
+          "jersey": "77",
+          "report": null
+        },
+        {
+          "id": "4593841",
+          "name": "Baylor Scheierman",
+          "position": "G",
+          "jersey": "55",
+          "report": null
+        },
+        {
+          "id": "5142621",
+          "name": "Chris Cenac Jr.",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "3078576",
+          "name": "Derrick White",
+          "position": "G",
+          "jersey": "9",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-21T01:00Z",
+            "comment": "White (shoulder) is questionable to play in Saturday's game against Sacramento."
+          }
+        },
+        {
+          "id": "4433188",
+          "name": "Devin Carter",
+          "position": "G",
+          "jersey": "99",
+          "report": null
+        },
+        {
+          "id": "5106283",
+          "name": "Dillon Mitchell",
+          "position": "F",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "5175647",
+          "name": "Hugo Gonzalez",
+          "position": "G",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "4065648",
+          "name": "Jayson Tatum",
+          "position": "F",
+          "jersey": "0",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-21T01:07Z",
+            "comment": "Tatum (rest) is listed as questionable for Saturday's game against Sacramento."
+          }
+        },
+        {
+          "id": "4683689",
+          "name": "Jordan Walsh",
+          "position": "G",
+          "jersey": "27",
+          "report": null
+        },
+        {
+          "id": "4277951",
+          "name": "Luka Garza",
+          "position": "C",
+          "jersey": "52",
+          "report": null
+        },
+        {
+          "id": "3195",
+          "name": "Mike Conley",
+          "position": "G",
+          "jersey": "45",
+          "report": null
+        },
+        {
+          "id": "4351852",
+          "name": "Mitchell Robinson",
+          "position": "C",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4397424",
+          "name": "Neemias Queta",
+          "position": "C",
+          "jersey": "88",
+          "report": null
+        },
+        {
+          "id": "4251",
+          "name": "Paul George",
+          "position": "F",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4066354",
+          "name": "Payton Pritchard",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4397251",
+          "name": "Ron Harper Jr.",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4065804",
+          "name": "Sam Hauser",
+          "position": "F",
+          "jersey": "30",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "CHA",
+      "espnId": "30",
+      "name": "Charlotte Hornets",
+      "retrievedAt": "2026-11-21T07:47:19.308Z",
+      "providerTimestamp": "2026-11-21T07:47:16Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4433287",
+          "name": "Brandon Miller",
+          "position": "F",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "5060701",
+          "name": "Christian Anderson",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4395651",
+          "name": "Coby White",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3032979",
+          "name": "Dennis Schroder",
+          "position": "G",
+          "jersey": "17",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-08T22:26Z",
+            "comment": "Schroder has been diagnosed with a left hamstring strain and will be reevaluated in two weeks, Michael Scotto of HoopsHype.com reports."
+          }
+        },
+        {
+          "id": "4066218",
+          "name": "Grant Williams",
+          "position": "F",
+          "jersey": "2",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T22:21Z",
+            "comment": "Williams (hamstring) is listed as out for Friday's game versus the Hawks."
+          }
+        },
+        {
+          "id": "3135045",
+          "name": "Grayson Allen",
+          "position": "G",
+          "jersey": "8",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T22:02Z",
+            "comment": "Allen (concussion) has been ruled out for Friday's game against Atlanta."
+          }
+        },
+        {
+          "id": "5281370",
+          "name": "Hannes Steinbach",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "5061575",
+          "name": "Kon Knueppel",
+          "position": "G",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-08T22:31Z",
+            "comment": "Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks."
+          }
+        },
+        {
+          "id": "4684269",
+          "name": "Kylan Boswell",
+          "position": "G",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "5239590",
+          "name": "Liam McNeeley",
+          "position": "G",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "5176517",
+          "name": "Michael Ajayi",
+          "position": "F",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4433249",
+          "name": "Moussa Diabate",
+          "position": "F",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4396971",
+          "name": "Naz Reid",
+          "position": "C",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4701225",
+          "name": "PJ Hall",
+          "position": "C",
+          "jersey": "16",
+          "report": null
+        },
+        {
+          "id": "2583632",
+          "name": "Royce O'Neale",
+          "position": "F",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4576060",
+          "name": "Ryan Kalkbrenner",
+          "position": "C",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4602025",
+          "name": "Sion James",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "5211176",
+          "name": "Tidjane Salaun",
+          "position": "F",
+          "jersey": "31",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "CHI",
+      "espnId": "4",
+      "name": "Chicago Bulls",
+      "retrievedAt": "2026-11-21T07:47:19.295Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "2990984",
+          "name": "Buddy Hield",
+          "position": "G",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "5095151",
+          "name": "Caleb Wilson",
+          "position": "F",
+          "jersey": "8",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-12T21:35Z",
+            "comment": "Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4848625",
+          "name": "Dailyn Swain",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4432822",
+          "name": "Isaac Okoro",
+          "position": "F",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "4397189",
+          "name": "Jalen Smith",
+          "position": "F",
+          "jersey": "25",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:19Z",
+            "comment": "Smith (illness) is out for Friday's game against the Wizards, Joel Lorenzi of The Athletic reports."
+          }
+        },
+        {
+          "id": "4898010",
+          "name": "Jaylin Sellers",
+          "position": "G",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4683750",
+          "name": "Jordan Hawkins",
+          "position": "G",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "4871145",
+          "name": "Josh Giddey",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "5044385",
+          "name": "Leonard Miller",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4711294",
+          "name": "Matas Buzelis",
+          "position": "F",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4278067",
+          "name": "Nic Claxton",
+          "position": "C",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "5242496",
+          "name": "Noa Essengue",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "2595516",
+          "name": "Norman Powell",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4593049",
+          "name": "Orlando Robinson",
+          "position": "C",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4431687",
+          "name": "Patrick Williams",
+          "position": "F",
+          "jersey": "44",
+          "report": null
+        },
+        {
+          "id": "5105555",
+          "name": "Tobe Awaka",
+          "position": "F",
+          "jersey": "19",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T20:53Z",
+            "comment": "Awaka (back) has been ruled out for Wednesday's game against the Nets."
+          }
+        },
+        {
+          "id": "4395626",
+          "name": "Tre Jones",
+          "position": "G",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4066650",
+          "name": "Zach Collins",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "CLE",
+      "espnId": "5",
+      "name": "Cleveland Cavaliers",
+      "retrievedAt": "2026-11-21T07:47:19.316Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4701233",
+          "name": "Craig Porter Jr.",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "3908809",
+          "name": "Donovan Mitchell",
+          "position": "G",
+          "jersey": "45",
+          "report": null
+        },
+        {
+          "id": "5106261",
+          "name": "Ernest Udeh Jr.",
+          "position": "C",
+          "jersey": "88",
+          "report": null
+        },
+        {
+          "id": "4432158",
+          "name": "Evan Mobley",
+          "position": "C",
+          "jersey": "4",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-16T22:06Z",
+            "comment": "Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7-to-10 days."
+          }
+        },
+        {
+          "id": "3992",
+          "name": "James Harden",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4066328",
+          "name": "Jarrett Allen",
+          "position": "C",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "4683747",
+          "name": "Jaylon Tyson",
+          "position": "G",
+          "jersey": "20",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:55Z",
+            "comment": "Tyson (ankle) has been ruled out for Friday's game against Indiana."
+          }
+        },
+        {
+          "id": "4997530",
+          "name": "Khalifa Diop",
+          "position": "C",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "2995706",
+          "name": "Mario Hezonja",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "5041951",
+          "name": "Meleek Thomas",
+          "position": "G",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "5106268",
+          "name": "Nae'Qwan Tomlin",
+          "position": "F",
+          "jersey": "35",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T22:18Z",
+            "comment": "Tomlin (back) will remain on the inactive list for Wednesday's game against the Grizzlies."
+          }
+        },
+        {
+          "id": "4702134",
+          "name": "Norchad Omier",
+          "position": "C",
+          "jersey": "77",
+          "report": null
+        },
+        {
+          "id": "4576087",
+          "name": "Peyton Watson",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "5177362",
+          "name": "Riley Minix",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4066757",
+          "name": "Sam Merrill",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "3934723",
+          "name": "Thomas Bryant",
+          "position": "C",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "5023693",
+          "name": "Tyrese Proctor",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4702099",
+          "name": "Zack Austin",
+          "position": "G",
+          "jersey": "55",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "DAL",
+      "espnId": "6",
+      "name": "Dallas Mavericks",
+      "retrievedAt": "2026-11-21T07:47:19.340Z",
+      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "3138160",
+          "name": "Caleb Martin",
+          "position": "F",
+          "jersey": "16",
+          "report": null
+        },
+        {
+          "id": "5041939",
+          "name": "Cooper Flagg",
+          "position": "F",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "4278049",
+          "name": "Daniel Gafford",
+          "position": "F",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4683688",
+          "name": "Dereck Lively II",
+          "position": "C",
+          "jersey": "2",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T19:31Z",
+            "comment": "Head coach Dusty May said Friday that Lively (foot) is moving well and progressing in his recovery, and the big man told May he's \"close\" to returning, Mike Curtis of The Dallas Morning News reports."
+          }
+        },
+        {
+          "id": "5105806",
+          "name": "Jett Howard",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "6442",
+          "name": "Kyrie Irving",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4432107",
+          "name": "Marcus Sasser",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4432582",
+          "name": "Max Christie",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4873153",
+          "name": "Morez Johnson Jr.",
+          "position": "F",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4701208",
+          "name": "Moussa Cisse",
+          "position": "C",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4278594",
+          "name": "Naji Marshall",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4278078",
+          "name": "P.J. Washington",
+          "position": "F",
+          "jersey": "25",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T22:40Z",
+            "comment": "Washington (shoulder) is listed as questionable for Saturday's game versus the Clippers."
+          }
+        },
+        {
+          "id": "4593125",
+          "name": "Santi Aldama",
+          "position": "F",
+          "jersey": "34",
+          "report": null
+        },
+        {
+          "id": "5279129",
+          "name": "Sergio de Larrea",
+          "position": "F",
+          "jersey": "55",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T22:53Z",
+            "comment": "De Larrea (knee) is listed as out for Wednesday's game against the Warriors."
+          }
+        },
+        {
+          "id": "5148538",
+          "name": "Tarik Biberovic",
+          "position": "F",
+          "jersey": "13",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T22:42Z",
+            "comment": "Biberovic (heel) is out for Wednesday's game against the Warriors."
+          }
+        },
+        {
+          "id": "5106040",
+          "name": "Tobi Lawal",
+          "position": "F",
+          "jersey": "33",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-19T14:51Z",
+            "comment": "Lawal is out for Wednesday's game against the Warriors due to tightness in his right groin."
+          }
+        },
+        {
+          "id": "4896372",
+          "name": "Walter Clayton Jr.",
+          "position": "G",
+          "jersey": "1",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T22:35Z",
+            "comment": "Clayton (knee) is questionable for Saturday's game against the Clippers."
+          }
+        },
+        {
+          "id": "5211175",
+          "name": "Zaccharie Risacher",
+          "position": "F",
+          "jersey": "10",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "DEN",
+      "espnId": "7",
+      "name": "Denver Nuggets",
+      "retrievedAt": "2026-11-21T07:47:19.353Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "3064290",
+          "name": "Aaron Gordon",
+          "position": "F",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "4065813",
+          "name": "Alpha Diallo",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4565698",
+          "name": "Bryce Hopkins",
+          "position": "F",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "5105592",
+          "name": "Cam Whitmore",
+          "position": "F",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "3138196",
+          "name": "Cameron Johnson",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4431767",
+          "name": "Christian Braun",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4433607",
+          "name": "DaRon Holmes II",
+          "position": "F",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "3978",
+          "name": "DeMar DeRozan",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "3936299",
+          "name": "Jamal Murray",
+          "position": "G",
+          "jersey": "27",
+          "report": null
+        },
+        {
+          "id": "4432181",
+          "name": "Julian Strawther",
+          "position": "G",
+          "jersey": "1",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-17T00:52Z",
+            "comment": "Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports."
+          }
+        },
+        {
+          "id": "4277848",
+          "name": "Marvin Bagley III",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3112335",
+          "name": "Nikola Jokic",
+          "position": "C",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "4433629",
+          "name": "Ryan Nembhard",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "4592427",
+          "name": "Spencer Jones",
+          "position": "F",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4698719",
+          "name": "Trevon Brazile",
+          "position": "F",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "3135046",
+          "name": "Tyus Jones",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4431690",
+          "name": "Zeke Nnaji",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "DET",
+      "espnId": "8",
+      "name": "Detroit Pistons",
+      "retrievedAt": "2026-11-21T07:47:19.355Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4684742",
+          "name": "Ausar Thompson",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "4432166",
+          "name": "Cade Cunningham",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4700852",
+          "name": "Chaz Lanier",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "5107199",
+          "name": "Daniss Jenkins",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "3157465",
+          "name": "Duncan Robinson",
+          "position": "F",
+          "jersey": "55",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T16:25Z",
+            "comment": "Robinson will be re-evaluated in one week due to a left quadriceps strain, Coty M. Davis of The Detroit News reports."
+          }
+        },
+        {
+          "id": "5258459",
+          "name": "Ebuka Okorie",
+          "position": "G",
+          "jersey": "23",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:43Z",
+            "comment": "Okorie (oblique) has been ruled out for Friday's game against Toronto."
+          }
+        },
+        {
+          "id": "4397449",
+          "name": "Elijah Harkless",
+          "position": "G",
+          "jersey": "94",
+          "report": null
+        },
+        {
+          "id": "5107818",
+          "name": "Isaac Jones",
+          "position": "C",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4395702",
+          "name": "Isaiah Joe",
+          "position": "G",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "4433621",
+          "name": "Jalen Duren",
+          "position": "C",
+          "jersey": "0",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-08T16:05Z",
+            "comment": "Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports."
+          }
+        },
+        {
+          "id": "2596112",
+          "name": "Javonte Green",
+          "position": "G",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "3908845",
+          "name": "John Collins",
+          "position": "F",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "4066372",
+          "name": "Kevin Huerter",
+          "position": "G",
+          "jersey": "27",
+          "report": null
+        },
+        {
+          "id": "4278562",
+          "name": "Paul Reed",
+          "position": "F",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "4683771",
+          "name": "Ronald Holland II",
+          "position": "F",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T00:34Z",
+            "comment": "Holland (knee) is listed as out for Friday's game against Toronto."
+          }
+        },
+        {
+          "id": "2990962",
+          "name": "Taurean Prince",
+          "position": "F",
+          "jersey": "12",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:02Z",
+            "comment": "Prince (knee) underwent surgery to address lingering issues and has no timeline for a return, Hunter Patterson of The Athletic reports."
+          }
+        },
+        {
+          "id": "4397882",
+          "name": "Tolu Smith",
+          "position": "F",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "5037878",
+          "name": "Ugonna Onyenso",
+          "position": "C",
+          "jersey": "34",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-19T16:15Z",
+            "comment": "Onyenso agreed to a two-way contract with the Pistons on Thursday."
+          }
+        }
+      ]
+    },
+    {
+      "code": "GSW",
+      "espnId": "9",
+      "name": "Golden State Warriors",
+      "retrievedAt": "2026-11-21T07:47:19.359Z",
+      "providerTimestamp": "2026-11-21T07:47:16Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "3213",
+          "name": "Al Horford",
+          "position": "C",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "4709138",
+          "name": "Brandin Podziemski",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4397040",
+          "name": "Brandon Williams",
+          "position": "G",
+          "jersey": "12",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-18T17:12Z",
+            "comment": "Williams (hamstring) has progressed to on-court activities and will be re-evaluated Saturday."
+          }
+        },
+        {
+          "id": "4397886",
+          "name": "Charles Bassey",
+          "position": "C",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "4066436",
+          "name": "De'Anthony Melton",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "6589",
+          "name": "Draymond Green",
+          "position": "F",
+          "jersey": "23",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T03:53Z",
+            "comment": "Green (elbow) is out for Thursday's game against the Grizzlies."
+          }
+        },
+        {
+          "id": "3134903",
+          "name": "Gary Payton II",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "2990969",
+          "name": "Georges Niang",
+          "position": "F",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "4703396",
+          "name": "Graham Ike",
+          "position": "F",
+          "jersey": "45",
+          "report": null
+        },
+        {
+          "id": "4997536",
+          "name": "Gui Santos",
+          "position": "F",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "6430",
+          "name": "Jimmy Butler III",
+          "position": "F",
+          "jersey": "10",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-16T16:11Z",
+            "comment": "Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports."
+          }
+        },
+        {
+          "id": "3102531",
+          "name": "Kristaps Porzingis",
+          "position": "C",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-06T21:26Z",
+            "comment": "Porzingis announced on his social media that he's stepping away from basketball."
+          }
+        },
+        {
+          "id": "4433149",
+          "name": "LJ Cryer",
+          "position": "G",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4897449",
+          "name": "Malevy Leons",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "4432171",
+          "name": "Moses Moody",
+          "position": "G",
+          "jersey": "4",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-16T16:14Z",
+            "comment": "Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN reports."
+          }
+        },
+        {
+          "id": "3975",
+          "name": "Stephen Curry",
+          "position": "G",
+          "jersey": "30",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-12T17:03Z",
+            "comment": "Curry has been diagnosed with an oblique abdominal tear and will be re-evaluated in two weeks, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4897262",
+          "name": "Will Richard",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "5175737",
+          "name": "Yaxel Lendeborg",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "HOU",
+      "espnId": "10",
+      "name": "Houston Rockets",
+      "retrievedAt": "2026-11-21T07:47:19.350Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4871144",
+          "name": "Alperen Sengun",
+          "position": "C",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "4684740",
+          "name": "Amen Thompson",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "3037789",
+          "name": "Bogdan Bogdanovic",
+          "position": "G",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "5105837",
+          "name": "Bruce Thornton",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "3102529",
+          "name": "Clint Capela",
+          "position": "C",
+          "jersey": "30",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T23:19Z",
+            "comment": "Capela (ankle) is out for Friday's game against Denver."
+          }
+        },
+        {
+          "id": "2991230",
+          "name": "Fred VanVleet",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4592857",
+          "name": "Isaiah Crawford",
+          "position": "F",
+          "jersey": "27",
+          "report": null
+        },
+        {
+          "id": "4432639",
+          "name": "Jabari Smith Jr.",
+          "position": "F",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "3136777",
+          "name": "Jae'Sean Tate",
+          "position": "F",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "5105553",
+          "name": "Julian Phillips",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3202",
+          "name": "Kevin Durant",
+          "position": "F",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "2990992",
+          "name": "Marcus Smart",
+          "position": "G",
+          "jersey": "36",
+          "report": null
+        },
+        {
+          "id": "4432827",
+          "name": "Oscar Tshiebwe",
+          "position": "C",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "4683860",
+          "name": "Quadir Copeland",
+          "position": "G",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "4711272",
+          "name": "Reed Sheppard",
+          "position": "G",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "2991235",
+          "name": "Steven Adams",
+          "position": "C",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4433192",
+          "name": "Tari Eason",
+          "position": "F",
+          "jersey": "17",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "IND",
+      "espnId": "11",
+      "name": "Indiana Pacers",
+      "retrievedAt": "2026-11-21T07:47:19.352Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4396909",
+          "name": "Aaron Nesmith",
+          "position": "G",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4395712",
+          "name": "Andrew Nembhard",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4433076",
+          "name": "Ben Sheppard",
+          "position": "G",
+          "jersey": "26",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-28T21:41Z",
+            "comment": "Head coach Rick Carlise confirmed Sheppard will miss \"months\" after undergoing surgery to repair a torn meniscus in his left knee, Tony East of Forbes.com reports."
+          }
+        },
+        {
+          "id": "5105854",
+          "name": "Braden Smith",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4017837",
+          "name": "Ivica Zubac",
+          "position": "C",
+          "jersey": "40",
+          "report": null
+        },
+        {
+          "id": "4398207",
+          "name": "Jalen Slawson",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "5106060",
+          "name": "Jarace Walker",
+          "position": "F",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4065731",
+          "name": "Jay Huff",
+          "position": "C",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "5157066",
+          "name": "Johnny Furphy",
+          "position": "G",
+          "jersey": "12",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-30T19:06Z",
+            "comment": "Furphy (knee) is practicing with the G League's Noblesville Boom, per Alex Golden of SI.com."
+          }
+        },
+        {
+          "id": "3133603",
+          "name": "Kelly Oubre Jr.",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4431752",
+          "name": "Kobe Brown",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "2580365",
+          "name": "Larry Nance Jr.",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4278355",
+          "name": "Obi Toppin",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "3149673",
+          "name": "Pascal Siakam",
+          "position": "F",
+          "jersey": "43",
+          "report": null
+        },
+        {
+          "id": "4592829",
+          "name": "Quenton Jackson",
+          "position": "G",
+          "jersey": "29",
+          "report": null
+        },
+        {
+          "id": "2530530",
+          "name": "T.J. McConnell",
+          "position": "G",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T04:58Z",
+            "comment": "Rick Carlisle revealed during his postgame interview that McConnell exited Friday's 128-119 loss with a left hamstring issue, Tony East of Forbes.com reports."
+          }
+        },
+        {
+          "id": "4396993",
+          "name": "Tyrese Haliburton",
+          "position": "G",
+          "jersey": "0",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T20:41Z",
+            "comment": "Haliburton (hamstring) is expected to miss at least two more weeks, Shams Charania of ESPN reports."
+          }
+        }
+      ]
+    },
+    {
+      "code": "LAC",
+      "espnId": "12",
+      "name": "LA Clippers",
+      "retrievedAt": "2026-11-21T07:47:19.386Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5075626",
+          "name": "Baba Miller",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4683935",
+          "name": "Blake Wesley",
+          "position": "G",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "6580",
+          "name": "Bradley Beal",
+          "position": "G",
+          "jersey": "3",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-15T01:03Z",
+            "comment": "Beal (knee) will not be ready for the start of the regular season, NBA writer Justin Russo reports."
+          }
+        },
+        {
+          "id": "3913176",
+          "name": "Brandon Ingram",
+          "position": "F",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T20:20Z",
+            "comment": "Ingram (Achilles) is expected to make his season and team debut Monday against the Rockets, per Shams Charania of ESPN."
+          }
+        },
+        {
+          "id": "3448",
+          "name": "Brook Lopez",
+          "position": "C",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4845363",
+          "name": "Cam Christie",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4396907",
+          "name": "Darius Garland",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "3936099",
+          "name": "Derrick Jones Jr.",
+          "position": "F",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "5106258",
+          "name": "Gradey Dick",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "4432170",
+          "name": "Isaiah Jackson",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4398390",
+          "name": "Jalen Pickett",
+          "position": "G",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4396818",
+          "name": "Jordan Miller",
+          "position": "G",
+          "jersey": "22",
+          "report": {
+            "status": "Out",
+            "date": "2026-08-26T20:04Z",
+            "comment": "Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic."
+          }
+        },
+        {
+          "id": "5254165",
+          "name": "Keaton Wagler",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4702352",
+          "name": "Kobe Sanders",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "2991139",
+          "name": "Kris Dunn",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4065778",
+          "name": "Max Strus",
+          "position": "G",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "5105832",
+          "name": "Nick Martinelli",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4066648",
+          "name": "Rui Hachimura",
+          "position": "F",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "5108024",
+          "name": "Yanic Konan Niederhauser",
+          "position": "C",
+          "jersey": "14",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "LAL",
+      "espnId": "13",
+      "name": "Los Angeles Lakers",
+      "retrievedAt": "2026-11-21T07:47:19.384Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5060631",
+          "name": "Adou Thiero",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "5114350",
+          "name": "AK Okereke",
+          "position": "F",
+          "jersey": "31",
+          "report": null
+        },
+        {
+          "id": "4433599",
+          "name": "Arthur Kaluma",
+          "position": "F",
+          "jersey": "47",
+          "report": null
+        },
+        {
+          "id": "4066457",
+          "name": "Austin Reaves",
+          "position": "G",
+          "jersey": "15",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T01:26Z",
+            "comment": "Head coach JJ Redick said he expects Reaves (heel) to return for Monday's matchup with Utah or Friday's game in San Antonio, Mark Medina of TheSportingTribune.com reports."
+          }
+        },
+        {
+          "id": "4683774",
+          "name": "Bronny James",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "5113969",
+          "name": "Cameron Carr",
+          "position": "G",
+          "jersey": "43",
+          "report": null
+        },
+        {
+          "id": "5105817",
+          "name": "Carson Cooper",
+          "position": "C",
+          "jersey": "",
+          "report": null
+        },
+        {
+          "id": "4702972",
+          "name": "Chris Manon",
+          "position": "G",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4277811",
+          "name": "Collin Sexton",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4868423",
+          "name": "Jaden Hardy",
+          "position": "G",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "4592691",
+          "name": "Jake LaRavia",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4278077",
+          "name": "Jarred Vanderbilt",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "3155535",
+          "name": "Kevon Looney",
+          "position": "F",
+          "jersey": "55",
+          "report": null
+        },
+        {
+          "id": "3945274",
+          "name": "Luka Doncic",
+          "position": "G",
+          "jersey": "77",
+          "report": null
+        },
+        {
+          "id": "3907498",
+          "name": "Matisse Thybulle",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4397014",
+          "name": "Quentin Grimes",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4278580",
+          "name": "Sandro Mamukelashvili",
+          "position": "F",
+          "jersey": "54",
+          "report": null
+        },
+        {
+          "id": "4433136",
+          "name": "Walker Kessler",
+          "position": "C",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4433137",
+          "name": "Ziaire Williams",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "MEM",
+      "espnId": "29",
+      "name": "Memphis Grizzlies",
+      "retrievedAt": "2026-11-21T07:47:19.669Z",
+      "providerTimestamp": "2026-11-21T07:47:18Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4433083",
+          "name": "Cam Spencer",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "5041935",
+          "name": "Cameron Boozer",
+          "position": "F",
+          "jersey": "27",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:12Z",
+            "comment": "Boozer is out for Saturday's game against Minnesota due to a right ankle sprain."
+          }
+        },
+        {
+          "id": "4903027",
+          "name": "Cedric Coward",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "5105550",
+          "name": "GG Jackson",
+          "position": "F",
+          "jersey": "45",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-17T23:18Z",
+            "comment": "Jackson underwent a procedure Wednesday to repair a broken fifth metatarsal in his left foot. He is expected to recover fully and will be re-evaluated in approximately three months."
+          }
+        },
+        {
+          "id": "4432810",
+          "name": "Isaiah Stewart",
+          "position": "C",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "4683934",
+          "name": "Jahmai Mashack",
+          "position": "G",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4781746",
+          "name": "Javon Small",
+          "position": "G",
+          "jersey": "10",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:14Z",
+            "comment": "Small won't play Saturday against the Timberwolves due to personal reasons."
+          }
+        },
+        {
+          "id": "5112087",
+          "name": "Jaylen Wells",
+          "position": "F",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "2991070",
+          "name": "Jerami Grant",
+          "position": "F",
+          "jersey": "3",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T02:08Z",
+            "comment": "Grant won't return to Thursday's game against the Warriors due to a left calf injury. He'll finish with three points (1-2 FG, 1-1 3Pt) across five minutes."
+          }
+        },
+        {
+          "id": "5231919",
+          "name": "Karim Lopez",
+          "position": "F",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "4594326",
+          "name": "Kris Murray",
+          "position": "F",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "4595400",
+          "name": "Olivier-Maxence Prosper",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4593016",
+          "name": "Quinten Post",
+          "position": "C",
+          "jersey": "41",
+          "report": null
+        },
+        {
+          "id": "5105462",
+          "name": "Richie Saunders",
+          "position": "G",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-07T17:24Z",
+            "comment": "Saunders signed a two-way contract with the Grizzlies on Saturday, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4431785",
+          "name": "Scotty Pippen Jr.",
+          "position": "G",
+          "jersey": "1",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-16T17:16Z",
+            "comment": "Pippen (back) is progressing in his recovery but is still considered week-to-week."
+          }
+        },
+        {
+          "id": "4684806",
+          "name": "Taylor Hendricks",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4065733",
+          "name": "Ty Jerome",
+          "position": "G",
+          "jersey": "2",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:11Z",
+            "comment": "Jerome (hip) is probable for Saturday's game in Minnesota."
+          }
+        },
+        {
+          "id": "4600663",
+          "name": "Zach Edey",
+          "position": "C",
+          "jersey": "14",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "MIA",
+      "espnId": "14",
+      "name": "Miami Heat",
+      "retrievedAt": "2026-11-21T07:47:19.394Z",
+      "providerTimestamp": "2026-11-21T07:47:14Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "3059319",
+          "name": "Andrew Wiggins",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4066261",
+          "name": "Bam Adebayo",
+          "position": "C",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "3064482",
+          "name": "Bobby Portis",
+          "position": "F",
+          "jersey": "95",
+          "report": null
+        },
+        {
+          "id": "4278053",
+          "name": "Davion Mitchell",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4066993",
+          "name": "Dru Smith",
+          "position": "G",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "3032977",
+          "name": "Giannis Antetokounmpo",
+          "position": "F",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "4431786",
+          "name": "Keshad Johnson",
+          "position": "F",
+          "jersey": "16",
+          "report": null
+        },
+        {
+          "id": "6475",
+          "name": "Klay Thompson",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4431772",
+          "name": "Myron Gardner",
+          "position": "F",
+          "jersey": "15",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-19T14:45Z",
+            "comment": "Gardner (hamstring) is out for Wednesday's game against the Bucks."
+          }
+        },
+        {
+          "id": "4278076",
+          "name": "Nick Richards",
+          "position": "C",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4997528",
+          "name": "Nikola Jovic",
+          "position": "F",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4601025",
+          "name": "Pelle Larsson",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "5107157",
+          "name": "Ryan Conwell",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "3899664",
+          "name": "Simone Fontecchio",
+          "position": "F",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "2528210",
+          "name": "Tim Hardaway Jr.",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4837356",
+          "name": "Tre Donaldson",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4700818",
+          "name": "Vladislav Goldin",
+          "position": "C",
+          "jersey": "50",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "MIL",
+      "espnId": "15",
+      "name": "Milwaukee Bucks",
+      "retrievedAt": "2026-11-21T07:47:19.397Z",
+      "providerTimestamp": "2026-11-21T07:47:04Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4397475",
+          "name": "AJ Green",
+          "position": "G",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "5214989",
+          "name": "Bogoljub Markovic",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "5082206",
+          "name": "Brayden Burries",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "2991043",
+          "name": "Caris LeVert",
+          "position": "G",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4397114",
+          "name": "Cormac Ryan",
+          "position": "G",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4277843",
+          "name": "Gary Trent Jr.",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4432848",
+          "name": "Jaime Jaquez Jr.",
+          "position": "F",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4277922",
+          "name": "Jericho Sims",
+          "position": "C",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4697268",
+          "name": "Kam Jones",
+          "position": "G",
+          "jersey": "19",
+          "report": null
+        },
+        {
+          "id": "5214640",
+          "name": "Kasparas Jakucionis",
+          "position": "G",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "5105623",
+          "name": "Kel'el Ware",
+          "position": "C",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "3134907",
+          "name": "Kyle Kuzma",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "3133628",
+          "name": "Myles Turner",
+          "position": "C",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "5164559",
+          "name": "Nate Ament",
+          "position": "F",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "4997526",
+          "name": "Ousmane Dieng",
+          "position": "F",
+          "jersey": "21",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-15T23:46Z",
+            "comment": "Dieng will undergo a procedure to repair a fractured left finger Monday, Justin Garcia of the Milwaukee Bucks Radio Network reports."
+          }
+        },
+        {
+          "id": "4397233",
+          "name": "Pete Nance",
+          "position": "F",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "4591725",
+          "name": "Ryan Rollins",
+          "position": "G",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4395725",
+          "name": "Tyler Herro",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "MIN",
+      "espnId": "16",
+      "name": "Minnesota Timberwolves",
+      "retrievedAt": "2026-11-21T07:47:19.409Z",
+      "providerTimestamp": "2026-11-21T07:47:18Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4594268",
+          "name": "Anthony Edwards",
+          "position": "G",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-29T18:33Z",
+            "comment": "Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced."
+          }
+        },
+        {
+          "id": "4397002",
+          "name": "Ayo Dosunmu",
+          "position": "G",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4592492",
+          "name": "Bones Hyland",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4895758",
+          "name": "Cody Williams",
+          "position": "F",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "3934673",
+          "name": "Donte DiVincenzo",
+          "position": "G",
+          "jersey": "0",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-05T20:53Z",
+            "comment": "DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports."
+          }
+        },
+        {
+          "id": "5061585",
+          "name": "Isaiah Evans",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "4431671",
+          "name": "Jaden McDaniels",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4432247",
+          "name": "Jaylen Clark",
+          "position": "G",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-15T22:40Z",
+            "comment": "Clark (hamstring) has been ruled out for the next two weeks."
+          }
+        },
+        {
+          "id": "5279133",
+          "name": "Joan Beringer",
+          "position": "F",
+          "jersey": "19",
+          "report": null
+        },
+        {
+          "id": "4433569",
+          "name": "Johni Broome",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4433247",
+          "name": "Jonathan Kuminga",
+          "position": "F",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4432816",
+          "name": "LaMelo Ball",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "5157587",
+          "name": "Rocco Zikarsky",
+          "position": "C",
+          "jersey": "44",
+          "report": null
+        },
+        {
+          "id": "3032976",
+          "name": "Rudy Gobert",
+          "position": "C",
+          "jersey": "27",
+          "report": null
+        },
+        {
+          "id": "4432847",
+          "name": "Terrence Shannon Jr.",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "3136196",
+          "name": "Trey Lyles",
+          "position": "F",
+          "jersey": "41",
+          "report": null
+        },
+        {
+          "id": "4592979",
+          "name": "Zyon Pullin",
+          "position": "G",
+          "jersey": "15",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "NOP",
+      "espnId": "3",
+      "name": "New Orleans Pelicans",
+      "retrievedAt": "2026-11-21T07:47:19.700Z",
+      "providerTimestamp": "2026-11-21T07:47:05Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5170947",
+          "name": "AJ Johnson",
+          "position": "G",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4683634",
+          "name": "Bennedict Mathurin",
+          "position": "G",
+          "jersey": "24",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:07Z",
+            "comment": "Mathurin (foot) has been ruled out for Friday's game against the Thunder."
+          }
+        },
+        {
+          "id": "4576086",
+          "name": "Bryce McGowens",
+          "position": "G",
+          "jersey": "11",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:15Z",
+            "comment": "McGowens (elbow) has been ruled out for Friday's game against the Thunder."
+          }
+        },
+        {
+          "id": "3442",
+          "name": "DeAndre Jordan",
+          "position": "C",
+          "jersey": "6",
+          "report": null
+        },
+        {
+          "id": "3907497",
+          "name": "Dejounte Murray",
+          "position": "G",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-13T20:19Z",
+            "comment": "Murray (ankle) is out for Friday's game against Memphis."
+          }
+        },
+        {
+          "id": "4869780",
+          "name": "Derik Queen",
+          "position": "C",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4277813",
+          "name": "Herbert Jones",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4703115",
+          "name": "Jaron Pierre Jr.",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "5144091",
+          "name": "Jeremiah Fears",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4277956",
+          "name": "Jordan Poole",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4683742",
+          "name": "Julian Reese",
+          "position": "F",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4997538",
+          "name": "Karlo Matkovic",
+          "position": "F",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "4712862",
+          "name": "Malik Dia",
+          "position": "F",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4397136",
+          "name": "Saddiq Bey",
+          "position": "F",
+          "jersey": "41",
+          "report": null
+        },
+        {
+          "id": "4431675",
+          "name": "Trendon Watford",
+          "position": "F",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:09Z",
+            "comment": "Watford (ankle) has been ruled out for Friday's game against Oklahoma City."
+          }
+        },
+        {
+          "id": "4397688",
+          "name": "Trey Murphy III",
+          "position": "F",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "5061589",
+          "name": "Yves Missi",
+          "position": "C",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4395628",
+          "name": "Zion Williamson",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "NYK",
+      "espnId": "18",
+      "name": "New York Knicks",
+      "retrievedAt": "2026-11-21T07:47:19.704Z",
+      "providerTimestamp": "2026-11-21T07:47:05Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "6585",
+          "name": "Andre Drummond",
+          "position": "C",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4897943",
+          "name": "Dalton Knecht",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4683730",
+          "name": "Jaden Akins",
+          "position": "G",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "3934672",
+          "name": "Jalen Brunson",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4432808",
+          "name": "James Wiseman",
+          "position": "C",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "2528426",
+          "name": "Jordan Clarkson",
+          "position": "G",
+          "jersey": "00",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:21Z",
+            "comment": "Clarkson (foot) won't play in Saturday's game against Portland."
+          }
+        },
+        {
+          "id": "4277869",
+          "name": "Jose Alvarado",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "3062679",
+          "name": "Josh Hart",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3136195",
+          "name": "Karl-Anthony Towns",
+          "position": "C",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "3914044",
+          "name": "Landry Shamet",
+          "position": "G",
+          "jersey": "44",
+          "report": null
+        },
+        {
+          "id": "3147657",
+          "name": "Mikal Bridges",
+          "position": "G",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "4431823",
+          "name": "Miles McBride",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "5289900",
+          "name": "Mohamed Diawara",
+          "position": "F",
+          "jersey": "51",
+          "report": null
+        },
+        {
+          "id": "3934719",
+          "name": "OG Anunoby",
+          "position": "F",
+          "jersey": "8",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T22:10Z",
+            "comment": "Anunoby (calf) is questionable for Saturday's game against Portland."
+          }
+        },
+        {
+          "id": "5211983",
+          "name": "Pacome Dadiet",
+          "position": "F",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4433225",
+          "name": "Tyler Kolek",
+          "position": "G",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4838721",
+          "name": "Tyler Nickel",
+          "position": "F",
+          "jersey": "55",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "OKC",
+      "espnId": "25",
+      "name": "Oklahoma City Thunder",
+      "retrievedAt": "2026-11-21T07:47:19.703Z",
+      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5174983",
+          "name": "Aday Mara",
+          "position": "C",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "4900671",
+          "name": "Ajay Mitchell",
+          "position": "G",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "2991350",
+          "name": "Alex Caruso",
+          "position": "G",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T23:24Z",
+            "comment": "Caruso (hip) is listed as out for Friday's game against the Pelicans."
+          }
+        },
+        {
+          "id": "5241364",
+          "name": "Bennett Stirtz",
+          "position": "G",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4684208",
+          "name": "Brooks Barnhizer",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4683692",
+          "name": "Cason Wallace",
+          "position": "G",
+          "jersey": "22",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-31T01:16Z",
+            "comment": "Wallace underwent surgery Friday to repair a torn labrum in his left shoulder and will be re-evaluated before the end of the regular season, Clemente Almanza of USA Today reports."
+          }
+        },
+        {
+          "id": "4433255",
+          "name": "Chet Holmgren",
+          "position": "C",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-31T01:02Z",
+            "comment": "Holmgren underwent a biological treatment Friday to address a small patellar tendon tear and will miss at least 8-10 weeks, Nick Crain of Slam reports."
+          }
+        },
+        {
+          "id": "4222252",
+          "name": "Isaiah Hartenstein",
+          "position": "C",
+          "jersey": "55",
+          "report": null
+        },
+        {
+          "id": "4593803",
+          "name": "Jalen Williams",
+          "position": "G",
+          "jersey": "8",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-28T23:41Z",
+            "comment": "Williams (leg) underwent successful surgery Wednesday to \"address a fractured left fibula and reconstruction of ankle ligaments following a fracture and dislocation.\" He will be re-evaluated before the end of the regular season, Tim MacMahon of ESPN.com reports."
+          }
+        },
+        {
+          "id": "4683778",
+          "name": "Jared McCain",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4432823",
+          "name": "Jaylin Williams",
+          "position": "F",
+          "jersey": "6",
+          "report": null
+        },
+        {
+          "id": "5105800",
+          "name": "Josh Dix",
+          "position": "G",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "3133626",
+          "name": "Kenrich Williams",
+          "position": "G",
+          "jersey": "34",
+          "report": null
+        },
+        {
+          "id": "4432185",
+          "name": "Micah Peavy",
+          "position": "G",
+          "jersey": "",
+          "report": null
+        },
+        {
+          "id": "5159925",
+          "name": "Nikola Topic",
+          "position": "G",
+          "jersey": "44",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T17:02Z",
+            "comment": "Topic (hip) is out for Friday's game against New Orleans."
+          }
+        },
+        {
+          "id": "4702384",
+          "name": "Nique Clifford",
+          "position": "G",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4278073",
+          "name": "Shai Gilgeous-Alexander",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "5061603",
+          "name": "Thomas Sorber",
+          "position": "C",
+          "jersey": "12",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-18T00:01Z",
+            "comment": "Sorber underwent an arthroscopic knee procedure Tuesday to address inflammation at the patellofemoral joint in his right knee, and he's expected to return to on-court activities in 6-8 weeks, Steve McGehee of News 9 Oklahoma City reports."
+          }
+        }
+      ]
+    },
+    {
+      "code": "ORL",
+      "espnId": "19",
+      "name": "Orlando Magic",
+      "retrievedAt": "2026-11-21T07:47:19.725Z",
+      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4593034",
+          "name": "Alex Morales",
+          "position": "G",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4712849",
+          "name": "Anthony Black",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4397204",
+          "name": "Colin Castleton",
+          "position": "C",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4066320",
+          "name": "Desmond Bane",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4566434",
+          "name": "Franz Wagner",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4348700",
+          "name": "Goga Bitadze",
+          "position": "C",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "5107251",
+          "name": "Izaiyah Nelson",
+          "position": "F",
+          "jersey": "25",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-18T17:25Z",
+            "comment": "Head coach Sean Sweeney said Wednesday that Nelson (ankle) has been doing \"some on-court stuff,\" though Sweeney added that the work has been \"minimal,\" Jason Beede of the Orlando Sentinel reports."
+          }
+        },
+        {
+          "id": "4432165",
+          "name": "Jalen Suggs",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4278572",
+          "name": "Jamal Cain",
+          "position": "F",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "5239561",
+          "name": "Jase Richardson",
+          "position": "G",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "3133635",
+          "name": "Jevon Carter",
+          "position": "G",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4065654",
+          "name": "Jonathan Isaac",
+          "position": "F",
+          "jersey": "1",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-15T18:22Z",
+            "comment": "Isaac (knee) has been ruled out for Monday's game against the Celtics."
+          }
+        },
+        {
+          "id": "6478",
+          "name": "Nikola Vucevic",
+          "position": "C",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "5214637",
+          "name": "Noah Penda",
+          "position": "F",
+          "jersey": "93",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-14T17:33Z",
+            "comment": "Penda (hamstring) is making progress but remains without a timetable to return to game action, Jason Beede of the Orlando Sentinel reports."
+          }
+        },
+        {
+          "id": "4432573",
+          "name": "Paolo Banchero",
+          "position": "F",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-24T16:47Z",
+            "comment": "Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4702382",
+          "name": "Tristan da Silva",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4277847",
+          "name": "Wendell Carter Jr.",
+          "position": "C",
+          "jersey": "34",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "PHI",
+      "espnId": "20",
+      "name": "Philadelphia 76ers",
+      "retrievedAt": "2026-11-21T07:47:19.702Z",
+      "providerTimestamp": "2026-11-21T07:47:17Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5105637",
+          "name": "Adem Bona",
+          "position": "C",
+          "jersey": "30",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T17:33Z",
+            "comment": "Bona (back) participated in Friday's practice, though he still needs to go through a full practice with contact before being cleared to return to game action, Adam Aaronson of PhillyVoice.com reports."
+          }
+        },
+        {
+          "id": "4351851",
+          "name": "Anfernee Simons",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4871141",
+          "name": "Ariel Hukporti",
+          "position": "C",
+          "jersey": "55",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-06T19:17Z",
+            "comment": "Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN."
+          }
+        },
+        {
+          "id": "4433144",
+          "name": "Caleb Love",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "3912848",
+          "name": "Dean Wade",
+          "position": "F",
+          "jersey": "45",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:11Z",
+            "comment": "Wade (hamstring) won't play Saturday against the Bucks."
+          }
+        },
+        {
+          "id": "4870562",
+          "name": "Dominick Barlow",
+          "position": "F",
+          "jersey": "25",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:13Z",
+            "comment": "Barlow (back) is probable for Saturday's game versus the Bucks."
+          }
+        },
+        {
+          "id": "4432446",
+          "name": "Jabari Walker",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "3917376",
+          "name": "Jaylen Brown",
+          "position": "G",
+          "jersey": "7",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T17:26Z",
+            "comment": "Brown (hamstring) went through individual work during Friday's practice, Tony Jones of The Athletic reports."
+          }
+        },
+        {
+          "id": "3059318",
+          "name": "Joel Embiid",
+          "position": "C",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "4711297",
+          "name": "Justin Edwards",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "2581018",
+          "name": "Kentavious Caldwell-Pope",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4873090",
+          "name": "Labaron Philon Jr.",
+          "position": "G",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "1966",
+          "name": "LeBron James",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "5099752",
+          "name": "Rayan Rupert",
+          "position": "G",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "3904625",
+          "name": "Tacko Fall",
+          "position": "C",
+          "jersey": "99",
+          "report": null
+        },
+        {
+          "id": "4431678",
+          "name": "Tyrese Maxey",
+          "position": "G",
+          "jersey": "0",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T22:07Z",
+            "comment": "Maxey (foot) is questionable for Saturday's game against the Bucks."
+          }
+        },
+        {
+          "id": "5124612",
+          "name": "VJ Edgecombe",
+          "position": "G",
+          "jersey": "77",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "PHX",
+      "espnId": "21",
+      "name": "Phoenix Suns",
+      "retrievedAt": "2026-11-21T07:47:19.699Z",
+      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4278585",
+          "name": "Collin Gillespie",
+          "position": "G",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "3136193",
+          "name": "Devin Booker",
+          "position": "G",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "3155526",
+          "name": "Dillon Brooks",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4431695",
+          "name": "Drew Timme",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4066268",
+          "name": "Duop Reath",
+          "position": "C",
+          "jersey": "26",
+          "report": null
+        },
+        {
+          "id": "4437244",
+          "name": "Jalen Green",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4280245",
+          "name": "Jamaree Bouyea",
+          "position": "G",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "4278402",
+          "name": "Jordan Goodwin",
+          "position": "G",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "5203685",
+          "name": "Khaman Maluach",
+          "position": "C",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "5041953",
+          "name": "Koa Peat",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "3913174",
+          "name": "Luke Kennard",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4701232",
+          "name": "Mark Williams",
+          "position": "C",
+          "jersey": "25",
+          "report": {
+            "status": "Out",
+            "date": "2026-09-11T16:03Z",
+            "comment": "Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4066383",
+          "name": "Miles Bridges",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4601023",
+          "name": "Oso Ighodaro",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4592714",
+          "name": "Pat Spencer",
+          "position": "G",
+          "jersey": "61",
+          "report": null
+        },
+        {
+          "id": "5105977",
+          "name": "Rasheer Fleming",
+          "position": "F",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "4888725",
+          "name": "Ryan Dunn",
+          "position": "F",
+          "jersey": "0",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T04:06Z",
+            "comment": "Dunn won't return to Friday's game against the Jazz due to a right quad injury, Amanda Pflugrad of 3TV Phoenix reports."
+          }
+        }
+      ]
+    },
+    {
+      "code": "POR",
+      "espnId": "22",
+      "name": "Portland Trail Blazers",
+      "retrievedAt": "2026-11-21T07:47:19.754Z",
+      "providerTimestamp": "2026-11-21T07:47:08Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4592435",
+          "name": "Branden Carlson",
+          "position": "C",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4706557",
+          "name": "Chris Youngblood",
+          "position": "G",
+          "jersey": "11",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:18Z",
+            "comment": "Youngblood (heel) has been ruled out for Saturday's game against the Knicks."
+          }
+        },
+        {
+          "id": "6606",
+          "name": "Damian Lillard",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4683021",
+          "name": "Deni Avdija",
+          "position": "F",
+          "jersey": "8",
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-20T22:08Z",
+            "comment": "Avdija (foot) is listed as questionable for Saturday's game against the Knicks."
+          }
+        },
+        {
+          "id": "5105565",
+          "name": "Donovan Clingan",
+          "position": "C",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4279888",
+          "name": "Ja Morant",
+          "position": "G",
+          "jersey": "1",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-08T02:18Z",
+            "comment": "Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declined to update Morant's timetable, he added Morant \"may not be out for as long as we thought,\" Trail Blazers Insider Sean Highkin reports."
+          }
+        },
+        {
+          "id": "4703889",
+          "name": "Jayson Kent",
+          "position": "G",
+          "jersey": "29",
+          "report": null
+        },
+        {
+          "id": "4593043",
+          "name": "John Tonje",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "3995",
+          "name": "Jrue Holiday",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4066399",
+          "name": "Micah Potter",
+          "position": "C",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "4066211",
+          "name": "Robert Williams III",
+          "position": "C",
+          "jersey": "35",
+          "report": null
+        },
+        {
+          "id": "4683678",
+          "name": "Scoot Henderson",
+          "position": "G",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4914336",
+          "name": "Shaedon Sharpe",
+          "position": "G",
+          "jersey": "17",
+          "report": {
+            "status": "Out",
+            "date": "2026-08-24T20:23Z",
+            "comment": "Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN."
+          }
+        },
+        {
+          "id": "5081727",
+          "name": "Sidy Cissoko",
+          "position": "G",
+          "jersey": "91",
+          "report": null
+        },
+        {
+          "id": "4431736",
+          "name": "Toumani Camara",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "4578893",
+          "name": "Vit Krejci",
+          "position": "G",
+          "jersey": "27",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-11T19:56Z",
+            "comment": "Krejci underwent surgery on his fractured left ankle Wednesday and will be re-evaluated in eight weeks, Brett Siegel of ClutchPoints.com reports."
+          }
+        },
+        {
+          "id": "5217746",
+          "name": "Yang Hansen",
+          "position": "C",
+          "jersey": "16",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "SAC",
+      "espnId": "23",
+      "name": "Sacramento Kings",
+      "retrievedAt": "2026-11-21T07:47:19.763Z",
+      "providerTimestamp": "2026-11-21T07:47:11Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4917149",
+          "name": "Alex Karaban",
+          "position": "F",
+          "jersey": "33",
+          "report": null
+        },
+        {
+          "id": "3907387",
+          "name": "Ben Simmons",
+          "position": "G",
+          "jersey": "25",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-21T04:22Z",
+            "comment": "Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports."
+          }
+        },
+        {
+          "id": "4279318",
+          "name": "Daeqwon Plowden",
+          "position": "G",
+          "jersey": "29",
+          "report": null
+        },
+        {
+          "id": "5142620",
+          "name": "Darius Acuff Jr.",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4065732",
+          "name": "De'Andre Hunter",
+          "position": "F",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "3155942",
+          "name": "Domantas Sabonis",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4433174",
+          "name": "Dylan Cardwell",
+          "position": "C",
+          "jersey": "32",
+          "report": null
+        },
+        {
+          "id": "5106058",
+          "name": "Emanuel Sharp",
+          "position": "G",
+          "jersey": "34",
+          "report": null
+        },
+        {
+          "id": "5107897",
+          "name": "Jonathan Mogbo",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4594327",
+          "name": "Keegan Murray",
+          "position": "F",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4395650",
+          "name": "Leaky Black",
+          "position": "F",
+          "jersey": "19",
+          "report": null
+        },
+        {
+          "id": "4066262",
+          "name": "Malik Monk",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "2488653",
+          "name": "Mason Plumlee",
+          "position": "C",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "4898371",
+          "name": "Maxime Raynaud",
+          "position": "C",
+          "jersey": "42",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-18T05:54Z",
+            "comment": "Raynaud (knee) will remain on the inactive list for Wednesday's game against the Suns."
+          }
+        },
+        {
+          "id": "4431679",
+          "name": "Precious Achiuwa",
+          "position": "F",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T21:21Z",
+            "comment": "Achiuwa (lower leg) has been ruled out for Friday's game against the Lakers."
+          }
+        },
+        {
+          "id": "4709131",
+          "name": "Sean Pedulla",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3064440",
+          "name": "Zach LaVine",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "SAS",
+      "espnId": "24",
+      "name": "San Antonio Spurs",
+      "retrievedAt": "2026-11-21T07:47:19.747Z",
+      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5061568",
+          "name": "Carter Bryant",
+          "position": "F",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4713010",
+          "name": "David Jones Garcia",
+          "position": "F",
+          "jersey": "25",
+          "report": null
+        },
+        {
+          "id": "4066259",
+          "name": "De'Aaron Fox",
+          "position": "G",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4395630",
+          "name": "Devin Vassell",
+          "position": "G",
+          "jersey": "24",
+          "report": null
+        },
+        {
+          "id": "5037871",
+          "name": "Dylan Harper",
+          "position": "G",
+          "jersey": "2",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T20:07Z",
+            "comment": "Harper (hip) is expected to miss two to three weeks, Brett Siegel of ClutchPoints.com reports."
+          }
+        },
+        {
+          "id": "6578",
+          "name": "Harrison Barnes",
+          "position": "F",
+          "jersey": "40",
+          "report": null
+        },
+        {
+          "id": "5107968",
+          "name": "Ja'Kobi Gillespie",
+          "position": "G",
+          "jersey": "17",
+          "report": null
+        },
+        {
+          "id": "5101845",
+          "name": "Jayden Quaintance",
+          "position": "F",
+          "jersey": "22",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-05T21:43Z",
+            "comment": "Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports."
+          }
+        },
+        {
+          "id": "3134916",
+          "name": "Jordan McLaughlin",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4592479",
+          "name": "Julian Champagnie",
+          "position": "F",
+          "jersey": "30",
+          "report": null
+        },
+        {
+          "id": "4395723",
+          "name": "Keldon Johnson",
+          "position": "F",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "3064560",
+          "name": "Luke Kornet",
+          "position": "C",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "5105337",
+          "name": "Maliq Brown",
+          "position": "F",
+          "jersey": "15",
+          "report": null
+        },
+        {
+          "id": "4845367",
+          "name": "Stephon Castle",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "5105809",
+          "name": "Tarris Reed Jr.",
+          "position": "C",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "6440",
+          "name": "Tobias Harris",
+          "position": "F",
+          "jersey": "23",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-16T19:26Z",
+            "comment": "Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio."
+          }
+        },
+        {
+          "id": "5104157",
+          "name": "Victor Wembanyama",
+          "position": "F",
+          "jersey": "1",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "TOR",
+      "espnId": "28",
+      "name": "Toronto Raptors",
+      "retrievedAt": "2026-11-21T07:47:19.749Z",
+      "providerTimestamp": "2026-11-21T07:47:07Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4702656",
+          "name": "Alijah Martin",
+          "position": "G",
+          "jersey": "55",
+          "report": null
+        },
+        {
+          "id": "5149115",
+          "name": "Allen Graves",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "5093267",
+          "name": "Collin Murray-Boyles",
+          "position": "F",
+          "jersey": "30",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:41Z",
+            "comment": "Murray-Boyles (concussion) has been ruled out for Friday's game against the Pistons."
+          }
+        },
+        {
+          "id": "4395724",
+          "name": "Immanuel Quickley",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4684272",
+          "name": "Ja'Kobe Walter",
+          "position": "G",
+          "jersey": "14",
+          "report": null
+        },
+        {
+          "id": "4432737",
+          "name": "Jaden Bradley",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "3134908",
+          "name": "Jakob Poeltl",
+          "position": "C",
+          "jersey": "19",
+          "report": null
+        },
+        {
+          "id": "4432241",
+          "name": "Jamal Shead",
+          "position": "G",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "4431893",
+          "name": "Jamison Battle",
+          "position": "F",
+          "jersey": "77",
+          "report": null
+        },
+        {
+          "id": "6450",
+          "name": "Kawhi Leonard",
+          "position": "F",
+          "jersey": "2",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T20:42Z",
+            "comment": "Leonard (knee) could return in the next few weeks, per Shams Charania of ESPN."
+          }
+        },
+        {
+          "id": "4411057",
+          "name": "Kevin McCullar Jr.",
+          "position": "G",
+          "jersey": "9",
+          "report": null
+        },
+        {
+          "id": "2993874",
+          "name": "Kyle Anderson",
+          "position": "F",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4397784",
+          "name": "Malachi Smith",
+          "position": "G",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4432586",
+          "name": "Nate Bittle",
+          "position": "C",
+          "jersey": "12",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-14T21:59Z",
+            "comment": "Bittle (foot) has been ruled out for Sunday's game against the Knicks, Zulfi Sheikh of Sportsnet.ca reports."
+          }
+        },
+        {
+          "id": "4395625",
+          "name": "RJ Barrett",
+          "position": "F",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-19T21:13Z",
+            "comment": "Barrett has been diagnosed with a right hamstring strain and will be re-evaluated in two weeks, Brett Siegel of ClutchPoints.com reports."
+          }
+        },
+        {
+          "id": "4433134",
+          "name": "Scottie Barnes",
+          "position": "F",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "4431684",
+          "name": "Trayce Jackson-Davis",
+          "position": "F",
+          "jersey": "32",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "UTA",
+      "espnId": "26",
+      "name": "Utah Jazz",
+      "retrievedAt": "2026-11-21T07:47:19.761Z",
+      "providerTimestamp": "2026-11-21T07:47:12Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "4873138",
+          "name": "Ace Bailey",
+          "position": "G",
+          "jersey": "19",
+          "report": null
+        },
+        {
+          "id": "5105839",
+          "name": "Brice Sensabaugh",
+          "position": "F",
+          "jersey": "28",
+          "report": null
+        },
+        {
+          "id": "5041955",
+          "name": "Darryn Peterson",
+          "position": "G",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "4433618",
+          "name": "Harrison Ingram",
+          "position": "F",
+          "jersey": "00",
+          "report": null
+        },
+        {
+          "id": "4683766",
+          "name": "Isaiah Collier",
+          "position": "G",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "4277961",
+          "name": "Jaren Jackson Jr.",
+          "position": "F",
+          "jersey": "20",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-27T19:25Z",
+            "comment": "Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN."
+          }
+        },
+        {
+          "id": "4397077",
+          "name": "Jaxson Hayes",
+          "position": "C",
+          "jersey": "11",
+          "report": null
+        },
+        {
+          "id": "4684682",
+          "name": "Jonas Aidoo",
+          "position": "C",
+          "jersey": "13",
+          "report": null
+        },
+        {
+          "id": "4432811",
+          "name": "Josh Green",
+          "position": "G",
+          "jersey": "5",
+          "report": null
+        },
+        {
+          "id": "4065663",
+          "name": "Josh Okogie",
+          "position": "G",
+          "jersey": "21",
+          "report": null
+        },
+        {
+          "id": "3102530",
+          "name": "Jusuf Nurkic",
+          "position": "C",
+          "jersey": "30",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-20T22:40Z",
+            "comment": "Nurkic (foot) has been cleared for on-court work and will be re-evaluated in one week."
+          }
+        },
+        {
+          "id": "4433627",
+          "name": "Keyonte George",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "4683736",
+          "name": "Kobe Bufkin",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4684793",
+          "name": "Kyle Filipowski",
+          "position": "F",
+          "jersey": "2",
+          "report": null
+        },
+        {
+          "id": "4066336",
+          "name": "Lauri Markkanen",
+          "position": "F",
+          "jersey": "23",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-11T18:22Z",
+            "comment": "Markkanen has been diagnosed with a non-displaced fracture in his right hand and will be sidelined for at least one month, Shams Charania of ESPN reports."
+          }
+        },
+        {
+          "id": "4277919",
+          "name": "Mo Bamba",
+          "position": "C",
+          "jersey": "44",
+          "report": null
+        },
+        {
+          "id": "3133602",
+          "name": "Svi Mykhailiuk",
+          "position": "G",
+          "jersey": "10",
+          "report": null
+        },
+        {
+          "id": "4065673",
+          "name": "Tony Bradley",
+          "position": "C",
+          "jersey": "13",
+          "report": null
+        }
+      ]
+    },
+    {
+      "code": "WAS",
+      "espnId": "27",
+      "name": "Washington Wizards",
+      "retrievedAt": "2026-11-21T07:47:19.770Z",
+      "providerTimestamp": "2026-11-21T07:47:15Z",
+      "injuryFeedAvailable": true,
+      "players": [
+        {
+          "id": "5142718",
+          "name": "AJ Dybantsa",
+          "position": "F",
+          "jersey": "4",
+          "report": null
+        },
+        {
+          "id": "5160992",
+          "name": "Alex Sarr",
+          "position": "C",
+          "jersey": "20",
+          "report": null
+        },
+        {
+          "id": "6583",
+          "name": "Anthony Davis",
+          "position": "F",
+          "jersey": "23",
+          "report": null
+        },
+        {
+          "id": "2581184",
+          "name": "Anthony Gill",
+          "position": "F",
+          "jersey": "16",
+          "report": null
+        },
+        {
+          "id": "5104155",
+          "name": "Bilal Coulibaly",
+          "position": "G",
+          "jersey": "0",
+          "report": null
+        },
+        {
+          "id": "4845374",
+          "name": "Bub Carrington",
+          "position": "G",
+          "jersey": "7",
+          "report": null
+        },
+        {
+          "id": "4278129",
+          "name": "Deandre Ayton",
+          "position": "C",
+          "jersey": "8",
+          "report": null
+        },
+        {
+          "id": "5105841",
+          "name": "Felix Okpara",
+          "position": "F",
+          "jersey": "34",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-21T00:43Z",
+            "comment": "Okpara (illness) is available for Friday's game against Toronto."
+          }
+        },
+        {
+          "id": "4606840",
+          "name": "Jamir Watkins",
+          "position": "G",
+          "jersey": "5",
+          "report": {
+            "status": "Out",
+            "date": "2026-07-30T20:11Z",
+            "comment": "The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL."
+          }
+        },
+        {
+          "id": "4432907",
+          "name": "Justin Champagnie",
+          "position": "F",
+          "jersey": "9",
+          "report": {
+            "status": "Out",
+            "date": "2026-10-28T18:38Z",
+            "comment": "Champagnie (foot) is expected to miss several months, per Josh Robbins of The Athletic."
+          }
+        },
+        {
+          "id": "6609",
+          "name": "Khris Middleton",
+          "position": "F",
+          "jersey": "22",
+          "report": null
+        },
+        {
+          "id": "5174563",
+          "name": "Kyshawn George",
+          "position": "F",
+          "jersey": "18",
+          "report": null
+        },
+        {
+          "id": "4432187",
+          "name": "Reece Beekman",
+          "position": "G",
+          "jersey": "26",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-02T18:22Z",
+            "comment": "The Wizards announced Monday that Beekman sustained a right acromioclavicular joint injury and will be re-evaluated in approximately three weeks."
+          }
+        },
+        {
+          "id": "4277905",
+          "name": "Trae Young",
+          "position": "G",
+          "jersey": "3",
+          "report": null
+        },
+        {
+          "id": "5238230",
+          "name": "Tre Johnson",
+          "position": "G",
+          "jersey": "12",
+          "report": null
+        },
+        {
+          "id": "4432819",
+          "name": "Tre Mann",
+          "position": "G",
+          "jersey": "1",
+          "report": null
+        },
+        {
+          "id": "4997537",
+          "name": "Tristan Vukcevic",
+          "position": "F",
+          "jersey": "00",
+          "report": {
+            "status": "Out",
+            "date": "2026-11-16T18:14Z",
+            "comment": "Vukcevic (hip) has been ruled out for Monday's game against Memphis."
+          }
+        },
+        {
+          "id": "5144126",
+          "name": "Will Riley",
+          "position": "G",
+          "jersey": "27",
+          "report": null
+        }
+      ]
+    }
+  ]
+}

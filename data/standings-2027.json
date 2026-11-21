@@ -3,7 +3,7 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-21T03:10:07.258Z",
+  "retrievedAt": "2026-11-21T07:47:16.855Z",
   "records": [
     {
       "code": "ATL",
@@ -32,7 +32,7 @@
     {
       "code": "CHI",
       "wins": 4,
-      "losses": 10,
+      "losses": 11,
       "espnId": "4"
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "code": "DEN",
-      "wins": 8,
+      "wins": 9,
       "losses": 5,
       "espnId": "7"
     },
     {
       "code": "DET",
       "wins": 10,
-      "losses": 4,
+      "losses": 5,
       "espnId": "8"
     },
     {
@@ -68,7 +68,7 @@
     {
       "code": "HOU",
       "wins": 12,
-      "losses": 4,
+      "losses": 5,
       "espnId": "10"
     },
     {
@@ -85,7 +85,7 @@
     },
     {
       "code": "LAL",
-      "wins": 13,
+      "wins": 14,
       "losses": 3,
       "espnId": "13"
     },
@@ -116,7 +116,7 @@
     {
       "code": "NOP",
       "wins": 5,
-      "losses": 11,
+      "losses": 12,
       "espnId": "3"
     },
     {
@@ -127,7 +127,7 @@
     },
     {
       "code": "OKC",
-      "wins": 9,
+      "wins": 10,
       "losses": 6,
       "espnId": "25"
     },
@@ -145,7 +145,7 @@
     },
     {
       "code": "PHX",
-      "wins": 7,
+      "wins": 8,
       "losses": 7,
       "espnId": "21"
     },
@@ -158,7 +158,7 @@
     {
       "code": "SAC",
       "wins": 1,
-      "losses": 13,
+      "losses": 14,
       "espnId": "23"
     },
     {
@@ -169,19 +169,19 @@
     },
     {
       "code": "TOR",
-      "wins": 5,
+      "wins": 6,
       "losses": 10,
       "espnId": "28"
     },
     {
       "code": "UTA",
       "wins": 3,
-      "losses": 13,
+      "losses": 14,
       "espnId": "26"
     },
     {
       "code": "WAS",
-      "wins": 5,
+      "wins": 6,
       "losses": 11,
       "espnId": "27"
     }

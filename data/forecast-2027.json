@@ -1,0 +1,548 @@
+{
+  "format": "aureum-forecast-v1",
+  "version": "aureum-elo-rest-form-v1",
+  "season": 2027,
+  "retrievedAt": "2026-11-21T07:47:19.814Z",
+  "sourceArchiveCollectedAt": "2026-11-21T07:47:16.855Z",
+  "source": "ESPN archived completed scores",
+  "features": [
+    "ratingDifferencePer100",
+    "recentFormDifference",
+    "restDifference"
+  ],
+  "weights": [
+    0.13304827593350668,
+    0.9411521565279507,
+    0.4185353267947825,
+    -0.07681839137842962
+  ],
+  "state": {
+    "ATL": {
+      "rating": 1534.1615584853876,
+      "results": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 16
+    },
+    "BOS": {
+      "rating": 1554.7838305765686,
+      "results": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-18",
+      "games": 15
+    },
+    "BKN": {
+      "rating": 1426.8549414143022,
+      "results": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "CHA": {
+      "rating": 1441.1586689307785,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "CHI": {
+      "rating": 1451.229241805296,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "CLE": {
+      "rating": 1505.2700075340617,
+      "results": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    },
+    "DAL": {
+      "rating": 1506.2676526783323,
+      "results": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-18",
+      "games": 15
+    },
+    "DEN": {
+      "rating": 1538.1081024227453,
+      "results": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 14
+    },
+    "DET": {
+      "rating": 1541.3266801665156,
+      "results": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "GSW": {
+      "rating": 1499.656189776823,
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-19",
+      "games": 16
+    },
+    "HOU": {
+      "rating": 1552.6760504157476,
+      "results": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    },
+    "IND": {
+      "rating": 1449.955213613981,
+      "results": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 16
+    },
+    "LAC": {
+      "rating": 1446.9839540272887,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-19",
+      "games": 14
+    },
+    "LAL": {
+      "rating": 1582.4306806767268,
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    },
+    "MEM": {
+      "rating": 1561.3672952959118,
+      "results": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-19",
+      "games": 16
+    },
+    "MIA": {
+      "rating": 1530.463678360895,
+      "results": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-18",
+      "games": 15
+    },
+    "MIL": {
+      "rating": 1387.4563248692714,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-19",
+      "games": 16
+    },
+    "MIN": {
+      "rating": 1542.5117828397015,
+      "results": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-19",
+      "games": 16
+    },
+    "NOP": {
+      "rating": 1436.4074971220882,
+      "results": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    },
+    "NYK": {
+      "rating": 1529.0480388907708,
+      "results": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-19",
+      "games": 15
+    },
+    "OKC": {
+      "rating": 1529.2013714525337,
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 16
+    },
+    "ORL": {
+      "rating": 1499.252534563183,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "PHI": {
+      "rating": 1579.9693122056412,
+      "results": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-18",
+      "games": 16
+    },
+    "PHX": {
+      "rating": 1511.5951812186036,
+      "results": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "POR": {
+      "rating": 1546.281379254734,
+      "results": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-19",
+      "games": 15
+    },
+    "SAC": {
+      "rating": 1391.7040297812925,
+      "results": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 15
+    },
+    "SAS": {
+      "rating": 1577.1908936140517,
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-19",
+      "games": 16
+    },
+    "TOR": {
+      "rating": 1463.1450604109737,
+      "results": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 16
+    },
+    "UTA": {
+      "rating": 1418.5793171542623,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    },
+    "WAS": {
+      "rating": 1464.9635304415306,
+      "results": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-20",
+      "games": 17
+    }
+  },
+  "backtest": {
+    "method": "Date-blocked chronological holdout; features use only outcomes on earlier dates. Coefficients fitted on early dates only. No injuries or subjective adjustments included.",
+    "trainingGames": 126,
+    "trainingThrough": "2026-11-12",
+    "testFrom": "2026-11-13",
+    "testThrough": "2026-11-20",
+    "games": 61,
+    "accuracy": 0.6229508196721312,
+    "brier": 0.2215821509121827,
+    "logLoss": 0.6366678492431341,
+    "homeRateBaseline": 0.5238095238095238,
+    "baselineAccuracy": 0.47540983606557374,
+    "baselineBrier": 0.2517378536113898
+  },
+  "archiveGames": 235,
+  "throughDate": "2026-11-20",
+  "limitations": "Retrospective small-sample test, not prospectively locked forecasts or guaranteed future performance. Home-court neutral/swap extrapolation; player and qualitative assumptions not learned."
+}
