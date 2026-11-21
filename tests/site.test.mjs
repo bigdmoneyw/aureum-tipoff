@@ -46,6 +46,18 @@ assert.ok(model.backtest.trainingThrough<model.backtest.testFrom,'No date overla
 assert.ok(model.backtest.games>=25&&model.backtest.brier>=0&&model.backtest.brier<=1);
 for(const id of ['forecastDate','forecastFixture','forecastVenue','forecastFactors','forecastPlayers','forecastRefreshRoster','forecastCustomShift','forecastReset','forecastValidation'])
  assert.ok(html.includes('id="'+id+'"'),'Game Room control missing '+id);
+const advanced=JSON.parse(readFileSync('data/forecast-v2-2027.json','utf8'));
+assert.equal(advanced.format,'aureum-forecast-v2');
+assert.equal(advanced.weights.length,7);
+assert.ok(advanced.weights.every(Number.isFinite));
+assert.ok(advanced.backtest.trainingThrough<advanced.backtest.testFrom);
+assert.ok(advanced.historicalGameCount>=2400,'Two historical seasons collected');
+assert.ok(advanced.backtest.games>=150);
+assert.ok(advanced.backtest.brier>=0&&advanced.backtest.brier<=1);
+assert.ok(advanced.playerCoverage>=200&&Object.keys(advanced.playerProfiles).length>=300);
+const ledger=JSON.parse(readFileSync('data/forecast-ledger-2027.json','utf8'));
+assert.equal(new Set(ledger.records.map(r=>r.id)).size,ledger.records.length);
+for(const r of ledger.records){assert.ok(Date.parse(r.recordedAt)<Date.parse(r.tipoff),'Predictions recorded before tipoff');assert.ok(r.homeProbability>=0&&r.homeProbability<=1);}
 const catalog=JSON.parse(readFileSync('data/metric-catalog.json','utf8'));
 assert.equal(catalog.metrics.length,30,'Exactly 30 team statistics');
 assert.equal(new Set(catalog.metrics.map(x=>x.key)).size,30);
