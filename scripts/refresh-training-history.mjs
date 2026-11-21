@@ -31,11 +31,6 @@ for(const y of [season-2,season-1]){
  console.log('HISTORICAL_GAMES '+y+' '+rows.length);
 }
 } catch(error){console.warn('Historical season archive unavailable: '+error.message);}
-const archive=JSON.parse(fs.readFileSync('data/completed-games-'+season+'.json'));
-const file='data/player-history-'+season+'.json';
-let old=fs.existsSync(file)?JSON.parse(fs.readFileSync(file)):null;
-const byId=new Map((old?.games||[]).map(g=>[g.id,g]));
-const pending=archive.games.filter(g=>!byId.has(g.id));
 function parse(g,d){
  const groups=d.boxscore?.players;if(!Array.isArray(groups)||groups.length!==2)throw Error('Missing players');
  const sides={};
@@ -56,11 +51,21 @@ function parse(g,d){
  }
  return {id:g.id,date:g.date,home:g.home,away:g.away,players:sides};
 }
-let errors=[];
-for(let i=0;i<pending.length;i+=8){
- const batch=await Promise.allSettled(pending.slice(i,i+8).map(async g=>parse(g,await get('summary?event='+g.id))));
- for(const r of batch)r.status==='fulfilled'?byId.set(r.value.id,r.value):errors.push(String(r.reason));
+
+async function collectPlayers(archive,y){
+ const file='data/player-history-'+y+'.json',old=fs.existsSync(file)?JSON.parse(fs.readFileSync(file)):null;
+ const byId=new Map((old?.games||[]).map(g=>[g.id,g]));
+ const pending=archive.games.filter(g=>!byId.has(g.id));
+ const errors=[];
+ for(let i=0;i<pending.length;i+=12){
+  const batch=await Promise.allSettled(pending.slice(i,i+12).map(async g=>parse(g,await get('summary?event='+g.id))));
+  for(const r of batch)r.status==='fulfilled'?byId.set(r.value.id,r.value):errors.push(String(r.reason));
+ }
+ const games=archive.games.map(g=>byId.get(g.id)).filter(Boolean);
+ fs.writeFileSync(file,JSON.stringify({format:'aureum-player-history-v1',season:y,retrievedAt:now.toISOString(),source:'ESPN completed-game individual player box scores; realized participation, not pregame injury reports',games})+'\n');
+ console.log('PLAYER_HISTORY '+JSON.stringify({season:y,games:games.length,archive:archive.games.length,errors:errors.slice(0,8)}));
 }
-const games=archive.games.map(g=>byId.get(g.id)).filter(Boolean);
-fs.writeFileSync(file,JSON.stringify({format:'aureum-player-history-v1',season,retrievedAt:now.toISOString(),source:'ESPN completed-game individual player box scores; realized participation, not pregame injury reports',games})+'\n');
-console.log('PLAYER_HISTORY '+JSON.stringify({games:games.length,archive:archive.count,errors:errors.slice(0,8)}));
+await collectPlayers(JSON.parse(fs.readFileSync('data/completed-games-'+season+'.json')),season);
+// One full earlier season is enough for a larger, separate conditional experiment.
+const prior='data/forecast-history-'+(season-1)+'.json';
+if(fs.existsSync(prior))await collectPlayers(JSON.parse(fs.readFileSync(prior)),season-1);
