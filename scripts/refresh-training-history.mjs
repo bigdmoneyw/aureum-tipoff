@@ -5,6 +5,7 @@ const api='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/';
 const norm=c=>({GS:'GSW',SA:'SAS',NY:'NYK',NO:'NOP',UTAH:'UTA',WSH:'WAS',PHO:'PHX',BRK:'BKN'})[c]||c;
 const codes=new Set('ATL BOS BKN CHA CHI CLE DAL DEN DET GSW HOU IND LAC LAL MEM MIA MIL MIN NOP NYK OKC ORL PHI PHX POR SAC SAS TOR UTA WAS'.split(' '));
 async function get(p){for(let i=0;i<2;i++){try{const r=await fetch(api+p,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('HTTP '+r.status);return await r.json();}catch(e){if(i===1)throw e;}}}
+try {
 for(const y of [season-2,season-1]){
  const file='data/forecast-history-'+y+'.json';
  if(fs.existsSync(file)){const old=JSON.parse(fs.readFileSync(file));if(old.games?.length>=1200)continue;}
@@ -29,6 +30,7 @@ for(const y of [season-2,season-1]){
  fs.writeFileSync(file,JSON.stringify({format:'aureum-forecast-history-v1',season:y,source:'ESPN completed regular season scoreboards',retrievedAt:now.toISOString(),games:rows})+'\n');
  console.log('HISTORICAL_GAMES '+y+' '+rows.length);
 }
+} catch(error){console.warn('Historical season archive unavailable: '+error.message);}
 const archive=JSON.parse(fs.readFileSync('data/completed-games-'+season+'.json'));
 const file='data/player-history-'+season+'.json';
 let old=fs.existsSync(file)?JSON.parse(fs.readFileSync(file)):null;
