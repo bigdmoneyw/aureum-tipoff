@@ -51,7 +51,8 @@ async function loadData(force=false){
 }
 const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
 function context(code,date){
- const t=model.state[code],recentGames=t.results.length,recentWins=t.results.reduce((a,b)=>a+b,0),known=!!t.lastDate;
+ const sourceState=date===model.todayDate&&model.todayState?model.todayState:model.state;
+ const t=sourceState[code],recentGames=t.results.length,recentWins=t.results.reduce((a,b)=>a+b,0),known=!!t.lastDate;
  return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate};
 }
 const factorRows=[
@@ -67,7 +68,7 @@ function makeFactors(){
  $('forecastFactors').innerHTML=factorRows.map(([key,label,low,high])=>'<div class="forecast-factor"><label>'+esc(label)+'<select id="factor-'+key+'-condition">'+options([['normal','Normal / unspecified'],['aLow','Team A: '+low],['aHigh','Team A: '+high],['bLow','Team B: '+low],['bHigh','Team B: '+high]])+'</select></label><label>Assumed A relative to B (rating points)<select id="factor-'+key+'-shift">'+options(shifts)+'</select></label></div>').join('');
 }
 function sourceRoster(code){
- if(rosterCache.has(code))return rosterCache.get(code);
+ if(rosterCache.has(code)&&fresh(rosterCache.get(code).retrievedAt,8))return rosterCache.get(code);
  const t=rosters?.teams.find(x=>x.code===code);return t?{...t,mode:'snapshot',injurySourceTimestamp:rosters.injurySourceTimestamp}:null;
 }
 function savedPlayers(){
@@ -133,9 +134,9 @@ async function loadSelectedRoster(force=false,keep=true){
 }
 function readPlayerEffects(side,code){
  let sum=0;const used=new Set(),warnings=[],reasons=[];
- const roster=sourceRoster(code);
+ const fetchedRoster=sourceRoster(code),roster=fetchedRoster&&fresh(fetchedRoster.retrievedAt,8)?fetchedRoster:null;
  for(let i=1;i<=3;i++){
-  const prefix='player'+side+i,s=$($(prefix+'Name')?.id||'');
+  const prefix='player'+side+i,s=$(prefix+'Name');
   if(!s)continue;
   const status=$(prefix+'Status').value,shift=$(prefix+'Shift'),p=roster?.players.find(x=>x.id===s.value),out=$(prefix+'Report');
   shift.disabled=!p||status==='reported';
@@ -168,8 +169,8 @@ function render(){
  if(!fresh(model.retrievedAt,8)||!fresh(model.sourceArchiveCollectedAt,8)){
   root.innerHTML='<div class="empty">Forecast data is older than eight hours or has an invalid timestamp. The probability is withheld until a fresh model/source is available.</div>';return;
  }
- if(model.throughDate>=date){
-  root.innerHTML='<div class="empty">The model snapshot already includes results from the selected date. Select a later date to avoid using same-day outcomes in a purported pregame estimate.</div>';return;
+ if(model.throughDate>=date&&!(model.todayState&&model.todayDate===date)){
+  root.innerHTML='<div class="empty">The model snapshot lacks a valid pre-date state for this selection. A pregame estimate is withheld to avoid looking ahead.</div>';return;
  }
  const l=context(a,date),rr=context(b,date);
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Insufficient current-season games for both franchises.</div>';return;}
@@ -190,7 +191,8 @@ function render(){
  const proposedFormA=formA==='auto'?l.form:(+formA+2)/14,proposedFormB=formB==='auto'?rr.form:(+formB+2)/14;
  const proposedRestA=restA==='auto'?l.rest:+restA,proposedRestB=restB==='auto'?rr.rest:+restB;
  // An assumption about rating strength is hypothetical, not learned player value.
- const rawShift=manual.reduce((s,x)=>s+x.shift,0)+pA.sum-pB.sum;
+ const custom=Number($('forecastCustomShift')?.value)||0;
+ const rawShift=manual.reduce((s,x)=>s+x.shift,0)+pA.sum-pB.sum+clamp(custom,-100,100);
  const shift=clamp(rawShift,-150,150),scenarioDiff=(l.rating-rr.rating+shift)/100;
  const scenarioParts=[w[0]*venue,w[1]*scenarioDiff,w[2]*(proposedFormA-proposedFormB),w[3]*(proposedRestA-proposedRestB)/3];
  const adjustedLogit=scenarioParts.reduce((s,x)=>s+x,0),base=sig(baseLogit),adjusted=sig(adjustedLogit);
@@ -205,7 +207,7 @@ function resetAssumptions(){
  for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';
  for(const [k] of factorRows){$('factor-'+k+'-condition').value='normal';$('factor-'+k+'-shift').value='0';}
  for(const side of ['A','B'])for(let i=1;i<=3;i++){const p='player'+side+i;if($(p+'Name')){$(p+'Name').value='';$(p+'Status').value='reported';$(p+'Shift').value='0';}}
- $('forecastNotes').value='';render();
+ $('forecastNotes').value='';if($('forecastCustomShift'))$('forecastCustomShift').value='0';render();
 }
 async function loadFixtures(){
  const date=$('forecastDate').value,seq=++fixtureRequest;
