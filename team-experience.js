@@ -181,11 +181,14 @@ function renderGameRoomContext(){
  const el=$('gameRoomContext');if(!el)return;
  if(!stats||!catalog.length){el.innerHTML='<div class="empty">Source-verified team statistics are unavailable; no invented values are displayed.</div>';return;}
  const a=$('gameAway')?.value||'GSW',b=$('gameHome')?.value||'BOS';
- if(a===b){el.innerHTML='<div class="empty">Choose two different franchises below.</div>';return;}
- const left=stats.records.find(r=>r.code===a),right=stats.records.find(r=>r.code===b);
- if(!left||!right)return;
- const chosen=['winPct','pointsPerGame','threePointPct','turnoversPerGame'];
- el.innerHTML='<div class="game-context-names"><span><img src="'+logo(a)+'" alt="" loading="lazy">'+esc(shortNames[a])+'</span><span><img src="'+logo(b)+'" alt="" loading="lazy">'+esc(shortNames[b])+'</span></div><div class="game-context-grid">'+chosen.map(k=>{const m=metric(k);return '<div class="game-context-metric"><strong>'+esc(m.label)+'</strong><small>'+esc(m.brief)+'</small><div class="game-context-values"><span>'+esc(formatted(k,left.values[k]))+'</span><span>'+esc(formatted(k,right.values[k]))+'</span></div></div>';}).join('')+'</div><p class="data-sources">Source: ESPN regular-season snapshots · '+esc(formattedTime(stats.retrievedAt))+'. These four comparisons are descriptive, <strong>not a scientifically ranked list of predictive importance</strong>. A custom influential-statistic selector will follow only after backtesting.</p>';
+ if(a===b){el.innerHTML='<div class="empty">Choose two different franchises to view their season statistics.</div>';return;}
+ const l=stats.records.find(r=>r.code===a),r=stats.records.find(r=>r.code===b);
+ if(!l||!r){el.innerHTML='<div class="empty">Both team records are needed for a comparison.</div>';return;}
+ el.innerHTML='<div class="past-stats-grid game-season-reference"><div class="past-stat-team-head"><span><img src="'+logo(a)+'" alt="">'+esc(shortNames[a])+'</span><span>Statistic</span><span><img src="'+logo(b)+'" alt="">'+esc(shortNames[b])+'</span></div>'+
+ categories.map(c=>'<section class="past-stat-category"><h4>'+esc(c.title)+'</h4><div class="past-stat-rows">'+c.keys.map(k=>{
+ const m=metric(k);return '<article class="past-stat-row game-context-metric" data-stat="'+esc(k)+'" style="display:grid;gap:8px"><strong class="past-stat-figure past-stat-away">'+esc(formatted(k,l.values[k]))+'</strong><div class="past-stat-term"><span>'+esc(m.label)+'</span>'+details(k,'gameroom')+'</div><strong class="past-stat-figure past-stat-home">'+esc(formatted(k,r.values[k]))+'</strong></article>';
+ }).join('')+'</div></section>').join('')+compareCoverage(l,r)+'</div>';
+ bindTeamTooltipInteractions(el);
 }
 function etDate(){
  const o=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
