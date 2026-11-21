@@ -66,6 +66,8 @@ try {
  assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),30);
  await page.locator('#forecastResult .forecast-prob.baseline strong').first().waitFor({timeout:30000});
  await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
+ assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
+ assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
  const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
  await page.locator('#forecastCustomShift').fill('25');
  await page.locator('#forecastCustomShift').dispatchEvent('change');
