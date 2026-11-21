@@ -1,0 +1,24 @@
+name: Probe NBA roster and injury feeds
+on:
+  push:
+    paths: ['.github/workflows/roster-probe.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Inspect roster and injury API payloads
+        run: |
+          node --input-type=module <<'NODE'
+          const base='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/';
+          for(const p of ['teams/9/roster','teams/2/roster','injuries','teams/9/injuries']){
+            try {
+              const r=await fetch(base+p), d=await r.json();
+              const athletes=d.athletes||[];
+              console.log('SOURCE',p,r.status,JSON.stringify({keys:Object.keys(d),team:d.team,group:athletes[0]&&{keys:Object.keys(athletes[0]),name:athletes[0].fullName,items:athletes[0].items?.length,first:athletes[0].items?.[0]||athletes[0]},injuryFirst:d.injuries?.[0]}).slice(0,10500));
+            }catch(e){console.log('ERROR',p,e.message)}
+          }
+          NODE
