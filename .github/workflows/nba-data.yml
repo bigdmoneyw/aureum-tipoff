@@ -6,6 +6,9 @@ on:
       - 'scripts/refresh-data.mjs'
       - 'scripts/refresh-game-boxscores.mjs'
       - 'scripts/game-boxscore-core.mjs'
+      - 'scripts/forecast-core.mjs'
+      - 'scripts/train-forecast.mjs'
+      - 'scripts/refresh-rosters.mjs'
       - '.github/workflows/nba-data.yml'
   schedule:
     - cron: '13 */2 * * *'
@@ -30,6 +33,10 @@ jobs:
         run: node scripts/refresh-data.mjs
       - name: Validate individual-game box scores for both teams
         run: node scripts/refresh-game-boxscores.mjs
+      - name: Refresh all current NBA rosters and dated injury reports
+        run: node scripts/refresh-rosters.mjs
+      - name: Train and evaluate chronological forecast
+        run: node scripts/train-forecast.mjs
       - name: Publish sourced JSON snapshots
         run: |
           git config user.name "aureum-data-bot"
