@@ -62,6 +62,17 @@ try {
  assert.equal(await page.locator('#glossaryGrid .learn-explanation').count(),30);
  assert.equal(await page.locator('#glossaryGrid .learn-why').count(),30);
  await viewportTest('gameroom');
+ await page.waitForSelector('#gameRoomContext .game-context-metric',{timeout:30000});
+ assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),30);
+ await page.locator('#forecastResult .forecast-prob.baseline strong').first().waitFor({timeout:30000});
+ await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
+ const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
+ await page.locator('#forecastCustomShift').fill('25');
+ await page.locator('#forecastCustomShift').dispatchEvent('change');
+ assert.equal(await page.locator('#forecastResult .baseline strong').first().innerText(),pBase);
+ assert.notEqual(await page.locator('#forecastResult .scenario strong').first().innerText(),pBase);
+ await page.locator('#forecastReset').click();
+ await viewportTest('gameroom');
  await viewportTest('matchups');
  await page.locator('#pastGameReport .past-stat-row').first().waitFor({timeout:30000});
  assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
