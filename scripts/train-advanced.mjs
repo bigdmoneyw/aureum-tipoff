@@ -7,9 +7,10 @@ const current=read('data/completed-games-'+season+'.json');
 if(current?.format!=='aureum-completed-games-v1'||current.count!==current.games.length)throw Error('Current archive invalid');
 const history=[season-2,season-1].map(s=>read('data/forecast-history-'+s+'.json')).filter(Boolean);
 const players=read('data/player-history-'+season+'.json');
-const model=buildAdvanced(history,current,players,now);
+const priorPlayers=read('data/player-history-'+(season-1)+'.json');
+const model=buildAdvanced(history,current,players,now,priorPlayers);
 fs.writeFileSync('data/forecast-v2-'+season+'.json',JSON.stringify(model,null,2)+'\n');
-console.log('ADVANCED_VALIDATION '+JSON.stringify({history:model.historicalGameCount,current:model.archiveGames,weights:model.weights,selection:model.selection,backtest:model.backtest,playerCoverage:model.playerCoverage,playerModel:model.playerModel,profiles:Object.keys(model.playerProfiles).length}));
+console.log('ADVANCED_VALIDATION '+JSON.stringify({history:model.historicalGameCount,current:model.archiveGames,weights:model.weights,selection:model.selection,backtest:model.backtest,playerCoverage:model.playerCoverage,historicalPlayerCoverage:model.historicalPlayerCoverage,playerModel:model.playerModel,profiles:Object.keys(model.playerProfiles).length}));
 // Preserve the FIRST timestamped baseline estimate before a scheduled game begins.
 // Never backfill a prediction for an already-started game.
 const ledgerPath='data/forecast-ledger-'+season+'.json';
