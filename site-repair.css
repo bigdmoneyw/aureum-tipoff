@@ -913,3 +913,60 @@ a,button{touch-action:manipulation}
 #gameroom .forecast-factor label .small{font-size:11px;color:#aebed0}
 #gameroom .forecast-notes input{max-width:100%;min-height:44px;border-radius:10px;background:#101d30;border:1px solid #4a5d74;color:#eaf1f8;padding:10px;font-size:16px}
 @media(max-width:760px){#gameroom .forecast-reason-list{grid-template-columns:minmax(0,1fr)}#gameroom .forecast-reason{padding:14px}}
+
+/* Game Room: mirrored, circular matchup controls. No repeated input cards. */
+#gameroom .forecast-condition-desk{display:block;margin-top:34px}
+#gameroom .forecast-setting-strip{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0 26px;border-bottom:1px solid #42536a}
+#gameroom .forecast-setting-strip h4,#gameroom .factor-section-heading h4{font:750 clamp(23px,3vw,34px)/1.2 Outfit,sans-serif;color:#f1e3cb;margin:8px 0}
+#gameroom .forecast-setting-strip p,#gameroom .factor-section-heading p{font-size:13px;line-height:1.65;color:#b8c7d8;margin:8px 0}
+#gameroom .forecast-setting-strip label{flex:0 1 260px}
+#gameroom .forecast-measured,#gameroom .forecast-factor-section{margin-top:36px}
+#gameroom .factor-section-heading{max-width:780px;margin-bottom:22px}
+#gameroom .factor-board-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:16px;padding:22px 0;border-top:1px solid #52637a;border-bottom:1px solid #52637a}
+#gameroom .factor-board-header>div{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:8px;min-width:0}
+#gameroom .factor-board-header img{width:76px;height:76px;object-fit:contain}
+#gameroom .factor-board-header strong{font:750 clamp(14px,2vw,21px)/1.2 Outfit,sans-serif;color:#f0d6a8;overflow-wrap:anywhere}
+#gameroom .factor-board-header>div:last-child strong{color:#c9e0f6}
+#gameroom .factor-board-header>span{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:#aabbd0}
+#gameroom .factor-board-key{display:flex;justify-content:center;gap:clamp(10px,3vw,32px);flex-wrap:wrap;font-size:12px;color:#c3d0df;margin:20px 0}
+#gameroom .factor-group{margin:28px 0}
+#gameroom .factor-group h5{font:700 12px/1.5 Outfit,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:#dcbb80;padding:12px 0;margin:0;border-bottom:1px solid #516078}
+#gameroom .forecast-factor-section .forecast-factor,#gameroom .forecast-measured .forecast-factor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:16px;padding:22px 0;border:0;border-bottom:1px solid #33475e;background:transparent}
+#gameroom .factor-center{text-align:center;min-width:0}
+#gameroom .factor-center h6{font:700 17px/1.3 Outfit,sans-serif;color:#f4ecde;margin:0}
+#gameroom .factor-center p{font-size:12px;line-height:1.6;color:#aabdd1;margin:6px 0 0}
+#gameroom .factor-side{display:flex;align-items:center;flex-direction:column;gap:10px;min-width:0;text-align:center}
+#gameroom .factor-side-a{--dial-color:#e5be79;--dial-ink:#201a12}
+#gameroom .factor-side-b{--dial-color:#a9cbe9;--dial-ink:#142333}
+#gameroom .factor-dial{display:flex;align-items:center;justify-content:center;gap:clamp(5px,1.2vw,13px);width:100%}
+#gameroom .factor-dial label.factor-option{position:relative;display:block;width:clamp(34px,4.2vw,52px);height:clamp(34px,4.2vw,52px);min-width:0;flex:0 0 auto;cursor:pointer}
+#gameroom .factor-option input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;min-height:0;padding:0;margin:0;z-index:1}
+#gameroom .factor-orb{display:grid;place-items:center;width:100%;height:100%;border:1px solid #61748b;border-radius:50%;background:#132238;color:#aebfd0;font:600 24px/1 Outfit,sans-serif;transition:background .16s,border-color .16s,transform .16s,box-shadow .16s;box-sizing:border-box}
+#gameroom .factor-option:hover .factor-orb{border-color:var(--dial-color);transform:translateY(-2px)}
+#gameroom .factor-option input:checked+.factor-orb{background:var(--dial-color);border-color:var(--dial-color);color:var(--dial-ink);box-shadow:0 0 0 4px color-mix(in srgb,var(--dial-color) 16%,transparent)}
+#gameroom .factor-option input:focus-visible+.factor-orb{outline:2px solid #fff;outline-offset:4px}
+#gameroom .factor-state{font-size:12px;line-height:1.35;color:#a9bcd0;min-height:2.7em;max-width:100%;overflow-wrap:anywhere}
+#gameroom .factor-state[data-level="high"],#gameroom .factor-state[data-level="low"]{color:var(--dial-color);font-weight:700}
+#gameroom .factor-mobile-team{display:none}
+#gameroom .forecast-measured .factor-side label{width:100%;text-align:center}
+#gameroom .forecast-measured select,#gameroom .forecast-setting-strip select{border-radius:999px;text-align:center;background:#14263b}
+#gameroom .factor-data-note{font-size:12px;text-align:center;color:#a9b9ce;margin:10px 0 20px;overflow-wrap:anywhere}
+@media(max-width:760px){
+ #gameroom .forecast-setting-strip{align-items:stretch;flex-direction:column;gap:12px}
+ #gameroom .forecast-setting-strip label{flex:auto}
+ #gameroom .factor-board-header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px;padding:14px 0}
+ #gameroom .factor-board-header img{width:52px;height:52px}
+ #gameroom .factor-board-header>span{font-size:9px;max-width:64px}
+ #gameroom .forecast-factor-section .forecast-factor,#gameroom .forecast-measured .forecast-factor{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 8px;padding:20px 0}
+ #gameroom .factor-center{grid-column:1/-1;grid-row:1}
+ #gameroom .factor-side:first-child{grid-column:1;grid-row:2}
+ #gameroom .factor-side:last-child{grid-column:2;grid-row:2}
+ #gameroom .factor-mobile-team{display:block;font-size:11px;color:var(--dial-color);font-weight:700;line-height:1.3}
+ #gameroom .factor-dial{gap:6px}
+ #gameroom .factor-dial label.factor-option{width:clamp(32px,9vw,44px);height:clamp(32px,9vw,44px)}
+ #gameroom .factor-state{font-size:11px;min-height:2.6em}
+ #gameroom .factor-center h6{font-size:17px}
+ #gameroom .factor-center p{font-size:12px;max-width:410px;margin:6px auto 0}
+ #gameroom .forecast-measured select{font-size:13px;padding:8px 5px}
+}
+@media(prefers-reduced-motion:reduce){#gameroom .factor-orb{transition:none}}
