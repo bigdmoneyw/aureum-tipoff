@@ -44,12 +44,22 @@ function validModel(d){
  }
  return d;
 }
+async function loadLedger(){
+ const el=$('modelLedger');if(!el)return;
+ try{
+  const d=await snapshot('forecast-ledger-'+season()+'.json');
+  if(d.format!=='aureum-forecast-ledger-v1'||d.season!==season()||!Array.isArray(d.records)||d.records.some(r=>Date.parse(r.recordedAt)>=Date.parse(r.tipoff)||!Number.isFinite(r.homeProbability)||r.homeProbability<0||r.homeProbability>1))throw Error('Invalid ledger');
+  const settled=d.records.filter(r=>r.result),correct=settled.filter(r=>(r.homeProbability>=.5)===r.result.homeWon).length;
+  const brier=settled.length?settled.reduce((sum,r)=>sum+(r.homeProbability-Number(r.result.homeWon))**2,0)/settled.length:null;
+  el.innerHTML='<div class="research-banner"><strong>'+d.records.length+' pretipoff estimates recorded · '+settled.length+' games completed</strong><p>'+(settled.length?'Correct winners: '+(100*correct/settled.length).toFixed(1)+'% · Brier '+brier.toFixed(3)+'. Small samples are unstable.':'No completed results in the prospective ledger yet. Accuracy is not calculated until games finish.')+'</p></div><p><a href="data/forecast-ledger-'+season()+'.json" target="_blank" rel="noopener">Inspect the timestamped forecast record and original probabilities</a>.</p>';
+ }catch(e){el.textContent='The prospective record is temporarily unavailable. No live accuracy statistic is substituted.';}
+}
 async function loadData(force=false){
  if(!force&&Date.now()-lastModelFetch<120000)return;
  lastModelFetch=Date.now();
  try{model=validModel(await snapshot('forecast-v2-'+season()+'.json'));}catch(e){try{model=validModel(await snapshot('forecast-'+season()+'.json'));}catch(e){if(!model)model=null;}}
  try{const r=await snapshot('rosters-'+season()+'.json');if(r.format!=='aureum-rosters-v1'||r.season!==season()||r.teams.length!==30)throw Error('Invalid roster snapshot');rosters=r;}catch(e){}
- render();
+ loadLedger();render();
 }
 const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
 function context(code,date){
