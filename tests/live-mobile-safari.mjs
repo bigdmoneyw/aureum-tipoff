@@ -68,9 +68,10 @@ try {
  await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
- const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
+
  const ids=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
  await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).dataset.known==='true'&&/^\d+$/.test(document.getElementById(id).value)),ids,{timeout:30000});
+ const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
  const originalDate=await page.locator('#forecastDate').inputValue();
  const distant=new Date(originalDate+'T12:00:00Z');distant.setUTCDate(distant.getUTCDate()+45);
  if(distant.toISOString().slice(0,10)<=await page.locator('#forecastDate').getAttribute('max')){
