@@ -62,12 +62,56 @@ async function loadData(force=false){
  loadLedger();render();
 }
 const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
-function labelMeasuredDefaults(left=null,right=null,message='Waiting for verified game data'){
- for(const [side,ctx] of [['A',left],['B',right]]){
-  const rest=$('forecastRest'+side),form=$('forecastForm'+side);
-  if(rest){const option=rest.querySelector('option[value="auto"]');if(option)option.textContent=ctx?formatRest(ctx.rest,ctx.restKnown):message;}
-  if(form){const option=form.querySelector('option[value="auto"]');if(option)option.textContent=ctx&&ctx.recentGames?ctx.recentWins+' wins in '+ctx.recentGames+' games':message;}
- }
+// Numeric selected values are real controls; automatic/manual provenance is tracked separately.
+const measuredIds=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
+const horizonDays=7;
+let scheduleCoverage=null,scheduleSequence=0;
+const addDays=(d,n)=>new Date((dayValue(d)+n)*864e5).toISOString().slice(0,10);
+function resetMeasured(){for(const id of measuredIds){const el=$(id);el.dataset.mode='auto';el.value='';}}
+function syncMeasured(id,value,label,unknown){
+ const el=$(id),manual=el.dataset.mode==='manual',previous=el.value;
+ const isRest=id.includes('Rest');
+ const list=isRest?[[0,'Back-to-back'],[1,'1 full day'],[2,'2 full days'],[3,'3+ full days']]:Array.from({length:11},(_,i)=>[i,i+' wins in 10 games']);
+ el.innerHTML='<option value="">'+esc(unknown||'Choose an assumption')+'</option>'+list.map(([v,l])=>'<option value="'+v+'">'+esc(value!==null&&v===value?label:l+' (assumed)')+'</option>').join('');
+ el.dataset.known=value===null?'false':'true';
+ el.dataset.measured=value===null?'':String(value);
+ el.value=manual&&previous!==''?previous:value===null?'':String(value);
+ el.dataset.mode=manual&&previous!==''?'manual':'auto';
+}
+function clearMeasured(message){for(const id of measuredIds)syncMeasured(id,null,'',message);}
+function scheduleContext(c,ctx,date){
+ const days=dayValue(date)-dayValue(today());
+ if(days>horizonDays)return {rest:null,form:null,restNote:'Not preselected this far ahead.',formNote:'Future results are unknown.',load:null};
+ if(!scheduleCoverage||scheduleCoverage.date!==date||!scheduleCoverage.ready)return {rest:null,form:null,restNote:'Checking the schedule.',formNote:'Checking for intervening games.',load:null};
+ if(!scheduleCoverage.valid)return {rest:null,form:null,restNote:'Schedule coverage unavailable.',formNote:'Cannot verify all intervening games.',load:null};
+ const rows=scheduleCoverage.games.filter(g=>[g.home,g.away].includes(c)&&g.date<date);
+ const later=rows.filter(g=>g.date>=(ctx.lastDate||'')&&!(g.completed&&g.date===ctx.lastDate));
+ const last=[ctx.lastDate,...later.map(g=>g.date)].filter(Boolean).sort().at(-1);
+ const rest=last?clamp(dayValue(date)-dayValue(last)-1,0,3):null;
+ const form=later.length?null:ctx.recentGames?ctx.recentWins:null;
+ return {rest,form,restNote:rest===null?'No preceding game verified.':formatRest(rest,true)+(later.length?' (scheduled, subject to change)':' (from completed games)'),formNote:form===null?'Intervening game results not yet available.':ctx.recentWins+' wins in '+ctx.recentGames+' games',load:null};
+}
+async function refreshMeasuredSchedule(){
+ const {date}=state(),seq=++scheduleSequence,now=today();
+ if(!date||date<now||dayValue(date)-dayValue(now)>horizonDays){scheduleCoverage=null;render();return;}
+ if(scheduleCoverage?.date===date&&Date.now()-scheduleCoverage.loaded<120000){render();return;}
+ scheduleCoverage={date,ready:false,loaded:Date.now()};render();
+ const dates=[];for(let d=addDays(now,-1);d<date;d=addDays(d,1))dates.push(d);
+ try{
+  const rows=await Promise.all(dates.map(async day=>{
+   const snap=()=>snapshot('scoreboards/'+day+'.json').then(x=>{if(x.requestedDate!==day||!fresh(x.retrievedAt,8))throw Error('Stale scoreboard');return x;});
+   const raw=isLocal?await snap():await json(api+'scoreboard?dates='+day.replaceAll('-','')).catch(snap);
+   if(!Array.isArray(raw.events))throw Error('Invalid scoreboard');
+   return raw.events.filter(e=>!/postpon|cancel/i.test(e.status?.type?.description||e.status?.type?.shortDetail||'')).map(e=>{
+    const c=e.competitions?.[0],home=norm(c?.competitors?.find(x=>x.homeAway==='home')?.team?.abbreviation),away=norm(c?.competitors?.find(x=>x.homeAway==='away')?.team?.abbreviation);
+    if(!teams[home]||!teams[away]||!Number.isFinite(Date.parse(e.date)))throw Error('Invalid schedule event');
+    return {id:String(e.id),home,away,date:dayET(new Date(e.date)),completed:e.status?.type?.completed===true};
+   }).filter(g=>g.date===day);
+  }));
+  if(seq!==scheduleSequence)return;
+  scheduleCoverage={date,ready:true,valid:true,loaded:Date.now(),games:rows.flat()};
+ }catch(e){if(seq!==scheduleSequence)return;scheduleCoverage={date,ready:true,valid:false,loaded:Date.now(),games:[]};}
+ render();
 }
 function context(code,date){
  const sourceState=date===model.todayDate&&model.todayState?model.todayState:model.state;
@@ -215,24 +259,35 @@ function drawTeamHeads(){
 }
 function render(){
  const {a,b,venue,date}=state(),root=$('forecastResult');
- labelMeasuredDefaults();
- $('forecastRestNote').textContent='Rest is calculated from completed games; intervening future games are not assumed.';
- $('forecastFormNote').textContent='Recent form is calculated from the latest completed games.';
+
  if(!teams[a]||!teams[b]||!date||date<today()||date>season()+'-06-30'||a===b){root.innerHTML='<div class="empty">Choose two different teams and a date from today through the end of the current NBA season. Finished games are in Past Games.</div>';return;}
  const fixture=fixtures.find(g=>g.id===$('forecastFixture').value);
  if(fixture&&Date.parse(fixture.tipoff)<=Date.now()){root.innerHTML='<div class="empty">This scheduled game has reached its starting time. Pregame estimates are no longer available.</div>';return;}
- if(!model){root.innerHTML='<div class="empty">No verified forecast model is available yet. No probability is substituted.</div>';return;}
+ if(!model){clearMeasured('Waiting for verified game data');root.innerHTML='<div class="empty">No verified forecast model is available yet. No probability is substituted.</div>';return;}
  const r=model.backtest,w=model.weights,advanced=w.length===7;
  const pm=model.playerModel;
  $('forecastValidation').innerHTML='<strong>Model evaluation</strong> · '+r.games+' held-out games · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-team baseline '+r.baselineBrier.toFixed(3)+') · '+r.trainingGames+' training games.<p>Test dates: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'. Data refreshed '+esc(time(model.retrievedAt))+'. Last completed results: '+esc(model.throughDate)+'. These are retrospective results, not a guarantee. '+(pm?(pm.enabled?'The conditional playing-time experiment improved its own held-out sample, but actual participation was observed after games.':'The playing-time experiment did not qualify for automatic player impact. Manual injury scenarios remain separate.'):'Player impact is not independently validated.')+'</p>';
  if(!fresh(model.retrievedAt,8)||!fresh(model.sourceArchiveCollectedAt,8)){
-  root.innerHTML='<div class="empty">Forecast data is older than eight hours or its timestamp is invalid. The estimate is withheld until fresh data is available.</div>';return;
+  clearMeasured('Verified data unavailable');root.innerHTML='<div class="empty">Forecast data is older than eight hours or its timestamp is invalid. The estimate is withheld until fresh data is available.</div>';return;
  }
  if(model.throughDate>=date&&!(model.todayState&&model.todayDate===date)){
   root.innerHTML='<div class="empty">A valid pregame snapshot is unavailable for this date. No probability is shown.</div>';return;
  }
  const l=context(a,date),rr=context(b,date);
- labelMeasuredDefaults(l,rr);
+ const ml=scheduleContext(a,l,date),mr=scheduleContext(b,rr,date);
+ for(const [side,ctx,m] of [['A',l,ml],['B',rr,mr]]){
+  syncMeasured('forecastRest'+side,m.rest,m.rest===null?'':formatRest(m.rest,true),m.restNote);
+  syncMeasured('forecastForm'+side,m.form,m.form===null?'':m.form+' wins in '+ctx.recentGames+' games',m.formNote);
+ }
+ $('forecastRestNote').textContent=a+': '+ml.restNote+' · '+b+': '+mr.restNote+'. Rest from published schedules may change.';
+ $('forecastFormNote').textContent=a+': '+ml.formNote+' · '+b+': '+mr.formNote+'. Recent form means results before the selected game.';
+ // Unknown rest is omitted symmetrically rather than manufactured from today's last game.
+ const restKnown=ml.rest!==null&&mr.rest!==null;
+ l.rest=restKnown?ml.rest:1;rr.rest=restKnown?mr.rest:1;
+ l.restKnown=rr.restKnown=restKnown;
+ const futureUnknown=ml.form===null||mr.form===null||!restKnown;
+ const far=dayValue(date)-dayValue(today())>horizonDays;
+ if(futureUnknown){l.load=0;rr.load=0;}
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
  const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
  for(const [key,label,low,high,why] of factorRows){
@@ -240,24 +295,25 @@ function render(){
   if(left.value||right.value)manual.push({label,shift:left.value-right.value,why:name(a)+': '+left.label+'. '+name(b)+': '+right.label+'. '+why+' Equal assumptions cancel out; any change is illustrative.'});
  }
  const restA=$('forecastRestA').value,restB=$('forecastRestB').value,formA=$('forecastFormA').value,formB=$('forecastFormB').value;
- $('forecastRestNote').textContent=a+': '+formatRest(l.rest,l.restKnown)+' · '+b+': '+formatRest(rr.rest,rr.restKnown)+' based on completed games. Future intervening games are not assumed.';
- $('forecastFormNote').textContent=a+': '+l.recentWins+' wins in '+l.recentGames+' recent games · '+b+': '+rr.recentWins+' in '+rr.recentGames+'.';
+
  const f=n=>Number(n).toFixed(1),sign=n=>(n>=0?'+':'')+f(n);
  const nameA=name(a),nameB=name(b);
  const baseParts=[
   {label:'Home court',value:w[0]*venue,why:venue===0?'Neither team is assigned home advantage.':name(venue===1?a:b)+' plays at home. Familiar surroundings and less travel may help; the model learned the typical association from past games.'},
   {label:'Overall team strength',value:w[1]*(l.rating-rr.rating)/100,why:'The rating rises after wins, especially against strong opponents, and falls after losses. '+a+' has a rating of '+Math.round(l.rating)+'; '+b+' has '+Math.round(rr.rating)+'.'},
   {label:'Recent wins',value:w[2]*(l.form-rr.form),why:a+' won '+l.recentWins+' of its last '+l.recentGames+' games; '+b+' won '+rr.recentWins+' of '+rr.recentGames+'. The model considers whether recent success adds useful information beyond team strength.'},
-  {label:'Rest and recovery',value:w[3]*(l.rest-rr.rest)/3,why:a+' has '+formatRest(l.rest,l.restKnown)+'; '+b+' has '+formatRest(rr.rest,rr.restKnown)+'. Recovery time may affect energy and preparation.'}
+  {label:'Rest and recovery',value:w[3]*(l.rest-rr.rest)/3,why:restKnown?a+' has '+formatRest(l.rest,true)+'; '+b+' has '+formatRest(rr.rest,true)+'. Recovery time may affect energy and preparation.':'Future rest is not verified for both teams, so the baseline omits its effect.'}
  ];
  if(advanced)baseParts.push(
   {label:'Recent scoring margin',value:w[4]*(l.margin-rr.margin)/10,why:'Winning by more or losing by less indicates stronger recent performance. Recent margins are smoothed to limit overreaction: '+a+' '+sign(l.margin)+', '+b+' '+sign(rr.margin)+' points.'},
-  {label:'Schedule congestion',value:w[5]*(l.load-rr.load)/5,why:a+' played '+l.load+' games in the preceding seven days; '+b+' played '+rr.load+'. Crowded schedules may leave less time to recover.'},
+  {label:'Schedule congestion',value:w[5]*(l.load-rr.load)/5,why:futureUnknown?'The schedule load before this future game is not verified, so the baseline omits this effect.':a+' played '+l.load+' games in the preceding seven days; '+b+' played '+rr.load+'. Crowded schedules may leave less time to recover.'},
   {label:'Recent opponent strength',value:w[6]*(l.opponent-rr.opponent)/100,why:'Recent opponents are compared by their ratings before those games. Facing stronger teams can put recent outcomes in context.'}
  );
  const baseLogit=baseParts.reduce((sum,x)=>sum+x.value,0);
- const proposedFormA=formA==='auto'?l.form:(+formA+2)/14,proposedFormB=formB==='auto'?rr.form:(+formB+2)/14;
- const proposedRestA=restA==='auto'?l.rest:+restA,proposedRestB=restB==='auto'?rr.rest:+restB;
+ const manualValue=id=>$(id).dataset.mode==='manual'&&$(id).value!=='';
+ const fA=manualValue('forecastFormA'),fB=manualValue('forecastFormB'),rA=manualValue('forecastRestA'),rB=manualValue('forecastRestB');
+ const proposedFormA=fA?(+formA+2)/14:l.form,proposedFormB=fB?(+formB+2)/14:rr.form;
+ const proposedRestA=rA?+restA:l.rest,proposedRestB=rB?+restB:rr.rest;
  const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=w[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
  const custom=clamp(Number($('forecastCustomShift')?.value)||0,-100,100);
  const assumptions=[...manual,...pA.reasons,...pB.reasons.map(x=>({...x,shift:-x.shift})),...(custom?[{label:'Custom numerical assumption',shift:custom,why:'This is the extra advantage or disadvantage you entered, rather than a measured effect.'}]:[])];
@@ -270,20 +326,21 @@ function render(){
  // Effects do not sum to total probability due to nonlinear logistic transformation.
  const factors=baseParts.map(x=>({...x,delta:base-sig(baseLogit-x.value)})).sort((x,y)=>Math.abs(y.delta)-Math.abs(x.delta));
  const scenarioRows=assumptions.map(x=>({...x,delta:adjusted-sig(baseLogit+w[1]*clamp(rawShift-x.shift,-150,150)/100+formChange+restChange)}));
- if(formA!=='auto'||formB!=='auto')scenarioRows.push({label:'Assumed recent form',why:'You changed the number of wins in ten games. This only changes the part of the model that uses recent wins.',delta:adjusted-sig(adjustedLogit-formChange)});
- if(restA!=='auto'||restB!=='auto')scenarioRows.push({label:'Assumed rest',why:'You changed the days available for recovery. The amount is based on the learned rest relationship, not a guaranteed effect.',delta:adjusted-sig(adjustedLogit-restChange)});
+ if(fA||fB)scenarioRows.push({label:'Assumed recent form',why:'You changed the number of wins in ten games. This only changes the part of the model that uses recent wins.',delta:adjusted-sig(adjustedLogit-formChange)});
+ if(rA||rB)scenarioRows.push({label:'Assumed rest',why:'You changed the days available for recovery. The amount is based on the learned rest relationship, not a guaranteed effect.',delta:adjusted-sig(adjustedLogit-restChange)});
  const warnings=[...pA.warnings,...pB.warnings,...(Math.abs(rawShift)>150?['Combined manual assumptions are limited to prevent extreme stacked changes.']:[])];
  const favorite=Math.abs(base-.5)<.005?'The model sees a nearly even matchup.':name(base>.5?a:b)+' is the model’s estimated favorite.';
- root.innerHTML='<div class="forecast-result-card"><span class="eyebrow">Statistical baseline · before the game</span><h4>'+esc(favorite)+'</h4>'+line(base,'baseline')+'<p>'+esc(fixture?'Selected sourced upcoming game.':'Custom matchup scenario; not necessarily a scheduled game.')+' These estimates use measured earlier game conditions, not confirmed lineups.</p><h4 class="forecast-why-title">Why the model favors one team</h4><p>Each change shows how much Team A’s estimated chance differs from a calculation with that factor removed. Positive favors '+esc(a)+'; negative favors '+esc(b)+'. These are model associations, not proven causes, and the numbers do not add together.</p><div class="forecast-breakdown forecast-reason-list">'+factors.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div><div class="forecast-scenario"><span class="eyebrow">Your what-if matchup · assumptions</span><h4>'+esc(adjusted>.505?nameA+' is favored under these inputs':adjusted<.495?nameB+' is favored under these inputs':'Nearly even under these inputs')+'</h4>'+line(adjusted,'scenario')+'<p>Change from statistical baseline: <strong>'+esc(points(adjusted-base))+' for '+esc(a)+'</strong>. Player and tactical effects without validated evidence remain hypothetical. This is not a confirmed injury-adjusted prediction.</p>'+ (scenarioRows.length?'<div class="forecast-breakdown forecast-reason-list">'+scenarioRows.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div>':'<p>No additional assumptions selected. Change a game condition or select a player above to explore the difference.</p>')+warnings.map(x=>'<p class="forecast-warning">'+esc(x)+'</p>').join('')+'</div></div>';
+ root.innerHTML='<div class="forecast-result-card"><span class="eyebrow">Statistical baseline · before the game</span><h4>'+esc(favorite)+'</h4>'+line(base,'baseline')+'<p>'+esc(fixture?'Selected sourced upcoming game.':'Custom matchup scenario; not necessarily a scheduled game.')+' '+(futureUnknown?'This is a preliminary estimate from information known today. Unknown future conditions are not treated as actual results.':'These estimates use measured earlier game conditions, not confirmed lineups.')+'</p><h4 class="forecast-why-title">Why the model favors one team</h4><p>Each change shows how much Team A’s estimated chance differs from a calculation with that factor removed. Positive favors '+esc(a)+'; negative favors '+esc(b)+'. These are model associations, not proven causes, and the numbers do not add together.</p><div class="forecast-breakdown forecast-reason-list">'+factors.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div><div class="forecast-scenario"><span class="eyebrow">Your what-if matchup · assumptions</span><h4>'+esc(adjusted>.505?nameA+' is favored under these inputs':adjusted<.495?nameB+' is favored under these inputs':'Nearly even under these inputs')+'</h4>'+line(adjusted,'scenario')+'<p>Change from statistical baseline: <strong>'+esc(points(adjusted-base))+' for '+esc(a)+'</strong>. Player and tactical effects without validated evidence remain hypothetical. This is not a confirmed injury-adjusted prediction.</p>'+ (scenarioRows.length?'<div class="forecast-breakdown forecast-reason-list">'+scenarioRows.map(x=>reason(x.label,x.why,x.delta)).join('')+'</div>':'<p>No additional assumptions selected. Change a game condition or select a player above to explore the difference.</p>')+warnings.map(x=>'<p class="forecast-warning">'+esc(x)+'</p>').join('')+'</div></div>';
 }
 function resetAssumptions(){
- for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';
+ resetMeasured();
  for(const [k,,low,high] of factorRows)for(const side of ['A','B']){const neutral=$('factor-'+k+'-'+side+'-neutral');if(neutral)neutral.checked=true;readFactor(k,side,low,high);}
  for(const side of ['A','B'])for(let i=1;i<=3;i++){const p='player'+side+i;if($(p+'Name')){$(p+'Name').value='';$(p+'Status').value='reported';$(p+'Shift').value='auto';}}
  $('forecastNotes').value='';if($('forecastCustomShift'))$('forecastCustomShift').value='0';render();
 }
 async function loadFixtures(){
  const date=$('forecastDate').value,seq=++fixtureRequest;
+ const selectedFixture=$('forecastFixture').value;
  $('forecastFixture').innerHTML='<option value="">Custom matchup</option>';
  fixtures=[];$('forecastFixtureNote').textContent='Checking sourced upcoming games for '+date+'…';
  if(!date||date<today()||date>season()+'-06-30')return;
@@ -296,6 +353,7 @@ async function loadFixtures(){
    return {id:String(e.id),home,away,tipoff:e.date,neutral:c?.neutralSite===true};
   }).filter(g=>teams[g.home]&&teams[g.away]&&g.home!==g.away);
   $('forecastFixture').innerHTML='<option value="">Custom matchup</option>'+options(fixtures.map(g=>[g.id,name(g.away)+' at '+name(g.home)+' · '+time(g.tipoff)]));
+  if(fixtures.some(g=>g.id===selectedFixture))$('forecastFixture').value=selectedFixture;
   $('forecastFixtureNote').textContent=fixtures.length+' upcoming games · verified provider schedule for '+date+'. Pick a fixture or use any custom pairing. Current rosters are not guaranteed lineups.';
  }catch(e){if(seq===fixtureRequest)$('forecastFixtureNote').textContent='Upcoming schedule unavailable for this date. Custom pairing remains available; it is not a verified scheduled game.';}
 }
@@ -323,18 +381,19 @@ function init(){
   $('forecastVenue').value=String(-Number($('forecastVenue').value));
   $('gameAway').dispatchEvent(new Event('change'));$('gameHome').dispatchEvent(new Event('change'));
  });
- date.addEventListener('change',()=>{for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';loadFixtures();render();});
+ date.addEventListener('change',()=>{resetMeasured();loadFixtures();refreshMeasuredSchedule();});
  $('forecastReset').addEventListener('click',resetAssumptions);
  $('forecastRefreshRoster').addEventListener('click',async()=>{await loadData(true);await loadSelectedRoster(true);});
  $('gameroom').addEventListener('change',e=>{
+  if(measuredIds.includes(e.target.id))e.target.dataset.mode=e.target.value===''?'auto':'manual';
   if(e.target.id.startsWith('factor-')){for(const [k,,low,high] of factorRows)for(const side of ['A','B'])readFactor(k,side,low,high);}
   if(e.target.id.startsWith('forecast')||e.target.id.startsWith('factor-')||e.target.id.startsWith('player'))render();
  });
- loadData(true).then(()=>loadSelectedRoster(true,false));loadFixtures();
+ resetMeasured();loadData(true).then(()=>loadSelectedRoster(true,false));loadFixtures();refreshMeasuredSchedule();
  // Only while Game Room is open; direct refresh includes current trade and injury changes.
- const refresh=()=>{if(location.hash==='#gameroom'&&document.visibilityState==='visible'){loadData(true).then(()=>loadSelectedRoster(true,true));}};
+ const refresh=()=>{if(location.hash==='#gameroom'&&document.visibilityState==='visible'){loadData(true).then(()=>loadSelectedRoster(true,true));refreshMeasuredSchedule();}};
  setInterval(refresh,300000);
- window.addEventListener('hashchange',()=>{if(location.hash==='#gameroom'){loadData().then(()=>loadSelectedRoster(false,true));loadFixtures();}});
+ window.addEventListener('hashchange',()=>{if(location.hash==='#gameroom'){loadData().then(()=>loadSelectedRoster(false,true));loadFixtures();refreshMeasuredSchedule();}});
  document.addEventListener('visibilitychange',refresh);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
