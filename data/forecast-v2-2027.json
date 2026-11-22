@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-21T20:44:08.341Z",
-  "sourceArchiveCollectedAt": "2026-11-21T20:29:24.813Z",
+  "retrievedAt": "2026-11-22T02:38:02.724Z",
+  "sourceArchiveCollectedAt": "2026-11-22T02:08:50.793Z",
   "weights": [
     0.22667194549733943,
     0.4679558103633777,
@@ -863,7 +863,7 @@
       "games": 15
     },
     "MIL": {
-      "rating": 1350.3143536942548,
+      "rating": 1347.2419898935427,
       "results": [
         0,
         0,
@@ -877,7 +877,6 @@
         0
       ],
       "margins": [
-        -12,
         -7,
         -14,
         -20,
@@ -886,10 +885,10 @@
         -8,
         -7,
         -7,
-        -10
+        -10,
+        -3
       ],
       "opponents": [
-        1549.8609591435415,
         1617.8412521967805,
         1513.6039380347195,
         1629.3171082517674,
@@ -898,10 +897,10 @@
         1495.2275331246008,
         1530.312866984382,
         1528.8440126100522,
-        1555.6702890597237
+        1555.6702890597237,
+        1591.7638246110284
       ],
       "dates": [
-        "2026-11-02",
         "2026-11-04",
         "2026-11-06",
         "2026-11-08",
@@ -910,10 +909,11 @@
         "2026-11-13",
         "2026-11-15",
         "2026-11-18",
-        "2026-11-19"
+        "2026-11-19",
+        "2026-11-21"
       ],
-      "lastDate": "2026-11-19",
-      "games": 16
+      "lastDate": "2026-11-21",
+      "games": 17
     },
     "MIN": {
       "rating": 1572.0807603811204,
@@ -1181,21 +1181,20 @@
       "games": 15
     },
     "PHI": {
-      "rating": 1591.7638246110284,
+      "rating": 1594.8361884117405,
       "results": [
         1,
         1,
-        1,
         0,
         1,
         0,
+        1,
         1,
         1,
         1,
         1
       ],
       "margins": [
-        5,
         19,
         6,
         -24,
@@ -1204,10 +1203,10 @@
         11,
         7,
         12,
-        5
+        5,
+        3
       ],
       "opponents": [
-        1530.3702586082636,
         1393.3777722317157,
         1637.8587428145695,
         1563.8255347687302,
@@ -1216,10 +1215,10 @@
         1499.6966836103456,
         1383.6584752859558,
         1356.0786523773031,
-        1515.9301819100783
+        1515.9301819100783,
+        1350.3143536942548
       ],
       "dates": [
-        "2026-10-31",
         "2026-11-02",
         "2026-11-04",
         "2026-11-06",
@@ -1228,10 +1227,11 @@
         "2026-11-12",
         "2026-11-15",
         "2026-11-16",
-        "2026-11-18"
+        "2026-11-18",
+        "2026-11-21"
       ],
-      "lastDate": "2026-11-18",
-      "games": 16
+      "lastDate": "2026-11-21",
+      "games": 17
     },
     "PHX": {
       "rating": 1526.6111603525464,
@@ -3198,9 +3198,9 @@
     }
   },
   "todayDate": "2026-11-21",
-  "throughDate": "2026-11-20",
+  "throughDate": "2026-11-21",
   "historicalGameCount": 2462,
-  "archiveGames": 235,
+  "archiveGames": 236,
   "featureNames": [
     "Rating difference",
     "Recent wins",
@@ -3262,14 +3262,14 @@
     "trainingGames": 2366,
     "trainingThrough": "2026-04-12",
     "testFrom": "2026-10-26",
-    "testThrough": "2026-11-20",
-    "games": 187,
-    "accuracy": 0.7058823529411765,
-    "brier": 0.2042668049472358,
-    "logLoss": 0.5950711366168185,
+    "testThrough": "2026-11-21",
+    "games": 188,
+    "accuracy": 0.7074468085106383,
+    "brier": 0.20326791648153011,
+    "logLoss": 0.5926365905574428,
     "homeRateBaseline": 0.5497026338147833,
-    "baselineBrier": 0.25167298335120525,
-    "baselineAccuracy": 0.5080213903743316,
+    "baselineBrier": 0.25141284896100385,
+    "baselineAccuracy": 0.5106382978723404,
     "calibration": [
       {
         "from": 0,
@@ -3302,33 +3302,35 @@
       {
         "from": 0.8,
         "to": 1,
-        "games": 26,
-        "meanPrediction": 0.8571987365878517,
-        "observed": 0.8076923076923077
+        "games": 27,
+        "meanPrediction": 0.8577336726693373,
+        "observed": 0.8148148148148148
       }
     ],
-    "simpleBrier": 0.2056905305275157,
-    "simpleAccuracy": 0.7005347593582888,
+    "simpleBrier": 0.20470650096944493,
+    "simpleAccuracy": 0.7021276595744681,
     "method": "Historical-only model selection and training, tested on current-season games with features from earlier dates only."
   },
   "playerModel": {
     "enabled": false,
-    "beta": 0.031491451545195226,
-    "trainingGames": 122,
-    "games": 65,
-    "testFrom": "2026-11-12",
-    "testThrough": "2026-11-20",
-    "brier": 0.22578556175660122,
-    "baselineBrier": 0.2250335102382175,
-    "method": "Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not individual causal impact or a prospective injury forecast."
+    "beta": 0.04994344758382709,
+    "trainingGames": 1176,
+    "games": 188,
+    "trainingThrough": "2026-04-12",
+    "testFrom": "2026-10-26",
+    "testThrough": "2026-11-21",
+    "brier": 0.20362441020367547,
+    "baselineBrier": 0.20326791648153011,
+    "previousSeasonTraining": true,
+    "method": "Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast."
   },
   "playerProfiles": {
     "1966": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 12,
-      "averageMinutes": 32.2,
-      "averagePoints": 15.7,
+      "lastDate": "2026-11-21",
+      "games": 13,
+      "averageMinutes": 32.4,
+      "averagePoints": 16,
       "sample": 10
     },
     "3195": {
@@ -3533,10 +3535,10 @@
     },
     "2581018": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 16,
-      "averageMinutes": 21.8,
-      "averagePoints": 5,
+      "lastDate": "2026-11-21",
+      "games": 17,
+      "averageMinutes": 23.5,
+      "averagePoints": 5.8,
       "sample": 10
     },
     "2581184": {
@@ -3602,6 +3604,14 @@
       "averageMinutes": 20.7,
       "averagePoints": 7.2,
       "sample": 10
+    },
+    "2991043": {
+      "team": "MIL",
+      "lastDate": "2026-11-21",
+      "games": 3,
+      "averageMinutes": 8,
+      "averagePoints": 3.666667,
+      "sample": 3
     },
     "2991070": {
       "team": "MEM",
@@ -3693,10 +3703,10 @@
     },
     "3059318": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 13,
-      "averageMinutes": 31.1,
-      "averagePoints": 19.5,
+      "lastDate": "2026-11-21",
+      "games": 14,
+      "averageMinutes": 30.6,
+      "averagePoints": 20,
       "sample": 10
     },
     "3059319": {
@@ -3805,10 +3815,10 @@
     },
     "3133628": {
       "team": "MIL",
-      "lastDate": "2026-11-18",
-      "games": 14,
-      "averageMinutes": 26.3,
-      "averagePoints": 7.1,
+      "lastDate": "2026-11-21",
+      "games": 15,
+      "averageMinutes": 26.7,
+      "averagePoints": 7.2,
       "sample": 10
     },
     "3133635": {
@@ -3829,10 +3839,10 @@
     },
     "3134907": {
       "team": "MIL",
-      "lastDate": "2026-11-18",
-      "games": 15,
-      "averageMinutes": 26.8,
-      "averagePoints": 13,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 27.8,
+      "averagePoints": 12.8,
       "sample": 10
     },
     "3134908": {
@@ -4629,10 +4639,10 @@
     },
     "4351851": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 16,
-      "averageMinutes": 21.4,
-      "averagePoints": 10.7,
+      "lastDate": "2026-11-21",
+      "games": 17,
+      "averageMinutes": 21.5,
+      "averagePoints": 10.6,
       "sample": 10
     },
     "4351852": {
@@ -4725,10 +4735,10 @@
     },
     "4395725": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 15,
-      "averageMinutes": 29.7,
-      "averagePoints": 17.4,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 31,
+      "averagePoints": 20.9,
       "sample": 10
     },
     "4396907": {
@@ -4861,10 +4871,10 @@
     },
     "4397475": {
       "team": "MIL",
-      "lastDate": "2026-11-18",
-      "games": 15,
-      "averageMinutes": 15,
-      "averagePoints": 4.9,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 14.2,
+      "averagePoints": 5.8,
       "sample": 10
     },
     "4397688": {
@@ -4933,10 +4943,10 @@
     },
     "4431678": {
       "team": "PHI",
-      "lastDate": "2026-11-16",
-      "games": 15,
-      "averageMinutes": 35.4,
-      "averagePoints": 25.6,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 35.2,
+      "averagePoints": 24.6,
       "sample": 10
     },
     "4431679": {
@@ -5117,10 +5127,10 @@
     },
     "4432446": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 12,
-      "averageMinutes": 15.4,
-      "averagePoints": 7.5,
+      "lastDate": "2026-11-21",
+      "games": 13,
+      "averageMinutes": 16.2,
+      "averagePoints": 7.8,
       "sample": 10
     },
     "4432582": {
@@ -5221,10 +5231,10 @@
     },
     "4432848": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 16,
-      "averageMinutes": 26.8,
-      "averagePoints": 14.3,
+      "lastDate": "2026-11-21",
+      "games": 17,
+      "averageMinutes": 26.5,
+      "averagePoints": 13.3,
       "sample": 10
     },
     "4432907": {
@@ -5421,10 +5431,10 @@
     },
     "4591725": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 14,
-      "averageMinutes": 21.6,
-      "averagePoints": 9.8,
+      "lastDate": "2026-11-21",
+      "games": 15,
+      "averageMinutes": 22.7,
+      "averagePoints": 10.2,
       "sample": 10
     },
     "4592427": {
@@ -5846,10 +5856,10 @@
     "4702384": {
       "team": "OKC",
       "lastDate": "2026-11-20",
-      "games": 14,
-      "averageMinutes": 12.2,
-      "averagePoints": 3.4,
-      "sample": 10
+      "games": 6,
+      "averageMinutes": 16.666667,
+      "averagePoints": 4.833333,
+      "sample": 6
     },
     "4702656": {
       "team": "TOR",
@@ -6037,10 +6047,10 @@
     },
     "4873090": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 10,
-      "averageMinutes": 7,
-      "averagePoints": 3,
+      "lastDate": "2026-11-21",
+      "games": 11,
+      "averageMinutes": 7.2,
+      "averagePoints": 3.2,
       "sample": 10
     },
     "4873138": {
@@ -6309,10 +6319,10 @@
     },
     "5082206": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 16,
+      "lastDate": "2026-11-21",
+      "games": 17,
       "averageMinutes": 26.5,
-      "averagePoints": 11.3,
+      "averagePoints": 13,
       "sample": 10
     },
     "5093267": {
@@ -6381,10 +6391,10 @@
     },
     "5105623": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 16,
-      "averageMinutes": 18,
-      "averagePoints": 6.4,
+      "lastDate": "2026-11-21",
+      "games": 17,
+      "averageMinutes": 18.5,
+      "averagePoints": 6.8,
       "sample": 10
     },
     "5105637": {
@@ -6418,14 +6428,6 @@
       "averageMinutes": 6,
       "averagePoints": 2,
       "sample": 9
-    },
-    "5105817": {
-      "team": "LAL",
-      "lastDate": "2026-11-18",
-      "games": 3,
-      "averageMinutes": 7.666667,
-      "averagePoints": 2,
-      "sample": 3
     },
     "5105832": {
       "team": "LAC",
@@ -6573,10 +6575,10 @@
     },
     "5124612": {
       "team": "PHI",
-      "lastDate": "2026-11-18",
-      "games": 15,
-      "averageMinutes": 34.7,
-      "averagePoints": 14.6,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 34.8,
+      "averagePoints": 15.2,
       "sample": 10
     },
     "5142620": {
@@ -6653,10 +6655,10 @@
     },
     "5164559": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 14,
-      "averageMinutes": 19.9,
-      "averagePoints": 8.3,
+      "lastDate": "2026-11-21",
+      "games": 15,
+      "averageMinutes": 20.5,
+      "averagePoints": 8.1,
       "sample": 10
     },
     "5170947": {
@@ -6757,10 +6759,10 @@
     },
     "5214640": {
       "team": "MIL",
-      "lastDate": "2026-11-19",
-      "games": 15,
-      "averageMinutes": 17.3,
-      "averagePoints": 9.7,
+      "lastDate": "2026-11-21",
+      "games": 16,
+      "averageMinutes": 16.2,
+      "averagePoints": 9.4,
       "sample": 10
     },
     "5214989": {
@@ -6884,6 +6886,7 @@
       "sample": 6
     }
   },
-  "playerCoverage": 235,
+  "playerCoverage": 236,
+  "historicalPlayerCoverage": 1224,
   "limitations": "Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect."
 }
