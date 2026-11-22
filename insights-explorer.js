@@ -43,7 +43,7 @@ function filters(){
  const grouped=new Map();
  for(const m of metrics){const k=m.category;if(!grouped.has(k))grouped.set(k,[]);grouped.get(k).push(m);}
  cards.innerHTML=[...grouped.entries()].map(([category,items])=>'<div class="insights-metric-group"><div class="insights-group-heading"><h4>'+esc(category)+'</h4><span>'+items.length+' measures</span></div><div class="insights-card-grid">'+items.map(m=>
-  '<article class="insights-metric-card" data-stat="'+esc(m.id)+'" data-team="'+esc(m.team)+'">'+
+  '<article class="insights-metric-card" data-stat="'+esc(m.id)+'" data-insight-team="'+esc(m.team)+'">'+
    '<div class="insights-card-top"><span class="insights-team-chip">'+esc(teamIdentity(m.team))+'</span>'+
    (m.seasonPercentile>=95?'<span class="insights-percentile">Upper '+Math.max(1,100-m.seasonPercentile+1)+'% of records</span>':'')+'</div>'+
    '<strong class="insights-number">'+esc(m.display)+'</strong><h5>'+esc(m.title)+'</h5><p>'+esc(m.explain)+'</p>'+
