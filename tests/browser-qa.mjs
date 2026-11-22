@@ -195,6 +195,19 @@ try{
   const read=()=>page.locator('#forecastResult .forecast-prob.baseline strong').first().innerText();
   const adjusted=()=>page.locator('#forecastResult .forecast-prob.scenario strong').first().innerText();
   const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
+  const measured=await page.evaluate(()=>['forecastRestA','forecastRestB','forecastFormA','forecastFormB'].map(id=>{const el=document.getElementById(id);return {id,value:el.value,label:el.selectedOptions[0].textContent}}));
+  assert.ok(measured.every(x=>x.value==='auto'&&!/auto|waiting/i.test(x.label)),JSON.stringify(measured));
+  assert.ok(measured.slice(0,2).every(x=>/Back-to-back|full day/.test(x.label)));
+  assert.ok(measured.slice(2).every(x=>/^\d+ wins in \d+ games$/.test(x.label)));
+  assert.ok((await page.locator('#forecastRestNote').innerText()).includes('based on completed games'));
+  assert.ok((await page.locator('#forecastFormNote').innerText()).includes('recent games'));
+  assert.ok(!(await page.locator('#gameroom .eyebrow').allInnerTexts()).some(x=>/^\d{2}\s*\//.test(x)));
+  await page.locator('#forecastRestA').selectOption('0');
+  assert.equal(await read(),base,'Measured override cannot change baseline');
+  await page.locator('#forecastReset').click();
+  assert.equal(await page.locator('#forecastRestA').inputValue(),'auto');
+  assert.equal(await page.locator('#forecastRestA option:checked').innerText(),measured[0].label);
+
   await page.locator('#playerA1Name').selectOption({index:1});
   await page.locator('#playerA1Status').selectOption('out');
   await page.locator('#playerA1Shift').selectOption('-25');
