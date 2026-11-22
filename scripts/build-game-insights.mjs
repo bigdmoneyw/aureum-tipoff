@@ -143,7 +143,13 @@ const games=[],unavailable=[],pending=boxes.games.filter(g=>!oldById.has(g.id)||
 const newById=new Map();
 for(let i=0;i<pending.length;i+=12){
  const batch=await Promise.all(pending.slice(i,i+12).map(async g=>[g,await summary(g.id)]));
- for(const [g,d] of batch){const record=calc(g,d);newById.set(g.id,record);if(!record.playByPlayVerified)unavailable.push(g.id);}
+ for(const [g,d] of batch){
+  if(i===0&&g===batch[0][0]){
+   const plays=Array.isArray(d?.plays)?d.plays:Array.isArray(d?.plays?.plays)?d.plays.plays:[];
+   console.log('INSIGHTS_PBP_PROBE '+JSON.stringify({keys:Object.keys(d||{}),game:g.id,plays:plays.length,sample:plays[5]||plays[0],last:plays.at(-1),header:d?.header?.competitions?.[0]?.competitors?.map(x=>({abbr:x.team?.abbreviation,score:x.score}))}).slice(0,4500));
+  }
+  const record=calc(g,d);newById.set(g.id,record);if(!record.playByPlayVerified)unavailable.push(g.id);
+ }
 }
 for(const g of boxes.games)games.push(newById.get(g.id)||oldById.get(g.id)||calc(g,null));
 const allValues=new Map();
