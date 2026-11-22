@@ -146,21 +146,52 @@ const factorRows=[
 ];
 const shifts=[['0','No added effect'],['-50','Large disadvantage'],['-25','Moderate disadvantage'],['-10','Small disadvantage'],['10','Small advantage'],['25','Moderate advantage'],['50','Large advantage']];
 const options=list=>list.map(([v,l])=>'<option value="'+esc(v)+'">'+esc(l)+'</option>').join('');
-const factorScale=[[-25,'−','Disadvantage'],[0,'•','No adjustment'],[25,'+','Advantage']];
+
+const factorScale=[[-40,'−−','verylow'],[-20,'−','low'],[0,'·','neutral'],[20,'+','high'],[40,'++','veryhigh']];
+const factorDetails={
+ pace:{levels:['Major pace mismatch','Some pace discomfort','Typical game speed','Comfortable game speed','Excellent pace fit'],example:'Think about whether the likely tempo suits the team, rather than assuming faster is always better.'},
+ travel:{levels:['Severe travel burden','Noticeable travel fatigue','Normal travel','Light travel','Minimal travel burden'],example:'Consider flight length, time zones and late arrival. Do not double-count known rest days.'},
+ rotation:{levels:['Major lineup disruption','Several unfamiliar combinations','Usual rotation','Very familiar core','Exceptionally stable lineup'],example:'Consider how many players have actually played together in recent games.'},
+ bench:{levels:['Very thin bench','Limited reliable reserves','Typical bench depth','Several dependable reserves','Exceptionally deep bench'],example:'Think about available substitutes, their minutes and whether they can maintain performance.'},
+ altitude:{levels:['Very unfamiliar conditions','Some environmental discomfort','Typical arena conditions','Familiar arena','Especially comfortable setting'],example:'Use only relevant conditions such as unfamiliar altitude; leave typical if unknown.'},
+ shooting:{levels:['Almost no clean threes','Mostly contested outside shots','Typical perimeter looks','More open perimeter shots','Many clean outside looks'],example:'Consider defensive matchups and shot quality, not merely a player having a hot night.'},
+ rim:{levels:['Rim heavily protected','Few clear driving lanes','Typical access to the rim','Several easier drives','Frequent easy paint access'],example:'Does the opponent protect the basket well enough to discourage inside attempts?'},
+ pressure:{levels:['Repeated ball-handling errors','Some difficulty under pressure','Normal pressure response','Usually beats pressure','Consistently breaks pressure'],example:'Consider how a team handles trapping and pressure without inventing turnovers.'},
+ transition:{levels:['Frequently exposed on breaks','Some open-court vulnerability','Normal transition balance','Good fast-break chances','Excellent transition advantage'],example:'Think about speed, turnovers and how quickly opponents recover on defense.'},
+ ballmovement:{levels:['Passing lanes shut down','Some disrupted passing','Normal passing quality','Several open passing lanes','Strong coordinated passing'],example:'Will off-ball movement create easier passes, or will defenders close passing lanes?'},
+ rebounding:{levels:['Heavily outmatched on boards','Some rebounding disadvantage','Typical rebound chances','More second-shot chances','Dominates available rebounds'],example:'Consider shot locations, size and box-outs, not just raw rebound totals.'},
+ fouls:{levels:['Major foul-trouble concern','Some extra foul pressure','Typical foul risk','Good foul discipline','Very favorable foul situation'],example:'Do not predict specific referee decisions; this is a what-if assumption.'},
+ defense:{levels:['Several severe mismatches','A few defensive weaknesses','Even defensive matchups','Several good assignments','Strong defensive matchup edge'],example:'Does the team have defenders who can credibly guard the opposing scorers?'},
+ fit:{levels:['Strong stylistic disadvantage','Mild stylistic disadvantage','Balanced matchup styles','Small stylistic edge','Strong style advantage'],example:'Consider how strengths interact rather than choosing the better overall team twice.'},
+ coaching:{levels:['Game plan severely mismatched','Some tactical problems','Typical preparation','Good tactical fit','Particularly strong tactical plan'],example:'This explores tactical possibilities; a coach’s actual plan is not confirmed in advance.'},
+ motivation:{levels:['Significant outside distraction','Minor focus concern','Typical readiness','Focused and prepared','Exceptionally locked in'],example:'Focus and psychology are difficult to verify. Treat this category as speculative.'}
+};
 function factorDial(key,label,low,high,side){
- const group='factor-'+key+'-'+side;
- return '<div class="factor-side factor-side-'+side.toLowerCase()+'"><span class="factor-mobile-team" data-factor-team="'+side+'">Team '+side+'</span><div class="factor-dial" role="group" aria-label="Team '+side+' — '+esc(label)+'">'+factorScale.map(([v,symbol,meaning])=>'<label class="factor-option" title="'+esc(v<0?low:v>0?high:meaning)+'"><input type="radio" name="'+group+'" id="'+group+'-'+(v<0?'low':v>0?'high':'neutral')+'" value="'+v+'" aria-label="'+esc(v<0?low:v>0?high:meaning)+'" '+(v===0?'checked':'')+'><span class="factor-orb" aria-hidden="true">'+symbol+'</span></label>').join('')+'</div><span class="factor-state" id="'+group+'-state" aria-live="polite">No adjustment</span></div>';
+ const group='factor-'+key+'-'+side,choices=factorDetails[key].levels;
+ return '<div class="factor-side factor-side-'+side.toLowerCase()+'"><span class="factor-mobile-team" data-factor-team="'+side+'">Team '+side+'</span>'+
+  '<div class="factor-dial" role="group" aria-label="Team '+side+' — '+esc(label)+'">'+factorScale.map(([value,symbol,level],i)=>
+   '<label class="factor-option" title="'+esc(choices[i])+'"><input type="radio" name="'+group+'" id="'+group+'-'+level+'" value="'+value+'" data-factor-label="'+esc(choices[i])+'" aria-label="'+esc(choices[i])+'" '+(value===0?'checked':'')+'>'+
+   '<span class="factor-orb" aria-hidden="true">'+esc(symbol)+'</span></label>'
+  ).join('')+'</div><span class="factor-state" id="'+group+'-state" aria-live="polite">'+esc(choices[2])+'</span></div>';
 }
 function makeFactors(){
  const groups=[['Recovery & readiness',['pace','travel','rotation','bench','altitude']],['Offensive matchup',['shooting','rim','pressure','transition','ballmovement']],['Defense & possessions',['rebounding','fouls','defense']],['Strategy & circumstances',['fit','coaching','motivation']]];
- $('forecastFactors').innerHTML='<div class="factor-board-header"><div><img id="factorLogoA" alt=""><strong data-factor-team="A">Team A</strong></div><span>Game conditions</span><div><img id="factorLogoB" alt=""><strong data-factor-team="B">Team B</strong></div></div><p class="factor-board-key"><span>− Disadvantage</span><span>• No adjustment</span><span>+ Advantage</span></p>'+groups.map(([title,keys])=>'<section class="factor-group"><h5>'+esc(title)+'</h5>'+keys.map(key=>{const [,label,low,high,why]=factorRows.find(r=>r[0]===key);return '<div class="forecast-factor" data-factor="'+key+'">'+factorDial(key,label,low,high,'A')+'<div class="factor-center"><h6>'+esc(label)+'</h6><p>'+esc(why)+'</p></div>'+factorDial(key,label,low,high,'B')+'</div>';}).join('')+'</section>').join('');
+ $('forecastFactors').innerHTML='<div class="factor-board-header"><div><img id="factorLogoA" alt=""><strong data-factor-team="A">Team A</strong></div><span>Specific matchup conditions</span><div><img id="factorLogoB" alt=""><strong data-factor-team="B">Team B</strong></div></div>'+
+  '<p class="factor-board-key"><span>−− Major challenge</span><span>− Some challenge</span><span>· Typical conditions</span><span>+ Favorable</span><span>++ Strong edge</span></p>'+
+  '<p class="factor-board-caution">These are optional scenario assumptions, not automatically verified conditions or trained individual effects.</p>'+
+  groups.map(([title,keys])=>'<section class="factor-group"><h5>'+esc(title)+'</h5>'+keys.map(key=>{
+   const [,label,low,high,why]=factorRows.find(r=>r[0]===key);
+   return '<div class="forecast-factor" data-factor="'+key+'">'+factorDial(key,label,low,high,'A')+
+   '<div class="factor-center"><h6>'+esc(label)+'</h6><p>'+esc(why)+'</p><small class="factor-tip">'+esc(factorDetails[key].example)+'</small></div>'+
+   factorDial(key,label,low,high,'B')+'</div>';
+  }).join('')+'</section>').join('');
 }
-function readFactor(key,side,low,high){
+function readFactor(key,side){
  const choice=document.querySelector('input[name="factor-'+key+'-'+side+'"]:checked');
  const value=Number(choice?.value)||0;
- const label=value<0?low:value>0?high:'No adjustment';
+ const label=choice?.dataset.factorLabel||factorDetails[key].levels[2];
  const status=$('factor-'+key+'-'+side+'-state');
- if(status){status.textContent=label;status.dataset.level=value<0?'low':value>0?'high':'neutral';}
+ if(status){status.textContent=label;status.dataset.level=value<-20?'verylow':value<0?'low':value>20?'veryhigh':value>0?'high':'neutral';}
  return {value,label};
 }
 function sourceRoster(code){
