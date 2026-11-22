@@ -195,17 +195,34 @@ try{
   const read=()=>page.locator('#forecastResult .forecast-prob.baseline strong').first().innerText();
   const adjusted=()=>page.locator('#forecastResult .forecast-prob.scenario strong').first().innerText();
   const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
-  const measured=await page.evaluate(()=>['forecastRestA','forecastRestB','forecastFormA','forecastFormB'].map(id=>{const el=document.getElementById(id);return {id,value:el.value,label:el.selectedOptions[0].textContent}}));
-  assert.ok(measured.every(x=>x.value==='auto'&&!/auto|waiting/i.test(x.label)),JSON.stringify(measured));
+  const measuredIds=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
+  await page.waitForFunction(ids=>ids.every(id=>{const e=document.getElementById(id);return e.dataset.known==='true'&&/^\d+$/.test(e.value)&&e.dataset.mode==='auto';}),measuredIds,{timeout:30000});
+  const measured=await page.evaluate(ids=>ids.map(id=>{const e=document.getElementById(id);return {id,value:e.value,label:e.selectedOptions[0].textContent}}),measuredIds);
   assert.ok(measured.slice(0,2).every(x=>/Back-to-back|full day/.test(x.label)));
   assert.ok(measured.slice(2).every(x=>/^\d+ wins in \d+ games$/.test(x.label)));
-  assert.ok((await page.locator('#forecastRestNote').innerText()).includes('based on completed games'));
-  assert.ok((await page.locator('#forecastFormNote').innerText()).includes('recent games'));
+  assert.ok((await page.locator('#forecastRestNote').innerText()).includes('completed games'));
+  assert.ok((await page.locator('#forecastFormNote').innerText()).includes('wins in'));
   assert.ok(!(await page.locator('#gameroom .eyebrow').allInnerTexts()).some(x=>/^\d{2}\s*\//.test(x)));
-  await page.locator('#forecastRestA').selectOption('0');
+  const originalDate=await page.locator('#forecastDate').inputValue();
+  const distant=new Date(originalDate+'T12:00:00Z');distant.setUTCDate(distant.getUTCDate()+45);
+  const distantDate=distant.toISOString().slice(0,10);
+  if(distantDate<=await page.locator('#forecastDate').getAttribute('max')){
+   await page.locator('#forecastDate').fill(distantDate);
+   await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).value===''&&document.getElementById(id).dataset.known==='false'),measuredIds);
+   assert.match(await page.locator('#forecastFormNote').innerText(),/Future results are unknown/);
+   assert.match(await page.locator('#forecastRestNote').innerText(),/Not preselected/);
+   await page.locator('#forecastFormA').selectOption('7');
+   assert.equal(await page.locator('#forecastFormA').inputValue(),'7');
+   assert.equal(await page.locator('#forecastFormA').getAttribute('data-mode'),'manual');
+   await page.locator('#forecastReset').click();
+   assert.equal(await page.locator('#forecastFormA').inputValue(),'');
+   await page.locator('#forecastDate').fill(originalDate);
+   await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).dataset.known==='true'),measuredIds,{timeout:30000});
+  }
+  await page.locator('#forecastRestA').selectOption(measured[0].value==='0'?'2':'0');
   assert.equal(await read(),base,'Measured override cannot change baseline');
   await page.locator('#forecastReset').click();
-  assert.equal(await page.locator('#forecastRestA').inputValue(),'auto');
+  assert.equal(await page.locator('#forecastRestA').inputValue(),measured[0].value);
   assert.equal(await page.locator('#forecastRestA option:checked').innerText(),measured[0].label);
 
   await page.locator('#playerA1Name').selectOption({index:1});
