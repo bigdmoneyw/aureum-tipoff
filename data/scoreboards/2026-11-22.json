@@ -2,16 +2,16 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-22",
-  "retrievedAt": "2026-11-22T22:51:02.345Z",
+  "retrievedAt": "2026-11-22T23:34:03.004Z",
   "events": [
     {
       "id": "401910029",
       "date": "2026-11-22T20:30Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "47.6 - 4th"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -22,14 +22,14 @@
               "team": {
                 "abbreviation": "ATL"
               },
-              "score": "104"
+              "score": "107"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "DET"
               },
-              "score": "92"
+              "score": "97"
             }
           ]
         }
@@ -41,8 +41,8 @@
       "status": {
         "type": {
           "completed": false,
-          "state": "pre",
-          "shortDetail": "11/22 - 6:00 PM EST"
+          "state": "in",
+          "shortDetail": "51.1 - 1st"
         }
       },
       "competitions": [
@@ -53,14 +53,14 @@
               "team": {
                 "abbreviation": "MIA"
               },
-              "score": ""
+              "score": "33"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "OKC"
               },
-              "score": ""
+              "score": "24"
             }
           ]
         }
