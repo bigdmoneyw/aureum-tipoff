@@ -69,6 +69,9 @@ try {
  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
  const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
+ const measuredLabels=await page.evaluate(()=>['forecastRestA','forecastRestB','forecastFormA','forecastFormB'].map(id=>document.getElementById(id).selectedOptions[0].textContent));
+ assert.ok(measuredLabels.every(x=>!/auto|waiting/i.test(x)),JSON.stringify(measuredLabels));
+ assert.ok(!(await page.locator('#gameroom .eyebrow').allInnerTexts()).some(x=>/^\d{2}\s*\//.test(x)));
  await page.locator('#factor-travel-A-low').check();
  assert.ok(parseFloat(await page.locator('#forecastResult .scenario strong').first().innerText())<parseFloat(pBase));
  await page.locator('#factor-travel-B-low').check();
