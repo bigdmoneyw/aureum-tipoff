@@ -2,7 +2,7 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-22T02:38:02.724Z",
+  "retrievedAt": "2026-11-22T04:51:37.788Z",
   "sourceArchiveCollectedAt": "2026-11-22T02:08:50.793Z",
   "weights": [
     0.22667194549733943,
@@ -3199,6 +3199,104 @@
   },
   "todayDate": "2026-11-21",
   "throughDate": "2026-11-21",
+  "horizonModels": {
+    "7": {
+      "days": 7,
+      "weights": [
+        0.23809914491971565,
+        0.46354110467868304,
+        0,
+        0,
+        0.4794892449233861,
+        0,
+        0.17873398892307346
+      ],
+      "trainingGames": 2265,
+      "historicalValidationGames": 619,
+      "historicalValidationBrier": 0.18991717417653697,
+      "currentSeasonTest": {
+        "games": 140,
+        "accuracy": 0.6857142857142857,
+        "brier": 0.19983742827013845,
+        "logLoss": 0.5857402067145591,
+        "homeRateBaseline": 0.5505518763796909,
+        "baselineBrier": 0.2532776618680744,
+        "baselineAccuracy": 0.4928571428571429,
+        "calibration": [
+          {
+            "from": 0,
+            "to": 0.2,
+            "games": 6,
+            "meanPrediction": 0.16580312434851718,
+            "observed": 0
+          },
+          {
+            "from": 0.2,
+            "to": 0.4,
+            "games": 40,
+            "meanPrediction": 0.30099682968884417,
+            "observed": 0.3
+          },
+          {
+            "from": 0.4,
+            "to": 0.6,
+            "games": 30,
+            "meanPrediction": 0.5089810553772346,
+            "observed": 0.4
+          },
+          {
+            "from": 0.6,
+            "to": 0.8,
+            "games": 43,
+            "meanPrediction": 0.7025349281995055,
+            "observed": 0.627906976744186
+          },
+          {
+            "from": 0.8,
+            "to": 1,
+            "games": 21,
+            "meanPrediction": 0.8457911525592049,
+            "observed": 0.8571428571428571
+          }
+        ]
+      },
+      "method": "Features frozen using games strictly before the earlier date. Rest and schedule density omitted. Hyperparameters selected only on historical dates; historical validation not an independent test. Current-season evaluation is separate."
+    },
+    "30": {
+      "days": 30,
+      "weights": [
+        0.19534946337309236,
+        0.5398203502358845,
+        0,
+        0,
+        0.26888026640051466,
+        0,
+        0.19955025105530208
+      ],
+      "trainingGames": 1929,
+      "historicalValidationGames": 619,
+      "historicalValidationBrier": 0.19901024600737438,
+      "currentSeasonTest": null,
+      "method": "Features frozen using games strictly before the earlier date. Rest and schedule density omitted. Hyperparameters selected only on historical dates; historical validation not an independent test. Current-season evaluation is separate."
+    },
+    "60": {
+      "days": 60,
+      "weights": [
+        0.20564863831763475,
+        0.5682700587225218,
+        0.027715416980077498,
+        0,
+        0.23336143413431368,
+        0,
+        0.07031747259323679
+      ],
+      "trainingGames": 1558,
+      "historicalValidationGames": 619,
+      "historicalValidationBrier": 0.20727276530263472,
+      "currentSeasonTest": null,
+      "method": "Features frozen using games strictly before the earlier date. Rest and schedule density omitted. Hyperparameters selected only on historical dates; historical validation not an independent test. Current-season evaluation is separate."
+    }
+  },
   "historicalGameCount": 2462,
   "archiveGames": 236,
   "featureNames": [
