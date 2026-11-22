@@ -78,6 +78,7 @@ function calc(game,summary,previous){
 function secLeft(p){let x=p.clock?.displayValue||p.clock?.value||p.clock||p.clockDisplayValue;
  if(typeof x==='number')return x;
  if(typeof x!=='string')return null;
+ if(/^\d+(?:\.\d+)?$/.test(x))return Number(x);
  let m=x.match(/^(\d{1,2}):(\d{2})(?:\.\d+)?$/);if(m)return +m[1]*60+(+m[2]);
  m=x.match(/^PT(\d+)M(\d+(?:\.\d+)?)S$/);if(m)return +m[1]*60+(+m[2]);
  return null;
@@ -91,6 +92,7 @@ function derivePbp(g,d){
   if(!Number.isInteger(period)||period<1||period>8||left===null||left<0||left>(period<=4?720:300)+1||!Number.isInteger(h)||!Number.isInteger(a)||h<0||a<0)return null;
   return {index:i,period,clock:left,at:period<=4?(period-1)*720+(720-left):2880+(period-5)*300+(300-left),h,a};
  }).filter(Boolean).sort((a,b)=>a.at-b.at||a.index-b.index);
+ if(g.id===boxes.games[0].id)console.log('PBP_NORMALIZED '+JSON.stringify({id:g.id,validEvents:events.length,first:events[0],last:events.at(-1),expected:[g.hs,g.as]}));
  if(events.length<100)return null;
  const result=events.at(-1);
  if(result.h!==g.hs||result.a!==g.as)return null;
