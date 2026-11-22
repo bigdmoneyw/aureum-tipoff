@@ -67,6 +67,7 @@ try {
  await page.locator('#forecastResult .forecast-prob.baseline strong').first().waitFor({timeout:30000});
  await page.waitForFunction(()=>document.querySelector('#playerA1Name')?.options.length>8,null,{timeout:30000});
  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
+ assert.equal(await page.locator('#forecastFactors input[type=radio]').count(),160);
  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
 
  const ids=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
@@ -92,6 +93,12 @@ try {
  assert.notEqual(await page.locator('#forecastResult .scenario strong').first().innerText(),pBase);
  await page.locator('#forecastReset').click();
  await viewportTest('gameroom');
+ await viewportTest('insights');
+ await page.waitForSelector('#insightsMetricGrid .insights-metric-card',{timeout:30000});
+ assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>24);
+ await page.locator('#insightsTeamFilter').selectOption({index:1});
+ assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>10);
+ await page.locator('#insightsTeamFilter').selectOption('all');
  await viewportTest('matchups');
  await page.locator('#pastGameReport .past-stat-row').first().waitFor({timeout:30000});
  assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
