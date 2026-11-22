@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-22T18:00:44.228Z",
-  "sourceArchiveCollectedAt": "2026-11-22T17:46:18.548Z",
+  "retrievedAt": "2026-11-22T23:48:21.330Z",
+  "sourceArchiveCollectedAt": "2026-11-22T23:34:03.004Z",
   "weights": [
     0.22667194549733943,
     0.4679558103633777,
@@ -15,21 +15,20 @@
   ],
   "state": {
     "ATL": {
-      "rating": 1557.9518967622032,
+      "rating": 1567.8951479045452,
       "results": [
-        0,
         1,
         1,
         1,
         1,
         0,
         0,
+        1,
         1,
         1,
         1
       ],
       "margins": [
-        -22,
         4,
         15,
         7,
@@ -38,10 +37,10 @@
         -8,
         7,
         5,
-        14
+        14,
+        10
       ],
       "opponents": [
-        1401.2079365889601,
         1367.10104474749,
         1375.9320474633455,
         1368.9236949216124,
@@ -50,10 +49,10 @@
         1373.8488242566887,
         1367.7194230584803,
         1636.3593223393477,
-        1478.5569977923371
+        1478.5569977923371,
+        1610.9802183376764
       ],
       "dates": [
-        "2026-10-31",
         "2026-11-02",
         "2026-11-04",
         "2026-11-06",
@@ -62,10 +61,11 @@
         "2026-11-13",
         "2026-11-15",
         "2026-11-18",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-22"
       ],
-      "lastDate": "2026-11-20",
-      "games": 16
+      "lastDate": "2026-11-22",
+      "games": 17
     },
     "BOS": {
       "rating": 1613.9872821559932,
@@ -439,10 +439,9 @@
       "games": 14
     },
     "DET": {
-      "rating": 1610.9802183376764,
+      "rating": 1601.0369671953345,
       "results": [
         1,
-        1,
         0,
         0,
         1,
@@ -450,10 +449,10 @@
         0,
         1,
         1,
+        0,
         0
       ],
       "margins": [
-        16,
         33,
         -6,
         -5,
@@ -462,10 +461,10 @@
         -20,
         12,
         13,
-        -3
+        -3,
+        -10
       ],
       "opponents": [
-        1341.727262623566,
         1519.3360321134185,
         1564.7015580097864,
         1604.1705272023996,
@@ -474,10 +473,10 @@
         1506.1940467965997,
         1666.718733467341,
         1392.8842420430706,
-        1458.5991185858968
+        1458.5991185858968,
+        1557.9518967622032
       ],
       "dates": [
-        "2026-10-30",
         "2026-11-02",
         "2026-11-04",
         "2026-11-08",
@@ -486,10 +485,11 @@
         "2026-11-14",
         "2026-11-17",
         "2026-11-18",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-22"
       ],
-      "lastDate": "2026-11-20",
-      "games": 15
+      "lastDate": "2026-11-22",
+      "games": 16
     },
     "GSW": {
       "rating": 1471.0182576251375,
@@ -3198,7 +3198,7 @@
     }
   },
   "todayDate": "2026-11-22",
-  "throughDate": "2026-11-21",
+  "throughDate": "2026-11-22",
   "horizonModels": {
     "7": {
       "days": 7,
@@ -3215,13 +3215,13 @@
       "historicalValidationGames": 619,
       "historicalValidationBrier": 0.18991717417653697,
       "currentSeasonTest": {
-        "games": 145,
-        "accuracy": 0.6896551724137931,
-        "brier": 0.20137930373902033,
-        "logLoss": 0.5906831572876498,
+        "games": 146,
+        "accuracy": 0.684931506849315,
+        "brier": 0.20247797211874038,
+        "logLoss": 0.592938831298114,
         "homeRateBaseline": 0.5505518763796909,
-        "baselineBrier": 0.2515095913148931,
-        "baselineAccuracy": 0.5103448275862069,
+        "baselineBrier": 0.25117050929099527,
+        "baselineAccuracy": 0.5136986301369864,
         "calibration": [
           {
             "from": 0,
@@ -3233,9 +3233,9 @@
           {
             "from": 0.2,
             "to": 0.4,
-            "games": 40,
-            "meanPrediction": 0.30099682968884417,
-            "observed": 0.3
+            "games": 41,
+            "meanPrediction": 0.3033753078210439,
+            "observed": 0.3170731707317073
           },
           {
             "from": 0.4,
@@ -3298,7 +3298,7 @@
     }
   },
   "historicalGameCount": 2462,
-  "archiveGames": 241,
+  "archiveGames": 242,
   "featureNames": [
     "Rating difference",
     "Recent wins",
@@ -3360,14 +3360,14 @@
     "trainingGames": 2366,
     "trainingThrough": "2026-04-12",
     "testFrom": "2026-10-26",
-    "testThrough": "2026-11-21",
-    "games": 193,
-    "accuracy": 0.7098445595854922,
-    "brier": 0.20436949777538885,
-    "logLoss": 0.5965800669850104,
+    "testThrough": "2026-11-22",
+    "games": 194,
+    "accuracy": 0.7061855670103093,
+    "brier": 0.20489724693934758,
+    "logLoss": 0.5976652530187264,
     "homeRateBaseline": 0.5497026338147833,
-    "baselineBrier": 0.2501526124074376,
-    "baselineAccuracy": 0.5233160621761658,
+    "baselineBrier": 0.24990836037437528,
+    "baselineAccuracy": 0.5257731958762887,
     "calibration": [
       {
         "from": 0,
@@ -3386,9 +3386,9 @@
       {
         "from": 0.4,
         "to": 0.6,
-        "games": 44,
-        "meanPrediction": 0.5054291499546972,
-        "observed": 0.5681818181818182
+        "games": 45,
+        "meanPrediction": 0.5041117750641673,
+        "observed": 0.5777777777777777
       },
       {
         "from": 0.6,
@@ -3405,20 +3405,20 @@
         "observed": 0.8214285714285714
       }
     ],
-    "simpleBrier": 0.2056847215411036,
-    "simpleAccuracy": 0.7046632124352331,
+    "simpleBrier": 0.20603118505220083,
+    "simpleAccuracy": 0.7010309278350515,
     "method": "Historical-only model selection and training, tested on current-season games with features from earlier dates only."
   },
   "playerModel": {
     "enabled": false,
     "beta": 0.04994344758382709,
     "trainingGames": 1176,
-    "games": 193,
+    "games": 194,
     "trainingThrough": "2026-04-12",
     "testFrom": "2026-10-26",
-    "testThrough": "2026-11-21",
-    "brier": 0.2046860886625973,
-    "baselineBrier": 0.20436949777538885,
+    "testThrough": "2026-11-22",
+    "brier": 0.2052293794465343,
+    "baselineBrier": 0.20489724693934758,
     "previousSeasonTraining": true,
     "method": "Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast."
   },
@@ -3665,9 +3665,9 @@
     },
     "2596112": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 15,
-      "averageMinutes": 19.3,
+      "lastDate": "2026-11-22",
+      "games": 16,
+      "averageMinutes": 18.9,
       "averagePoints": 7.2,
       "sample": 10
     },
@@ -4137,10 +4137,10 @@
     },
     "3908845": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 15,
-      "averageMinutes": 25.5,
-      "averagePoints": 10.8,
+      "lastDate": "2026-11-22",
+      "games": 16,
+      "averageMinutes": 25.1,
+      "averagePoints": 12.2,
       "sample": 10
     },
     "3912848": {
@@ -4385,10 +4385,10 @@
     },
     "4066372": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 15,
-      "averageMinutes": 30.2,
-      "averagePoints": 13.2,
+      "lastDate": "2026-11-22",
+      "games": 16,
+      "averageMinutes": 30.8,
+      "averagePoints": 12.6,
       "sample": 10
     },
     "4066383": {
@@ -4561,10 +4561,10 @@
     },
     "4278039": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 16,
-      "averageMinutes": 32.8,
-      "averagePoints": 21.2,
+      "lastDate": "2026-11-22",
+      "games": 17,
+      "averageMinutes": 32.7,
+      "averagePoints": 22.7,
       "sample": 10
     },
     "4278049": {
@@ -4657,10 +4657,10 @@
     },
     "4278562": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 15,
-      "averageMinutes": 26.4,
-      "averagePoints": 10,
+      "lastDate": "2026-11-22",
+      "games": 16,
+      "averageMinutes": 25.9,
+      "averagePoints": 10.4,
       "sample": 10
     },
     "4278572": {
@@ -4713,11 +4713,11 @@
     },
     "4280151": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 9,
-      "averageMinutes": 11.888889,
-      "averagePoints": 8.333333,
-      "sample": 9
+      "lastDate": "2026-11-22",
+      "games": 10,
+      "averageMinutes": 12.6,
+      "averagePoints": 9.3,
+      "sample": 10
     },
     "4280245": {
       "team": "PHX",
@@ -4801,11 +4801,11 @@
     },
     "4395702": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 5,
-      "averageMinutes": 15,
-      "averagePoints": 8.4,
-      "sample": 5
+      "lastDate": "2026-11-22",
+      "games": 6,
+      "averageMinutes": 16.833333,
+      "averagePoints": 10.166667,
+      "sample": 6
     },
     "4395712": {
       "team": "IND",
@@ -4889,10 +4889,10 @@
     },
     "4397020": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 16,
-      "averageMinutes": 25.3,
-      "averagePoints": 9.4,
+      "lastDate": "2026-11-22",
+      "games": 17,
+      "averageMinutes": 25.5,
+      "averagePoints": 9.9,
       "sample": 10
     },
     "4397040": {
@@ -4921,10 +4921,10 @@
     },
     "4397183": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 16,
-      "averageMinutes": 26.4,
-      "averagePoints": 13.5,
+      "lastDate": "2026-11-22",
+      "games": 17,
+      "averageMinutes": 26,
+      "averagePoints": 13.4,
       "sample": 10
     },
     "4397189": {
@@ -5057,9 +5057,9 @@
     },
     "4431680": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 16,
-      "averageMinutes": 32.6,
+      "lastDate": "2026-11-22",
+      "games": 17,
+      "averageMinutes": 32.7,
       "averagePoints": 16.4,
       "sample": 10
     },
@@ -5177,10 +5177,10 @@
     },
     "4432166": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 14,
-      "averageMinutes": 35.7,
-      "averagePoints": 27.5,
+      "lastDate": "2026-11-22",
+      "games": 15,
+      "averageMinutes": 35.1,
+      "averagePoints": 25,
       "sample": 10
     },
     "4432170": {
@@ -5793,9 +5793,9 @@
     },
     "4683771": {
       "team": "DET",
-      "lastDate": "2026-11-14",
-      "games": 12,
-      "averageMinutes": 16.7,
+      "lastDate": "2026-11-22",
+      "games": 13,
+      "averageMinutes": 15.3,
       "averagePoints": 5.1,
       "sample": 10
     },
@@ -5849,10 +5849,10 @@
     },
     "4684742": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 14,
-      "averageMinutes": 29.5,
-      "averagePoints": 11.5,
+      "lastDate": "2026-11-22",
+      "games": 15,
+      "averageMinutes": 30.7,
+      "averagePoints": 12.2,
       "sample": 10
     },
     "4684793": {
@@ -5905,10 +5905,10 @@
     },
     "4701230": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 13,
-      "averageMinutes": 35.3,
-      "averagePoints": 19.1,
+      "lastDate": "2026-11-22",
+      "games": 14,
+      "averageMinutes": 34.7,
+      "averagePoints": 18.2,
       "sample": 10
     },
     "4701233": {
@@ -6113,10 +6113,10 @@
     },
     "4869342": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 16,
-      "averageMinutes": 32.4,
-      "averagePoints": 9,
+      "lastDate": "2026-11-22",
+      "games": 17,
+      "averageMinutes": 33.6,
+      "averagePoints": 8.7,
       "sample": 10
     },
     "4869780": {
@@ -6609,10 +6609,10 @@
     },
     "5106262": {
       "team": "ATL",
-      "lastDate": "2026-11-20",
-      "games": 10,
-      "averageMinutes": 11.6,
-      "averagePoints": 4.6,
+      "lastDate": "2026-11-22",
+      "games": 11,
+      "averageMinutes": 12.7,
+      "averagePoints": 4.7,
       "sample": 10
     },
     "5107157": {
@@ -6633,10 +6633,10 @@
     },
     "5107199": {
       "team": "DET",
-      "lastDate": "2026-11-20",
-      "games": 15,
-      "averageMinutes": 32.6,
-      "averagePoints": 15.3,
+      "lastDate": "2026-11-22",
+      "games": 16,
+      "averageMinutes": 34,
+      "averagePoints": 15.8,
       "sample": 10
     },
     "5107818": {
@@ -6721,10 +6721,10 @@
     },
     "5149077": {
       "team": "ATL",
-      "lastDate": "2026-11-13",
-      "games": 12,
-      "averageMinutes": 21.8,
-      "averagePoints": 8.8,
+      "lastDate": "2026-11-22",
+      "games": 13,
+      "averageMinutes": 23,
+      "averagePoints": 9.6,
       "sample": 10
     },
     "5149115": {
@@ -6984,7 +6984,7 @@
       "sample": 6
     }
   },
-  "playerCoverage": 241,
+  "playerCoverage": 242,
   "historicalPlayerCoverage": 1224,
   "limitations": "Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect."
 }
