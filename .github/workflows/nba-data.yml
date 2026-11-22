@@ -9,6 +9,7 @@ on:
       - 'scripts/forecast-core.mjs'
       - 'scripts/train-forecast.mjs'
       - 'scripts/refresh-rosters.mjs'
+      - 'scripts/build-game-insights.mjs'
       - '.github/workflows/nba-data.yml'
   schedule:
     - cron: '13 */2 * * *'
@@ -35,6 +36,8 @@ jobs:
         run: node scripts/refresh-game-boxscores.mjs
       - name: Refresh all current NBA rosters and dated injury reports
         run: node scripts/refresh-rosters.mjs
+      - name: Measure distinctive game Insights from validated box scores and play-by-play
+        run: node scripts/build-game-insights.mjs
       - name: Train and evaluate chronological forecast
         run: node scripts/train-forecast.mjs
       - name: Publish sourced JSON snapshots
