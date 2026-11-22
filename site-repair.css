@@ -970,3 +970,17 @@ a,button{touch-action:manipulation}
  #gameroom .forecast-measured select{font-size:13px;padding:8px 5px}
 }
 @media(prefers-reduced-motion:reduce){#gameroom .factor-orb{transition:none}}
+
+/* Larger, unnumbered Game Room section hierarchy. */
+#gameroom .section-top .eyebrow,
+#gameroom .factor-section-heading .eyebrow,
+#gameroom .forecast-setting-strip .eyebrow{
+ font:750 clamp(17px,2.15vw,23px)/1.3 Outfit,sans-serif;
+ letter-spacing:.035em;color:#e4c58c;text-transform:none;
+}
+#gameroom .factor-group h5{
+ font-size:clamp(18px,2.2vw,23px);letter-spacing:.035em;text-transform:none;
+ padding:15px 0;
+}
+#gameroom .factor-center h6{font-size:clamp(18px,1.8vw,21px)}
+#gameroom .factor-data-note{color:#edf2f7;font-size:13px;line-height:1.6}
