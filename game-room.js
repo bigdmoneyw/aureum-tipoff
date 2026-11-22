@@ -61,7 +61,7 @@ async function loadData(force=false){
  try{const r=await snapshot('rosters-'+season()+'.json');if(r.format!=='aureum-rosters-v1'||r.season!==season()||r.teams.length!==30)throw Error('Invalid roster snapshot');rosters=r;}catch(e){}
  loadLedger();render();
 }
-const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
+const formatRest=(n,known)=>!known?'Not yet known':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
 // Numeric selected values are real controls; automatic/manual provenance is tracked separately.
 const measuredIds=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
 const horizonDays=7;
@@ -260,11 +260,14 @@ function drawTeamHeads(){
 function render(){
  const {a,b,venue,date}=state(),root=$('forecastResult');
 
- if(!teams[a]||!teams[b]||!date||date<today()||date>season()+'-06-30'||a===b){root.innerHTML='<div class="empty">Choose two different teams and a date from today through the end of the current NBA season. Finished games are in Past Games.</div>';return;}
+ if(!teams[a]||!teams[b]||!date||date<today()||date>season()+'-06-30'||a===b){clearMeasured('Choose two teams and an upcoming date');root.innerHTML='<div class="empty">Choose two different teams and a date from today through the end of the current NBA season. Finished games are in Past Games.</div>';return;}
  const fixture=fixtures.find(g=>g.id===$('forecastFixture').value);
  if(fixture&&Date.parse(fixture.tipoff)<=Date.now()){root.innerHTML='<div class="empty">This scheduled game has reached its starting time. Pregame estimates are no longer available.</div>';return;}
  if(!model){clearMeasured('Waiting for verified game data');root.innerHTML='<div class="empty">No verified forecast model is available yet. No probability is substituted.</div>';return;}
- const r=model.backtest,w=model.weights,advanced=w.length===7;
+ const lead=dayValue(date)-dayValue(today()),targetHorizon=lead<=18?7:lead<=45?30:60;
+ const horizon=lead>horizonDays?model.horizonModels?.[targetHorizon]:null;
+ const validHorizon=horizon&&Array.isArray(horizon.weights)&&horizon.weights.length===7&&horizon.weights.every(Number.isFinite);
+ const r=model.backtest,w=validHorizon?horizon.weights:model.weights,advanced=w.length===7;
  const pm=model.playerModel;
  $('forecastValidation').innerHTML='<strong>Model evaluation</strong> · '+r.games+' held-out games · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-team baseline '+r.baselineBrier.toFixed(3)+') · '+r.trainingGames+' training games.<p>Test dates: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'. Data refreshed '+esc(time(model.retrievedAt))+'. Last completed results: '+esc(model.throughDate)+'. These are retrospective results, not a guarantee. '+(pm?(pm.enabled?'The conditional playing-time experiment improved its own held-out sample, but actual participation was observed after games.':'The playing-time experiment did not qualify for automatic player impact. Manual injury scenarios remain separate.'):'Player impact is not independently validated.')+'</p>';
  if(!fresh(model.retrievedAt,8)||!fresh(model.sourceArchiveCollectedAt,8)){
@@ -286,7 +289,7 @@ function render(){
  l.rest=restKnown?ml.rest:1;rr.rest=restKnown?mr.rest:1;
  l.restKnown=rr.restKnown=restKnown;
  const futureUnknown=ml.form===null||mr.form===null||!restKnown;
- const far=dayValue(date)-dayValue(today())>horizonDays;
+ if(lead>horizonDays){const report=validHorizon?horizon.currentSeasonTest:null;$('forecastValidation').innerHTML+='<p><strong>Long-range model:</strong> '+(validHorizon?'Trained using '+horizon.trainingGames+' historical games with information '+targetHorizon+' days before tipoff. '+(report&&report.games>=25?report.games+' current-season test games; Brier '+report.brier.toFixed(3)+'.':'Not enough independent current-season games for a reliable long-range evaluation.'):'Dedicated long-range training is unavailable; this is a preliminary current-strength estimate.')+' Actual future rest and recent form are unknown. '+(lead>60?'The selected date is beyond the longest tested horizon.':'')+'</p>';} 
  if(futureUnknown){l.load=0;rr.load=0;}
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
  const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
@@ -301,7 +304,7 @@ function render(){
  const baseParts=[
   {label:'Home court',value:w[0]*venue,why:venue===0?'Neither team is assigned home advantage.':name(venue===1?a:b)+' plays at home. Familiar surroundings and less travel may help; the model learned the typical association from past games.'},
   {label:'Overall team strength',value:w[1]*(l.rating-rr.rating)/100,why:'The rating rises after wins, especially against strong opponents, and falls after losses. '+a+' has a rating of '+Math.round(l.rating)+'; '+b+' has '+Math.round(rr.rating)+'.'},
-  {label:'Recent wins',value:w[2]*(l.form-rr.form),why:a+' won '+l.recentWins+' of its last '+l.recentGames+' games; '+b+' won '+rr.recentWins+' of '+rr.recentGames+'. The model considers whether recent success adds useful information beyond team strength.'},
+  {label:'Recent wins',value:w[2]*(l.form-rr.form),why:(futureUnknown?'As of the latest completed results, ':'')+a+' won '+l.recentWins+' of its last '+l.recentGames+' games; '+b+' won '+rr.recentWins+' of '+rr.recentGames+'. The model considers whether recent success adds useful information beyond team strength.'},
   {label:'Rest and recovery',value:w[3]*(l.rest-rr.rest)/3,why:restKnown?a+' has '+formatRest(l.rest,true)+'; '+b+' has '+formatRest(rr.rest,true)+'. Recovery time may affect energy and preparation.':'Future rest is not verified for both teams, so the baseline omits its effect.'}
  ];
  if(advanced)baseParts.push(
@@ -314,7 +317,7 @@ function render(){
  const fA=manualValue('forecastFormA'),fB=manualValue('forecastFormB'),rA=manualValue('forecastRestA'),rB=manualValue('forecastRestB');
  const proposedFormA=fA?(+formA+2)/14:l.form,proposedFormB=fB?(+formB+2)/14:rr.form;
  const proposedRestA=rA?+restA:l.rest,proposedRestB=rB?+restB:rr.rest;
- const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=w[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
+ const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=model.weights[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
  const custom=clamp(Number($('forecastCustomShift')?.value)||0,-100,100);
  const assumptions=[...manual,...pA.reasons,...pB.reasons.map(x=>({...x,shift:-x.shift})),...(custom?[{label:'Custom numerical assumption',shift:custom,why:'This is the extra advantage or disadvantage you entered, rather than a measured effect.'}]:[])];
  const rawShift=assumptions.reduce((sum,x)=>sum+x.shift,0),shift=clamp(rawShift,-150,150);
@@ -344,6 +347,7 @@ async function loadFixtures(){
  $('forecastFixture').innerHTML='<option value="">Custom matchup</option>';
  fixtures=[];$('forecastFixtureNote').textContent='Checking sourced upcoming games for '+date+'…';
  if(!date||date<today()||date>season()+'-06-30')return;
+ if(isLocal&&dayValue(date)-dayValue(today())>4){$('forecastFixtureNote').textContent='Local schedule snapshot not available for this date.';return;}
  try{
   const d=isLocal?await snapshot('scoreboards/'+date+'.json'):await json(api+'scoreboard?dates='+date.replaceAll('-','')).catch(()=>snapshot('scoreboards/'+date+'.json'));
   if(seq!==fixtureRequest)return;
@@ -364,7 +368,7 @@ function syncPair(clearFixture=true){
 function init(){
  const date=$('forecastDate');
  date.value=today();date.min=today();date.max=season()+'-06-30';
- for(const side of ['A','B'])$('forecastForm'+side).innerHTML='<option value="auto">Waiting for verified game data</option>'+options(Array.from({length:11},(_,i)=>[i,i+' wins in 10 (assumed)']));
+ for(const side of ['A','B'])syncMeasured('forecastForm'+side,null,'','Checking recent games');
  makeFactors();
  drawTeamHeads();
  $('forecastFixture').addEventListener('change',()=>{
