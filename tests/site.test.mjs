@@ -8,7 +8,7 @@ const js=readFileSync('site-repair.js','utf8');
 const css=readFileSync('site-repair.css','utf8');
 const body=html.slice(html.indexOf('<body'));
 const assets=[...html.matchAll(/(?:src|href)="([^"]+)"/g)]
- .map(x=>x[1]).filter(x=>!x.startsWith('#')&&!/^https?:/.test(x)&&!x.startsWith('data:'));
+ .map(x=>x[1].split('?')[0]).filter(x=>!x.startsWith('#')&&!/^https?:/.test(x)&&!x.startsWith('data:'));
 for(const a of assets) assert.ok(existsSync(a),'Missing local asset '+a);
 assert.ok(assets.includes('founder-portrait.webp'),'Founder picture must be present');
 assert.ok(assets.includes('court-story.svg'),'Mission picture must be present');
@@ -54,6 +54,11 @@ assert.ok(advanced.backtest.trainingThrough<advanced.backtest.testFrom);
 assert.ok(advanced.historicalGameCount>=2400,'Two historical seasons collected');
 assert.ok(advanced.backtest.games>=150);
 assert.ok(advanced.backtest.brier>=0&&advanced.backtest.brier<=1);
+for(const n of [7,30,60]){
+ const h=advanced.horizonModels?.[n];assert.ok(h&&h.trainingGames>=1000&&h.weights.length===7&&h.weights.every(Number.isFinite),'Missing trained horizon '+n);
+ assert.equal(h.weights[3],0,'Unknown future rest is not a learned horizon input');
+ assert.equal(h.weights[5],0,'Unknown future schedule load is not a horizon input');
+}
 assert.ok(advanced.playerCoverage>=200&&Object.keys(advanced.playerProfiles).length>=300);
 const ledger=JSON.parse(readFileSync('data/forecast-ledger-2027.json','utf8'));
 assert.equal(new Set(ledger.records.map(r=>r.id)).size,ledger.records.length);
