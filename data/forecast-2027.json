@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v1",
   "version": "aureum-elo-rest-form-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-21T20:29:27.636Z",
-  "sourceArchiveCollectedAt": "2026-11-21T20:29:24.813Z",
+  "retrievedAt": "2026-11-22T02:08:53.671Z",
+  "sourceArchiveCollectedAt": "2026-11-22T02:08:50.793Z",
   "source": "ESPN archived completed scores",
   "features": [
     "ratingDifferencePer100",
@@ -11,10 +11,10 @@
     "restDifference"
   ],
   "weights": [
-    0.13304827593350668,
-    0.9411521565279507,
-    0.4185353267947825,
-    -0.07681839137842962
+    0.2158851705649447,
+    0.8928272302954464,
+    0.4035967495062974,
+    -0.09505004750318702
   ],
   "state": {
     "ATL": {
@@ -290,7 +290,7 @@
       "games": 15
     },
     "MIL": {
-      "rating": 1387.4563248692714,
+      "rating": 1383.5781186872457,
       "results": [
         0,
         0,
@@ -303,8 +303,8 @@
         0,
         0
       ],
-      "lastDate": "2026-11-19",
-      "games": 16
+      "lastDate": "2026-11-21",
+      "games": 17
     },
     "MIN": {
       "rating": 1542.5117828397015,
@@ -392,21 +392,21 @@
       "games": 15
     },
     "PHI": {
-      "rating": 1579.9693122056412,
+      "rating": 1583.847518387667,
       "results": [
         1,
         1,
-        1,
         0,
         1,
         0,
+        1,
         1,
         1,
         1,
         1
       ],
-      "lastDate": "2026-11-18",
-      "games": 16
+      "lastDate": "2026-11-21",
+      "games": 17
     },
     "PHX": {
       "rating": 1511.5951812186036,
@@ -530,20 +530,20 @@
   },
   "backtest": {
     "method": "Date-blocked chronological holdout; features use only outcomes on earlier dates. Coefficients fitted on early dates only. No injuries or subjective adjustments included.",
-    "trainingGames": 126,
-    "trainingThrough": "2026-11-12",
-    "testFrom": "2026-11-13",
-    "testThrough": "2026-11-20",
-    "games": 61,
-    "accuracy": 0.6229508196721312,
-    "brier": 0.2215821509121827,
-    "logLoss": 0.6366678492431341,
-    "homeRateBaseline": 0.5238095238095238,
-    "baselineAccuracy": 0.47540983606557374,
-    "baselineBrier": 0.2517378536113898
+    "trainingGames": 135,
+    "trainingThrough": "2026-11-13",
+    "testFrom": "2026-11-14",
+    "testThrough": "2026-11-21",
+    "games": 53,
+    "accuracy": 0.660377358490566,
+    "brier": 0.2212311084472332,
+    "logLoss": 0.6373302939451712,
+    "homeRateBaseline": 0.5407407407407407,
+    "baselineAccuracy": 0.4339622641509434,
+    "baselineBrier": 0.257040660506768
   },
-  "archiveGames": 235,
-  "throughDate": "2026-11-20",
+  "archiveGames": 236,
+  "throughDate": "2026-11-21",
   "todayState": {
     "ATL": {
       "rating": 1534.1615584853876,
