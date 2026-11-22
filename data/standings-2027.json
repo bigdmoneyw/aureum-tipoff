@@ -3,7 +3,7 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-22T02:08:50.793Z",
+  "retrievedAt": "2026-11-22T09:41:26.100Z",
   "records": [
     {
       "code": "ATL",
@@ -20,7 +20,7 @@
     {
       "code": "BOS",
       "wins": 11,
-      "losses": 4,
+      "losses": 5,
       "espnId": "2"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "code": "DAL",
-      "wins": 8,
+      "wins": 9,
       "losses": 7,
       "espnId": "6"
     },
@@ -80,7 +80,7 @@
     {
       "code": "LAC",
       "wins": 4,
-      "losses": 10,
+      "losses": 11,
       "espnId": "12"
     },
     {
@@ -92,7 +92,7 @@
     {
       "code": "MEM",
       "wins": 12,
-      "losses": 4,
+      "losses": 5,
       "espnId": "29"
     },
     {
@@ -109,19 +109,19 @@
     },
     {
       "code": "MIN",
-      "wins": 11,
+      "wins": 12,
       "losses": 5,
       "espnId": "16"
     },
     {
       "code": "NOP",
       "wins": 5,
-      "losses": 12,
+      "losses": 13,
       "espnId": "3"
     },
     {
       "code": "NYK",
-      "wins": 9,
+      "wins": 10,
       "losses": 6,
       "espnId": "18"
     },
@@ -152,18 +152,18 @@
     {
       "code": "POR",
       "wins": 10,
-      "losses": 5,
+      "losses": 6,
       "espnId": "22"
     },
     {
       "code": "SAC",
-      "wins": 1,
+      "wins": 2,
       "losses": 14,
       "espnId": "23"
     },
     {
       "code": "SAS",
-      "wins": 13,
+      "wins": 14,
       "losses": 3,
       "espnId": "24"
     },

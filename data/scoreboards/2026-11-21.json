@@ -2,7 +2,7 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-21",
-  "retrievedAt": "2026-11-22T02:08:50.793Z",
+  "retrievedAt": "2026-11-22T09:41:26.100Z",
   "events": [
     {
       "id": "401910023",
@@ -40,9 +40,9 @@
       "date": "2026-11-22T00:30Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "4:43 - 3rd"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -53,14 +53,14 @@
               "team": {
                 "abbreviation": "NYK"
               },
-              "score": "72"
+              "score": "97"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "POR"
               },
-              "score": "64"
+              "score": "96"
             }
           ]
         }
@@ -71,9 +71,9 @@
       "date": "2026-11-22T01:00Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "Halftime"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -84,14 +84,14 @@
               "team": {
                 "abbreviation": "DAL"
               },
-              "score": "52"
+              "score": "110"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "LAC"
               },
-              "score": "44"
+              "score": "100"
             }
           ]
         }
@@ -102,9 +102,9 @@
       "date": "2026-11-22T01:00Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "Halftime"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -115,14 +115,14 @@
               "team": {
                 "abbreviation": "MIN"
               },
-              "score": "56"
+              "score": "104"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "MEM"
               },
-              "score": "46"
+              "score": "95"
             }
           ]
         }
@@ -133,9 +133,9 @@
       "date": "2026-11-22T01:00Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "2:03 - 2nd"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -146,14 +146,14 @@
               "team": {
                 "abbreviation": "SAS"
               },
-              "score": "58"
+              "score": "114"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "NOP"
               },
-              "score": "45"
+              "score": "91"
             }
           ]
         }
@@ -164,9 +164,9 @@
       "date": "2026-11-22T03:00Z",
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/21 - 10:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -177,14 +177,14 @@
               "team": {
                 "abbreviation": "SAC"
               },
-              "score": ""
+              "score": "97"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "BOS"
               },
-              "score": ""
+              "score": "96"
             }
           ]
         }
