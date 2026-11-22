@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v1",
   "version": "aureum-elo-rest-form-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-22T22:46:12.180Z",
-  "sourceArchiveCollectedAt": "2026-11-22T22:46:06.180Z",
+  "retrievedAt": "2026-11-22T22:51:06.128Z",
+  "sourceArchiveCollectedAt": "2026-11-22T22:51:02.345Z",
   "source": "ESPN archived completed scores",
   "features": [
     "ratingDifferencePer100",
