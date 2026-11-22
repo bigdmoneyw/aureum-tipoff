@@ -234,7 +234,8 @@ try{
   assert.match(await page.locator('#forecastResult .forecast-scenario').innerText(),/assumed not to play/);
   await page.locator('#forecastReset').click();
   assert.equal(await adjusted(),base);
-  assert.equal(await page.locator('#forecastFactors input[type=radio]').count(),96);
+  assert.equal(await page.locator('#forecastFactors input[type=radio]').count(),160);
+  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
   await page.locator('#factor-travel-A-low').check();
   assert.ok(parseFloat(await adjusted())<parseFloat(base),'Team A disadvantage lowers A estimate');
   await page.locator('#factor-travel-B-low').check();
@@ -254,12 +255,27 @@ try{
   assert.equal(await page.locator('#gameRoomContext .game-context-metric').count(),30);
   await page.locator('#gameAway').selectOption(oldA);await page.locator('#gameHome').selectOption(oldB);
  });
- await check('hypothetical scenarios save and restore locally',async()=>{
+ await check('Insights provides sourced outlier measurements for actual completed NBA games',async()=>{
   await page.evaluate(()=>location.hash='insights');
   await page.waitForSelector('#insights.active');
-  await page.locator('#studioSave').click();
-  await page.waitForSelector('#studioSaved [data-restore-scenario]');
-  assert.match(await page.locator('#studioStatus').innerText(),/Saved/);
+  await page.waitForSelector('#insightsMetricGrid .insights-metric-card',{timeout:30000});
+  assert.ok(await page.locator('#insightsGameSelect option').count()>200,'Season-wide completed-game selection');
+  assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>=24,'Quantified game-specific measures');
+  assert.ok((await page.locator('#insightsSummary').innerText()).includes('FINAL'));
+  assert.ok((await page.locator('#insightsSourceNote').innerText()).includes('ESPN box score'));
+  await page.locator('#insightsMetricGrid .insights-method summary').first().click();
+  assert.equal(await page.locator('#insightsMetricGrid .insights-method').first().getAttribute('open'),'');
+  await page.locator('#insightsCategory').selectOption('Player Extremes');
+  assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>3);
+  await page.locator('#insightsCategory').selectOption('Momentum Timeline');
+  const timeline=await page.locator('#insightsMetricGrid .insights-metric-card').count();
+  if(timeline===0)assert.ok((await page.locator('#insightsCount').innerText()).includes('0 sourced'));
+  await page.locator('#insightsCategory').selectOption('all');
+  const current=await page.locator('#insightsSummary').innerText();
+  await page.locator('#insightsGameSelect').selectOption({index:Math.min(5,await page.locator('#insightsGameSelect option').count()-1)});
+  assert.notEqual(await page.locator('#insightsSummary').innerText(),current,'Changing game changes the summary');
+  assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>=24);
+  assert.equal(await page.locator('#insightsFrontierFake').count(),0,'Never invent an optical tracking result');
  });
  await check('mobile layout has no horizontal content overflow',async()=>{
   await page.setViewportSize({width:390,height:844});
@@ -283,7 +299,7 @@ try{
   assert.equal(await page.locator('#siteNavigation').isVisible(),false);
  });
  await check('major pages fit 320px, 360px, 390px, 430px and 768px screens',async()=>{
-  const sizes=[320,360,390,430,768],routes=['home','about','teams','compare','library','gameroom','matchups'];
+  const sizes=[320,360,390,430,768],routes=['home','about','teams','compare','library','gameroom','matchups','insights'];
   await page.emulateMedia({reducedMotion:'reduce'});
   for(const width of sizes){
    await page.setViewportSize({width,height:812});
