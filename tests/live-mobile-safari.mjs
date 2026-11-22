@@ -82,6 +82,9 @@ try {
   await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).dataset.known==='true'),ids,{timeout:30000});
  }
  assert.ok(!(await page.locator('#gameroom .eyebrow').allInnerTexts()).some(x=>/^\d{2}\s*\//.test(x)));
+ await page.locator('#factor-travel-A-verylow').check();
+ assert.match(await page.locator('#factor-travel-A-state').innerText(),/Severe travel burden/);
+ assert.ok(parseFloat(await page.locator('#forecastResult .scenario strong').first().innerText())<parseFloat(pBase));
  await page.locator('#factor-travel-A-low').check();
  assert.ok(parseFloat(await page.locator('#forecastResult .scenario strong').first().innerText())<parseFloat(pBase));
  await page.locator('#factor-travel-B-low').check();
@@ -99,6 +102,12 @@ try {
  await page.locator('#insightsTeamFilter').selectOption({index:1});
  assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>10);
  await page.locator('#insightsTeamFilter').selectOption('all');
+ await page.locator('#insightsMetricGrid .insights-method summary').first().click();
+ assert.equal(await page.evaluate(()=>location.hash),'#insights','Formula details must not redirect to Teams');
+ await page.locator('#insightsCategory').selectOption('Player Extremes');
+ assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>3);
+ await page.locator('#insightsCategory').selectOption('all');
+
  await viewportTest('matchups');
  await page.locator('#pastGameReport .past-stat-row').first().waitFor({timeout:30000});
  assert.equal(await page.locator('#pastGameReport .past-stat-row').count(),30);
