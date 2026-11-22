@@ -81,15 +81,21 @@ function syncMeasured(id,value,label,unknown){
 function clearMeasured(message){for(const id of measuredIds)syncMeasured(id,null,'',message);}
 function scheduleContext(c,ctx,date){
  const days=dayValue(date)-dayValue(today());
- if(days>horizonDays)return {rest:null,form:null,restNote:'Not preselected this far ahead.',formNote:'Future results are unknown.',load:null};
- if(!scheduleCoverage||scheduleCoverage.date!==date||!scheduleCoverage.ready)return {rest:null,form:null,restNote:'Checking the schedule.',formNote:'Checking for intervening games.',load:null};
- if(!scheduleCoverage.valid)return {rest:null,form:null,restNote:'Schedule coverage unavailable.',formNote:'Cannot verify all intervening games.',load:null};
+ const unavailable=(restNote,formNote)=>({rest:null,form:null,restNote,formNote,results:null});
+ if(days>horizonDays)return unavailable('Not preselected this far ahead.','Future results are unknown.');
+ if(!scheduleCoverage||scheduleCoverage.date!==date||!scheduleCoverage.ready)return unavailable('Checking the schedule.','Checking for intervening games.');
+ if(!scheduleCoverage.valid)return unavailable('Schedule coverage unavailable.','Cannot verify all intervening games.');
  const rows=scheduleCoverage.games.filter(g=>[g.home,g.away].includes(c)&&g.date<date);
- const later=rows.filter(g=>g.date>=(ctx.lastDate||'')&&!(g.completed&&g.date===ctx.lastDate));
+ // The latest dated model state already contains its team's final on lastDate.
+ // Any subsequent finals may be newer than the last model refresh.
+ const later=rows.filter(g=>g.date>(ctx.lastDate||'')).sort((a,b)=>a.date.localeCompare(b.date));
  const last=[ctx.lastDate,...later.map(g=>g.date)].filter(Boolean).sort().at(-1);
  const rest=last?clamp(dayValue(date)-dayValue(last)-1,0,3):null;
- const form=later.length?null:ctx.recentGames?ctx.recentWins:null;
- return {rest,form,restNote:rest===null?'No preceding game verified.':formatRest(rest,true)+(later.length?' (scheduled, subject to change)':' (from completed games)'),formNote:form===null?'Intervening game results not yet available.':ctx.recentWins+' wins in '+ctx.recentGames+' games',load:null};
+ const results=(ctx.recentResults||[]).slice();
+ const unknown=later.some(g=>!g.completed||!Number.isInteger(g.hs)||!Number.isInteger(g.as)||g.hs===g.as);
+ if(!unknown)for(const g of later){results.push(Number(g.home===c?g.hs>g.as:g.as>g.hs));if(results.length>10)results.shift();}
+ const form=!unknown&&results.length?results.reduce((a,b)=>a+b,0):null;
+ return {rest,form,restNote:rest===null?'No preceding game verified.':formatRest(rest,true)+(later.some(g=>!g.completed)?' (scheduled, subject to change)':' (from completed games)'),formNote:form===null?'Intervening game results not yet available.':form+' wins in '+results.length+' games',results:form===null?null:results};
 }
 async function refreshMeasuredSchedule(){
  const {date}=state(),seq=++scheduleSequence,now=today();
@@ -105,7 +111,9 @@ async function refreshMeasuredSchedule(){
    return raw.events.filter(e=>!/postpon|cancel/i.test(e.status?.type?.description||e.status?.type?.shortDetail||'')).map(e=>{
     const c=e.competitions?.[0],home=norm(c?.competitors?.find(x=>x.homeAway==='home')?.team?.abbreviation),away=norm(c?.competitors?.find(x=>x.homeAway==='away')?.team?.abbreviation);
     if(!teams[home]||!teams[away]||!Number.isFinite(Date.parse(e.date)))throw Error('Invalid schedule event');
-    return {id:String(e.id),home,away,date:dayET(new Date(e.date)),completed:e.status?.type?.completed===true};
+    const completed=e.status?.type?.completed===true;
+    const score=side=>{const x=c.competitors.find(t=>t.homeAway===side)?.score;return x===undefined||x===null||x===''?null:Number(x);};
+    return {id:String(e.id),home,away,date:dayET(new Date(e.date)),completed,hs:completed?score('home'):null,as:completed?score('away'):null};
    }).filter(g=>g.date===day);
   }));
   if(seq!==scheduleSequence)return;
@@ -116,7 +124,7 @@ async function refreshMeasuredSchedule(){
 function context(code,date){
  const sourceState=date===model.todayDate&&model.todayState?model.todayState:model.state;
  const t=sourceState[code],recentGames=t.results.length,recentWins=t.results.reduce((a,b)=>a+b,0),known=!!t.lastDate;
- return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate,margin:(t.margins||[]).reduce((s,x)=>s+x,0)/((t.margins||[]).length+4),load:(t.dates||[]).filter(d=>dayValue(date)-dayValue(d)>=1&&dayValue(date)-dayValue(d)<=7).length,opponent:(t.opponents||[]).reduce((s,x)=>s+x-1500,0)/((t.opponents||[]).length+4)};
+ return {rating:t.rating,form:(recentWins+2)/(recentGames+4),recentWins,recentGames,recentResults:t.results.slice(),rest:known?clamp(dayValue(date)-dayValue(t.lastDate)-1,0,3):1,restKnown:known,games:t.games,lastDate:t.lastDate,margin:(t.margins||[]).reduce((s,x)=>s+x,0)/((t.margins||[]).length+4),load:(t.dates||[]).filter(d=>dayValue(date)-dayValue(d)>=1&&dayValue(date)-dayValue(d)<=7).length,opponent:(t.opponents||[]).reduce((s,x)=>s+x-1500,0)/((t.opponents||[]).length+4)};
 }
 const factorRows=[
  ['pace','Game speed','Struggles at expected speed','Comfortable at expected speed','A faster game gives both teams more chances to score. Which team benefits depends on how well they play at that speed.'],
@@ -280,7 +288,8 @@ function render(){
  const ml=scheduleContext(a,l,date),mr=scheduleContext(b,rr,date);
  for(const [side,ctx,m] of [['A',l,ml],['B',rr,mr]]){
   syncMeasured('forecastRest'+side,m.rest,m.rest===null?'':formatRest(m.rest,true),m.restNote);
-  syncMeasured('forecastForm'+side,m.form,m.form===null?'':m.form+' wins in '+ctx.recentGames+' games',m.formNote);
+  syncMeasured('forecastForm'+side,m.form,m.form===null?'':m.form+' wins in '+m.results.length+' games',m.formNote);
+  if(m.results){ctx.recentWins=m.form;ctx.recentGames=m.results.length;ctx.form=(m.form+2)/(m.results.length+4);}
  }
  $('forecastRestNote').textContent=a+': '+ml.restNote+' · '+b+': '+mr.restNote+'. Rest from published schedules may change.';
  $('forecastFormNote').textContent=a+': '+ml.formNote+' · '+b+': '+mr.formNote+'. Recent form means results before the selected game.';
@@ -290,7 +299,7 @@ function render(){
  l.restKnown=rr.restKnown=restKnown;
  const futureUnknown=ml.form===null||mr.form===null||!restKnown;
  if(lead>horizonDays){const report=validHorizon?horizon.currentSeasonTest:null;$('forecastValidation').innerHTML+='<p><strong>Long-range model:</strong> '+(validHorizon?'Trained using '+horizon.trainingGames+' historical games with information '+targetHorizon+' days before tipoff. '+(report&&report.games>=25?report.games+' current-season test games; Brier '+report.brier.toFixed(3)+'.':'Not enough independent current-season games for a reliable long-range evaluation.'):'Dedicated long-range training is unavailable; this is a preliminary current-strength estimate.')+' Actual future rest and recent form are unknown. '+(lead>60?'The selected date is beyond the longest tested horizon.':'')+'</p>';} 
- if(futureUnknown){l.load=0;rr.load=0;}
+ if(futureUnknown||ml.results?.length!==l.recentResults.length||mr.results?.length!==rr.recentResults.length){l.load=0;rr.load=0;}
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
  const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
  for(const [key,label,low,high,why] of factorRows){
