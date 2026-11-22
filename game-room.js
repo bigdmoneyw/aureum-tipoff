@@ -62,6 +62,13 @@ async function loadData(force=false){
  loadLedger();render();
 }
 const formatRest=(n,known)=>!known?'Unknown (neutral 1-day input)':n===0?'Back-to-back':n===3?'3+ full days':n+' full day'+(n===1?'':'s');
+function labelMeasuredDefaults(left=null,right=null,message='Waiting for verified game data'){
+ for(const [side,ctx] of [['A',left],['B',right]]){
+  const rest=$('forecastRest'+side),form=$('forecastForm'+side);
+  if(rest){const option=rest.querySelector('option[value="auto"]');if(option)option.textContent=ctx?formatRest(ctx.rest,ctx.restKnown):message;}
+  if(form){const option=form.querySelector('option[value="auto"]');if(option)option.textContent=ctx&&ctx.recentGames?ctx.recentWins+' wins in '+ctx.recentGames+' games':message;}
+ }
+}
 function context(code,date){
  const sourceState=date===model.todayDate&&model.todayState?model.todayState:model.state;
  const t=sourceState[code],recentGames=t.results.length,recentWins=t.results.reduce((a,b)=>a+b,0),known=!!t.lastDate;
@@ -208,6 +215,9 @@ function drawTeamHeads(){
 }
 function render(){
  const {a,b,venue,date}=state(),root=$('forecastResult');
+ labelMeasuredDefaults();
+ $('forecastRestNote').textContent='Rest is calculated from completed games; intervening future games are not assumed.';
+ $('forecastFormNote').textContent='Recent form is calculated from the latest completed games.';
  if(!teams[a]||!teams[b]||!date||date<today()||date>season()+'-06-30'||a===b){root.innerHTML='<div class="empty">Choose two different teams and a date from today through the end of the current NBA season. Finished games are in Past Games.</div>';return;}
  const fixture=fixtures.find(g=>g.id===$('forecastFixture').value);
  if(fixture&&Date.parse(fixture.tipoff)<=Date.now()){root.innerHTML='<div class="empty">This scheduled game has reached its starting time. Pregame estimates are no longer available.</div>';return;}
@@ -222,6 +232,7 @@ function render(){
   root.innerHTML='<div class="empty">A valid pregame snapshot is unavailable for this date. No probability is shown.</div>';return;
  }
  const l=context(a,date),rr=context(b,date);
+ labelMeasuredDefaults(l,rr);
  if(l.games<3||rr.games<3){root.innerHTML='<div class="empty">Both teams need more current-season games before displaying a forecast.</div>';return;}
  const pA=readPlayerEffects('A',a),pB=readPlayerEffects('B',b),manual=[];
  for(const [key,label,low,high,why] of factorRows){
@@ -295,7 +306,7 @@ function syncPair(clearFixture=true){
 function init(){
  const date=$('forecastDate');
  date.value=today();date.min=today();date.max=season()+'-06-30';
- for(const side of ['A','B'])$('forecastForm'+side).innerHTML='<option value="auto">Auto · completed games</option>'+options(Array.from({length:11},(_,i)=>[i,i+' of 10 (assumed)']));
+ for(const side of ['A','B'])$('forecastForm'+side).innerHTML='<option value="auto">Waiting for verified game data</option>'+options(Array.from({length:11},(_,i)=>[i,i+' wins in 10 (assumed)']));
  makeFactors();
  drawTeamHeads();
  $('forecastFixture').addEventListener('change',()=>{
@@ -312,7 +323,7 @@ function init(){
   $('forecastVenue').value=String(-Number($('forecastVenue').value));
   $('gameAway').dispatchEvent(new Event('change'));$('gameHome').dispatchEvent(new Event('change'));
  });
- date.addEventListener('change',()=>{loadFixtures();render();});
+ date.addEventListener('change',()=>{for(const id of ['forecastRestA','forecastRestB','forecastFormA','forecastFormB'])$(id).value='auto';loadFixtures();render();});
  $('forecastReset').addEventListener('click',resetAssumptions);
  $('forecastRefreshRoster').addEventListener('click',async()=>{await loadData(true);await loadSelectedRoster(true);});
  $('gameroom').addEventListener('change',e=>{
