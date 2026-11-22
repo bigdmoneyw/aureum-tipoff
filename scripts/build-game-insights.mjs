@@ -119,7 +119,8 @@ function derivePbp(g,d){
  const metrics=[];
  const push=(id,team,val,unit,title,explain,formula,display=null)=>{if(!Number.isFinite(val))return;metrics.push({category:'Momentum Timeline',id,team,value:r(val,2),display:display??r(val,1)+' '+unit,title,explain,formula,source:'Verified ESPN play-by-play; score timeline reconciled to final result'});};
  const windowMax=arr=>{let best=0,l=0,active=0;for(let i=0;i<arr.length;i++){active+=arr[i].p;while(arr[i].at-arr[l].at>60){active-=arr[l++].p;}best=Math.max(best,active);}return best;};
- const drought=arr=>{let previous=0,best=0;for(const e of arr){best=Math.max(best,e.at-previous);previous=e.at;}return Math.max(best,2880-previous);};
+ const gameDuration=2880+Math.max(0,events.at(-1).period-4)*300;
+ const drought=arr=>{let previous=0,best=0;for(const e of arr){best=Math.max(best,e.at-previous);previous=e.at;}return Math.max(best,gameDuration-previous);};
  const winner=g.hs>g.as?0:1,maximumDeficit=Math.max(0,...good.map(e=>winner===0?e.a-e.h:e.h-e.a));
  const late3=good.filter(e=>e.period===4&&e.clock<=180);
  push('largestUnansweredRun',g.home,bestRun[0],'points','Largest unanswered burst','Most consecutive points without the opponent scoring.','Maximum uninterrupted team scoring run');
@@ -157,7 +158,7 @@ for(const g of boxes.games)games.push(newById.get(g.id)||oldById.get(g.id)||calc
 const allValues=new Map();
 for(const g of games)for(const m of g.metrics){if(m.id==='wonWithLowerEfg'||m.id==='wonWithFewerBaskets'||m.id==='wonDespiteReboundDeficit')continue;const xs=allValues.get(m.id)||[];xs.push(m.value);allValues.set(m.id,xs);}
 for(const values of allValues.values())values.sort((a,b)=>a-b);
-for(const g of games)for(const m of g.metrics){const vals=allValues.get(m.id);if(!vals||vals.length<20)continue;let rank=0;for(const n of vals){if(n<=m.value)rank++;else break;}m.seasonPercentile=Math.round(100*rank/vals.length);}
+for(const g of games)for(const m of g.metrics){const vals=allValues.get(m.id);if(!vals||vals.length<20)continue;let lower=0,equal=0;for(const n of vals){if(n<m.value)lower++;else if(n===m.value)equal++;else break;}m.seasonPercentile=Math.round(100*(lower+equal/2)/vals.length);}
 const d={format:'aureum-game-insights-v1',season,retrievedAt:new Date().toISOString(),source:{boxscore:'Verified ESPN completed-game box scores',players:'ESPN completed-game player points and minutes',playByPlay:'ESPN game play-by-play, used only when clock and cumulative scores reconcile with the final'},completedGames:boxes.games.length,withVerifiedPlayByPlay:games.filter(g=>g.playByPlayVerified).length,unavailableGameIds:unavailable.slice(0,100),games};
 fs.writeFileSync(path,JSON.stringify(d)+'\n');
 console.log('INSIGHTS_AUDIT '+JSON.stringify({season,games:games.length,playByPlay:d.withVerifiedPlayByPlay,averageMetrics:r(games.reduce((n,g)=>n+g.metrics.length,0)/games.length),examples:games.slice(0,2).map(g=>({id:g.id,metrics:g.metrics.length,pbp:g.playByPlayVerified,events:g.playEventCount}))}));
