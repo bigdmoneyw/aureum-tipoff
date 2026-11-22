@@ -24,7 +24,7 @@ for(const target of [...body.matchAll(/data-(?:page|go)="([^"]+)"/g)].map(x=>x[1
  assert.ok(pageIds.includes(target),'Broken route: '+target);
 for(const key of ['live','intelligence','insights','scout','gameroom','compare','model','about','teams','matchups','library'])
  assert.ok(pageIds.includes(key),'Page missing '+key);
-for(const id of ['liveResults','scoreboardDate','scoreboardRefresh','scoutReadout','compareData','studioSave','studioSaved','teamDetails','pastGameSelect','gameRoomContext','competitionDesk','glossaryGrid'])
+for(const id of ['liveResults','scoreboardDate','scoreboardRefresh','scoutReadout','compareData','insightsGameSelect','insightsSummary','insightsSpotlights','insightsMetricGrid','insightsSourceNote','teamDetails','pastGameSelect','gameRoomContext','competitionDesk','glossaryGrid'])
  assert.ok(html.includes('id="'+id+'"'),'UI target missing '+id);
 assert.ok(!html.includes('src="assets/'),'No stale assets prefix');
 assert.ok(!html.includes('src="live-data.js"'),'No missing compiled modules');
@@ -32,6 +32,7 @@ assert.ok(!html.includes('src="live-data.js"'),'No missing compiled modules');
 new vm.Script(js,{filename:'site-repair.js'});
 new vm.Script(readFileSync('team-experience.js','utf8'),{filename:'team-experience.js'});
 new vm.Script(readFileSync('game-room.js','utf8'),{filename:'game-room.js'});
+new vm.Script(readFileSync('insights-explorer.js','utf8'),{filename:'insights-explorer.js'});
 const roster=JSON.parse(readFileSync('data/rosters-2027.json','utf8'));
 assert.equal(roster.teams.length,30,'Thirty current roster snapshots');
 const rosterIds=roster.teams.flatMap(team=>team.players.map(player=>player.id));
@@ -96,6 +97,22 @@ for(const game of boxes.games){
  assert.equal(game.awayStats.values.pointsPerGame,game.as);
 }
 assert.ok(body.includes('Past Games'),'Completed-game navigation is labeled Past Games');
+const insights=JSON.parse(readFileSync('data/game-insights-2027.json','utf8'));
+assert.equal(insights.format,'aureum-game-insights-v1');
+assert.equal(insights.games.length,boxes.games.length,'Insights covers every sourced completed game');
+const boxById=new Map(boxes.games.map(x=>[x.id,x]));
+for(const record of insights.games){
+ const game=boxById.get(record.id);
+ assert.ok(game&&record.hs===game.hs&&record.as===game.as,'Insights game identity/score mismatch '+record.id);
+ assert.ok(record.metrics.length>=24,'Missing measurable discoveries '+record.id);
+ for(const m of record.metrics){
+  assert.ok(Number.isFinite(m.value)&&m.title&&m.explain&&m.formula&&m.source&&m.category&&m.team&&m.display,'Untraceable Insight '+record.id+' / '+m.id);
+  assert.ok(m.team==='BOTH'||m.team===game.home||m.team===game.away,'Wrong team for Insight '+m.id);
+ }
+ if(record.playByPlayVerified)assert.ok(record.playEventCount>=100,'Verified timeline needs sufficient events');
+}
+assert.equal(insights.withVerifiedPlayByPlay,insights.games.filter(g=>g.playByPlayVerified).length);
+
 const idPairs=[...js.matchAll(/([A-Z]{3}):161061\d{4}/g)];
 assert.equal(idPairs.length,30,'Expected 30 NBA team logo ids');
 assert.equal(new Set(idPairs.map(x=>x[1])).size,30,'Team logo ids must be unique');
