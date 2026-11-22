@@ -194,10 +194,11 @@ try{
   assert.ok((await page.locator('#forecastResult .forecast-reason').first().innerText()).includes('percentage points'));
   const read=()=>page.locator('#forecastResult .forecast-prob.baseline strong').first().innerText();
   const adjusted=()=>page.locator('#forecastResult .forecast-prob.scenario strong').first().innerText();
-  const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
+
   const measuredIds=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
   await page.waitForFunction(ids=>ids.every(id=>{const e=document.getElementById(id);return e.dataset.known==='true'&&/^\d+$/.test(e.value)&&e.dataset.mode==='auto';}),measuredIds,{timeout:30000});
   const measured=await page.evaluate(ids=>ids.map(id=>{const e=document.getElementById(id);return {id,value:e.value,label:e.selectedOptions[0].textContent}}),measuredIds);
+  const base=await read();assert.match(base,/^\d+\.\d%$/);assert.equal(await adjusted(),base);
   assert.ok(measured.slice(0,2).every(x=>/Back-to-back|full day/.test(x.label)));
   assert.ok(measured.slice(2).every(x=>/^\d+ wins in \d+ games$/.test(x.label)));
   assert.ok((await page.locator('#forecastRestNote').innerText()).includes('completed games'));
