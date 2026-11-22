@@ -265,6 +265,12 @@ try{
   assert.ok((await page.locator('#insightsSourceNote').innerText()).includes('ESPN box score'));
   await page.locator('#insightsMetricGrid .insights-method summary').first().click();
   assert.equal(await page.locator('#insightsMetricGrid .insights-method').first().getAttribute('open'),'');
+  const v=await page.evaluate(()=>{
+   const el=document.getElementById('insightsCategory'),filter=document.querySelector('#insights .insights-filters'),root=document.getElementById('insights');
+   const trace=n=>{const cs=getComputedStyle(n),r=n.getBoundingClientRect();return {display:cs.display,visibility:cs.visibility,opacity:cs.opacity,rect:{x:r.x,y:r.y,width:r.width,height:r.height},parent:n.parentElement?.tagName,parentClass:n.parentElement?.className}};
+   return {control:trace(el),filters:trace(filter),page:trace(root),hash:location.hash,active:root.className,scrollY:scrollY};
+  });
+  console.log('INSIGHTS_FILTER_DIAGNOSTIC '+JSON.stringify(v));
   await page.locator('#insightsCategory').selectOption('Player Extremes');
   assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>3);
   await page.locator('#insightsCategory').selectOption('Momentum Timeline');
