@@ -69,8 +69,16 @@ try {
  assert.equal(await page.locator('#forecastFactors .forecast-factor').count(),16);
  assert.equal(await page.locator('#forecastResult .forecast-reason-list').first().locator('.forecast-reason').count(),7);
  const pBase=await page.locator('#forecastResult .baseline strong').first().innerText();
- const measuredLabels=await page.evaluate(()=>['forecastRestA','forecastRestB','forecastFormA','forecastFormB'].map(id=>document.getElementById(id).selectedOptions[0].textContent));
- assert.ok(measuredLabels.every(x=>!/auto|waiting/i.test(x)),JSON.stringify(measuredLabels));
+ const ids=['forecastRestA','forecastRestB','forecastFormA','forecastFormB'];
+ await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).dataset.known==='true'&&/^\d+$/.test(document.getElementById(id).value)),ids,{timeout:30000});
+ const originalDate=await page.locator('#forecastDate').inputValue();
+ const distant=new Date(originalDate+'T12:00:00Z');distant.setUTCDate(distant.getUTCDate()+45);
+ if(distant.toISOString().slice(0,10)<=await page.locator('#forecastDate').getAttribute('max')){
+  await page.locator('#forecastDate').fill(distant.toISOString().slice(0,10));
+  await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).value===''),ids);
+  await page.locator('#forecastDate').fill(originalDate);
+  await page.waitForFunction(ids=>ids.every(id=>document.getElementById(id).dataset.known==='true'),ids,{timeout:30000});
+ }
  assert.ok(!(await page.locator('#gameroom .eyebrow').allInnerTexts()).some(x=>/^\d{2}\s*\//.test(x)));
  await page.locator('#factor-travel-A-low').check();
  assert.ok(parseFloat(await page.locator('#forecastResult .scenario strong').first().innerText())<parseFloat(pBase));
