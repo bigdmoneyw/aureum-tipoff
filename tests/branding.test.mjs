@@ -18,7 +18,7 @@ for (const file of visibleSources) {
   }
 }
 const html = readFileSync('index.html', 'utf8');
-const scriptTags = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)].map(m => m[1]);
+const scriptTags = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)].map(m => m[1].split('?')[0]);
 assert.deepEqual(scriptTags, ['site-repair.js', 'team-experience.js', 'game-room.js', 'mobile-navigation.js'], 'Only the self-hosted website scripts should run');
 assert.ok(!/<iframe\b/i.test(html), 'Unexpected embedded frame');
 assert.ok(!/\b(?:intercom|crisp|tawk\.to|chatwoot|chatbase)\b/i.test(html), 'Unexpected chat service');
