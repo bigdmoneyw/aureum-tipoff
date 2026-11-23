@@ -267,13 +267,26 @@ try{
   assert.equal(await page.locator('#insightsMetricGrid .insights-method').first().getAttribute('open'),'');
   assert.equal(await page.evaluate(()=>location.hash),'#insights','Metric formulas must not navigate back to Teams');
   await page.locator('#insightsCategory').selectOption('Player Extremes');
-  assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>3);
+  // The most recent final can precede its full individual box-score ingestion.
+  // Check that its empty state is honest; then find a sourced completed game
+  // with at least four real player metrics rather than fabricate them.
+  let playerCards=await page.locator('#insightsMetricGrid .insights-metric-card').count();
+  if(playerCards<4)assert.ok((await page.locator('#insightsCount').innerText()).includes('sourced measurements'));
+  const available=await page.locator('#insightsGameSelect option').count();
+  for(let j=1;j<Math.min(available,30)&&playerCards<4;j++){
+   await page.locator('#insightsGameSelect').selectOption({index:j});
+   playerCards=await page.locator('#insightsMetricGrid .insights-metric-card').count();
+  }
+  assert.ok(playerCards>=4,'Expected verified individual-game player metrics in at least one of the 30 newest games');
   await page.locator('#insightsCategory').selectOption('Momentum Timeline');
   const timeline=await page.locator('#insightsMetricGrid .insights-metric-card').count();
   if(timeline===0)assert.ok((await page.locator('#insightsCount').innerText()).includes('0 sourced'));
   await page.locator('#insightsCategory').selectOption('all');
   const current=await page.locator('#insightsSummary').innerText();
-  await page.locator('#insightsGameSelect').selectOption({index:Math.min(5,await page.locator('#insightsGameSelect option').count()-1)});
+  const firstOption=await page.locator('#insightsGameSelect option').first().getAttribute('value');
+  const activeOption=await page.locator('#insightsGameSelect').inputValue();
+  if(activeOption!==firstOption)await page.locator('#insightsGameSelect').selectOption(firstOption);
+  else await page.locator('#insightsGameSelect').selectOption({index:Math.min(5,available-1)});
   assert.notEqual(await page.locator('#insightsSummary').innerText(),current,'Changing game changes the summary');
   assert.ok(await page.locator('#insightsMetricGrid .insights-metric-card').count()>=24);
   assert.equal(await page.locator('#insightsFrontierFake').count(),0,'Never invent an optical tracking result');
