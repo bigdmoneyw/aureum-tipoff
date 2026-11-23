@@ -15,6 +15,7 @@ const history=[season-2,season-1].map(y=>{
  if(clean.games.length!==source.games.length)fs.writeFileSync(path,JSON.stringify(clean)+'\n');
  return clean;
 }).filter(Boolean);
+if(history.length!==2||history.some(h=>h.games.length!==1230))throw Error('Complete 2025 and 2026 season training archives required; no weak fallback published');
 const players=read('data/player-history-'+season+'.json');
 const priorPlayers=read('data/player-history-'+(season-1)+'.json');
 const model=buildAdvanced(history,current,players,now,priorPlayers);
