@@ -24,7 +24,7 @@ export function settleExisting(ledger,completed,now){
   const g=results.get(identity(record));
   if(!g||record.result)continue;
   if(g.home!==record.home||g.away!==record.away)throw Error('Ledger game team mismatch '+record.id);
-  if(Date.parse(g.date)<Date.parse(record.tipoff)-36e5||Date.parse(g.date)>Date.parse(record.tipoff)+36e5)throw Error('Ledger game tipoff mismatch '+record.id);
+  if(Math.abs(Date.parse(g.date)-Date.parse(record.tipoff))>36e5){record.resultWarning='Scheduled tipoff changed by more than an hour; result withheld pending timing review';continue;}
   if(!Number.isInteger(g.hs)||!Number.isInteger(g.as)||g.hs===g.as)throw Error('Invalid final for ledger '+record.id);
   record.result={homeWon:g.hs>g.as,homeScore:g.hs,awayScore:g.as,recordedAt:now.toISOString()};
  }
@@ -32,7 +32,9 @@ export function settleExisting(ledger,completed,now){
 export function evaluation(ledger){
  const settled=ledger.records.filter(x=>x.result);
  const n=settled.length;
- return {settled:n,recorded:ledger.records.length,brier:n?settled.reduce((s,r)=>s+(r.homeProbability-Number(r.result.homeWon))**2,0)/n:null,accuracy:n?settled.filter(r=>(r.homeProbability>=.5)===r.result.homeWon).length/n:null};
+ const brier=n?settled.reduce((s,r)=>s+(r.homeProbability-Number(r.result.homeWon))**2,0)/n:null;
+ const logLoss=n?settled.reduce((s,r)=>s-(r.result.homeWon?Math.log(Math.max(1e-12,r.homeProbability)):Math.log(Math.max(1e-12,1-r.homeProbability))),0)/n:null;
+ return {settled:n,recorded:ledger.records.length,brier,logLoss,accuracy:n?settled.filter(r=>(r.homeProbability>=.5)===r.result.homeWon).length/n:null,baselineBrier:n?settled.reduce((s,r)=>s+(.5-Number(r.result.homeWon))**2,0)/n:null,sampleStatus:n<100?'insufficient-for-reliability-claims':'ongoing-prospective-monitoring',timingWarnings:ledger.records.filter(x=>x.resultWarning).length};
 }
 export function appendFirstForecast(ledger,record,now){
  if(ledger.records.some(x=>identity(x)===identity(record)))return false;
