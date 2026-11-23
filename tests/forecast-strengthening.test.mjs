@@ -12,7 +12,7 @@ for(const season of [2025,2026]){
  assert.equal(verifyArchive(clean,{complete:true}).games,1230);
  assert.ok(!clean.games.some(g=>g.id===knownCupFinals[season].id));
  assert.ok(original===1230||original===1231,'Unexpected source season size '+season);
- assert.throws(()=>verifyArchive(source,{complete:true}),/championship|1230/, 'Raw championship cannot enter training');
+ if(original!==clean.games.length)assert.throws(()=>verifyArchive(source,{complete:true}),/championship|1230/, 'Raw championship cannot enter training');
  const [sample]=clean.games;
  assert.throws(()=>verifyArchive({...clean,games:[...clean.games,sample]},{complete:false}),/Unusable game/, 'Reject duplicate game IDs');
 }
