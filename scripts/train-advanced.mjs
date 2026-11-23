@@ -1,11 +1,19 @@
 import fs from 'node:fs';
 import {etDay} from './forecast-core.mjs';
 import {buildAdvanced,predict,context,features} from './forecast-advanced.mjs';
+import {regularSeasonOnly} from './forecast-integrity.mjs';
 const now=new Date(),day=etDay(now),season=+day.slice(0,4)+(+day.slice(5,7)>=10?1:0);
 const read=p=>{try{return JSON.parse(fs.readFileSync(p));}catch(e){return null;}};
-const current=read('data/completed-games-'+season+'.json');
+const originalCurrent=read('data/completed-games-'+season+'.json');
+const current=regularSeasonOnly(originalCurrent);
 if(current?.format!=='aureum-completed-games-v1'||current.count!==current.games.length)throw Error('Current archive invalid');
-const history=[season-2,season-1].map(s=>read('data/forecast-history-'+s+'.json')).filter(Boolean);
+const history=[season-2,season-1].map(y=>{
+ const path='data/forecast-history-'+y+'.json',source=read(path);
+ if(!source)return null;
+ const clean=regularSeasonOnly(source,{complete:true});
+ if(clean.games.length!==source.games.length)fs.writeFileSync(path,JSON.stringify(clean)+'\n');
+ return clean;
+}).filter(Boolean);
 const players=read('data/player-history-'+season+'.json');
 const priorPlayers=read('data/player-history-'+(season-1)+'.json');
 const model=buildAdvanced(history,current,players,now,priorPlayers);
