@@ -7,6 +7,7 @@ on:
       - 'scripts/refresh-game-boxscores.mjs'
       - 'scripts/game-boxscore-core.mjs'
       - 'scripts/forecast-core.mjs'
+      - 'scripts/forecast-integrity.mjs'
       - 'scripts/train-forecast.mjs'
       - 'scripts/refresh-rosters.mjs'
       - 'scripts/build-game-insights.mjs'
