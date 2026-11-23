@@ -2,11 +2,12 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-20",
-  "retrievedAt": "2026-11-23T07:26:07.104Z",
+  "retrievedAt": "2026-11-23T07:26:34.594Z",
   "events": [
     {
       "id": "401909305",
       "date": "2026-11-21T00:00Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -16,6 +17,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -38,6 +40,7 @@
     {
       "id": "401909306",
       "date": "2026-11-21T00:30Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -47,6 +50,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -69,6 +73,7 @@
     {
       "id": "401909307",
       "date": "2026-11-21T00:30Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -78,6 +83,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -100,6 +106,7 @@
     {
       "id": "401909308",
       "date": "2026-11-21T00:30Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -109,6 +116,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -131,6 +139,7 @@
     {
       "id": "401909309",
       "date": "2026-11-21T01:00Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -140,6 +149,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -162,6 +172,7 @@
     {
       "id": "401909310",
       "date": "2026-11-21T01:00Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -171,6 +182,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -193,6 +205,7 @@
     {
       "id": "401909311",
       "date": "2026-11-21T02:30Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -202,6 +215,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -224,6 +238,7 @@
     {
       "id": "401909312",
       "date": "2026-11-21T03:00Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -233,6 +248,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",
@@ -255,6 +271,7 @@
     {
       "id": "401909313",
       "date": "2026-11-21T03:00Z",
+      "competition": "nba-regular-season",
       "status": {
         "type": {
           "completed": true,
@@ -264,6 +281,7 @@
       },
       "competitions": [
         {
+          "neutralSite": false,
           "competitors": [
             {
               "homeAway": "home",

@@ -2,7 +2,7 @@
   "format": "aureum-completed-games-v1",
   "season": 2027,
   "source": "ESPN dated scoreboard game results",
-  "retrievedAt": "2026-11-23T07:26:07.104Z",
+  "retrievedAt": "2026-11-23T07:26:34.594Z",
   "count": 248,
   "notes": "Completed games only; scores are historical observations, never pregame forecasts.",
   "games": [
@@ -13,7 +13,9 @@
       "away": "BOS",
       "hs": 88,
       "as": 87,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910034",
@@ -22,7 +24,9 @@
       "away": "IND",
       "hs": 113,
       "as": 106,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910031",
@@ -31,7 +35,9 @@
       "away": "ORL",
       "hs": 116,
       "as": 96,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910032",
@@ -40,7 +46,9 @@
       "away": "DEN",
       "hs": 145,
       "as": 151,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910033",
@@ -49,7 +57,9 @@
       "away": "DAL",
       "hs": 114,
       "as": 116,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910030",
@@ -58,7 +68,9 @@
       "away": "OKC",
       "hs": 123,
       "as": 113,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910029",
@@ -67,7 +79,9 @@
       "away": "DET",
       "hs": 107,
       "as": 97,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910028",
@@ -76,7 +90,9 @@
       "away": "BOS",
       "hs": 97,
       "as": 96,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910025",
@@ -85,7 +101,9 @@
       "away": "LAC",
       "hs": 110,
       "as": 100,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910026",
@@ -94,7 +112,9 @@
       "away": "MEM",
       "hs": 104,
       "as": 95,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910027",
@@ -103,7 +123,9 @@
       "away": "NOP",
       "hs": 114,
       "as": 91,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910024",
@@ -112,7 +134,9 @@
       "away": "POR",
       "hs": 97,
       "as": 96,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910023",
@@ -121,7 +145,9 @@
       "away": "MIL",
       "hs": 132,
       "as": 129,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909312",
@@ -130,7 +156,9 @@
       "away": "HOU",
       "hs": 133,
       "as": 124,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909313",
@@ -139,7 +167,9 @@
       "away": "SAC",
       "hs": 106,
       "as": 104,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909311",
@@ -148,7 +178,9 @@
       "away": "PHX",
       "hs": 101,
       "as": 111,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909309",
@@ -157,7 +189,9 @@
       "away": "WAS",
       "hs": 94,
       "as": 98,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909310",
@@ -166,7 +200,9 @@
       "away": "NOP",
       "hs": 126,
       "as": 120,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909306",
@@ -175,7 +211,9 @@
       "away": "ORL",
       "hs": 111,
       "as": 113,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909307",
@@ -184,7 +222,9 @@
       "away": "IND",
       "hs": 128,
       "as": 119,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909308",
@@ -193,7 +233,9 @@
       "away": "TOR",
       "hs": 102,
       "as": 105,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401909305",
@@ -202,7 +244,9 @@
       "away": "CHA",
       "hs": 111,
       "as": 97,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910019",
@@ -211,7 +255,9 @@
       "away": "GSW",
       "hs": 126,
       "as": 98,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910020",
@@ -220,7 +266,9 @@
       "away": "POR",
       "hs": 114,
       "as": 124,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910021",
@@ -229,7 +277,9 @@
       "away": "NYK",
       "hs": 99,
       "as": 102,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910022",
@@ -238,7 +288,9 @@
       "away": "LAC",
       "hs": 124,
       "as": 112,
-      "sourceAt": "2026-11-23T07:26:07.104Z"
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "sourceAt": "2026-11-23T07:26:34.594Z"
     },
     {
       "id": "401910017",
@@ -247,6 +299,8 @@
       "away": "UTA",
       "hs": 97,
       "as": 109,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -256,6 +310,8 @@
       "away": "PHX",
       "hs": 107,
       "as": 128,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -265,6 +321,8 @@
       "away": "BOS",
       "hs": 105,
       "as": 101,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -274,6 +332,8 @@
       "away": "DET",
       "hs": 109,
       "as": 122,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -283,6 +343,8 @@
       "away": "ATL",
       "hs": 112,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -292,6 +354,8 @@
       "away": "GSW",
       "hs": 116,
       "as": 94,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -301,6 +365,8 @@
       "away": "CHI",
       "hs": 107,
       "as": 137,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -310,6 +376,8 @@
       "away": "WAS",
       "hs": 99,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -319,6 +387,8 @@
       "away": "MEM",
       "hs": 121,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -328,6 +398,8 @@
       "away": "HOU",
       "hs": 104,
       "as": 119,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -337,6 +409,8 @@
       "away": "MIL",
       "hs": 137,
       "as": 130,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -346,6 +420,8 @@
       "away": "PHI",
       "hs": 116,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T23:34:03.004Z"
     },
     {
@@ -355,6 +431,8 @@
       "away": "CHA",
       "hs": 118,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T02:08:50.793Z"
     },
     {
@@ -364,6 +442,8 @@
       "away": "UTA",
       "hs": 107,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T02:08:50.793Z"
     },
     {
@@ -373,6 +453,8 @@
       "away": "POR",
       "hs": 106,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T02:08:50.793Z"
     },
     {
@@ -382,6 +464,8 @@
       "away": "DET",
       "hs": 93,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T02:08:50.793Z"
     },
     {
@@ -391,6 +475,8 @@
       "away": "NYK",
       "hs": 102,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-22T02:08:50.793Z"
     },
     {
@@ -400,6 +486,8 @@
       "away": "PHX",
       "hs": 105,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -409,6 +497,8 @@
       "away": "POR",
       "hs": 106,
       "as": 98,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -418,6 +508,8 @@
       "away": "GSW",
       "hs": 115,
       "as": 94,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -427,6 +519,8 @@
       "away": "PHI",
       "hs": 123,
       "as": 135,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -436,6 +530,8 @@
       "away": "HOU",
       "hs": 128,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -445,6 +541,8 @@
       "away": "ORL",
       "hs": 105,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -454,6 +552,8 @@
       "away": "CHI",
       "hs": 126,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -463,6 +563,8 @@
       "away": "MEM",
       "hs": 120,
       "as": 136,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-21T03:10:07.258Z"
     },
     {
@@ -472,6 +574,8 @@
       "away": "OKC",
       "hs": 103,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -481,6 +585,8 @@
       "away": "ATL",
       "hs": 106,
       "as": 113,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -490,6 +596,8 @@
       "away": "HOU",
       "hs": 119,
       "as": 147,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -499,6 +607,8 @@
       "away": "DAL",
       "hs": 131,
       "as": 94,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -508,6 +618,8 @@
       "away": "NYK",
       "hs": 108,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -517,6 +629,8 @@
       "away": "SAS",
       "hs": 102,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -526,6 +640,8 @@
       "away": "CHA",
       "hs": 113,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -535,6 +651,8 @@
       "away": "LAL",
       "hs": 123,
       "as": 131,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -544,6 +662,8 @@
       "away": "IND",
       "hs": 131,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T03:55:24.897Z"
     },
     {
@@ -553,6 +673,8 @@
       "away": "DET",
       "hs": 137,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -562,6 +684,8 @@
       "away": "BKN",
       "hs": 129,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -571,6 +695,8 @@
       "away": "CHI",
       "hs": 106,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -580,6 +706,8 @@
       "away": "DAL",
       "hs": 127,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -589,6 +717,8 @@
       "away": "DEN",
       "hs": 108,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -598,6 +728,8 @@
       "away": "OKC",
       "hs": 113,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -607,6 +739,8 @@
       "away": "POR",
       "hs": 107,
       "as": 120,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -616,6 +750,8 @@
       "away": "GSW",
       "hs": 123,
       "as": 85,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -625,6 +761,8 @@
       "away": "UTA",
       "hs": 125,
       "as": 118,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -634,6 +772,8 @@
       "away": "CLE",
       "hs": 133,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -643,6 +783,8 @@
       "away": "ATL",
       "hs": 125,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -652,6 +794,8 @@
       "away": "MEM",
       "hs": 111,
       "as": 142,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -661,6 +805,8 @@
       "away": "NYK",
       "hs": 106,
       "as": 104,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -670,6 +816,8 @@
       "away": "MIL",
       "hs": 107,
       "as": 99,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -679,6 +827,8 @@
       "away": "CHA",
       "hs": 101,
       "as": 96,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -688,6 +838,8 @@
       "away": "DAL",
       "hs": 133,
       "as": 94,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -697,6 +849,8 @@
       "away": "TOR",
       "hs": 123,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -706,6 +860,8 @@
       "away": "DET",
       "hs": 140,
       "as": 144,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -715,6 +871,8 @@
       "away": "OKC",
       "hs": 118,
       "as": 108,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -724,6 +882,8 @@
       "away": "GSW",
       "hs": 115,
       "as": 108,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -733,6 +893,8 @@
       "away": "ORL",
       "hs": 108,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -742,6 +904,8 @@
       "away": "SAS",
       "hs": 119,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -751,6 +915,8 @@
       "away": "DEN",
       "hs": 118,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -760,6 +926,8 @@
       "away": "LAL",
       "hs": 112,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -769,6 +937,8 @@
       "away": "BKN",
       "hs": 111,
       "as": 145,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -778,6 +948,8 @@
       "away": "WAS",
       "hs": 114,
       "as": 101,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -787,6 +959,8 @@
       "away": "CLE",
       "hs": 107,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -796,6 +970,8 @@
       "away": "BOS",
       "hs": 93,
       "as": 98,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -805,6 +981,8 @@
       "away": "OKC",
       "hs": 123,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -814,6 +992,8 @@
       "away": "ORL",
       "hs": 100,
       "as": 107,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -823,6 +1003,8 @@
       "away": "LAC",
       "hs": 133,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -832,6 +1014,8 @@
       "away": "MIA",
       "hs": 109,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -841,6 +1025,8 @@
       "away": "BOS",
       "hs": 101,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -850,6 +1036,8 @@
       "away": "MIL",
       "hs": 117,
       "as": 85,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -859,6 +1047,8 @@
       "away": "NOP",
       "hs": 138,
       "as": 87,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -868,6 +1058,8 @@
       "away": "SAS",
       "hs": 96,
       "as": 122,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -877,6 +1069,8 @@
       "away": "DEN",
       "hs": 110,
       "as": 100,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -886,6 +1080,8 @@
       "away": "IND",
       "hs": 125,
       "as": 122,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -895,6 +1091,8 @@
       "away": "MEM",
       "hs": 102,
       "as": 118,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -904,6 +1102,8 @@
       "away": "LAL",
       "hs": 114,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -913,6 +1113,8 @@
       "away": "CLE",
       "hs": 124,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -922,6 +1124,8 @@
       "away": "WAS",
       "hs": 122,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -931,6 +1135,8 @@
       "away": "NOP",
       "hs": 139,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -940,6 +1146,8 @@
       "away": "MIA",
       "hs": 108,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -949,6 +1157,8 @@
       "away": "BOS",
       "hs": 97,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -958,6 +1168,8 @@
       "away": "BKN",
       "hs": 130,
       "as": 93,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -967,6 +1179,8 @@
       "away": "UTA",
       "hs": 115,
       "as": 100,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -976,6 +1190,8 @@
       "away": "LAL",
       "hs": 116,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -985,6 +1201,8 @@
       "away": "PHI",
       "hs": 121,
       "as": 127,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -994,6 +1212,8 @@
       "away": "SAS",
       "hs": 103,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1003,6 +1223,8 @@
       "away": "HOU",
       "hs": 102,
       "as": 99,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1012,6 +1234,8 @@
       "away": "ORL",
       "hs": 126,
       "as": 119,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1021,6 +1245,8 @@
       "away": "NYK",
       "hs": 97,
       "as": 109,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1030,6 +1256,8 @@
       "away": "WAS",
       "hs": 114,
       "as": 75,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1039,6 +1267,8 @@
       "away": "BKN",
       "hs": 124,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1048,6 +1278,8 @@
       "away": "DEN",
       "hs": 102,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1057,6 +1289,8 @@
       "away": "POR",
       "hs": 124,
       "as": 118,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1066,6 +1300,8 @@
       "away": "SAS",
       "hs": 109,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1075,6 +1311,8 @@
       "away": "UTA",
       "hs": 112,
       "as": 100,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1084,6 +1322,8 @@
       "away": "OKC",
       "hs": 97,
       "as": 128,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1093,6 +1333,8 @@
       "away": "TOR",
       "hs": 107,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1102,6 +1344,8 @@
       "away": "MIN",
       "hs": 109,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1111,6 +1355,8 @@
       "away": "PHI",
       "hs": 119,
       "as": 95,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1120,6 +1366,8 @@
       "away": "WAS",
       "hs": 139,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1129,6 +1377,8 @@
       "away": "BOS",
       "hs": 80,
       "as": 119,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1138,6 +1388,8 @@
       "away": "MIA",
       "hs": 120,
       "as": 100,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1147,6 +1399,8 @@
       "away": "ORL",
       "hs": 117,
       "as": 104,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1156,6 +1410,8 @@
       "away": "MIA",
       "hs": 116,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1165,6 +1421,8 @@
       "away": "LAL",
       "hs": 103,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1174,6 +1432,8 @@
       "away": "DAL",
       "hs": 112,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1183,6 +1443,8 @@
       "away": "TOR",
       "hs": 128,
       "as": 109,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1192,6 +1454,8 @@
       "away": "POR",
       "hs": 119,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1201,6 +1465,8 @@
       "away": "MIN",
       "hs": 107,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1210,6 +1476,8 @@
       "away": "IND",
       "hs": 103,
       "as": 107,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1219,6 +1487,8 @@
       "away": "UTA",
       "hs": 120,
       "as": 113,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1228,6 +1498,8 @@
       "away": "CLE",
       "hs": 124,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1237,6 +1509,8 @@
       "away": "MIL",
       "hs": 109,
       "as": 102,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1246,6 +1520,8 @@
       "away": "CHA",
       "hs": 114,
       "as": 104,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1255,6 +1531,8 @@
       "away": "CHI",
       "hs": 135,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1264,6 +1542,8 @@
       "away": "PHI",
       "hs": 106,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1273,6 +1553,8 @@
       "away": "ATL",
       "hs": 105,
       "as": 120,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1282,6 +1564,8 @@
       "away": "PHX",
       "hs": 116,
       "as": 113,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1291,6 +1575,8 @@
       "away": "TOR",
       "hs": 118,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1300,6 +1586,8 @@
       "away": "MIA",
       "hs": 138,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1309,6 +1597,8 @@
       "away": "POR",
       "hs": 110,
       "as": 118,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1318,6 +1608,8 @@
       "away": "BOS",
       "hs": 109,
       "as": 93,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1327,6 +1619,8 @@
       "away": "UTA",
       "hs": 119,
       "as": 97,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1336,6 +1630,8 @@
       "away": "SAC",
       "hs": 100,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1345,6 +1641,8 @@
       "away": "NOP",
       "hs": 134,
       "as": 135,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1354,6 +1652,8 @@
       "away": "MIL",
       "hs": 112,
       "as": 100,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1363,6 +1663,8 @@
       "away": "DET",
       "hs": 91,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1372,6 +1674,8 @@
       "away": "ATL",
       "hs": 104,
       "as": 108,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1381,6 +1685,8 @@
       "away": "BKN",
       "hs": 103,
       "as": 90,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1390,6 +1696,8 @@
       "away": "WAS",
       "hs": 94,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1399,6 +1707,8 @@
       "away": "CHI",
       "hs": 126,
       "as": 107,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1408,6 +1718,8 @@
       "away": "OKC",
       "hs": 112,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1417,6 +1729,8 @@
       "away": "TOR",
       "hs": 131,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1426,6 +1740,8 @@
       "away": "LAC",
       "hs": 124,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1435,6 +1751,8 @@
       "away": "BKN",
       "hs": 90,
       "as": 98,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1444,6 +1762,8 @@
       "away": "BOS",
       "hs": 97,
       "as": 108,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1453,6 +1773,8 @@
       "away": "OKC",
       "hs": 119,
       "as": 98,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1462,6 +1784,8 @@
       "away": "SAC",
       "hs": 136,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1471,6 +1795,8 @@
       "away": "CLE",
       "hs": 111,
       "as": 136,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1480,6 +1806,8 @@
       "away": "MIN",
       "hs": 121,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1489,6 +1817,8 @@
       "away": "ATL",
       "hs": 121,
       "as": 99,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1498,6 +1828,8 @@
       "away": "PHI",
       "hs": 104,
       "as": 109,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1507,6 +1839,8 @@
       "away": "POR",
       "hs": 90,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1516,6 +1850,8 @@
       "away": "LAL",
       "hs": 112,
       "as": 95,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1525,6 +1861,8 @@
       "away": "DEN",
       "hs": 120,
       "as": 127,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1534,6 +1872,8 @@
       "away": "IND",
       "hs": 145,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1543,6 +1883,8 @@
       "away": "HOU",
       "hs": 116,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1552,6 +1894,8 @@
       "away": "LAC",
       "hs": 127,
       "as": 101,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1561,6 +1905,8 @@
       "away": "CHI",
       "hs": 125,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1570,6 +1916,8 @@
       "away": "DET",
       "hs": 94,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1579,6 +1927,8 @@
       "away": "NYK",
       "hs": 98,
       "as": 93,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1588,6 +1938,8 @@
       "away": "ORL",
       "hs": 114,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1597,6 +1949,8 @@
       "away": "CHA",
       "hs": 95,
       "as": 79,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1606,6 +1960,8 @@
       "away": "MEM",
       "hs": 103,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1615,6 +1971,8 @@
       "away": "CLE",
       "hs": 114,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1624,6 +1982,8 @@
       "away": "SAC",
       "hs": 132,
       "as": 120,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1633,6 +1993,8 @@
       "away": "LAL",
       "hs": 87,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1642,6 +2004,8 @@
       "away": "OKC",
       "hs": 120,
       "as": 96,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1651,6 +2015,8 @@
       "away": "SAS",
       "hs": 111,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1660,6 +2026,8 @@
       "away": "NYK",
       "hs": 127,
       "as": 133,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1669,6 +2037,8 @@
       "away": "HOU",
       "hs": 100,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1678,6 +2048,8 @@
       "away": "GSW",
       "hs": 114,
       "as": 119,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1687,6 +2059,8 @@
       "away": "DEN",
       "hs": 91,
       "as": 104,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1696,6 +2070,8 @@
       "away": "ORL",
       "hs": 129,
       "as": 99,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1705,6 +2081,8 @@
       "away": "MIA",
       "hs": 117,
       "as": 129,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1714,6 +2092,8 @@
       "away": "WAS",
       "hs": 121,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1723,6 +2103,8 @@
       "away": "CHA",
       "hs": 97,
       "as": 89,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1732,6 +2114,8 @@
       "away": "PHI",
       "hs": 109,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1741,6 +2125,8 @@
       "away": "POR",
       "hs": 129,
       "as": 136,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1750,6 +2136,8 @@
       "away": "DET",
       "hs": 111,
       "as": 97,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1759,6 +2147,8 @@
       "away": "SAC",
       "hs": 130,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1768,6 +2158,8 @@
       "away": "BKN",
       "hs": 125,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1777,6 +2169,8 @@
       "away": "GSW",
       "hs": 114,
       "as": 134,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1786,6 +2180,8 @@
       "away": "MEM",
       "hs": 105,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1795,6 +2191,8 @@
       "away": "ATL",
       "hs": 120,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1804,6 +2202,8 @@
       "away": "IND",
       "hs": 110,
       "as": 102,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1813,6 +2213,8 @@
       "away": "PHX",
       "hs": 125,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1822,6 +2224,8 @@
       "away": "CHI",
       "hs": 134,
       "as": 99,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1831,6 +2235,8 @@
       "away": "DAL",
       "hs": 109,
       "as": 113,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1840,6 +2246,8 @@
       "away": "WAS",
       "hs": 110,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1849,6 +2257,8 @@
       "away": "MIN",
       "hs": 127,
       "as": 125,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1858,6 +2268,8 @@
       "away": "MEM",
       "hs": 112,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1867,6 +2279,8 @@
       "away": "DET",
       "hs": 93,
       "as": 106,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1876,6 +2290,8 @@
       "away": "ORL",
       "hs": 102,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1885,6 +2301,8 @@
       "away": "TOR",
       "hs": 117,
       "as": 94,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1894,6 +2312,8 @@
       "away": "LAC",
       "hs": 108,
       "as": 101,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1903,6 +2323,8 @@
       "away": "IND",
       "hs": 109,
       "as": 136,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1912,6 +2334,8 @@
       "away": "LAL",
       "hs": 123,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1921,6 +2345,8 @@
       "away": "GSW",
       "hs": 131,
       "as": 122,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1930,6 +2356,8 @@
       "away": "NOP",
       "hs": 141,
       "as": 135,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1939,6 +2367,8 @@
       "away": "HOU",
       "hs": 114,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1948,6 +2378,8 @@
       "away": "WAS",
       "hs": 120,
       "as": 124,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1957,6 +2389,8 @@
       "away": "SAS",
       "hs": 106,
       "as": 122,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1966,6 +2400,8 @@
       "away": "BKN",
       "hs": 125,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1975,6 +2411,8 @@
       "away": "MIL",
       "hs": 127,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1984,6 +2422,8 @@
       "away": "MIA",
       "hs": 115,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -1993,6 +2433,8 @@
       "away": "MEM",
       "hs": 108,
       "as": 111,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2002,6 +2444,8 @@
       "away": "LAC",
       "hs": 125,
       "as": 117,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2011,6 +2455,8 @@
       "away": "POR",
       "hs": 120,
       "as": 128,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2020,6 +2466,8 @@
       "away": "HOU",
       "hs": 110,
       "as": 114,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2029,6 +2477,8 @@
       "away": "NOP",
       "hs": 120,
       "as": 119,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2038,6 +2488,8 @@
       "away": "DET",
       "hs": 111,
       "as": 128,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2047,6 +2499,8 @@
       "away": "NYK",
       "hs": 107,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2056,6 +2510,8 @@
       "away": "ATL",
       "hs": 81,
       "as": 128,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2065,6 +2521,8 @@
       "away": "DAL",
       "hs": 105,
       "as": 121,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2074,6 +2532,8 @@
       "away": "MIN",
       "hs": 93,
       "as": 115,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2083,6 +2543,8 @@
       "away": "TOR",
       "hs": 102,
       "as": 112,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2092,6 +2554,8 @@
       "away": "CHI",
       "hs": 125,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2101,6 +2565,8 @@
       "away": "DEN",
       "hs": 96,
       "as": 84,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2110,6 +2576,8 @@
       "away": "CLE",
       "hs": 114,
       "as": 106,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2119,6 +2587,8 @@
       "away": "SAC",
       "hs": 121,
       "as": 96,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2128,6 +2598,8 @@
       "away": "GSW",
       "hs": 127,
       "as": 105,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2137,6 +2609,8 @@
       "away": "PHX",
       "hs": 124,
       "as": 83,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2146,6 +2620,8 @@
       "away": "DAL",
       "hs": 128,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2155,6 +2631,8 @@
       "away": "UTA",
       "hs": 123,
       "as": 103,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2164,6 +2642,8 @@
       "away": "IND",
       "hs": 120,
       "as": 123,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2173,6 +2653,8 @@
       "away": "MIN",
       "hs": 106,
       "as": 131,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2182,6 +2664,8 @@
       "away": "CHA",
       "hs": 103,
       "as": 110,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2191,6 +2675,8 @@
       "away": "CHI",
       "hs": 135,
       "as": 92,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2200,6 +2686,8 @@
       "away": "ATL",
       "hs": 125,
       "as": 132,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2209,6 +2697,8 @@
       "away": "MIL",
       "hs": 128,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2218,6 +2708,8 @@
       "away": "OKC",
       "hs": 104,
       "as": 116,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2227,6 +2719,8 @@
       "away": "PHI",
       "hs": 100,
       "as": 106,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     },
     {
@@ -2236,6 +2730,8 @@
       "away": "BOS",
       "hs": 121,
       "as": 113,
+      "neutral": false,
+      "competition": "nba-regular-season",
       "sourceAt": "2026-11-20T06:38:09.554Z"
     }
   ]
