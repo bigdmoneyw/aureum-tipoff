@@ -781,6 +781,13 @@
     "settled": 12,
     "recorded": 25,
     "brier": 0.25244503229349585,
-    "accuracy": 0.5833333333333334
+    "logLoss": 0.7197816417134876,
+    "accuracy": 0.5833333333333334,
+    "baselineBrier": 0.25,
+    "sampleStatus": "insufficient-for-reliability-claims",
+    "timingWarnings": 0,
+    "newlyLocked": 0,
+    "skippedPendingGames": 0,
+    "sourceArchiveFresh": true
   }
 }
