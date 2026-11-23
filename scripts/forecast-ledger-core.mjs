@@ -26,6 +26,7 @@ export function settleExisting(ledger,completed,now){
   if(g.home!==record.home||g.away!==record.away)throw Error('Ledger game team mismatch '+record.id);
   if(Math.abs(Date.parse(g.date)-Date.parse(record.tipoff))>36e5){record.resultWarning='Scheduled tipoff changed by more than an hour; result withheld pending timing review';continue;}
   if(!Number.isInteger(g.hs)||!Number.isInteger(g.as)||g.hs===g.as)throw Error('Invalid final for ledger '+record.id);
+  delete record.resultWarning;
   record.result={homeWon:g.hs>g.as,homeScore:g.hs,awayScore:g.as,recordedAt:now.toISOString()};
  }
 }
