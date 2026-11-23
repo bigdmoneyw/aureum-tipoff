@@ -22,3 +22,5 @@ jobs:
         run: node tests/branding.test.mjs
       - name: Audit forecast chronology, Cup segregation and calibrated model validation
         run: node tests/forecast-strengthening.test.mjs
+      - name: Audit future-result leakage, forecast ledger and player model safeguards
+        run: node tests/forecast-audit.test.mjs
