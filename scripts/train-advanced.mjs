@@ -36,6 +36,7 @@ const boards=[day,addDay(day,1),addDay(day,2)]
 const upcoming=boards.flatMap(board=>(board.events||[]).map(e=>({e,board})))
  .filter(({e})=>e.status?.type?.state==='pre'&&Number.isFinite(Date.parse(e.date))&&Date.parse(e.date)>now.getTime())
  .sort((a,b)=>Date.parse(a.e.date)-Date.parse(b.e.date));
+const coveredDates=new Set(boards.map(b=>b.requestedDate));
 const sourceTime=Date.parse(current.retrievedAt);
 const currentFresh=Number.isFinite(sourceTime)&&sourceTime<=now.getTime()+60000&&now-sourceTime<=8*3600000;
 let added=0,unknownSchedule=0;
@@ -53,11 +54,16 @@ if(currentFresh)for(const {e,board} of upcoming){
   return sides.some(c=>[h,a].includes(c.team?.abbreviation));
  });
  if(pendingBefore){unknownSchedule++;continue;}
- const contextDate=etDay(e.date),{state,mode}=selectPregameState(model,e.date);
+ const contextDate=etDay(e.date);
+ // Do not infer missing intervening fixtures from absent schedule snapshots.
+ let coverageComplete=true;
+ for(let n=0;addDay(day,n)<=contextDate;n++)if(!coveredDates.has(addDay(day,n)))coverageComplete=false;
+ if(!coverageComplete){unknownSchedule++;continue;}
+ const {state,mode}=selectPregameState(model,e.date);
  if(!state[h]||!state[a]||state[h].games<3||state[a].games<3)continue;
  const venue=e.competitions?.[0]?.neutralSite===true?0:1;
  const x=features(context(state[h],contextDate),context(state[a],contextDate));
- const record={id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,snapshotMode:mode,sourceScoreboardAt:board.retrievedAt,modelArchiveAt:current.retrievedAt,modelTrainingThrough:model.backtest.trainingThrough};
+ const record={id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,snapshotMode:mode,sourceScoreboardAt:board.retrievedAt,modelArchiveAt:current.retrievedAt,modelStateThrough:model.throughDate,modelTrainingThrough:model.backtest.trainingThrough};
  if(appendFirstForecast(ledger,record,now)){seen.add(record.id);added++;}
 }
 ledger.evaluation=evaluation(ledger);
