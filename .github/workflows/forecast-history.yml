@@ -2,7 +2,7 @@ name: Forecast training archive
 on:
   push:
     branches: [main]
-    paths: ['scripts/refresh-training-history.mjs','scripts/forecast-advanced.mjs','scripts/train-advanced.mjs','.github/workflows/forecast-history.yml']
+    paths: ['scripts/refresh-training-history.mjs','scripts/forecast-advanced.mjs','scripts/forecast-integrity.mjs','scripts/forecast-ledger-core.mjs','scripts/train-advanced.mjs','.github/workflows/forecast-history.yml']
   schedule:
     - cron: '41 */2 * * *'
   workflow_dispatch:
