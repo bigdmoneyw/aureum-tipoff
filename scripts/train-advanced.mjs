@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import {etDay} from './forecast-core.mjs';
 import {buildAdvanced,predict,context,features} from './forecast-advanced.mjs';
-import {regularSeasonOnly} from './forecast-integrity.mjs';
+import {regularSeasonOnly,isCupChampionship} from './forecast-integrity.mjs';
+import {validateLedger,selectPregameState,settleExisting,evaluation,appendFirstForecast} from './forecast-ledger-core.mjs';
 const now=new Date(),day=etDay(now),season=+day.slice(0,4)+(+day.slice(5,7)>=10?1:0);
 const read=p=>{try{return JSON.parse(fs.readFileSync(p));}catch(e){return null;}};
 const originalCurrent=read('data/completed-games-'+season+'.json');
@@ -14,6 +15,7 @@ const history=[season-2,season-1].map(y=>{
  if(clean.games.length!==source.games.length)fs.writeFileSync(path,JSON.stringify(clean)+'\n');
  return clean;
 }).filter(Boolean);
+if(history.length!==2||history.some(h=>h.games.length!==1230))throw Error('Complete 2025 and 2026 season training archives required; no weak fallback published');
 const players=read('data/player-history-'+season+'.json');
 const priorPlayers=read('data/player-history-'+(season-1)+'.json');
 const model=buildAdvanced(history,current,players,now,priorPlayers);
@@ -22,33 +24,51 @@ console.log('ADVANCED_VALIDATION '+JSON.stringify({history:model.historicalGameC
 // Preserve the FIRST timestamped baseline estimate before a scheduled game begins.
 // Never backfill a prediction for an already-started game.
 const ledgerPath='data/forecast-ledger-'+season+'.json';
-const ledger=read(ledgerPath)||{format:'aureum-forecast-ledger-v1',season,records:[]};
-const seen=new Set(ledger.records.map(r=>r.id));
-const results=new Map(current.games.map(g=>[g.id,g]));
-for(const record of ledger.records){
- const g=results.get(record.id);
- if(g&&record.home===g.home&&record.away===g.away&&!record.result)record.result={homeWon:g.hs>g.as,homeScore:g.hs,awayScore:g.as,recordedAt:now.toISOString()};
-}
-// Record the first available pregame forecast for upcoming fixtures over the next
-// two calendar days. The write-once ledger is not retrospectively overwritten.
+const ledger=validateLedger(read(ledgerPath)||{format:'aureum-forecast-ledger-v1',season,records:[]},season);
+// Existing probabilities, coefficients and timestamps are immutable. Settlement adds
+// only observed finals, and an inconsistent reschedule stays unresolved.
+settleExisting(ledger,current.games,now);
+const seen=new Set(ledger.records.map(r=>String(r.id)));
 const addDay=(date,n)=>new Date(Date.parse(date+'T12:00:00Z')+n*864e5).toISOString().slice(0,10);
-for(const boardDay of [day,addDay(day,1),addDay(day,2)]){
- const board=read('data/scoreboards/'+boardDay+'.json');
- if(!board||!Number.isFinite(Date.parse(board.retrievedAt))||Math.abs(now-Date.parse(board.retrievedAt))>3*3600000)continue;
- for(const e of board.events||[]){
-  const tipoff=Date.parse(e.date);
-  if(seen.has(String(e.id))||e.status?.type?.state!=='pre'||!Number.isFinite(tipoff)||tipoff<=now.getTime()||tipoff-now.getTime()>48*3600000)continue;
-  const competitors=e.competitions?.[0]?.competitors||[];
-  const h=competitors.find(x=>x.homeAway==='home')?.team?.abbreviation,a=competitors.find(x=>x.homeAway==='away')?.team?.abbreviation;
-  const state=model.todayState||model.state;
-  if(!state[h]||!state[a]||state[h].games<3||state[a].games<3)continue;
-  const contextDate=etDay(e.date),venue=e.competitions?.[0]?.neutralSite===true?0:1;
-  const x=features(context(state[h],contextDate),context(state[a],contextDate));
-  ledger.records.push({id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,sourceScoreboardAt:board.retrievedAt,modelTrainingThrough:model.backtest.trainingThrough});
-  seen.add(String(e.id));
- }
+const boards=[day,addDay(day,1),addDay(day,2)]
+ .map(d=>read('data/scoreboards/'+d+'.json'))
+ .filter(board=>board&&Number.isFinite(Date.parse(board.retrievedAt))&&Date.parse(board.retrievedAt)<=now.getTime()+60000&&now-Date.parse(board.retrievedAt)<=3*3600000);
+const upcoming=boards.flatMap(board=>(board.events||[]).map(e=>({e,board})))
+ .filter(({e})=>e.status?.type?.state==='pre'&&Number.isFinite(Date.parse(e.date))&&Date.parse(e.date)>now.getTime())
+ .sort((a,b)=>Date.parse(a.e.date)-Date.parse(b.e.date));
+const coveredDates=new Set(boards.map(b=>b.requestedDate));
+const sourceTime=Date.parse(current.retrievedAt);
+const currentFresh=Number.isFinite(sourceTime)&&sourceTime<=now.getTime()+60000&&now-sourceTime<=8*3600000;
+let added=0,unknownSchedule=0;
+if(currentFresh)for(const {e,board} of upcoming){
+ const tipoff=Date.parse(e.date);
+ if(seen.has(String(e.id))||tipoff-now.getTime()>48*3600000||isCupChampionship(e,season))continue;
+ const competitors=e.competitions?.[0]?.competitors||[];
+ const h=competitors.find(x=>x.homeAway==='home')?.team?.abbreviation,a=competitors.find(x=>x.homeAway==='away')?.team?.abbreviation;
+ if(!h||!a||h===a)continue;
+ // If either team has another future game before this fixture, we cannot know
+ // the true rest, rating or recent form yet. Do not lock a misleading forecast.
+ const pendingBefore=upcoming.some(({e:other})=>{
+  if(String(e.id)===String(other.id)||Date.parse(other.date)>=tipoff)return false;
+  const sides=other.competitions?.[0]?.competitors||[];
+  return sides.some(c=>[h,a].includes(c.team?.abbreviation));
+ });
+ if(pendingBefore){unknownSchedule++;continue;}
+ const contextDate=etDay(e.date);
+ // Do not infer missing intervening fixtures from absent schedule snapshots.
+ let coverageComplete=true;
+ for(let n=0;addDay(day,n)<=contextDate;n++)if(!coveredDates.has(addDay(day,n)))coverageComplete=false;
+ if(!coverageComplete){unknownSchedule++;continue;}
+ const {state,mode}=selectPregameState(model,e.date);
+ if(!state[h]||!state[a]||state[h].games<3||state[a].games<3)continue;
+ const venue=e.competitions?.[0]?.neutralSite===true?0:1;
+ const x=features(context(state[h],contextDate),context(state[a],contextDate));
+ const record={id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,snapshotMode:mode,sourceScoreboardAt:board.retrievedAt,modelArchiveAt:current.retrievedAt,modelStateThrough:model.throughDate,modelTrainingThrough:model.backtest.trainingThrough};
+ if(appendFirstForecast(ledger,record,now)){seen.add(record.id);added++;}
 }
-const settled=ledger.records.filter(r=>r.result);
-ledger.evaluation={settled:settled.length,recorded:ledger.records.length,brier:settled.length?settled.reduce((s,r)=>s+(r.homeProbability-Number(r.result.homeWon))**2,0)/settled.length:null,accuracy:settled.length?settled.filter(r=>(r.homeProbability>=.5)===r.result.homeWon).length/settled.length:null};
+ledger.evaluation=evaluation(ledger);
+ledger.evaluation.newlyLocked=added;
+ledger.evaluation.skippedPendingGames=unknownSchedule;
+ledger.evaluation.sourceArchiveFresh=currentFresh;
 fs.writeFileSync(ledgerPath,JSON.stringify(ledger,null,2)+'\n');
 console.log('PROSPECTIVE_LEDGER '+JSON.stringify(ledger.evaluation));

@@ -138,12 +138,13 @@ function playerFit(rows,w,priorRows=[]){
  const p=test.map((r,i)=>sig(Math.log(base[i]/(1-base[i]))+beta*r.missingMinutes));
  const brier=mean(test.map((r,i)=>(p[i]-r.y)**2)),baseBrier=mean(test.map((r,i)=>(base[i]-r.y)**2));
  // Even a better retrospective conditional score is not prospective injury validation.
- return {enabled:beta>.001&&brier<baseBrier,beta,trainingGames:train.length,games:test.length,trainingThrough:train.at(-1).date,testFrom:test[0].date,testThrough:test.at(-1).date,brier,baselineBrier:baseBrier,previousSeasonTraining:historical,method:'Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast.'};
+ return {enabled:false,retrospectiveBetter:beta>.001&&brier<baseBrier,reason:'Observed postgame participation cannot establish an actionable pregame injury effect; pregame validation required.',beta,trainingGames:train.length,games:test.length,trainingThrough:train.at(-1).date,testFrom:test[0].date,testThrough:test.at(-1).date,brier,baselineBrier:baseBrier,previousSeasonTraining:historical,method:'Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast.'};
 }
 export function buildAdvanced(history,current,playerHistory,now,previousPlayerHistory=null){
  let state=blank(),historical=[],priorPlayers=[],historicalHorizons={7:[],30:[],60:[]};
- const completeHistory=history.length===2&&history.every(h=>h.games.length>=1200);
+ const completeHistory=history.length===2&&history.every(h=>h.games.length===1230);
  if(completeHistory)for(const h of history){const playerMap=previousPlayerHistory?.season===h.season?new Map(previousPlayerHistory.games.map(g=>[g.id,g])):null;const z=gameRows(h.games,state,h.season,{players:playerMap});historical.push(...z.rows);for(const n of [7,30,60])historicalHorizons[n].push(...z.horizonRows[n]);priorPlayers.push(...z.playerRows);state=newSeason(state);}
+ if(current.games.some(g=>Date.parse(g.date)>=now.getTime()))throw Error('Completed game is not in the past; refusing future-result leakage');
  const results=gameRows(current.games,state,current.season,{today:etDay(now),players:new Map((playerHistory?.games||[]).map(g=>[g.id,g]))});
  const currentDates=[...new Set(results.rows.map(r=>r.date))].sort(),cutCurrent=currentDates[Math.floor(currentDates.length*.7)];
  const training=completeHistory?historical:results.rows.filter(r=>r.date<cutCurrent);
