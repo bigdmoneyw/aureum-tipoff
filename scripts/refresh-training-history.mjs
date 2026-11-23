@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {etDay} from './forecast-core.mjs';
+import {regularSeasonOnly,isCupChampionship} from './forecast-integrity.mjs';
 const now=new Date(),d=etDay(now),season=+d.slice(0,4)+(+d.slice(5,7)>=10?1:0);
 const api='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/';
 const norm=c=>({GS:'GSW',SA:'SAS',NY:'NYK',NO:'NOP',UTAH:'UTA',WSH:'WAS',PHO:'PHX',BRK:'BKN'})[c]||c;
@@ -8,7 +9,15 @@ async function get(p){for(let i=0;i<2;i++){try{const r=await fetch(api+p,{signal
 try {
 for(const y of [season-2,season-1]){
  const file='data/forecast-history-'+y+'.json';
- if(fs.existsSync(file)){const old=JSON.parse(fs.readFileSync(file));if(old.games?.length>=1200)continue;}
+ if(fs.existsSync(file)){
+  try{
+   const old=JSON.parse(fs.readFileSync(file));
+   const clean=regularSeasonOnly(old,{complete:true});
+   if(clean.games.length!==old.games.length)fs.writeFileSync(file,JSON.stringify(clean)+'\n');
+   console.log('REGULAR_SEASON_AUDIT '+y+' '+clean.games.length+' valid games');
+   continue;
+  }catch(error){console.warn('Rebuilding invalid historical archive '+y+': '+error.message);}
+ }
  const games=new Map();
  // Date windows smaller than a full month avoid provider event limits.
  const days=[];for(let t=Date.UTC(y-1,9,1);t<=Date.UTC(y,3,30);t+=864e5)days.push(new Date(t).toISOString().slice(0,10).replaceAll('-',''));
@@ -21,13 +30,15 @@ for(const y of [season-2,season-1]){
    const c=e.competitions?.[0],h=c?.competitors?.find(x=>x.homeAway==='home'),a=c?.competitors?.find(x=>x.homeAway==='away');
    const home=norm(h?.team?.abbreviation),away=norm(a?.team?.abbreviation),hs=+h?.score,as=+a?.score;
    if(!codes.has(home)||!codes.has(away)||home===away||!Number.isInteger(hs)||!Number.isInteger(as)||hs===as||Math.min(hs,as)<0||!Number.isFinite(Date.parse(e.date)))continue;
+   if(isCupChampionship({id:e.id,date:e.date,neutral:c.neutralSite},y))continue;
    games.set(String(e.id),{id:String(e.id),date:e.date,home,away,hs,as,neutral:c.neutralSite===true,season:y});
   }
   }
  }
- if(games.size<1200||games.size>1250)throw Error('Unexpected regular season coverage '+y+' '+games.size);
+ if(games.size!==1230)throw Error('Expected 1230 NBA regular-season games '+y+'; received '+games.size);
  const rows=[...games.values()].sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
- fs.writeFileSync(file,JSON.stringify({format:'aureum-forecast-history-v1',season:y,source:'ESPN completed regular season scoreboards',retrievedAt:now.toISOString(),games:rows})+'\n');
+ const clean=regularSeasonOnly({format:'aureum-forecast-history-v1',season:y,source:'ESPN completed regular season scoreboards, NBA Cup championship excluded',retrievedAt:now.toISOString(),games:rows},{complete:true});
+ fs.writeFileSync(file,JSON.stringify(clean)+'\n');
  console.log('HISTORICAL_GAMES '+y+' '+rows.length);
 }
 } catch(error){console.warn('Historical season archive unavailable: '+error.message);}
