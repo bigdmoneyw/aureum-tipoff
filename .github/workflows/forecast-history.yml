@@ -9,7 +9,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: forecast-training-history
+  group: aureum-data-publication
   cancel-in-progress: false
 jobs:
   history:
@@ -29,6 +29,12 @@ jobs:
           git add -A data/forecast-history-* 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "data: source historical training games and player participation"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            done
+            echo "Unable to publish forecast snapshots after three conflict-safe attempts" >&2
+            exit 1
           fi
