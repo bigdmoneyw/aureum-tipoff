@@ -1,11 +1,19 @@
 import fs from 'node:fs';
 import {etDay} from './forecast-core.mjs';
 import {buildAdvanced,predict,context,features} from './forecast-advanced.mjs';
+import {regularSeasonOnly} from './forecast-integrity.mjs';
 const now=new Date(),day=etDay(now),season=+day.slice(0,4)+(+day.slice(5,7)>=10?1:0);
 const read=p=>{try{return JSON.parse(fs.readFileSync(p));}catch(e){return null;}};
-const current=read('data/completed-games-'+season+'.json');
+const originalCurrent=read('data/completed-games-'+season+'.json');
+const current=regularSeasonOnly(originalCurrent);
 if(current?.format!=='aureum-completed-games-v1'||current.count!==current.games.length)throw Error('Current archive invalid');
-const history=[season-2,season-1].map(s=>read('data/forecast-history-'+s+'.json')).filter(Boolean);
+const history=[season-2,season-1].map(y=>{
+ const path='data/forecast-history-'+y+'.json',source=read(path);
+ if(!source)return null;
+ const clean=regularSeasonOnly(source,{complete:true});
+ if(clean.games.length!==source.games.length)fs.writeFileSync(path,JSON.stringify(clean)+'\n');
+ return clean;
+}).filter(Boolean);
 const players=read('data/player-history-'+season+'.json');
 const priorPlayers=read('data/player-history-'+(season-1)+'.json');
 const model=buildAdvanced(history,current,players,now,priorPlayers);
@@ -21,14 +29,23 @@ for(const record of ledger.records){
  const g=results.get(record.id);
  if(g&&record.home===g.home&&record.away===g.away&&!record.result)record.result={homeWon:g.hs>g.as,homeScore:g.hs,awayScore:g.as,recordedAt:now.toISOString()};
 }
-const file='data/scoreboards/'+day+'.json',board=read(file);
-if(board&&Math.abs(now-Date.parse(board.retrievedAt))<=3*3600000){
+// Record the first available pregame forecast for upcoming fixtures over the next
+// two calendar days. The write-once ledger is not retrospectively overwritten.
+const addDay=(date,n)=>new Date(Date.parse(date+'T12:00:00Z')+n*864e5).toISOString().slice(0,10);
+for(const boardDay of [day,addDay(day,1),addDay(day,2)]){
+ const board=read('data/scoreboards/'+boardDay+'.json');
+ if(!board||!Number.isFinite(Date.parse(board.retrievedAt))||Math.abs(now-Date.parse(board.retrievedAt))>3*3600000)continue;
  for(const e of board.events||[]){
-  if(seen.has(String(e.id))||e.status?.type?.state!=='pre'||Date.parse(e.date)<=now.getTime())continue;
-  const h=e.competitions?.[0]?.competitors?.find(x=>x.homeAway==='home')?.team?.abbreviation,a=e.competitions?.[0]?.competitors?.find(x=>x.homeAway==='away')?.team?.abbreviation;
-  const s=model.todayState;if(!s[h]||!s[a]||s[h].games<3||s[a].games<3)continue;
-  const x=features(context(s[h],day),context(s[a],day));
-  ledger.records.push({id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x),featureValues:x,coefficients:model.weights});
+  const tipoff=Date.parse(e.date);
+  if(seen.has(String(e.id))||e.status?.type?.state!=='pre'||!Number.isFinite(tipoff)||tipoff<=now.getTime()||tipoff-now.getTime()>48*3600000)continue;
+  const competitors=e.competitions?.[0]?.competitors||[];
+  const h=competitors.find(x=>x.homeAway==='home')?.team?.abbreviation,a=competitors.find(x=>x.homeAway==='away')?.team?.abbreviation;
+  const state=model.todayState||model.state;
+  if(!state[h]||!state[a]||state[h].games<3||state[a].games<3)continue;
+  const contextDate=etDay(e.date),venue=e.competitions?.[0]?.neutralSite===true?0:1;
+  const x=features(context(state[h],contextDate),context(state[a],contextDate));
+  ledger.records.push({id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,sourceScoreboardAt:board.retrievedAt,modelTrainingThrough:model.backtest.trainingThrough});
+  seen.add(String(e.id));
  }
 }
 const settled=ledger.records.filter(r=>r.result);

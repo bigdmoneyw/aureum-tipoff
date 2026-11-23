@@ -1,5 +1,6 @@
 
 import fs from 'node:fs';
+import {isCupChampionship} from './forecast-integrity.mjs';
 import path from 'node:path';
 const root='data';
 const source='ESPN NBA scoreboard and standings (third-party; not NBA official)';
@@ -36,14 +37,14 @@ function scoreboard(data,date){
  const events=[],seen=new Set();
  for(const e of data.events){
   if(!e?.id||seen.has(String(e.id)))continue;
-  const rivals=e.competitions?.[0]?.competitors||[];
+  const competition=e.competitions?.[0],rivals=competition?.competitors||[];
   const h=rivals.find(x=>x.homeAway==='home'),a=rivals.find(x=>x.homeAway==='away');
   const home=norm(h?.team?.abbreviation),away=norm(a?.team?.abbreviation),when=new Date(e.date);
   if(!codes.has(home)||!codes.has(away)||home===away||!Number.isFinite(when.getTime())||dateET(when)!==date)continue;
   const state=e.status?.type?.state||'pre',done=!!e.status?.type?.completed;
   const hs=Number(h.score),as=Number(a.score);
   if((done||state==='in')&&(!Number.isInteger(hs)||!Number.isInteger(as)||hs<0||as<0||hs>250||as>250))continue;
-  events.push({id:String(e.id),date:e.date,status:{type:{completed:done,state,shortDetail:e.status?.type?.shortDetail||e.status?.type?.detail||e.status?.type?.description||'Scheduled'}},competitions:[{competitors:[{homeAway:'home',team:{abbreviation:home},score:done||state==='in'?String(hs):''},{homeAway:'away',team:{abbreviation:away},score:done||state==='in'?String(as):''}]}]});
+  events.push({id:String(e.id),date:e.date,competition:isCupChampionship({id:e.id,date:e.date,neutral:competition?.neutralSite},endSeason)?'nba-cup-championship':'nba-regular-season',status:{type:{completed:done,state,shortDetail:e.status?.type?.shortDetail||e.status?.type?.detail||e.status?.type?.description||'Scheduled'}},competitions:[{neutralSite:competition?.neutralSite===true,competitors:[{homeAway:'home',team:{abbreviation:home},score:done||state==='in'?String(hs):''},{homeAway:'away',team:{abbreviation:away},score:done||state==='in'?String(as):''}]}]});
   seen.add(String(e.id));
  }
  if(data.events.length&&!events.length)throw Error('Invalid date/team scoreboard records for '+date);
@@ -165,7 +166,7 @@ async function refreshCompletedGames(){
    const hs=Number(home?.score),as=Number(away?.score);
    const h=home?.team?.abbreviation,a=away?.team?.abbreviation;
    if(!codes.has(h)||!codes.has(a)||h===a||!Number.isInteger(hs)||!Number.isInteger(as)||hs<0||as<0||hs===as)continue;
-   rows.push({id:String(e.id),date:e.date,home:h,away:a,hs,as,sourceAt:snap.retrievedAt});
+   rows.push({id:String(e.id),date:e.date,home:h,away:a,hs,as,neutral:e.competitions?.[0]?.neutralSite===true,competition:e.competition||'nba-regular-season',sourceAt:snap.retrievedAt});
    unique.add(e.id);
   }
  }

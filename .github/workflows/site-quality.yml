@@ -20,3 +20,5 @@ jobs:
         run: node tests/site.test.mjs
       - name: Verify public branding and exclude third-party chat services
         run: node tests/branding.test.mjs
+      - name: Audit forecast chronology, Cup segregation and calibrated model validation
+        run: node tests/forecast-strengthening.test.mjs

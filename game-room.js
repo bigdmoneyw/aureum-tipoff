@@ -308,7 +308,9 @@ function render(){
  const validHorizon=horizon&&Array.isArray(horizon.weights)&&horizon.weights.length===7&&horizon.weights.every(Number.isFinite);
  const r=model.backtest,w=validHorizon?horizon.weights:model.weights,advanced=w.length===7;
  const pm=model.playerModel;
- $('forecastValidation').innerHTML='<strong>Model evaluation</strong> · '+r.games+' held-out games · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-team baseline '+r.baselineBrier.toFixed(3)+') · '+r.trainingGames+' training games.<p>Test dates: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'. Data refreshed '+esc(time(model.retrievedAt))+'. Last completed results: '+esc(model.throughDate)+'. These are retrospective results, not a guarantee. '+(pm?(pm.enabled?'The conditional playing-time experiment improved its own held-out sample, but actual participation was observed after games.':'The playing-time experiment did not qualify for automatic player impact. Manual injury scenarios remain separate.'):'Player impact is not independently validated.')+'</p>';
+ const accuracyRange=r.accuracyInterval95?' Approximate 95% accuracy interval: '+(100*r.accuracyInterval95.low).toFixed(1)+'–'+(100*r.accuracyInterval95.high).toFixed(1)+'%.':'';
+ const comparison=r.pairedBrier?.interval95?' Paired date-block Brier improvement vs simpler model: '+r.pairedBrier.gain.toFixed(4)+' (95% bootstrap interval '+r.pairedBrier.interval95.map(x=>x.toFixed(4)).join(' to ')+'); an interval spanning zero does not establish improvement.':'';
+ $('forecastValidation').innerHTML='<strong>Model evaluation</strong> · '+r.games+' held-out games · '+(100*r.accuracy).toFixed(1)+'% correct winners · Brier '+r.brier.toFixed(3)+' (home-team baseline '+r.baselineBrier.toFixed(3)+') · '+r.trainingGames+' training games.<p>Test dates: '+esc(r.testFrom)+' to '+esc(r.testThrough)+'. Data refreshed '+esc(time(model.retrievedAt))+'. Last completed results: '+esc(model.throughDate)+'. These are retrospective results, not a guarantee.'+accuracyRange+comparison+' '+(pm?(pm.enabled?'The conditional playing-time experiment improved its own held-out sample, but actual participation was observed after games.':'The playing-time experiment did not qualify for automatic player impact. Manual injury scenarios remain separate.'):'Player impact is not independently validated.')+'</p>';
  if(!fresh(model.retrievedAt,8)||!fresh(model.sourceArchiveCollectedAt,8)){
   clearMeasured('Verified data unavailable');root.innerHTML='<div class="empty">Forecast data is older than eight hours or its timestamp is invalid. The estimate is withheld until fresh data is available.</div>';return;
  }
@@ -357,7 +359,7 @@ function render(){
  const fA=manualValue('forecastFormA'),fB=manualValue('forecastFormB'),rA=manualValue('forecastRestA'),rB=manualValue('forecastRestB');
  const proposedFormA=fA?(+formA+2)/14:l.form,proposedFormB=fB?(+formB+2)/14:rr.form;
  const proposedRestA=rA?+restA:l.rest,proposedRestB=rB?+restB:rr.rest;
- const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=model.weights[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
+ const formChange=w[2]*(proposedFormA-proposedFormB-l.form+rr.form),restChange=w[3]*(proposedRestA-proposedRestB-l.rest+rr.rest)/3;
  const custom=clamp(Number($('forecastCustomShift')?.value)||0,-100,100);
  const assumptions=[...manual,...pA.reasons,...pB.reasons.map(x=>({...x,shift:-x.shift})),...(custom?[{label:'Custom numerical assumption',shift:custom,why:'This is the extra advantage or disadvantage you entered, rather than a measured effect.'}]:[])];
  const rawShift=assumptions.reduce((sum,x)=>sum+x.shift,0),shift=clamp(rawShift,-150,150);
