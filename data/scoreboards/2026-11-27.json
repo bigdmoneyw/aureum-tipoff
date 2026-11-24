@@ -2,12 +2,13 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-27",
-  "retrievedAt": "2026-11-23T20:06:31.109Z",
+  "retrievedAt": "2026-11-24T00:10:12.536Z",
   "events": [
     {
       "id": "401909326",
       "date": "2026-11-28T00:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -41,6 +42,7 @@
       "id": "401909327",
       "date": "2026-11-28T00:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -74,6 +76,7 @@
       "id": "401909328",
       "date": "2026-11-28T00:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -107,6 +110,7 @@
       "id": "401909329",
       "date": "2026-11-28T00:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -140,6 +144,7 @@
       "id": "401909330",
       "date": "2026-11-28T01:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -173,6 +178,7 @@
       "id": "401909331",
       "date": "2026-11-28T01:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -206,6 +212,7 @@
       "id": "401909332",
       "date": "2026-11-28T02:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -239,6 +246,7 @@
       "id": "401909333",
       "date": "2026-11-28T02:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -272,6 +280,7 @@
       "id": "401909334",
       "date": "2026-11-28T02:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -305,6 +314,7 @@
       "id": "401909335",
       "date": "2026-11-28T02:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,
@@ -338,6 +348,7 @@
       "id": "401909336",
       "date": "2026-11-28T02:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": false,

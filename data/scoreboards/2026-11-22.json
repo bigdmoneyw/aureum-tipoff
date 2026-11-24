@@ -2,12 +2,13 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-22",
-  "retrievedAt": "2026-11-23T20:06:31.109Z",
+  "retrievedAt": "2026-11-24T00:10:12.536Z",
   "events": [
     {
       "id": "401910029",
       "date": "2026-11-22T20:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -41,6 +42,7 @@
       "id": "401910030",
       "date": "2026-11-22T23:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -74,6 +76,7 @@
       "id": "401910031",
       "date": "2026-11-23T00:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -107,6 +110,7 @@
       "id": "401910032",
       "date": "2026-11-23T00:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -140,6 +144,7 @@
       "id": "401910033",
       "date": "2026-11-23T00:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -173,6 +178,7 @@
       "id": "401910034",
       "date": "2026-11-23T01:00Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,
@@ -206,6 +212,7 @@
       "id": "401910035",
       "date": "2026-11-23T01:30Z",
       "competition": "nba-regular-season",
+      "seasonType": 2,
       "status": {
         "type": {
           "completed": true,

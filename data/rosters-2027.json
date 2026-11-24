@@ -1,17 +1,17 @@
 {
   "format": "aureum-rosters-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-23T20:06:34.820Z",
+  "retrievedAt": "2026-11-24T00:10:17.484Z",
   "source": "ESPN NBA team rosters and dated injury report",
   "injuryFeedAvailable": true,
-  "injurySourceTimestamp": "2026-11-23T20:06:27Z",
+  "injurySourceTimestamp": "2026-11-24T00:10:14Z",
   "teams": [
     {
       "code": "ATL",
       "espnId": "1",
       "name": "Atlanta Hawks",
-      "retrievedAt": "2026-11-23T20:06:34.352Z",
-      "providerTimestamp": "2026-11-23T20:06:22Z",
+      "retrievedAt": "2026-11-24T00:10:16.627Z",
+      "providerTimestamp": "2026-11-24T00:10:08Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -166,8 +166,8 @@
       "code": "BKN",
       "espnId": "17",
       "name": "Brooklyn Nets",
-      "retrievedAt": "2026-11-23T20:06:34.373Z",
-      "providerTimestamp": "2026-11-23T20:06:10Z",
+      "retrievedAt": "2026-11-24T00:10:16.482Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -306,8 +306,8 @@
       "code": "BOS",
       "espnId": "2",
       "name": "Boston Celtics",
-      "retrievedAt": "2026-11-23T20:06:34.379Z",
-      "providerTimestamp": "2026-11-23T20:06:23Z",
+      "retrievedAt": "2026-11-24T00:10:16.479Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -394,8 +394,8 @@
           "jersey": "4",
           "report": {
             "status": "Out",
-            "date": "2026-11-22T20:58Z",
-            "comment": "Robinson (illness) has been ruled out for Sunday's game against Golden State, Justin Turpin of WEEI.com reports."
+            "date": "2026-11-23T21:09Z",
+            "comment": "Robinson (illness) is out for Tuesday's game against Washington, Taylor Snow of the Celtics' official site reports."
           }
         },
         {
@@ -410,11 +410,7 @@
           "name": "Paul George",
           "position": "F",
           "jersey": "13",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T15:07Z",
-            "comment": "George (rest) has been ruled out for Sunday's game against Golden State, Justin Turpin of WEEI.com reports."
-          }
+          "report": null
         },
         {
           "id": "4066354",
@@ -443,8 +439,8 @@
       "code": "CHA",
       "espnId": "30",
       "name": "Charlotte Hornets",
-      "retrievedAt": "2026-11-23T20:06:34.382Z",
-      "providerTimestamp": "2026-11-23T20:06:06Z",
+      "retrievedAt": "2026-11-24T00:10:16.490Z",
+      "providerTimestamp": "2026-11-24T00:10:05Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -452,11 +448,7 @@
           "name": "Brandon Miller",
           "position": "F",
           "jersey": "24",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-22T22:08Z",
-            "comment": "Miller is probable for Monday's game against the Grizzlies due to a right knee contusion."
-          }
+          "report": null
         },
         {
           "id": "5060701",
@@ -599,8 +591,8 @@
       "code": "CHI",
       "espnId": "4",
       "name": "Chicago Bulls",
-      "retrievedAt": "2026-11-23T20:06:34.389Z",
-      "providerTimestamp": "2026-11-23T20:06:18Z",
+      "retrievedAt": "2026-11-24T00:10:16.568Z",
+      "providerTimestamp": "2026-11-24T00:10:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -640,11 +632,7 @@
           "name": "Jalen Smith",
           "position": "F",
           "jersey": "25",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T18:40Z",
-            "comment": "Smith (illness) is probable for Monday's game against Cleveland."
-          }
+          "report": null
         },
         {
           "id": "4898010",
@@ -686,11 +674,7 @@
           "name": "Nic Claxton",
           "position": "C",
           "jersey": "9",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T18:35Z",
-            "comment": "Claxton (illness) is questionable for Monday's game against Cleveland."
-          }
+          "report": null
         },
         {
           "id": "5242496",
@@ -751,8 +735,8 @@
       "code": "CLE",
       "espnId": "5",
       "name": "Cleveland Cavaliers",
-      "retrievedAt": "2026-11-23T20:06:34.386Z",
-      "providerTimestamp": "2026-11-23T20:06:19Z",
+      "retrievedAt": "2026-11-24T00:10:16.520Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -899,8 +883,8 @@
       "code": "DAL",
       "espnId": "6",
       "name": "Dallas Mavericks",
-      "retrievedAt": "2026-11-23T20:06:34.563Z",
-      "providerTimestamp": "2026-11-23T20:06:31Z",
+      "retrievedAt": "2026-11-24T00:10:16.735Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -991,8 +975,8 @@
           "jersey": "25",
           "report": {
             "status": "Day-To-Day",
-            "date": "2026-11-23T15:05Z",
-            "comment": "Washington (illness) has been ruled out for Sunday's game against the Jazz."
+            "date": "2026-11-23T23:21Z",
+            "comment": "Washington (illness) is questionable for Tuesday's game against the Nuggets."
           }
         },
         {
@@ -1031,8 +1015,8 @@
           "jersey": "33",
           "report": {
             "status": "Out",
-            "date": "2026-11-22T19:04Z",
-            "comment": "Lawal (groin) has been ruled out for Sunday's game against the Jazz."
+            "date": "2026-11-23T23:25Z",
+            "comment": "Lawal (groin) is out for Tuesday's game against Denver."
           }
         },
         {
@@ -1055,8 +1039,8 @@
       "code": "DEN",
       "espnId": "7",
       "name": "Denver Nuggets",
-      "retrievedAt": "2026-11-23T20:06:34.424Z",
-      "providerTimestamp": "2026-11-23T20:06:04Z",
+      "retrievedAt": "2026-11-24T00:10:16.689Z",
+      "providerTimestamp": "2026-11-24T00:10:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1127,11 +1111,7 @@
           "name": "Julian Strawther",
           "position": "G",
           "jersey": "1",
-          "report": {
-            "status": "Out",
-            "date": "2026-10-17T00:52Z",
-            "comment": "Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports."
-          }
+          "report": null
         },
         {
           "id": "4277848",
@@ -1188,8 +1168,8 @@
       "code": "DET",
       "espnId": "8",
       "name": "Detroit Pistons",
-      "retrievedAt": "2026-11-23T20:06:34.443Z",
-      "providerTimestamp": "2026-11-23T20:06:27Z",
+      "retrievedAt": "2026-11-24T00:10:16.812Z",
+      "providerTimestamp": "2026-11-24T00:10:13Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1204,7 +1184,11 @@
           "name": "Cade Cunningham",
           "position": "G",
           "jersey": "2",
-          "report": null
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-23T22:07Z",
+            "comment": "Cunningham (knee) is probable for Tuesday's game against the Orlando."
+          }
         },
         {
           "id": "4700852",
@@ -1237,9 +1221,9 @@
           "position": "G",
           "jersey": "23",
           "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-22T22:57Z",
-            "comment": "Okorie (oblique) is out for Sunday's game in Atlanta."
+            "status": "Out",
+            "date": "2026-11-23T22:10Z",
+            "comment": "Okorie (oblique) won't play Tuesday in Orlando."
           }
         },
         {
@@ -1270,8 +1254,8 @@
           "jersey": "0",
           "report": {
             "status": "Out",
-            "date": "2026-11-08T16:05Z",
-            "comment": "Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports."
+            "date": "2026-11-23T22:08Z",
+            "comment": "Duren (hamstring) has been ruled out for Tuesday's game against the Magic."
           }
         },
         {
@@ -1340,8 +1324,8 @@
       "code": "GSW",
       "espnId": "9",
       "name": "Golden State Warriors",
-      "retrievedAt": "2026-11-23T20:06:34.418Z",
-      "providerTimestamp": "2026-11-23T20:06:03Z",
+      "retrievedAt": "2026-11-24T00:10:16.680Z",
+      "providerTimestamp": "2026-11-24T00:10:02Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1365,8 +1349,8 @@
           "jersey": "12",
           "report": {
             "status": "Out",
-            "date": "2026-11-22T06:10Z",
-            "comment": "Williams (hamstring) is out for Sunday's game against the Celtics."
+            "date": "2026-11-23T20:52Z",
+            "comment": "Head coach Steve Kerr said Monday that Williams (hamstring) is on track to return Wednesday against the Kings, Kenzo Fukuda of ClutchPoints.com reports."
           }
         },
         {
@@ -1496,8 +1480,8 @@
       "code": "HOU",
       "espnId": "10",
       "name": "Houston Rockets",
-      "retrievedAt": "2026-11-23T20:06:34.438Z",
-      "providerTimestamp": "2026-11-23T20:06:31Z",
+      "retrievedAt": "2026-11-24T00:10:16.646Z",
+      "providerTimestamp": "2026-11-24T00:09:39Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1625,8 +1609,8 @@
       "code": "IND",
       "espnId": "11",
       "name": "Indiana Pacers",
-      "retrievedAt": "2026-11-23T20:06:34.414Z",
-      "providerTimestamp": "2026-11-23T20:06:00Z",
+      "retrievedAt": "2026-11-24T00:10:16.896Z",
+      "providerTimestamp": "2026-11-24T00:10:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1737,11 +1721,7 @@
           "name": "Pascal Siakam",
           "position": "F",
           "jersey": "43",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T18:22Z",
-            "comment": "Siakam is questionable for Monday's game against Oklahoma City due to left hip injury management, according to the NBA's injury report."
-          }
+          "report": null
         },
         {
           "id": "4592829",
@@ -1778,8 +1758,8 @@
       "code": "LAC",
       "espnId": "12",
       "name": "LA Clippers",
-      "retrievedAt": "2026-11-23T20:06:34.595Z",
-      "providerTimestamp": "2026-11-23T20:06:18Z",
+      "retrievedAt": "2026-11-24T00:10:17.025Z",
+      "providerTimestamp": "2026-11-24T00:10:01Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1929,8 +1909,8 @@
       "code": "LAL",
       "espnId": "13",
       "name": "Los Angeles Lakers",
-      "retrievedAt": "2026-11-23T20:06:34.627Z",
-      "providerTimestamp": "2026-11-23T20:06:23Z",
+      "retrievedAt": "2026-11-24T00:10:16.916Z",
+      "providerTimestamp": "2026-11-24T00:10:02Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2076,8 +2056,8 @@
       "code": "MEM",
       "espnId": "29",
       "name": "Memphis Grizzlies",
-      "retrievedAt": "2026-11-23T20:06:34.596Z",
-      "providerTimestamp": "2026-11-23T20:06:00Z",
+      "retrievedAt": "2026-11-24T00:10:17.093Z",
+      "providerTimestamp": "2026-11-24T00:10:12Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2094,8 +2074,8 @@
           "jersey": "27",
           "report": {
             "status": "Out",
-            "date": "2026-11-22T22:18Z",
-            "comment": "Boozer (ankle) won't play Monday's game against the Hornets."
+            "date": "2026-11-23T23:07Z",
+            "comment": "Boozer (ankle) will be re-evaluated in four weeks, Brett Siegel of ClutchPoints.com reports."
           }
         },
         {
@@ -2232,8 +2212,8 @@
       "code": "MIA",
       "espnId": "14",
       "name": "Miami Heat",
-      "retrievedAt": "2026-11-23T20:06:34.593Z",
-      "providerTimestamp": "2026-11-23T20:06:04Z",
+      "retrievedAt": "2026-11-24T00:10:17.041Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2365,8 +2345,8 @@
       "code": "MIL",
       "espnId": "15",
       "name": "Milwaukee Bucks",
-      "retrievedAt": "2026-11-23T20:06:34.689Z",
-      "providerTimestamp": "2026-11-23T20:06:10Z",
+      "retrievedAt": "2026-11-24T00:10:16.981Z",
+      "providerTimestamp": "2026-11-24T00:10:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2501,8 +2481,8 @@
       "code": "MIN",
       "espnId": "16",
       "name": "Minnesota Timberwolves",
-      "retrievedAt": "2026-11-23T20:06:34.608Z",
-      "providerTimestamp": "2026-11-23T20:06:15Z",
+      "retrievedAt": "2026-11-24T00:10:17.103Z",
+      "providerTimestamp": "2026-11-24T00:10:09Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2642,8 +2622,8 @@
       "code": "NOP",
       "espnId": "3",
       "name": "New Orleans Pelicans",
-      "retrievedAt": "2026-11-23T20:06:34.738Z",
-      "providerTimestamp": "2026-11-23T20:06:31Z",
+      "retrievedAt": "2026-11-24T00:10:17.253Z",
+      "providerTimestamp": "2026-11-24T00:10:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2794,8 +2774,8 @@
       "code": "NYK",
       "espnId": "18",
       "name": "New York Knicks",
-      "retrievedAt": "2026-11-23T20:06:34.720Z",
-      "providerTimestamp": "2026-11-23T20:05:57Z",
+      "retrievedAt": "2026-11-24T00:10:17.157Z",
+      "providerTimestamp": "2026-11-24T00:10:16Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2935,8 +2915,8 @@
       "code": "OKC",
       "espnId": "25",
       "name": "Oklahoma City Thunder",
-      "retrievedAt": "2026-11-23T20:06:34.740Z",
-      "providerTimestamp": "2026-11-23T20:06:11Z",
+      "retrievedAt": "2026-11-24T00:10:17.267Z",
+      "providerTimestamp": "2026-11-24T00:10:09Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3103,8 +3083,8 @@
       "code": "ORL",
       "espnId": "19",
       "name": "Orlando Magic",
-      "retrievedAt": "2026-11-23T20:06:34.731Z",
-      "providerTimestamp": "2026-11-23T20:06:05Z",
+      "retrievedAt": "2026-11-24T00:10:17.199Z",
+      "providerTimestamp": "2026-11-24T00:10:12Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3248,8 +3228,8 @@
       "code": "PHI",
       "espnId": "20",
       "name": "Philadelphia 76ers",
-      "retrievedAt": "2026-11-23T20:06:34.721Z",
-      "providerTimestamp": "2026-11-23T20:06:02Z",
+      "retrievedAt": "2026-11-24T00:10:17.284Z",
+      "providerTimestamp": "2026-11-24T00:10:16Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3257,11 +3237,7 @@
           "name": "Adem Bona",
           "position": "C",
           "jersey": "30",
-          "report": {
-            "status": "Out",
-            "date": "2026-11-22T22:22Z",
-            "comment": "Bona (back) is listed as probable for Monday's game against the Trail Blazers."
-          }
+          "report": null
         },
         {
           "id": "4351851",
@@ -3293,11 +3269,7 @@
           "name": "Dean Wade",
           "position": "F",
           "jersey": "45",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-22T22:15Z",
-            "comment": "Wade (hamstring) is listed as probable for Monday's game against Portland."
-          }
+          "report": null
         },
         {
           "id": "4870562",
@@ -3318,11 +3290,7 @@
           "name": "Jaylen Brown",
           "position": "G",
           "jersey": "7",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-22T22:17Z",
-            "comment": "Brown (hamstring) is listed as probable for Monday's game versus Portland."
-          }
+          "report": null
         },
         {
           "id": "3059318",
@@ -3330,9 +3298,9 @@
           "position": "C",
           "jersey": "21",
           "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T16:49Z",
-            "comment": "Embiid (knee) has been downgraded to questionable for Monday's game against Portland."
+            "status": "Out",
+            "date": "2026-11-23T22:49Z",
+            "comment": "Embiid (illness) is out for Monday's game against Portland, Austin Krell of OnPattison.com reports."
           }
         },
         {
@@ -3397,8 +3365,8 @@
       "code": "PHX",
       "espnId": "21",
       "name": "Phoenix Suns",
-      "retrievedAt": "2026-11-23T20:06:34.738Z",
-      "providerTimestamp": "2026-11-23T20:06:29Z",
+      "retrievedAt": "2026-11-24T00:10:17.234Z",
+      "providerTimestamp": "2026-11-24T00:10:16Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3530,8 +3498,8 @@
       "code": "POR",
       "espnId": "22",
       "name": "Portland Trail Blazers",
-      "retrievedAt": "2026-11-23T20:06:34.820Z",
-      "providerTimestamp": "2026-11-23T20:06:00Z",
+      "retrievedAt": "2026-11-24T00:10:17.453Z",
+      "providerTimestamp": "2026-11-24T00:10:06Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3675,8 +3643,8 @@
       "code": "SAC",
       "espnId": "23",
       "name": "Sacramento Kings",
-      "retrievedAt": "2026-11-23T20:06:34.777Z",
-      "providerTimestamp": "2026-11-23T20:06:02Z",
+      "retrievedAt": "2026-11-24T00:10:17.304Z",
+      "providerTimestamp": "2026-11-24T00:09:58Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3737,6 +3705,13 @@
           "name": "Emanuel Sharp",
           "position": "G",
           "jersey": "34",
+          "report": null
+        },
+        {
+          "id": "3137259",
+          "name": "Gabe Vincent",
+          "position": "G",
+          "jersey": "",
           "report": null
         },
         {
@@ -3812,8 +3787,8 @@
       "code": "SAS",
       "espnId": "24",
       "name": "San Antonio Spurs",
-      "retrievedAt": "2026-11-23T20:06:34.778Z",
-      "providerTimestamp": "2026-11-23T20:06:33Z",
+      "retrievedAt": "2026-11-24T00:10:17.484Z",
+      "providerTimestamp": "2026-11-24T00:09:36Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3965,8 +3940,8 @@
       "code": "TOR",
       "espnId": "28",
       "name": "Toronto Raptors",
-      "retrievedAt": "2026-11-23T20:06:34.769Z",
-      "providerTimestamp": "2026-11-23T20:06:06Z",
+      "retrievedAt": "2026-11-24T00:10:17.349Z",
+      "providerTimestamp": "2026-11-24T00:10:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3988,11 +3963,7 @@
           "name": "Collin Murray-Boyles",
           "position": "F",
           "jersey": "30",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-22T21:15Z",
-            "comment": "Murray-Boyles (concussion) is listed as probable for Monday's game against Milwaukee, Blake Murphy of Sportsnet.ca reports."
-          }
+          "report": null
         },
         {
           "id": "4395724",
@@ -4013,11 +3984,7 @@
           "name": "Jaden Bradley",
           "position": "G",
           "jersey": "8",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T17:37Z",
-            "comment": "Bradley is questionable for Monday's game against the Bucks due to an ankle sprain, Blake Murphy of Sportsnet.ca reports."
-          }
+          "report": null
         },
         {
           "id": "3134908",
@@ -4114,8 +4081,8 @@
       "code": "UTA",
       "espnId": "26",
       "name": "Utah Jazz",
-      "retrievedAt": "2026-11-23T20:06:34.774Z",
-      "providerTimestamp": "2026-11-23T20:06:27Z",
+      "retrievedAt": "2026-11-24T00:10:17.410Z",
+      "providerTimestamp": "2026-11-24T00:10:07Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4170,9 +4137,9 @@
           "position": "C",
           "jersey": "11",
           "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-23T15:06Z",
-            "comment": "Hayes (knee) has been ruled out for the remainder of Sunday's game against the Mavericks, Grant Afseth of DallasHoopsJournal.com reports."
+            "status": "Out",
+            "date": "2026-11-23T21:04Z",
+            "comment": "Hayes (knee) has been ruled out for Monday's game against the Lakers."
           }
         },
         {
@@ -4266,8 +4233,8 @@
       "code": "WAS",
       "espnId": "27",
       "name": "Washington Wizards",
-      "retrievedAt": "2026-11-23T20:06:34.771Z",
-      "providerTimestamp": "2026-11-23T20:06:31Z",
+      "retrievedAt": "2026-11-24T00:10:17.366Z",
+      "providerTimestamp": "2026-11-24T00:09:53Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4401,8 +4368,8 @@
           "jersey": "00",
           "report": {
             "status": "Out",
-            "date": "2026-11-16T18:14Z",
-            "comment": "Vukcevic (hip) has been ruled out for Monday's game against Memphis."
+            "date": "2026-11-23T22:10Z",
+            "comment": "Vukcevic (hip) has been ruled out for Tuesday's game against Boston."
           }
         },
         {
