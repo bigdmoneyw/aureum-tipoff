@@ -1,6 +1,6 @@
 
 import fs from 'node:fs';
-import {isCupChampionship} from './forecast-integrity.mjs';
+import {competitionFromESPNEvent} from './forecast-integrity.mjs';
 import path from 'node:path';
 const root='data';
 const source='ESPN NBA scoreboard and standings (third-party; not NBA official)';
@@ -45,7 +45,7 @@ function scoreboard(data,date){
   const hs=Number(h.score),as=Number(a.score);
   if((done||state==='in')&&(!Number.isInteger(hs)||!Number.isInteger(as)||hs<0||as<0||hs>250||as>250))continue;
   const seasonType=e.season?.type===undefined?null:Number(e.season.type);
-  const stage=isCupChampionship({id:e.id,date:e.date,neutral:competition?.neutralSite},endSeason)?'nba-cup-championship':seasonType===3?'nba-postseason':seasonType===1?'nba-preseason':seasonType!==null&&seasonType!==2?'nba-other':'nba-regular-season';
+  const stage=competitionFromESPNEvent(e,endSeason);
   events.push({id:String(e.id),date:e.date,competition:stage,seasonType,status:{type:{completed:done,state,shortDetail:e.status?.type?.shortDetail||e.status?.type?.detail||e.status?.type?.description||'Scheduled'}},competitions:[{neutralSite:competition?.neutralSite===true,competitors:[{homeAway:'home',team:{abbreviation:home},score:done||state==='in'?String(hs):''},{homeAway:'away',team:{abbreviation:away},score:done||state==='in'?String(as):''}]}]});
   seen.add(String(e.id));
  }
