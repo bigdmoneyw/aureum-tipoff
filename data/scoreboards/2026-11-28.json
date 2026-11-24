@@ -1,0 +1,178 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-11-28",
+  "retrievedAt": "2026-11-24T17:34:10.690Z",
+  "events": [
+    {
+      "id": "401910046",
+      "date": "2026-11-28T22:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/28 - 5:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "WAS"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "ORL"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910047",
+      "date": "2026-11-28T23:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/28 - 6:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "CHA"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BKN"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910048",
+      "date": "2026-11-29T01:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/28 - 8:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "CHI"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "IND"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910049",
+      "date": "2026-11-29T01:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/28 - 8:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MIL"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "OKC"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910050",
+      "date": "2026-11-29T01:30Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/28 - 8:30 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "HOU"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "PHI"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

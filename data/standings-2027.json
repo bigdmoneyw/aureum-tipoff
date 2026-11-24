@@ -3,7 +3,7 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-24T04:43:19.845Z",
+  "retrievedAt": "2026-11-24T17:34:10.690Z",
   "records": [
     {
       "code": "ATL",
@@ -85,7 +85,7 @@
     },
     {
       "code": "LAL",
-      "wins": 14,
+      "wins": 15,
       "losses": 3,
       "espnId": "13"
     },
@@ -158,12 +158,12 @@
     {
       "code": "SAC",
       "wins": 2,
-      "losses": 14,
+      "losses": 15,
       "espnId": "23"
     },
     {
       "code": "SAS",
-      "wins": 14,
+      "wins": 15,
       "losses": 3,
       "espnId": "24"
     },
@@ -176,7 +176,7 @@
     {
       "code": "UTA",
       "wins": 3,
-      "losses": 15,
+      "losses": 16,
       "espnId": "26"
     },
     {

@@ -2,7 +2,7 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-23",
-  "retrievedAt": "2026-11-24T04:43:19.845Z",
+  "retrievedAt": "2026-11-24T17:34:10.690Z",
   "events": [
     {
       "id": "401910036",
@@ -283,9 +283,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "5:50 - 3rd"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -297,14 +297,14 @@
               "team": {
                 "abbreviation": "LAL"
               },
-              "score": "63"
+              "score": "109"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "UTA"
               },
-              "score": "63"
+              "score": "94"
             }
           ]
         }
@@ -317,9 +317,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "3:38 - 3rd"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -331,14 +331,14 @@
               "team": {
                 "abbreviation": "SAC"
               },
-              "score": "64"
+              "score": "107"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "SAS"
               },
-              "score": "86"
+              "score": "123"
             }
           ]
         }
