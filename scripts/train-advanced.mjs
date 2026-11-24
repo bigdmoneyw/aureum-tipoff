@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 import {etDay} from './forecast-core.mjs';
 import {buildAdvanced,predict,context,features} from './forecast-advanced.mjs';
 import {regularSeasonOnly,isRegularSeasonGame} from './forecast-integrity.mjs';
@@ -19,6 +20,15 @@ if(history.length!==2||history.some(h=>h.games.length!==1230))throw Error('Compl
 const players=read('data/player-history-'+season+'.json');
 const priorPlayers=read('data/player-history-'+(season-1)+'.json');
 const model=buildAdvanced(history,current,players,now,priorPlayers);
+const sourceHash=archive=>createHash('sha256').update(JSON.stringify(archive.games.map(g=>[
+ String(g.id),String(g.date),g.home,g.away,g.hs,g.as,!!g.neutral
+]).sort((a,b)=>a[0].localeCompare(b[0])))).digest('hex');
+model.dataProvenance={
+ format:'aureum-regular-season-input-hashes-v1',
+ historical:history.map(h=>({season:h.season,regularSeasonGames:h.games.length,sha256:sourceHash(h)})),
+ current:{season:current.season,regularSeasonGames:current.games.length,sha256:sourceHash(current)},
+ explanation:'SHA-256 of canonical sorted game identifiers, scheduled dates, teams, scores and venue flags from the exact training input. Source retrieval timestamps excluded.'
+};
 fs.writeFileSync('data/forecast-v2-'+season+'.json',JSON.stringify(model,null,2)+'\n');
 console.log('ADVANCED_VALIDATION '+JSON.stringify({history:model.historicalGameCount,current:model.archiveGames,weights:model.weights,selection:model.selection,backtest:model.backtest,playerCoverage:model.playerCoverage,historicalPlayerCoverage:model.historicalPlayerCoverage,playerModel:model.playerModel,profiles:Object.keys(model.playerProfiles).length}));
 // Preserve the FIRST timestamped baseline estimate before a scheduled game begins.
@@ -63,7 +73,7 @@ if(currentFresh)for(const {e,board} of upcoming){
  if(!state[h]||!state[a]||state[h].games<3||state[a].games<3)continue;
  const venue=e.competitions?.[0]?.neutralSite===true?0:1;
  const x=features(context(state[h],contextDate),context(state[a],contextDate));
- const record={id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,snapshotMode:mode,sourceScoreboardAt:board.retrievedAt,modelArchiveAt:current.retrievedAt,modelStateThrough:model.throughDate,modelTrainingThrough:model.backtest.trainingThrough};
+ const record={id:String(e.id),home:h,away:a,tipoff:e.date,recordedAt:now.toISOString(),model:model.version,homeProbability:predict(model.weights,x,venue),featureValues:x,coefficients:model.weights,venue,contextDate,snapshotMode:mode,sourceScoreboardAt:board.retrievedAt,modelArchiveAt:current.retrievedAt,modelStateThrough:model.throughDate,modelInputSha256:model.dataProvenance.current.sha256,modelTrainingThrough:model.backtest.trainingThrough};
  if(appendFirstForecast(ledger,record,now)){seen.add(record.id);added++;}
 }
 ledger.evaluation=evaluation(ledger);
