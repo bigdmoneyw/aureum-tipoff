@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {knownCupFinals,isCupChampionship,regularSeasonOnly,verifyArchive} from '../scripts/forecast-integrity.mjs';
+import {knownCupFinals,isCupChampionship,regularSeasonOnly,verifyArchive,isRegularSeasonGame,competitionFromESPNEvent} from '../scripts/forecast-integrity.mjs';
 import {buildAdvanced} from '../scripts/forecast-advanced.mjs';
 
 const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
@@ -19,6 +19,25 @@ for(const season of [2025,2026]){
 assert.ok(isCupChampionship({id:'401734908',date:'2024-12-18T01:30Z'},2025));
 assert.ok(isCupChampionship({id:'preview',date:'2026-12-12T01:00Z',neutral:true},2027));
 assert.ok(!isCupChampionship({id:'preview',date:'2026-12-12T01:00Z',neutral:false},2027));
+
+const fakeGame={id:'999000001',date:'2027-05-06T23:00Z',home:'BOS',away:'NYK',hs:108,as:99};
+assert.equal(competitionFromESPNEvent({...fakeGame,season:{type:2}},2027),'nba-regular-season');
+assert.equal(competitionFromESPNEvent({...fakeGame,season:{type:1}},2027),'nba-preseason');
+assert.equal(competitionFromESPNEvent({...fakeGame,season:{type:3}},2027),'nba-postseason');
+assert.equal(competitionFromESPNEvent({...fakeGame,season:{type:4}},2027),'nba-other');
+assert.equal(competitionFromESPNEvent({id:'888',date:'2026-12-12T01:00Z',season:{type:2},competitions:[{neutralSite:true}]},2027),'nba-cup-championship');
+assert.equal(isRegularSeasonGame({...fakeGame,seasonType:3},2027),false);
+assert.equal(isRegularSeasonGame({...fakeGame,competition:'nba-regular-season',seasonType:2},2027),true);
+const mixed={format:'aureum-completed-games-v1',season:2027,count:3,games:[
+ {...fakeGame,id:'999000002',competition:'nba-regular-season',seasonType:2},
+ {...fakeGame,id:'999000003',competition:'nba-postseason',seasonType:3},
+ {...fakeGame,id:'999000004',competition:'nba-preseason',seasonType:1}
+]};
+const filtered=regularSeasonOnly(mixed);
+assert.equal(filtered.games.length,1);
+assert.equal(filtered.count,1);
+assert.deepEqual(filtered.excludedOtherCompetitionGameIds,['999000003','999000004']);
+assert.throws(()=>verifyArchive(mixed),/Non-regular-season/);
 
 const archives=[2025,2026].map(season=>regularSeasonOnly(read('data/forecast-history-'+season+'.json'),{complete:true}));
 const current=regularSeasonOnly(read('data/completed-games-2027.json'));
@@ -40,6 +59,10 @@ assert.ok(model.selection.temperature>=.8&&model.selection.temperature<=1.2);
 assert.ok(model.backtest.accuracyInterval95.low<=model.backtest.accuracy);
 assert.ok(model.backtest.accuracyInterval95.high>=model.backtest.accuracy);
 assert.ok(model.backtest.pairedBrier.days>=8);
+assert.ok(Number.isFinite(model.backtest.diagnostics.expectedCalibrationError));
+assert.ok(model.backtest.diagnostics.expectedCalibrationError>=0&&model.backtest.diagnostics.expectedCalibrationError<=1);
+assert.equal(model.backtest.diagnostics.monthly.reduce((n,row)=>n+row.games,0),model.backtest.games,'Every game included in monthly diagnostics');
+assert.ok(model.backtest.diagnostics.highConfidence.games<=model.backtest.games);
 for(const days of [7,30,60]){
  const h=model.horizonModels[days];
  assert.ok(h&&h.weights.length===7);
