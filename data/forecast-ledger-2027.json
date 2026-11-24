@@ -702,7 +702,13 @@
       "venue": 1,
       "contextDate": "2026-11-23",
       "sourceScoreboardAt": "2026-11-23T07:26:07.104Z",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 109,
+        "awayScore": 94,
+        "recordedAt": "2026-11-24T18:16:10.966Z"
+      }
     },
     {
       "id": "401910045",
@@ -732,7 +738,13 @@
       "venue": 1,
       "contextDate": "2026-11-23",
       "sourceScoreboardAt": "2026-11-23T07:26:07.104Z",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 107,
+        "awayScore": 123,
+        "recordedAt": "2026-11-24T18:16:10.966Z"
+      }
     },
     {
       "id": "401909314",
@@ -1132,15 +1144,15 @@
     }
   ],
   "evaluation": {
-    "settled": 20,
+    "settled": 22,
     "recorded": 34,
-    "brier": 0.2667584694774277,
-    "logLoss": 0.7413425026914715,
-    "accuracy": 0.55,
+    "brier": 0.24389819852941888,
+    "logLoss": 0.6859121889932097,
+    "accuracy": 0.5909090909090909,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
-    "newlyLocked": 9,
+    "newlyLocked": 0,
     "skippedPendingGames": 0,
     "sourceArchiveFresh": true
   }
