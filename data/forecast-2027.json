@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v1",
   "version": "aureum-elo-rest-form-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-24T00:10:19.675Z",
-  "sourceArchiveCollectedAt": "2026-11-24T00:10:12.536Z",
+  "retrievedAt": "2026-11-24T04:43:23.997Z",
+  "sourceArchiveCollectedAt": "2026-11-24T04:43:19.845Z",
   "source": "ESPN archived completed scores",
   "features": [
     "ratingDifferencePer100",
@@ -11,10 +11,10 @@
     "restDifference"
   ],
   "weights": [
-    0.2158851705649447,
-    0.8928272302954464,
-    0.4035967495062974,
-    -0.09505004750318702
+    0.2160993695300942,
+    0.8317414165323103,
+    0.3811203219267238,
+    -0.15451835643493478
   ],
   "state": {
     "ATL": {
@@ -52,72 +52,72 @@
       "games": 17
     },
     "BKN": {
-      "rating": 1426.8549414143022,
+      "rating": 1421.6086664881739,
       "results": [
-        1,
         0,
         1,
         0,
         0,
         1,
+        0,
         0,
         0,
         0,
         0
       ],
-      "lastDate": "2026-11-20",
-      "games": 15
-    },
-    "CHA": {
-      "rating": 1441.1586689307785,
-      "results": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0
-      ],
-      "lastDate": "2026-11-20",
-      "games": 15
-    },
-    "CHI": {
-      "rating": 1442.144222889719,
-      "results": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        0
-      ],
-      "lastDate": "2026-11-22",
+      "lastDate": "2026-11-23",
       "games": 16
     },
-    "CLE": {
-      "rating": 1505.2700075340617,
+    "CHA": {
+      "rating": 1432.763540889195,
       "results": [
         0,
+        0,
+        0,
+        0,
         1,
         0,
         0,
-        1,
+        0,
+        0,
+        0
+      ],
+      "lastDate": "2026-11-23",
+      "games": 16
+    },
+    "CHI": {
+      "rating": 1452.378059138039,
+      "results": [
+        0,
+        0,
         0,
         1,
         1,
+        0,
+        1,
+        0,
         0,
         1
       ],
-      "lastDate": "2026-11-20",
+      "lastDate": "2026-11-23",
       "games": 17
+    },
+    "CLE": {
+      "rating": 1495.0361712857418,
+      "results": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "DAL": {
       "rating": 1521.9596291706262,
@@ -188,9 +188,8 @@
       "games": 17
     },
     "HOU": {
-      "rating": 1552.6760504157476,
+      "rating": 1558.196403135798,
       "results": [
-        1,
         0,
         0,
         1,
@@ -199,15 +198,15 @@
         1,
         0,
         1,
-        0
+        0,
+        1
       ],
-      "lastDate": "2026-11-20",
-      "games": 17
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "IND": {
-      "rating": 1443.8536537737186,
+      "rating": 1454.4846743378062,
       "results": [
-        0,
         1,
         0,
         0,
@@ -216,27 +215,28 @@
         0,
         0,
         0,
-        0
+        0,
+        1
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "LAC": {
-      "rating": 1440.1595883891387,
+      "rating": 1434.6392356690883,
       "results": [
         0,
         0,
-        0,
         1,
         0,
         1,
         1,
+        0,
         0,
         0,
         0
       ],
-      "lastDate": "2026-11-21",
-      "games": 15
+      "lastDate": "2026-11-23",
+      "games": 16
     },
     "LAL": {
       "rating": 1582.4306806767268,
@@ -256,10 +256,9 @@
       "games": 17
     },
     "MEM": {
-      "rating": 1552.4038804196132,
+      "rating": 1560.7990084611968,
       "results": [
         0,
-        0,
         1,
         0,
         1,
@@ -267,10 +266,11 @@
         1,
         1,
         1,
-        0
+        0,
+        1
       ],
-      "lastDate": "2026-11-21",
-      "games": 17
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "MIA": {
       "rating": 1538.858327033736,
@@ -290,7 +290,7 @@
       "games": 16
     },
     "MIL": {
-      "rating": 1383.5781186872457,
+      "rating": 1397.2685489675196,
       "results": [
         0,
         0,
@@ -300,33 +300,32 @@
         0,
         0,
         0,
-        0,
-        0
-      ],
-      "lastDate": "2026-11-21",
-      "games": 17
-    },
-    "MIN": {
-      "rating": 1551.4751977160001,
-      "results": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        0,
-        1,
-        1,
         0,
         1
       ],
-      "lastDate": "2026-11-21",
-      "games": 17
+      "lastDate": "2026-11-23",
+      "games": 18
+    },
+    "MIN": {
+      "rating": 1556.7214726421284,
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "NOP": {
-      "rating": 1431.5132671063643,
+      "rating": 1422.2339311179915,
       "results": [
-        0,
         0,
         0,
         0,
@@ -335,10 +334,11 @@
         1,
         0,
         0,
+        0,
         0
       ],
-      "lastDate": "2026-11-21",
-      "games": 18
+      "lastDate": "2026-11-23",
+      "games": 19
     },
     "NYK": {
       "rating": 1544.0668481066875,
@@ -358,21 +358,21 @@
       "games": 17
     },
     "OKC": {
-      "rating": 1520.8067227796928,
+      "rating": 1510.1757022156053,
       "results": [
         1,
         1,
-        1,
         0,
         0,
         0,
         1,
         0,
         1,
+        0,
         0
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-23",
+      "games": 18
     },
     "ORL": {
       "rating": 1489.8479398570546,
@@ -392,55 +392,55 @@
       "games": 16
     },
     "PHI": {
-      "rating": 1583.847518387667,
-      "results": [
-        1,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "lastDate": "2026-11-21",
-      "games": 17
-    },
-    "PHX": {
-      "rating": 1511.5951812186036,
-      "results": [
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1
-      ],
-      "lastDate": "2026-11-20",
-      "games": 15
-    },
-    "POR": {
-      "rating": 1537.3641298790797,
+      "rating": 1571.0069207027077,
       "results": [
         1,
         0,
+        1,
         0,
         1,
         1,
         1,
-        0,
-        0,
+        1,
         1,
         0
       ],
-      "lastDate": "2026-11-21",
+      "lastDate": "2026-11-23",
+      "games": 18
+    },
+    "PHX": {
+      "rating": 1520.8745172069764,
+      "results": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "lastDate": "2026-11-23",
       "games": 16
+    },
+    "POR": {
+      "rating": 1550.2047275640389,
+      "results": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-23",
+      "games": 17
     },
     "SAC": {
       "rating": 1404.7182106604923,
@@ -477,9 +477,8 @@
       "games": 17
     },
     "TOR": {
-      "rating": 1463.1450604109737,
+      "rating": 1449.4546301306998,
       "results": [
-        1,
         0,
         1,
         0,
@@ -488,10 +487,11 @@
         0,
         0,
         0,
-        1
+        1,
+        0
       ],
-      "lastDate": "2026-11-20",
-      "games": 16
+      "lastDate": "2026-11-23",
+      "games": 17
     },
     "UTA": {
       "rating": 1409.7117063001185,
@@ -530,20 +530,20 @@
   },
   "backtest": {
     "method": "Date-blocked chronological holdout; features use only outcomes on earlier dates. Coefficients fitted on early dates only. No injuries or subjective adjustments included.",
-    "trainingGames": 135,
-    "trainingThrough": "2026-11-13",
-    "testFrom": "2026-11-14",
-    "testThrough": "2026-11-22",
-    "games": 65,
-    "accuracy": 0.676923076923077,
-    "brier": 0.21894607614580236,
-    "logLoss": 0.6322526467295899,
-    "homeRateBaseline": 0.5407407407407407,
-    "baselineAccuracy": 0.5076923076923077,
-    "baselineBrier": 0.2510330273293234
+    "trainingGames": 140,
+    "trainingThrough": "2026-11-14",
+    "testFrom": "2026-11-15",
+    "testThrough": "2026-11-23",
+    "games": 68,
+    "accuracy": 0.6617647058823529,
+    "brier": 0.21838534870507062,
+    "logLoss": 0.6285526098692974,
+    "homeRateBaseline": 0.5428571428571428,
+    "baselineAccuracy": 0.5,
+    "baselineBrier": 0.25183673469387774
   },
-  "archiveGames": 248,
-  "throughDate": "2026-11-22",
+  "archiveGames": 256,
+  "throughDate": "2026-11-23",
   "todayState": {
     "ATL": {
       "rating": 1542.7933939657662,
