@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {etDay} from './forecast-core.mjs';
 import {buildAdvanced,predict,context,features} from './forecast-advanced.mjs';
-import {regularSeasonOnly,isCupChampionship} from './forecast-integrity.mjs';
+import {regularSeasonOnly,isRegularSeasonGame} from './forecast-integrity.mjs';
 import {validateLedger,selectPregameState,settleExisting,evaluation,appendFirstForecast} from './forecast-ledger-core.mjs';
 const now=new Date(),day=etDay(now),season=+day.slice(0,4)+(+day.slice(5,7)>=10?1:0);
 const read=p=>{try{return JSON.parse(fs.readFileSync(p));}catch(e){return null;}};
@@ -42,7 +42,7 @@ const currentFresh=Number.isFinite(sourceTime)&&sourceTime<=now.getTime()+60000&
 let added=0,unknownSchedule=0;
 if(currentFresh)for(const {e,board} of upcoming){
  const tipoff=Date.parse(e.date);
- if(seen.has(String(e.id))||tipoff-now.getTime()>48*3600000||isCupChampionship(e,season))continue;
+ if(seen.has(String(e.id))||tipoff-now.getTime()>48*3600000||!isRegularSeasonGame(e,season))continue;
  const competitors=e.competitions?.[0]?.competitors||[];
  const h=competitors.find(x=>x.homeAway==='home')?.team?.abbreviation,a=competitors.find(x=>x.homeAway==='away')?.team?.abbreviation;
  if(!h||!a||h===a)continue;
