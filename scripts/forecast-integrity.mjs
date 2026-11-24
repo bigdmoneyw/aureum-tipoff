@@ -22,12 +22,35 @@ export function isCupChampionship(game,season){
   const neutral=game?.neutral===true||game?.neutralSite===true||game?.competitions?.[0]?.neutralSite===true;
   return !!(known&&neutral&&easternDate(game.date)===known.eastDate);
 }
+/** ESPN event season types: 1 preseason, 2 regular season, 3 postseason.
+ * NBA Cup championship is an exception within the in-season tournament.
+ * Preserve events lacking a published season type as legacy regular-season
+ * observations, rather than guessing a new classification without evidence. */
+export function competitionFromESPNEvent(event,season){
+ if(isCupChampionship(event,season))return 'nba-cup-championship';
+ const rawType=event?.season?.type??event?.seasonType;
+ if(rawType===undefined||rawType===null)return 'nba-regular-season';
+ const type=Number(rawType);
+ if(type===1)return 'nba-preseason';
+ if(type===2)return 'nba-regular-season';
+ if(type===3)return 'nba-postseason';
+ return 'nba-other';
+}
+/** Only regular-season games may influence regular-season model fitting. */
+export function isRegularSeasonGame(game,season){
+ if(isCupChampionship(game,season))return false;
+ const stage=game?.competition;
+ if(stage&&stage!=='nba-regular-season')return false;
+ const seasonType=game?.seasonType??game?.season?.type;
+ if(seasonType!==undefined&&seasonType!==null&&Number(seasonType)!==2)return false;
+ return true;
+}
 export function verifyArchive(archive,{complete=false}={}){
   if(!archive||!Number.isInteger(archive.season)||!Array.isArray(archive.games))throw Error('Missing season archive');
   const seen=new Set(),counts=Object.fromEntries([...teams].map(code=>[code,0]));
   for(const g of archive.games){
     if(!/^\d+$/.test(String(g.id))||seen.has(String(g.id))||!teams.has(g.home)||!teams.has(g.away)||g.home===g.away||!Number.isInteger(g.hs)||!Number.isInteger(g.as)||g.hs<0||g.as<0||g.hs===g.as||!Number.isFinite(Date.parse(g.date)))throw Error('Unusable game in season '+archive.season+': '+g.id);
-    if(isCupChampionship(g,archive.season))throw Error('NBA Cup championship cannot enter the regular-season training archive: '+g.id);
+    if(!isRegularSeasonGame(g,archive.season))throw Error('Non-regular-season game cannot enter the training archive: '+g.id);
     seen.add(String(g.id));counts[g.home]++;counts[g.away]++;
   }
   if(complete){
@@ -38,10 +61,12 @@ export function verifyArchive(archive,{complete=false}={}){
 }
 export function regularSeasonOnly(archive,{complete=false}={}){
   if(!archive||!Array.isArray(archive.games))throw Error('Missing games to clean');
-  const removed=archive.games.filter(g=>isCupChampionship(g,archive.season)).map(g=>String(g.id));
-  const result={...archive,games:archive.games.filter(g=>!isCupChampionship(g,archive.season))};
+  const removedCup=archive.games.filter(g=>isCupChampionship(g,archive.season)).map(g=>String(g.id));
+  const removedOther=archive.games.filter(g=>!isCupChampionship(g,archive.season)&&!isRegularSeasonGame(g,archive.season)).map(g=>String(g.id));
+  const result={...archive,games:archive.games.filter(g=>isRegularSeasonGame(g,archive.season))};
   if('count' in result)result.count=result.games.length;
-  if(removed.length)result.excludedCupFinalGameIds=[...new Set([...(archive.excludedCupFinalGameIds||[]),...removed])];
+  if(removedCup.length)result.excludedCupFinalGameIds=[...new Set([...(archive.excludedCupFinalGameIds||[]),...removedCup])];
+  if(removedOther.length)result.excludedOtherCompetitionGameIds=[...new Set([...(archive.excludedOtherCompetitionGameIds||[]),...removedOther])];
   verifyArchive(result,{complete});
   return result;
 }
