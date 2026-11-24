@@ -2,7 +2,7 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-23T20:31:02.879Z",
+  "retrievedAt": "2026-11-24T00:09:32.245Z",
   "sourceArchiveCollectedAt": "2026-11-23T20:06:31.109Z",
   "weights": [
     0.2241884729864172,
@@ -3258,7 +3258,25 @@
             "meanPrediction": 0.8476541091445856,
             "observed": 0.8695652173913043
           }
-        ]
+        ],
+        "diagnostics": {
+          "expectedCalibrationError": 0.043856,
+          "highConfidence": {
+            "threshold": 0.75,
+            "games": 54,
+            "accuracy": 0.851852,
+            "meanConfidence": 0.814482
+          },
+          "monthly": [
+            {
+              "month": "2026-11",
+              "games": 152,
+              "brier": 0.203229,
+              "accuracy": 0.677632
+            }
+          ],
+          "warning": "Calibration bins and subgroup metrics are descriptive and may be unstable for small samples."
+        }
       },
       "method": "Features frozen using games strictly before the earlier date. Rest and schedule density omitted. Hyperparameters selected only on historical dates; historical validation not an independent test. Current-season evaluation is separate."
     },
@@ -3621,6 +3639,30 @@
         "observed": 0.92
       }
     ],
+    "diagnostics": {
+      "expectedCalibrationError": 0.055351,
+      "highConfidence": {
+        "threshold": 0.75,
+        "games": 57,
+        "accuracy": 0.824561,
+        "meanConfidence": 0.824633
+      },
+      "monthly": [
+        {
+          "month": "2026-10",
+          "games": 40,
+          "brier": 0.223948,
+          "accuracy": 0.7
+        },
+        {
+          "month": "2026-11",
+          "games": 160,
+          "brier": 0.201186,
+          "accuracy": 0.70625
+        }
+      ],
+      "warning": "Calibration bins and subgroup metrics are descriptive and may be unstable for small samples."
+    },
     "simpleBrier": 0.20690631653432015,
     "simpleAccuracy": 0.695,
     "accuracyInterval95": {
@@ -7218,5 +7260,26 @@
   },
   "playerCoverage": 248,
   "historicalPlayerCoverage": 1223,
-  "limitations": "Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect."
+  "limitations": "Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.",
+  "dataProvenance": {
+    "format": "aureum-regular-season-input-hashes-v1",
+    "historical": [
+      {
+        "season": 2025,
+        "regularSeasonGames": 1230,
+        "sha256": "229aaa7656b22f46a8d7642d988a9a3f12d7ddfc01b3239a1abbcbefa4996bd1"
+      },
+      {
+        "season": 2026,
+        "regularSeasonGames": 1230,
+        "sha256": "6c6beb1a1ed3b1893ba9030be3a89e1f9e0af2d2a6328eceba1652ed1c7a6923"
+      }
+    ],
+    "current": {
+      "season": 2027,
+      "regularSeasonGames": 248,
+      "sha256": "29f513d37a99dd58c2843103110c0ca4b38c070e0bdae68f109044907e84a148"
+    },
+    "explanation": "SHA-256 of canonical sorted game identifiers, scheduled dates, teams, scores and venue flags from the exact training input. Source retrieval timestamps excluded."
+  }
 }
