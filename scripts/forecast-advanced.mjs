@@ -34,7 +34,17 @@ function score(rows,w,base=.5){
  const logLoss=mean(rows.map((r,i)=>-Math.log(r.y?probs[i]:1-probs[i])));
  const calibration=[];
  for(let j=0;j<5;j++){const indices=probs.flatMap((p,i)=>p>=j/5&&(j===4?p<=1:p<(j+1)/5)?[i]:[]);if(indices.length)calibration.push({from:j/5,to:(j+1)/5,games:indices.length,meanPrediction:mean(indices.map(i=>probs[i])),observed:mean(indices.map(i=>rows[i].y))});}
- return {games:rows.length,accuracy:mean(rows.map((r,i)=>Number((probs[i]>=.5)===!!r.y))),brier,logLoss,homeRateBaseline:base,baselineBrier:mean(rows.map(r=>(base-r.y)**2)),baselineAccuracy:mean(rows.map(r=>Number((base>=.5)===!!r.y))),calibration};
+ const ece=mean(rows.map((r,i)=>{const p=probs[i];const bin=calibration.find(c=>p>=c.from&&(c.to===1?p<=c.to:p<c.to));return bin?Math.abs(bin.observed-bin.meanPrediction):0;}));
+ const highConfidence=rows.flatMap((r,i)=>Math.max(probs[i],1-probs[i])>=.75?[{correct:Number((probs[i]>=.5)===!!r.y),confidence:Math.max(probs[i],1-probs[i])}]:[]);
+ const monthMap=new Map();
+ for(let i=0;i<rows.length;i++){
+  const m=rows[i].date.slice(0,7),bucket=monthMap.get(m)||{month:m,games:0,brier:0,correct:0};
+  bucket.games++;bucket.brier+=(probs[i]-rows[i].y)**2;bucket.correct+=Number((probs[i]>=.5)===!!rows[i].y);
+  monthMap.set(m,bucket);
+ }
+ const monthly=[...monthMap.values()].map(b=>({month:b.month,games:b.games,brier:round(b.brier/b.games),accuracy:round(b.correct/b.games)}));
+ return {games:rows.length,accuracy:mean(rows.map((r,i)=>Number((probs[i]>=.5)===!!r.y))),brier,logLoss,homeRateBaseline:base,baselineBrier:mean(rows.map(r=>(base-r.y)**2)),baselineAccuracy:mean(rows.map(r=>Number((base>=.5)===!!r.y))),calibration,
+  diagnostics:{expectedCalibrationError:round(ece),highConfidence:{threshold:.75,games:highConfidence.length,accuracy:highConfidence.length?round(mean(highConfidence.map(x=>x.correct))):null,meanConfidence:highConfidence.length?round(mean(highConfidence.map(x=>x.confidence))):null},monthly,warning:'Calibration bins and subgroup metrics are descriptive and may be unstable for small samples.'}};
 }
 
 // Accuracy intervals and paired uncertainty are descriptive, not future guarantees.
