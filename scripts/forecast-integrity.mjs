@@ -22,6 +22,20 @@ export function isCupChampionship(game,season){
   const neutral=game?.neutral===true||game?.neutralSite===true||game?.competitions?.[0]?.neutralSite===true;
   return !!(known&&neutral&&easternDate(game.date)===known.eastDate);
 }
+/** ESPN event season types: 1 preseason, 2 regular season, 3 postseason.
+ * NBA Cup championship is an exception within the in-season tournament.
+ * Preserve events lacking a published season type as legacy regular-season
+ * observations, rather than guessing a new classification without evidence. */
+export function competitionFromESPNEvent(event,season){
+ if(isCupChampionship(event,season))return 'nba-cup-championship';
+ const rawType=event?.season?.type??event?.seasonType;
+ if(rawType===undefined||rawType===null)return 'nba-regular-season';
+ const type=Number(rawType);
+ if(type===1)return 'nba-preseason';
+ if(type===2)return 'nba-regular-season';
+ if(type===3)return 'nba-postseason';
+ return 'nba-other';
+}
 /** Only regular-season games may influence regular-season model fitting. */
 export function isRegularSeasonGame(game,season){
  if(isCupChampionship(game,season))return false;
