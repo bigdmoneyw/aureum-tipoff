@@ -810,7 +810,13 @@
       "venue": 1,
       "contextDate": "2026-11-24",
       "sourceScoreboardAt": "2026-11-23T07:26:07.104Z",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 116,
+        "awayScore": 131,
+        "recordedAt": "2026-11-25T14:54:02.570Z"
+      }
     },
     {
       "id": "401909316",
@@ -840,7 +846,13 @@
       "venue": 1,
       "contextDate": "2026-11-24",
       "sourceScoreboardAt": "2026-11-23T07:26:07.104Z",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 101,
+        "awayScore": 120,
+        "recordedAt": "2026-11-25T14:54:02.570Z"
+      }
     },
     {
       "id": "401909317",
@@ -1150,11 +1162,11 @@
     }
   ],
   "evaluation": {
-    "settled": 23,
+    "settled": 25,
     "recorded": 34,
-    "brier": 0.24030843024482146,
-    "logLoss": 0.6784204369764248,
-    "accuracy": 0.6086956521739131,
+    "brier": 0.24391954959575735,
+    "logLoss": 0.6851508180833273,
+    "accuracy": 0.6,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,

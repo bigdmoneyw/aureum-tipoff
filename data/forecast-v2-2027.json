@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-25T02:45:41.987Z",
-  "sourceArchiveCollectedAt": "2026-11-25T02:21:00.066Z",
+  "retrievedAt": "2026-11-25T14:54:02.570Z",
+  "sourceArchiveCollectedAt": "2026-11-25T14:12:54.059Z",
   "weights": [
     0.2241884729864172,
     0.46952962929520586,
@@ -68,21 +68,20 @@
       "games": 17
     },
     "BOS": {
-      "rating": 1601.473861432168,
+      "rating": 1606.878507820795,
       "results": [
         1,
         1,
         1,
         1,
         1,
-        1,
         0,
         0,
         0,
-        0
+        0,
+        1
       ],
       "margins": [
-        7,
         39,
         20,
         22,
@@ -91,10 +90,10 @@
         -10,
         -4,
         -1,
-        -1
+        -1,
+        15
       ],
       "opponents": [
-        1398.4987627613298,
         1497.823053797015,
         1386.8864822222292,
         1575.6840775298417,
@@ -103,10 +102,10 @@
         1500.5080705397481,
         1581.3128974078893,
         1331.4196472807257,
-        1471.0553996937217
+        1471.0553996937217,
+        1373.8949266775942
       ],
       "dates": [
-        "2026-11-04",
         "2026-11-06",
         "2026-11-08",
         "2026-11-10",
@@ -115,10 +114,11 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-21",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "BKN": {
       "rating": 1330.303498522205,
@@ -333,21 +333,20 @@
       "games": 18
     },
     "DAL": {
-      "rating": 1465.7229333291705,
+      "rating": 1480.8197334970107,
       "results": [
-        0,
         1,
         1,
         1,
         0,
         0,
         0,
+        1,
         1,
         1,
         1
       ],
       "margins": [
-        -1,
         12,
         37,
         3,
@@ -356,10 +355,10 @@
         -37,
         22,
         10,
-        2
+        2,
+        19
       ],
       "opponents": [
-        1630.9568104130078,
         1332.1658647943743,
         1355.5464454485955,
         1367.7395638397588,
@@ -368,10 +367,10 @@
         1651.9332168341846,
         1489.9344636569863,
         1472.2858836096884,
-        1331.8849926575854
+        1331.8849926575854,
+        1606.0850585185433
       ],
       "dates": [
-        "2026-11-04",
         "2026-11-06",
         "2026-11-08",
         "2026-11-09",
@@ -380,15 +379,15 @@
         "2026-11-15",
         "2026-11-18",
         "2026-11-21",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "DEN": {
-      "rating": 1606.0850585185433,
+      "rating": 1590.988258350703,
       "results": [
-        0,
         1,
         1,
         0,
@@ -397,10 +396,10 @@
         0,
         1,
         1,
-        1
+        1,
+        0
       ],
       "margins": [
-        -8,
         19,
         12,
         -10,
@@ -409,10 +408,10 @@
         -12,
         4,
         9,
-        6
+        6,
+        -19
       ],
       "opponents": [
-        1537.0282568036791,
         1520.3995343349052,
         1373.5161086850535,
         1585.0126912737594,
@@ -421,10 +420,10 @@
         1499.31807723234,
         1640.1109532425394,
         1601.7614294077525,
-        1395.5164868496224
+        1395.5164868496224,
+        1465.7229333291705
       ],
       "dates": [
-        "2026-11-02",
         "2026-11-04",
         "2026-11-07",
         "2026-11-09",
@@ -433,10 +432,11 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 15
+      "lastDate": "2026-11-24",
+      "games": 16
     },
     "DET": {
       "rating": 1609.684168226803,
@@ -1552,7 +1552,7 @@
       "games": 19
     },
     "WAS": {
-      "rating": 1373.8949266775942,
+      "rating": 1368.4902802889671,
       "results": [
         0,
         0,
@@ -1560,13 +1560,12 @@
         0,
         0,
         0,
-        0,
         1,
         1,
-        1
+        1,
+        0
       ],
       "margins": [
-        -7,
         -39,
         -11,
         -13,
@@ -1575,10 +1574,10 @@
         -16,
         4,
         4,
-        20
+        20,
+        -15
       ],
       "opponents": [
-        1545.0886851759196,
         1666.897610141887,
         1612.1170654209952,
         1361.4212780352025,
@@ -1587,10 +1586,10 @@
         1436.8763619136894,
         1473.5869244892178,
         1408.7305397014918,
-        1513.1376994784175
+        1513.1376994784175,
+        1601.473861432168
       ],
       "dates": [
-        "2026-11-06",
         "2026-11-07",
         "2026-11-09",
         "2026-11-11",
@@ -1599,10 +1598,11 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 18
+      "lastDate": "2026-11-24",
+      "games": 19
     }
   },
   "todayState": {
@@ -1660,21 +1660,20 @@
       "games": 17
     },
     "BOS": {
-      "rating": 1601.473861432168,
+      "rating": 1606.878507820795,
       "results": [
         1,
         1,
         1,
         1,
         1,
-        1,
         0,
         0,
         0,
-        0
+        0,
+        1
       ],
       "margins": [
-        7,
         39,
         20,
         22,
@@ -1683,10 +1682,10 @@
         -10,
         -4,
         -1,
-        -1
+        -1,
+        15
       ],
       "opponents": [
-        1398.4987627613298,
         1497.823053797015,
         1386.8864822222292,
         1575.6840775298417,
@@ -1695,10 +1694,10 @@
         1500.5080705397481,
         1581.3128974078893,
         1331.4196472807257,
-        1471.0553996937217
+        1471.0553996937217,
+        1373.8949266775942
       ],
       "dates": [
-        "2026-11-04",
         "2026-11-06",
         "2026-11-08",
         "2026-11-10",
@@ -1707,10 +1706,11 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-21",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "BKN": {
       "rating": 1330.303498522205,
@@ -1925,21 +1925,20 @@
       "games": 18
     },
     "DAL": {
-      "rating": 1465.7229333291705,
+      "rating": 1480.8197334970107,
       "results": [
-        0,
         1,
         1,
         1,
         0,
         0,
         0,
+        1,
         1,
         1,
         1
       ],
       "margins": [
-        -1,
         12,
         37,
         3,
@@ -1948,10 +1947,10 @@
         -37,
         22,
         10,
-        2
+        2,
+        19
       ],
       "opponents": [
-        1630.9568104130078,
         1332.1658647943743,
         1355.5464454485955,
         1367.7395638397588,
@@ -1960,10 +1959,10 @@
         1651.9332168341846,
         1489.9344636569863,
         1472.2858836096884,
-        1331.8849926575854
+        1331.8849926575854,
+        1606.0850585185433
       ],
       "dates": [
-        "2026-11-04",
         "2026-11-06",
         "2026-11-08",
         "2026-11-09",
@@ -1972,15 +1971,15 @@
         "2026-11-15",
         "2026-11-18",
         "2026-11-21",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "DEN": {
-      "rating": 1606.0850585185433,
+      "rating": 1590.988258350703,
       "results": [
-        0,
         1,
         1,
         0,
@@ -1989,10 +1988,10 @@
         0,
         1,
         1,
-        1
+        1,
+        0
       ],
       "margins": [
-        -8,
         19,
         12,
         -10,
@@ -2001,10 +2000,10 @@
         -12,
         4,
         9,
-        6
+        6,
+        -19
       ],
       "opponents": [
-        1537.0282568036791,
         1520.3995343349052,
         1373.5161086850535,
         1585.0126912737594,
@@ -2013,10 +2012,10 @@
         1499.31807723234,
         1640.1109532425394,
         1601.7614294077525,
-        1395.5164868496224
+        1395.5164868496224,
+        1465.7229333291705
       ],
       "dates": [
-        "2026-11-02",
         "2026-11-04",
         "2026-11-07",
         "2026-11-09",
@@ -2025,15 +2024,15 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 15
+      "lastDate": "2026-11-24",
+      "games": 16
     },
     "DET": {
-      "rating": 1600.9883424150053,
+      "rating": 1609.684168226803,
       "results": [
-        1,
         0,
         0,
         1,
@@ -2042,10 +2041,10 @@
         1,
         1,
         0,
-        0
+        0,
+        1
       ],
       "margins": [
-        33,
         -6,
         -5,
         11,
@@ -2054,10 +2053,10 @@
         12,
         13,
         -3,
-        -10
+        -10,
+        18
       ],
       "opponents": [
-        1519.3018152313862,
         1564.555989169098,
         1604.1850242587973,
         1362.4391769697218,
@@ -2066,10 +2065,10 @@
         1667.8236478478796,
         1392.8624215540863,
         1458.4822637472594,
-        1557.891136432291
+        1557.891136432291,
+        1500.4171386899545
       ],
       "dates": [
-        "2026-11-02",
         "2026-11-04",
         "2026-11-08",
         "2026-11-09",
@@ -2078,10 +2077,11 @@
         "2026-11-17",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 16
+      "lastDate": "2026-11-24",
+      "games": 17
     },
     "GSW": {
       "rating": 1483.532616727543,
@@ -2720,21 +2720,20 @@
       "games": 18
     },
     "ORL": {
-      "rating": 1500.4171386899545,
+      "rating": 1491.7213128781568,
       "results": [
         0,
         0,
-        0,
         1,
         1,
         1,
         1,
         0,
         1,
+        0,
         0
       ],
       "margins": [
-        -9,
         -13,
         -7,
         7,
@@ -2743,10 +2742,10 @@
         10,
         -5,
         2,
-        -20
+        -20,
+        -18
       ],
       "opponents": [
-        1360.5507743749574,
         1477.5673091703627,
         1498.486266769687,
         1358.4535095440613,
@@ -2755,10 +2754,10 @@
         1655.5129869888408,
         1581.9511434085434,
         1340.2398975823785,
-        1361.1743658891312
+        1361.1743658891312,
+        1600.9883424150053
       ],
       "dates": [
-        "2026-11-02",
         "2026-11-05",
         "2026-11-07",
         "2026-11-10",
@@ -2767,10 +2766,11 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 16
+      "lastDate": "2026-11-24",
+      "games": 17
     },
     "PHI": {
       "rating": 1582.015380974352,
@@ -3144,7 +3144,7 @@
       "games": 19
     },
     "WAS": {
-      "rating": 1373.8949266775942,
+      "rating": 1368.4902802889671,
       "results": [
         0,
         0,
@@ -3152,13 +3152,12 @@
         0,
         0,
         0,
-        0,
         1,
         1,
-        1
+        1,
+        0
       ],
       "margins": [
-        -7,
         -39,
         -11,
         -13,
@@ -3167,10 +3166,10 @@
         -16,
         4,
         4,
-        20
+        20,
+        -15
       ],
       "opponents": [
-        1545.0886851759196,
         1666.897610141887,
         1612.1170654209952,
         1361.4212780352025,
@@ -3179,10 +3178,10 @@
         1436.8763619136894,
         1473.5869244892178,
         1408.7305397014918,
-        1513.1376994784175
+        1513.1376994784175,
+        1601.473861432168
       ],
       "dates": [
-        "2026-11-06",
         "2026-11-07",
         "2026-11-09",
         "2026-11-11",
@@ -3191,13 +3190,14 @@
         "2026-11-16",
         "2026-11-18",
         "2026-11-20",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-24"
       ],
-      "lastDate": "2026-11-22",
-      "games": 18
+      "lastDate": "2026-11-24",
+      "games": 19
     }
   },
-  "todayDate": "2026-11-24",
+  "todayDate": "2026-11-25",
   "throughDate": "2026-11-24",
   "horizonModels": {
     "7": {
@@ -3215,20 +3215,20 @@
       "historicalValidationGames": 613,
       "historicalValidationBrier": 0.189507818282615,
       "currentSeasonTest": {
-        "games": 163,
-        "accuracy": 0.6748466257668712,
-        "brier": 0.2050751111759479,
-        "logLoss": 0.5973269181388475,
+        "games": 165,
+        "accuracy": 0.6727272727272727,
+        "brier": 0.20585891245386145,
+        "logLoss": 0.5987030012675641,
         "homeRateBaseline": 0.550596553247901,
-        "baselineBrier": 0.25100796968989547,
-        "baselineAccuracy": 0.5153374233128835,
+        "baselineBrier": 0.25164007386878734,
+        "baselineAccuracy": 0.509090909090909,
         "calibration": [
           {
             "from": 0,
             "to": 0.2,
-            "games": 8,
-            "meanPrediction": 0.15203070549219277,
-            "observed": 0.125
+            "games": 9,
+            "meanPrediction": 0.14938118877600587,
+            "observed": 0.1111111111111111
           },
           {
             "from": 0.2,
@@ -3247,9 +3247,9 @@
           {
             "from": 0.6,
             "to": 0.8,
-            "games": 46,
-            "meanPrediction": 0.7073349943596025,
-            "observed": 0.6304347826086957
+            "games": 47,
+            "meanPrediction": 0.707672956382109,
+            "observed": 0.6170212765957447
           },
           {
             "from": 0.8,
@@ -3260,19 +3260,19 @@
           }
         ],
         "diagnostics": {
-          "expectedCalibrationError": 0.057182,
+          "expectedCalibrationError": 0.061649,
           "highConfidence": {
             "threshold": 0.75,
-            "games": 60,
-            "accuracy": 0.833333,
-            "meanConfidence": 0.816166
+            "games": 61,
+            "accuracy": 0.836066,
+            "meanConfidence": 0.817078
           },
           "monthly": [
             {
               "month": "2026-11",
-              "games": 163,
-              "brier": 0.205075,
-              "accuracy": 0.674847
+              "games": 165,
+              "brier": 0.205859,
+              "accuracy": 0.672727
             }
           ],
           "warning": "Calibration bins and subgroup metrics are descriptive and may be unstable for small samples."
@@ -3316,7 +3316,7 @@
     }
   },
   "historicalGameCount": 2460,
-  "archiveGames": 259,
+  "archiveGames": 261,
   "featureNames": [
     "Rating difference",
     "Recent wins",
@@ -3595,20 +3595,20 @@
     "trainingThrough": "2026-04-12",
     "testFrom": "2026-10-26",
     "testThrough": "2026-11-24",
-    "games": 211,
-    "accuracy": 0.7014218009478673,
-    "brier": 0.2068506905707829,
-    "logLoss": 0.6005088291543365,
+    "games": 213,
+    "accuracy": 0.6995305164319249,
+    "brier": 0.20758868805022643,
+    "logLoss": 0.6020303443811756,
     "homeRateBaseline": 0.5497026338147833,
-    "baselineBrier": 0.24987921923958387,
-    "baselineAccuracy": 0.5260663507109005,
+    "baselineBrier": 0.2503702405201785,
+    "baselineAccuracy": 0.5211267605633803,
     "calibration": [
       {
         "from": 0,
         "to": 0.2,
-        "games": 11,
-        "meanPrediction": 0.1555033742495526,
-        "observed": 0.09090909090909091
+        "games": 12,
+        "meanPrediction": 0.1584506560661119,
+        "observed": 0.08333333333333333
       },
       {
         "from": 0.2,
@@ -3627,9 +3627,9 @@
       {
         "from": 0.6,
         "to": 0.8,
-        "games": 63,
-        "meanPrediction": 0.6967657347762007,
-        "observed": 0.6031746031746031
+        "games": 64,
+        "meanPrediction": 0.6973017373584915,
+        "observed": 0.59375
       },
       {
         "from": 0.8,
@@ -3640,12 +3640,12 @@
       }
     ],
     "diagnostics": {
-      "expectedCalibrationError": 0.055728,
+      "expectedCalibrationError": 0.059533,
       "highConfidence": {
         "threshold": 0.75,
-        "games": 63,
-        "accuracy": 0.825397,
-        "meanConfidence": 0.824074
+        "games": 64,
+        "accuracy": 0.828125,
+        "meanConfidence": 0.823841
       },
       "monthly": [
         {
@@ -3656,26 +3656,26 @@
         },
         {
           "month": "2026-11",
-          "games": 171,
-          "brier": 0.202851,
-          "accuracy": 0.701754
+          "games": 173,
+          "brier": 0.203806,
+          "accuracy": 0.699422
         }
       ],
       "warning": "Calibration bins and subgroup metrics are descriptive and may be unstable for small samples."
     },
-    "simpleBrier": 0.20915841887223235,
-    "simpleAccuracy": 0.6872037914691943,
+    "simpleBrier": 0.21005814463900843,
+    "simpleAccuracy": 0.6854460093896714,
     "accuracyInterval95": {
-      "low": 0.636521,
-      "high": 0.75912,
+      "low": 0.634872,
+      "high": 0.757119,
       "method": "Wilson 95% interval; games treated as independent"
     },
     "pairedBrier": {
-      "gain": 0.002308,
+      "gain": 0.002469,
       "days": 29,
       "interval95": [
-        -0.002718,
-        0.007141
+        -0.002308,
+        0.007142
       ],
       "method": "Paired date-block bootstrap, 400 deterministic draws; positive favors advanced model"
     },
@@ -3687,12 +3687,12 @@
     "reason": "Observed postgame participation cannot establish an actionable pregame injury effect; pregame validation required.",
     "beta": 0.05372053433924039,
     "trainingGames": 1175,
-    "games": 211,
+    "games": 213,
     "trainingThrough": "2026-04-12",
     "testFrom": "2026-10-26",
     "testThrough": "2026-11-24",
-    "brier": 0.20731821683982443,
-    "baselineBrier": 0.2068506905707829,
+    "brier": 0.20807874091353992,
+    "baselineBrier": 0.20758868805022643,
     "previousSeasonTraining": true,
     "method": "Retrospective conditional test using explicitly listed nonparticipants and prior played-game minutes. Realized participation was not known before tipoff. Not an individual causal impact or a prospective injury forecast."
   },
@@ -3755,10 +3755,10 @@
     },
     "3978": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 14,
-      "averageMinutes": 20.8,
-      "averagePoints": 8.6,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 20.1,
+      "averagePoints": 9.2,
       "sample": 10
     },
     "3992": {
@@ -3779,18 +3779,18 @@
     },
     "4251": {
       "team": "BOS",
-      "lastDate": "2026-11-21",
-      "games": 14,
-      "averageMinutes": 29.6,
-      "averagePoints": 18.9,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 30.2,
+      "averagePoints": 19.9,
       "sample": 10
     },
     "6442": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 14,
-      "averageMinutes": 32.1,
-      "averagePoints": 23.6,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 32,
+      "averagePoints": 21.2,
       "sample": 10
     },
     "6475": {
@@ -3819,10 +3819,10 @@
     },
     "6583": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 34.3,
-      "averagePoints": 26.8,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 34.6,
+      "averagePoints": 27.4,
       "sample": 10
     },
     "6585": {
@@ -3851,10 +3851,10 @@
     },
     "6609": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 10,
-      "averageMinutes": 16.4,
-      "averagePoints": 4.8,
+      "lastDate": "2026-11-24",
+      "games": 11,
+      "averageMinutes": 17,
+      "averagePoints": 4.6,
       "sample": 10
     },
     "2490149": {
@@ -4099,10 +4099,10 @@
     },
     "3064290": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 29.1,
-      "averagePoints": 11.7,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 28.5,
+      "averagePoints": 11.3,
       "sample": 10
     },
     "3064440": {
@@ -4139,10 +4139,10 @@
     },
     "3078576": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 16,
+      "lastDate": "2026-11-24",
+      "games": 17,
       "averageMinutes": 30,
-      "averagePoints": 13.3,
+      "averagePoints": 13.2,
       "sample": 10
     },
     "3102529": {
@@ -4155,10 +4155,10 @@
     },
     "3112335": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 37.2,
-      "averagePoints": 27,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 36.9,
+      "averagePoints": 26.2,
       "sample": 10
     },
     "3133602": {
@@ -4243,9 +4243,9 @@
     },
     "3135046": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 10.7,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 11.1,
       "averagePoints": 2,
       "sample": 10
     },
@@ -4283,18 +4283,18 @@
     },
     "3138160": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 13,
-      "averageMinutes": 22.6,
-      "averagePoints": 5.7,
+      "lastDate": "2026-11-24",
+      "games": 14,
+      "averageMinutes": 23.6,
+      "averagePoints": 7,
       "sample": 10
     },
     "3138196": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 12,
+      "lastDate": "2026-11-24",
+      "games": 13,
       "averageMinutes": 30.3,
-      "averagePoints": 13.2,
+      "averagePoints": 14.2,
       "sample": 10
     },
     "3146557": {
@@ -4483,10 +4483,10 @@
     },
     "3936299": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 36.4,
-      "averagePoints": 26.4,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 36.1,
+      "averagePoints": 24.9,
       "sample": 10
     },
     "3945274": {
@@ -4507,10 +4507,10 @@
     },
     "4065648": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 33.5,
-      "averagePoints": 25.8,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 33.8,
+      "averagePoints": 26.7,
       "sample": 10
     },
     "4065663": {
@@ -4563,19 +4563,19 @@
     },
     "4065804": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 21.8,
-      "averagePoints": 9.3,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 21,
+      "averagePoints": 8.6,
       "sample": 10
     },
     "4065813": {
       "team": "DEN",
-      "lastDate": "2026-11-09",
-      "games": 4,
-      "averageMinutes": 8.25,
-      "averagePoints": 1,
-      "sample": 4
+      "lastDate": "2026-11-24",
+      "games": 5,
+      "averageMinutes": 7.2,
+      "averagePoints": 1.2,
+      "sample": 5
     },
     "4066211": {
       "team": "POR",
@@ -4651,10 +4651,10 @@
     },
     "4066354": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 27.4,
-      "averagePoints": 12.6,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 28.4,
+      "averagePoints": 13,
       "sample": 10
     },
     "4066372": {
@@ -4771,10 +4771,10 @@
     },
     "4277848": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
+      "lastDate": "2026-11-24",
+      "games": 16,
       "averageMinutes": 11.5,
-      "averagePoints": 6.3,
+      "averagePoints": 6.6,
       "sample": 10
     },
     "4277869": {
@@ -4787,10 +4787,10 @@
     },
     "4277905": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 18,
-      "averageMinutes": 33.6,
-      "averagePoints": 15,
+      "lastDate": "2026-11-24",
+      "games": 19,
+      "averageMinutes": 33.4,
+      "averagePoints": 14.4,
       "sample": 10
     },
     "4277919": {
@@ -4811,10 +4811,10 @@
     },
     "4277951": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
+      "lastDate": "2026-11-24",
+      "games": 18,
       "averageMinutes": 13.7,
-      "averagePoints": 4.8,
+      "averagePoints": 4.4,
       "sample": 10
     },
     "4277956": {
@@ -4843,10 +4843,10 @@
     },
     "4278049": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 21,
-      "averagePoints": 7.7,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 21.9,
+      "averagePoints": 8.8,
       "sample": 10
     },
     "4278053": {
@@ -4891,10 +4891,10 @@
     },
     "4278078": {
       "team": "DAL",
-      "lastDate": "2026-11-18",
-      "games": 15,
-      "averageMinutes": 29.6,
-      "averagePoints": 13,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 28.7,
+      "averagePoints": 14.1,
       "sample": 10
     },
     "4278104": {
@@ -4907,10 +4907,10 @@
     },
     "4278129": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 18,
-      "averageMinutes": 10.4,
-      "averagePoints": 2.2,
+      "lastDate": "2026-11-24",
+      "games": 19,
+      "averageMinutes": 8.6,
+      "averagePoints": 1.4,
       "sample": 10
     },
     "4278355": {
@@ -4963,10 +4963,10 @@
     },
     "4278594": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 14,
-      "averageMinutes": 23.3,
-      "averagePoints": 10.3,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 22.9,
+      "averagePoints": 9.5,
       "sample": 10
     },
     "4279318": {
@@ -5219,18 +5219,18 @@
     },
     "4397251": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 9,
-      "averageMinutes": 7.333333,
-      "averagePoints": 2.888889,
-      "sample": 9
+      "lastDate": "2026-11-24",
+      "games": 10,
+      "averageMinutes": 7.4,
+      "averagePoints": 2.8,
+      "sample": 10
     },
     "4397424": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 24.7,
-      "averagePoints": 10.3,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 24.6,
+      "averagePoints": 10.8,
       "sample": 10
     },
     "4397449": {
@@ -5353,6 +5353,14 @@
       "averagePoints": 6.4,
       "sample": 10
     },
+    "4431690": {
+      "team": "DEN",
+      "lastDate": "2026-11-24",
+      "games": 3,
+      "averageMinutes": 3.666667,
+      "averagePoints": 2.666667,
+      "sample": 3
+    },
     "4431734": {
       "team": "CLE",
       "lastDate": "2026-11-06",
@@ -5379,10 +5387,10 @@
     },
     "4431767": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 32.8,
-      "averagePoints": 12.9,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 32,
+      "averagePoints": 13,
       "sample": 10
     },
     "4431772": {
@@ -5507,10 +5515,10 @@
     },
     "4432582": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 14,
-      "averageMinutes": 13.4,
-      "averagePoints": 4.2,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 11.6,
+      "averagePoints": 3.3,
       "sample": 10
     },
     "4432639": {
@@ -5563,11 +5571,11 @@
     },
     "4432819": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 8,
-      "averageMinutes": 5.125,
-      "averagePoints": 1.25,
-      "sample": 8
+      "lastDate": "2026-11-24",
+      "games": 9,
+      "averageMinutes": 4.666667,
+      "averagePoints": 1.111111,
+      "sample": 9
     },
     "4432822": {
       "team": "CHI",
@@ -5723,11 +5731,11 @@
     },
     "4433607": {
       "team": "DEN",
-      "lastDate": "2026-11-09",
-      "games": 4,
-      "averageMinutes": 2.75,
-      "averagePoints": 0.75,
-      "sample": 4
+      "lastDate": "2026-11-24",
+      "games": 5,
+      "averageMinutes": 2.8,
+      "averagePoints": 0.6,
+      "sample": 5
     },
     "4433627": {
       "team": "UTA",
@@ -5811,11 +5819,11 @@
     },
     "4592427": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 8,
-      "averageMinutes": 18.125,
-      "averagePoints": 3.625,
-      "sample": 8
+      "lastDate": "2026-11-24",
+      "games": 9,
+      "averageMinutes": 18.555556,
+      "averagePoints": 4,
+      "sample": 9
     },
     "4592435": {
       "team": "POR",
@@ -5907,11 +5915,11 @@
     },
     "4593125": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 8,
-      "averageMinutes": 13,
-      "averagePoints": 6.125,
-      "sample": 8
+      "lastDate": "2026-11-24",
+      "games": 9,
+      "averageMinutes": 12.666667,
+      "averagePoints": 5.777778,
+      "sample": 9
     },
     "4593803": {
       "team": "OKC",
@@ -5923,10 +5931,10 @@
     },
     "4593841": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 18.5,
-      "averagePoints": 5.4,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 17.5,
+      "averagePoints": 5.3,
       "sample": 10
     },
     "4594268": {
@@ -6019,10 +6027,10 @@
     },
     "4683689": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 14.1,
-      "averagePoints": 4.3,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 13.4,
+      "averagePoints": 4,
       "sample": 10
     },
     "4683692": {
@@ -6155,10 +6163,10 @@
     },
     "4698719": {
       "team": "DEN",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 15.8,
-      "averagePoints": 5.3,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 15.2,
+      "averagePoints": 4.7,
       "sample": 10
     },
     "4700852": {
@@ -6171,10 +6179,10 @@
     },
     "4701208": {
       "team": "DAL",
-      "lastDate": "2026-11-18",
-      "games": 10,
-      "averageMinutes": 3.8,
-      "averagePoints": 1.3,
+      "lastDate": "2026-11-24",
+      "games": 11,
+      "averageMinutes": 3.7,
+      "averagePoints": 1,
       "sample": 10
     },
     "4701230": {
@@ -6363,9 +6371,9 @@
     },
     "4845374": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 13.4,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 12.2,
       "averagePoints": 3.4,
       "sample": 10
     },
@@ -6435,10 +6443,10 @@
     },
     "4873153": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 18.4,
-      "averagePoints": 6.3,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 18.6,
+      "averagePoints": 5.9,
       "sample": 10
     },
     "4873201": {
@@ -6467,10 +6475,10 @@
     },
     "4896372": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 21.6,
-      "averagePoints": 8.4,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 20.9,
+      "averagePoints": 8.1,
       "sample": 10
     },
     "4897262": {
@@ -6595,10 +6603,10 @@
     },
     "5041939": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 33.3,
-      "averagePoints": 23.8,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 32.4,
+      "averagePoints": 24.3,
       "sample": 10
     },
     "5041951": {
@@ -6723,10 +6731,10 @@
     },
     "5104155": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 23.3,
-      "averagePoints": 6.1,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 23.2,
+      "averagePoints": 6.5,
       "sample": 10
     },
     "5104157": {
@@ -6979,18 +6987,18 @@
     },
     "5142621": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 8,
-      "averageMinutes": 7.75,
-      "averagePoints": 3.25,
-      "sample": 8
+      "lastDate": "2026-11-24",
+      "games": 9,
+      "averageMinutes": 7.555556,
+      "averagePoints": 2.888889,
+      "sample": 9
     },
     "5142718": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 14,
-      "averageMinutes": 35.2,
-      "averagePoints": 16.5,
+      "lastDate": "2026-11-24",
+      "games": 15,
+      "averageMinutes": 35.7,
+      "averagePoints": 17.4,
       "sample": 10
     },
     "5144091": {
@@ -7003,10 +7011,10 @@
     },
     "5144126": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 15,
-      "averageMinutes": 9.2,
-      "averagePoints": 3.5,
+      "lastDate": "2026-11-24",
+      "games": 16,
+      "averageMinutes": 8.4,
+      "averagePoints": 4,
       "sample": 10
     },
     "5149077": {
@@ -7035,10 +7043,10 @@
     },
     "5160992": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 27.8,
-      "averagePoints": 12.4,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 27.2,
+      "averagePoints": 11.8,
       "sample": 10
     },
     "5164559": {
@@ -7059,10 +7067,10 @@
     },
     "5174563": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 18,
-      "averageMinutes": 34.8,
-      "averagePoints": 18.2,
+      "lastDate": "2026-11-24",
+      "games": 19,
+      "averageMinutes": 34.7,
+      "averagePoints": 17.3,
       "sample": 10
     },
     "5174655": {
@@ -7091,10 +7099,10 @@
     },
     "5175647": {
       "team": "BOS",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 14.3,
-      "averagePoints": 4.4,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 13.8,
+      "averagePoints": 4,
       "sample": 10
     },
     "5175737": {
@@ -7123,10 +7131,10 @@
     },
     "5211175": {
       "team": "DAL",
-      "lastDate": "2026-11-22",
-      "games": 17,
-      "averageMinutes": 21.1,
-      "averagePoints": 9.5,
+      "lastDate": "2026-11-24",
+      "games": 18,
+      "averageMinutes": 21.4,
+      "averagePoints": 10.5,
       "sample": 10
     },
     "5211176": {
@@ -7179,10 +7187,10 @@
     },
     "5238230": {
       "team": "WAS",
-      "lastDate": "2026-11-22",
-      "games": 16,
-      "averageMinutes": 20.5,
-      "averagePoints": 8.2,
+      "lastDate": "2026-11-24",
+      "games": 17,
+      "averageMinutes": 19.9,
+      "averagePoints": 7.9,
       "sample": 10
     },
     "5239561": {
@@ -7274,7 +7282,7 @@
       "sample": 7
     }
   },
-  "playerCoverage": 259,
+  "playerCoverage": 261,
   "historicalPlayerCoverage": 1223,
   "limitations": "Current-season holdout is retrospective; player model uses realized participation and prior minutes as a conditional proxy, not verified impact or a causal effect.",
   "dataProvenance": {
@@ -7293,8 +7301,8 @@
     ],
     "current": {
       "season": 2027,
-      "regularSeasonGames": 259,
-      "sha256": "c507361c4a8203d932fda0bf93271722a1a342b986c641fa2fe1844dad7691a6"
+      "regularSeasonGames": 261,
+      "sha256": "51b2e470e807bdd9193c3ed3a31f9a221b14c7915d0044cf6cdb980a81c77367"
     },
     "explanation": "SHA-256 of canonical sorted game identifiers, scheduled dates, teams, scores and venue flags from the exact training input. Source retrieval timestamps excluded."
   }
