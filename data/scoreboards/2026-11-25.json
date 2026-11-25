@@ -2,7 +2,7 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-25",
-  "retrievedAt": "2026-11-25T14:12:54.059Z",
+  "retrievedAt": "2026-11-25T23:05:50.499Z",
   "events": [
     {
       "id": "401909317",
@@ -12,8 +12,8 @@
       "status": {
         "type": {
           "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 5:00 PM EST"
+          "state": "in",
+          "shortDetail": "2:58 - 2nd"
         }
       },
       "competitions": [
@@ -25,14 +25,14 @@
               "team": {
                 "abbreviation": "PHI"
               },
-              "score": ""
+              "score": "51"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "MIA"
               },
-              "score": ""
+              "score": "47"
             }
           ]
         }
