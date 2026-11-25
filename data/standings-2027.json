@@ -3,7 +3,7 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-24T17:34:10.690Z",
+  "retrievedAt": "2026-11-25T02:21:00.066Z",
   "records": [
     {
       "code": "ATL",
@@ -55,7 +55,7 @@
     },
     {
       "code": "DET",
-      "wins": 10,
+      "wins": 11,
       "losses": 6,
       "espnId": "8"
     },
@@ -134,7 +134,7 @@
     {
       "code": "ORL",
       "wins": 7,
-      "losses": 9,
+      "losses": 10,
       "espnId": "19"
     },
     {
