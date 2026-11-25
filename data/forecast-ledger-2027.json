@@ -774,7 +774,13 @@
       "venue": 1,
       "contextDate": "2026-11-24",
       "sourceScoreboardAt": "2026-11-23T07:26:07.104Z",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 86,
+        "awayScore": 104,
+        "recordedAt": "2026-11-25T02:45:41.987Z"
+      }
     },
     {
       "id": "401909315",
@@ -1144,11 +1150,11 @@
     }
   ],
   "evaluation": {
-    "settled": 22,
+    "settled": 23,
     "recorded": 34,
-    "brier": 0.24389819852941888,
-    "logLoss": 0.6859121889932097,
-    "accuracy": 0.5909090909090909,
+    "brier": 0.24030843024482146,
+    "logLoss": 0.6784204369764248,
+    "accuracy": 0.6086956521739131,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
