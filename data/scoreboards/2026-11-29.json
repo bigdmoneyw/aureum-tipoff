@@ -1,0 +1,348 @@
+{
+  "format": "aureum-scoreboard-v1",
+  "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
+  "requestedDate": "2026-11-29",
+  "retrievedAt": "2026-11-25T14:12:54.059Z",
+  "events": [
+    {
+      "id": "401910054",
+      "date": "2026-11-29T20:30Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 3:30 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "CLE"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "MIA"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910051",
+      "date": "2026-11-29T21:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 4:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "MEM"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "LAL"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910052",
+      "date": "2026-11-29T21:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 4:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "SAS"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "BOS"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910053",
+      "date": "2026-11-29T22:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 5:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "UTA"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "PHX"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910055",
+      "date": "2026-11-29T23:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 6:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "DET"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "ORL"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910056",
+      "date": "2026-11-29T23:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 6:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "NYK"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "ATL"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910057",
+      "date": "2026-11-29T23:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 6:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "TOR"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "DEN"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910058",
+      "date": "2026-11-29T23:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 6:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "POR"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "NOP"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910059",
+      "date": "2026-11-30T01:30Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 8:30 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "GSW"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "LAC"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401910060",
+      "date": "2026-11-30T02:00Z",
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "status": {
+        "type": {
+          "completed": false,
+          "state": "pre",
+          "shortDetail": "11/29 - 9:00 PM EST"
+        }
+      },
+      "competitions": [
+        {
+          "neutralSite": false,
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "abbreviation": "SAC"
+              },
+              "score": ""
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "abbreviation": "MIN"
+              },
+              "score": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-24",
-  "retrievedAt": "2026-11-25T02:21:00.066Z",
+  "retrievedAt": "2026-11-25T14:12:54.059Z",
   "events": [
     {
       "id": "401909314",
@@ -45,9 +45,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "Halftime"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -59,14 +59,14 @@
               "team": {
                 "abbreviation": "WAS"
               },
-              "score": "49"
+              "score": "116"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "BOS"
               },
-              "score": "80"
+              "score": "131"
             }
           ]
         }
@@ -79,9 +79,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/24 - 10:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -93,14 +93,14 @@
               "team": {
                 "abbreviation": "DEN"
               },
-              "score": ""
+              "score": "101"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "DAL"
               },
-              "score": ""
+              "score": "120"
             }
           ]
         }

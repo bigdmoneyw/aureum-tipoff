@@ -1,10 +1,9 @@
 {
   "format": "aureum-data-status-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
-  "retrievedAt": "2026-11-25T02:21:00.066Z",
+  "retrievedAt": "2026-11-25T14:12:54.059Z",
   "season": 2027,
   "dates": [
-    "2026-11-20",
     "2026-11-21",
     "2026-11-22",
     "2026-11-23",
@@ -12,7 +11,8 @@
     "2026-11-25",
     "2026-11-26",
     "2026-11-27",
-    "2026-11-28"
+    "2026-11-28",
+    "2026-11-29"
   ],
-  "gameCount": 60
+  "gameCount": 61
 }

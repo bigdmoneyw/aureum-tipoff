@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v1",
   "version": "aureum-elo-rest-form-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-25T02:21:04.391Z",
-  "sourceArchiveCollectedAt": "2026-11-25T02:21:00.066Z",
+  "retrievedAt": "2026-11-25T14:13:04.774Z",
+  "sourceArchiveCollectedAt": "2026-11-25T14:12:54.059Z",
   "source": "ESPN archived completed scores",
   "features": [
     "ratingDifferencePer100",
@@ -35,21 +35,21 @@
       "games": 17
     },
     "BOS": {
-      "rating": 1532.1403841449624,
+      "rating": 1542.0605938102965,
       "results": [
         1,
         1,
         1,
         1,
         1,
-        1,
         0,
         0,
         0,
-        0
+        0,
+        1
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "BKN": {
       "rating": 1421.6086664881739,
@@ -120,26 +120,25 @@
       "games": 18
     },
     "DAL": {
-      "rating": 1521.9596291706262,
+      "rating": 1534.2287409628946,
       "results": [
-        0,
         1,
         1,
         1,
         0,
         0,
         0,
+        1,
         1,
         1,
         1
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "DEN": {
-      "rating": 1547.1931213383223,
+      "rating": 1534.9240095460539,
       "results": [
-        0,
         1,
         1,
         0,
@@ -148,10 +147,11 @@
         0,
         1,
         1,
-        1
+        1,
+        0
       ],
-      "lastDate": "2026-11-22",
-      "games": 15
+      "lastDate": "2026-11-24",
+      "games": 16
     },
     "DET": {
       "rating": 1543.0444962883982,
@@ -511,7 +511,7 @@
       "games": 19
     },
     "WAS": {
-      "rating": 1474.368125147659,
+      "rating": 1464.4479154823248,
       "results": [
         0,
         0,
@@ -519,13 +519,13 @@
         0,
         0,
         0,
-        0,
         1,
         1,
-        1
+        1,
+        0
       ],
-      "lastDate": "2026-11-22",
-      "games": 18
+      "lastDate": "2026-11-24",
+      "games": 19
     }
   },
   "backtest": {
@@ -534,15 +534,15 @@
     "trainingThrough": "2026-11-15",
     "testFrom": "2026-11-16",
     "testThrough": "2026-11-24",
-    "games": 62,
-    "accuracy": 0.6290322580645161,
-    "brier": 0.22742972283586044,
-    "logLoss": 0.6474819222998893,
+    "games": 64,
+    "accuracy": 0.625,
+    "brier": 0.22862978831655117,
+    "logLoss": 0.6499294491843549,
     "homeRateBaseline": 0.5302013422818792,
-    "baselineAccuracy": 0.5161290322580645,
-    "baselineBrier": 0.24993788422782473
+    "baselineAccuracy": 0.5,
+    "baselineBrier": 0.25091212107562727
   },
-  "archiveGames": 259,
+  "archiveGames": 261,
   "throughDate": "2026-11-24",
   "todayState": {
     "ATL": {
@@ -563,21 +563,21 @@
       "games": 17
     },
     "BOS": {
-      "rating": 1532.1403841449624,
+      "rating": 1542.0605938102965,
       "results": [
         1,
         1,
         1,
         1,
         1,
-        1,
         0,
         0,
         0,
-        0
+        0,
+        1
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "BKN": {
       "rating": 1421.6086664881739,
@@ -648,55 +648,55 @@
       "games": 18
     },
     "DAL": {
-      "rating": 1521.9596291706262,
+      "rating": 1534.2287409628946,
       "results": [
-        0,
         1,
         1,
         1,
         0,
         0,
         0,
+        1,
         1,
         1,
         1
       ],
-      "lastDate": "2026-11-22",
-      "games": 17
+      "lastDate": "2026-11-24",
+      "games": 18
     },
     "DEN": {
-      "rating": 1547.1931213383223,
-      "results": [
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1
-      ],
-      "lastDate": "2026-11-22",
-      "games": 15
-    },
-    "DET": {
-      "rating": 1532.694844686137,
+      "rating": 1534.9240095460539,
       "results": [
         1,
-        0,
-        0,
-        1,
         1,
         0,
         1,
         1,
         0,
+        1,
+        1,
+        1,
         0
       ],
-      "lastDate": "2026-11-22",
+      "lastDate": "2026-11-24",
       "games": 16
+    },
+    "DET": {
+      "rating": 1543.0444962883982,
+      "results": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "lastDate": "2026-11-24",
+      "games": 17
     },
     "GSW": {
       "rating": 1509.2854553292295,
@@ -903,21 +903,21 @@
       "games": 18
     },
     "ORL": {
-      "rating": 1489.8479398570546,
+      "rating": 1479.4982882547934,
       "results": [
         0,
         0,
-        0,
         1,
         1,
         1,
         1,
         0,
         1,
+        0,
         0
       ],
-      "lastDate": "2026-11-22",
-      "games": 16
+      "lastDate": "2026-11-24",
+      "games": 17
     },
     "PHI": {
       "rating": 1571.0069207027077,
@@ -1039,7 +1039,7 @@
       "games": 19
     },
     "WAS": {
-      "rating": 1474.368125147659,
+      "rating": 1464.4479154823248,
       "results": [
         0,
         0,
@@ -1047,15 +1047,15 @@
         0,
         0,
         0,
-        0,
         1,
         1,
-        1
+        1,
+        0
       ],
-      "lastDate": "2026-11-22",
-      "games": 18
+      "lastDate": "2026-11-24",
+      "games": 19
     }
   },
-  "todayDate": "2026-11-24",
+  "todayDate": "2026-11-25",
   "limitations": "Retrospective small-sample test, not prospectively locked forecasts or guaranteed future performance. Home-court neutral/swap extrapolation; player and qualitative assumptions not learned."
 }

@@ -2,10 +2,34 @@
   "format": "aureum-completed-games-v1",
   "season": 2027,
   "source": "ESPN dated scoreboard game results",
-  "retrievedAt": "2026-11-25T02:21:00.066Z",
-  "count": 259,
+  "retrievedAt": "2026-11-25T14:12:54.059Z",
+  "count": 261,
   "notes": "Completed games only; scores are historical observations, never pregame forecasts.",
   "games": [
+    {
+      "id": "401909316",
+      "date": "2026-11-25T03:00Z",
+      "home": "DEN",
+      "away": "DAL",
+      "hs": 101,
+      "as": 120,
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "sourceAt": "2026-11-25T14:12:54.059Z"
+    },
+    {
+      "id": "401909315",
+      "date": "2026-11-25T01:00Z",
+      "home": "WAS",
+      "away": "BOS",
+      "hs": 116,
+      "as": 131,
+      "neutral": false,
+      "competition": "nba-regular-season",
+      "seasonType": 2,
+      "sourceAt": "2026-11-25T14:12:54.059Z"
+    },
     {
       "id": "401909314",
       "date": "2026-11-25T00:00Z",
@@ -16,7 +40,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910044",
@@ -28,7 +52,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910045",
@@ -40,7 +64,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910043",
@@ -52,7 +76,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910041",
@@ -64,7 +88,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910042",
@@ -76,7 +100,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910038",
@@ -88,7 +112,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910039",
@@ -100,7 +124,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910040",
@@ -112,7 +136,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910036",
@@ -124,7 +148,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910037",
@@ -136,7 +160,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910035",
@@ -148,7 +172,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910034",
@@ -160,7 +184,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910031",
@@ -172,7 +196,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910032",
@@ -184,7 +208,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910033",
@@ -196,7 +220,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910030",
@@ -208,7 +232,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910029",
@@ -220,7 +244,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910028",
@@ -232,7 +256,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910025",
@@ -244,7 +268,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910026",
@@ -256,7 +280,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910027",
@@ -268,7 +292,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910024",
@@ -280,7 +304,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401910023",
@@ -292,7 +316,7 @@
       "neutral": false,
       "competition": "nba-regular-season",
       "seasonType": 2,
-      "sourceAt": "2026-11-25T02:21:00.066Z"
+      "sourceAt": "2026-11-25T14:12:54.059Z"
     },
     {
       "id": "401909312",
