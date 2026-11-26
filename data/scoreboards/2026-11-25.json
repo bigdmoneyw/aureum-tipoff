@@ -2,7 +2,7 @@
   "format": "aureum-scoreboard-v1",
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "requestedDate": "2026-11-25",
-  "retrievedAt": "2026-11-25T23:05:50.499Z",
+  "retrievedAt": "2026-11-26T08:06:13.803Z",
   "events": [
     {
       "id": "401909317",
@@ -11,9 +11,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "in",
-          "shortDetail": "2:58 - 2nd"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -25,14 +25,14 @@
               "team": {
                 "abbreviation": "PHI"
               },
-              "score": "51"
+              "score": "111"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "MIA"
               },
-              "score": "47"
+              "score": "104"
             }
           ]
         }
@@ -45,9 +45,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 7:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -59,14 +59,14 @@
               "team": {
                 "abbreviation": "CHA"
               },
-              "score": ""
+              "score": "105"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "CHI"
               },
-              "score": ""
+              "score": "107"
             }
           ]
         }
@@ -79,9 +79,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 7:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -93,14 +93,14 @@
               "team": {
                 "abbreviation": "NYK"
               },
-              "score": ""
+              "score": "121"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "CLE"
               },
-              "score": ""
+              "score": "102"
             }
           ]
         }
@@ -113,9 +113,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 7:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -127,14 +127,14 @@
               "team": {
                 "abbreviation": "OKC"
               },
-              "score": ""
+              "score": "106"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "MIN"
               },
-              "score": ""
+              "score": "113"
             }
           ]
         }
@@ -147,9 +147,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 8:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -161,14 +161,14 @@
               "team": {
                 "abbreviation": "MEM"
               },
-              "score": ""
+              "score": "115"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "LAC"
               },
-              "score": ""
+              "score": "97"
             }
           ]
         }
@@ -181,9 +181,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 8:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -195,14 +195,14 @@
               "team": {
                 "abbreviation": "MIL"
               },
-              "score": ""
+              "score": "97"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "BKN"
               },
-              "score": ""
+              "score": "104"
             }
           ]
         }
@@ -215,9 +215,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 8:30 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -229,14 +229,14 @@
               "team": {
                 "abbreviation": "HOU"
               },
-              "score": ""
+              "score": "116"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "PHX"
               },
-              "score": ""
+              "score": "104"
             }
           ]
         }
@@ -249,9 +249,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 10:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -263,14 +263,14 @@
               "team": {
                 "abbreviation": "GSW"
               },
-              "score": ""
+              "score": "129"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "SAC"
               },
-              "score": ""
+              "score": "110"
             }
           ]
         }
@@ -283,9 +283,9 @@
       "seasonType": 2,
       "status": {
         "type": {
-          "completed": false,
-          "state": "pre",
-          "shortDetail": "11/25 - 10:00 PM EST"
+          "completed": true,
+          "state": "post",
+          "shortDetail": "Final"
         }
       },
       "competitions": [
@@ -297,14 +297,14 @@
               "team": {
                 "abbreviation": "POR"
               },
-              "score": ""
+              "score": "116"
             },
             {
               "homeAway": "away",
               "team": {
                 "abbreviation": "SAS"
               },
-              "score": ""
+              "score": "111"
             }
           ]
         }

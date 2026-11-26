@@ -1,17 +1,17 @@
 {
   "format": "aureum-rosters-v1",
   "season": 2027,
-  "retrievedAt": "2026-11-25T23:05:53.078Z",
+  "retrievedAt": "2026-11-26T08:06:16.152Z",
   "source": "ESPN NBA team rosters and dated injury report",
   "injuryFeedAvailable": true,
-  "injurySourceTimestamp": "2026-11-25T23:05:46Z",
+  "injurySourceTimestamp": "2026-11-26T08:06:08Z",
   "teams": [
     {
       "code": "ATL",
       "espnId": "1",
       "name": "Atlanta Hawks",
-      "retrievedAt": "2026-11-25T23:05:52.886Z",
-      "providerTimestamp": "2026-11-25T23:05:47Z",
+      "retrievedAt": "2026-11-26T08:06:15.581Z",
+      "providerTimestamp": "2026-11-26T08:06:06Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -166,8 +166,8 @@
       "code": "BKN",
       "espnId": "17",
       "name": "Brooklyn Nets",
-      "retrievedAt": "2026-11-25T23:05:52.857Z",
-      "providerTimestamp": "2026-11-25T23:05:33Z",
+      "retrievedAt": "2026-11-26T08:06:15.710Z",
+      "providerTimestamp": "2026-11-26T08:05:51Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -266,7 +266,11 @@
           "name": "Moritz Wagner",
           "position": "C",
           "jersey": "13",
-          "report": null
+          "report": {
+            "status": "Out",
+            "date": "2026-11-26T02:48Z",
+            "comment": "Wagner (knee) will not return to Wednesday's game against the Bucks, C.J. Holmes of the New York Daily News reports."
+          }
         },
         {
           "id": "4712896",
@@ -306,8 +310,8 @@
       "code": "BOS",
       "espnId": "2",
       "name": "Boston Celtics",
-      "retrievedAt": "2026-11-25T23:05:52.853Z",
-      "providerTimestamp": "2026-11-25T23:05:32Z",
+      "retrievedAt": "2026-11-26T08:06:15.697Z",
+      "providerTimestamp": "2026-11-26T08:06:05Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -439,8 +443,8 @@
       "code": "CHA",
       "espnId": "30",
       "name": "Charlotte Hornets",
-      "retrievedAt": "2026-11-25T23:05:52.887Z",
-      "providerTimestamp": "2026-11-25T23:05:46Z",
+      "retrievedAt": "2026-11-26T08:06:15.804Z",
+      "providerTimestamp": "2026-11-26T08:06:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -566,8 +570,8 @@
           "position": "C",
           "jersey": "11",
           "report": {
-            "status": "Out",
-            "date": "2026-11-25T17:41Z",
+            "status": "Day-To-Day",
+            "date": "2026-11-26T05:30Z",
             "comment": "Kalkbrenner (hip) has been ruled out for Wednesday's matchup with Chicago."
           }
         },
@@ -591,8 +595,8 @@
       "code": "CHI",
       "espnId": "4",
       "name": "Chicago Bulls",
-      "retrievedAt": "2026-11-25T23:05:52.855Z",
-      "providerTimestamp": "2026-11-25T23:05:15Z",
+      "retrievedAt": "2026-11-26T08:06:15.805Z",
+      "providerTimestamp": "2026-11-26T08:06:08Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -633,8 +637,8 @@
           "position": "F",
           "jersey": "25",
           "report": {
-            "status": "Out",
-            "date": "2026-11-25T22:07Z",
+            "status": "Day-To-Day",
+            "date": "2026-11-26T05:29Z",
             "comment": "Smith (illness) is listed as out for Wednesday's game against Charlotte."
           }
         },
@@ -739,8 +743,8 @@
       "code": "CLE",
       "espnId": "5",
       "name": "Cleveland Cavaliers",
-      "retrievedAt": "2026-11-25T23:05:52.888Z",
-      "providerTimestamp": "2026-11-25T23:05:51Z",
+      "retrievedAt": "2026-11-26T08:06:15.876Z",
+      "providerTimestamp": "2026-11-26T08:06:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -883,8 +887,8 @@
       "code": "DAL",
       "espnId": "6",
       "name": "Dallas Mavericks",
-      "retrievedAt": "2026-11-25T23:05:52.934Z",
-      "providerTimestamp": "2026-11-25T23:05:47Z",
+      "retrievedAt": "2026-11-26T08:06:15.936Z",
+      "providerTimestamp": "2026-11-26T08:06:08Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1035,8 +1039,8 @@
       "code": "DEN",
       "espnId": "7",
       "name": "Denver Nuggets",
-      "retrievedAt": "2026-11-25T23:05:52.914Z",
-      "providerTimestamp": "2026-11-25T23:05:41Z",
+      "retrievedAt": "2026-11-26T08:06:15.948Z",
+      "providerTimestamp": "2026-11-26T08:06:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1164,8 +1168,8 @@
       "code": "DET",
       "espnId": "8",
       "name": "Detroit Pistons",
-      "retrievedAt": "2026-11-25T23:05:52.950Z",
-      "providerTimestamp": "2026-11-25T23:05:52Z",
+      "retrievedAt": "2026-11-26T08:06:15.937Z",
+      "providerTimestamp": "2026-11-26T08:06:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1320,8 +1324,8 @@
       "code": "GSW",
       "espnId": "9",
       "name": "Golden State Warriors",
-      "retrievedAt": "2026-11-25T23:05:52.944Z",
-      "providerTimestamp": "2026-11-25T23:04:57Z",
+      "retrievedAt": "2026-11-26T08:06:15.914Z",
+      "providerTimestamp": "2026-11-26T08:06:12Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1343,11 +1347,7 @@
           "name": "Brandon Williams",
           "position": "G",
           "jersey": "12",
-          "report": {
-            "status": "Out",
-            "date": "2026-11-24T20:58Z",
-            "comment": "Head coach Steve Kerr said Tuesday that Williams (hamstring) is questionable to play Wednesday against the Kings, per Dalton Johnson of NBC Sports Bay Area."
-          }
+          "report": null
         },
         {
           "id": "4397886",
@@ -1452,8 +1452,8 @@
           "jersey": "30",
           "report": {
             "status": "Out",
-            "date": "2026-11-12T17:03Z",
-            "comment": "Curry has been diagnosed with an oblique abdominal tear and will be re-evaluated in two weeks, Shams Charania of ESPN reports."
+            "date": "2026-11-26T01:36Z",
+            "comment": "Curry (abdomen) will be re-evaluated Friday after Thanksgiving, Anthony Slater of ESPN.com reports."
           }
         },
         {
@@ -1468,11 +1468,7 @@
           "name": "Yaxel Lendeborg",
           "position": "F",
           "jersey": "1",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-24T23:20Z",
-            "comment": "Lendeborg is questionable for Wednesday's game against the Kings with an illness."
-          }
+          "report": null
         }
       ]
     },
@@ -1480,8 +1476,8 @@
       "code": "HOU",
       "espnId": "10",
       "name": "Houston Rockets",
-      "retrievedAt": "2026-11-25T23:05:52.905Z",
-      "providerTimestamp": "2026-11-25T23:05:39Z",
+      "retrievedAt": "2026-11-26T08:06:15.970Z",
+      "providerTimestamp": "2026-11-26T08:06:13Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1609,8 +1605,8 @@
       "code": "IND",
       "espnId": "11",
       "name": "Indiana Pacers",
-      "retrievedAt": "2026-11-25T23:05:52.911Z",
-      "providerTimestamp": "2026-11-25T23:05:31Z",
+      "retrievedAt": "2026-11-26T08:06:15.918Z",
+      "providerTimestamp": "2026-11-26T08:06:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1758,8 +1754,8 @@
       "code": "LAC",
       "espnId": "12",
       "name": "LA Clippers",
-      "retrievedAt": "2026-11-25T23:05:52.966Z",
-      "providerTimestamp": "2026-11-25T23:05:38Z",
+      "retrievedAt": "2026-11-26T08:06:16.006Z",
+      "providerTimestamp": "2026-11-26T08:06:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -1909,8 +1905,8 @@
       "code": "LAL",
       "espnId": "13",
       "name": "Los Angeles Lakers",
-      "retrievedAt": "2026-11-25T23:05:52.986Z",
-      "providerTimestamp": "2026-11-25T23:05:31Z",
+      "retrievedAt": "2026-11-26T08:06:16.038Z",
+      "providerTimestamp": "2026-11-26T08:06:14Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2056,8 +2052,8 @@
       "code": "MEM",
       "espnId": "29",
       "name": "Memphis Grizzlies",
-      "retrievedAt": "2026-11-25T23:05:52.964Z",
-      "providerTimestamp": "2026-11-25T23:05:26Z",
+      "retrievedAt": "2026-11-26T08:06:16.015Z",
+      "providerTimestamp": "2026-11-26T08:06:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2204,7 +2200,11 @@
           "name": "Zach Edey",
           "position": "C",
           "jersey": "14",
-          "report": null
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-26T03:43Z",
+            "comment": "Edey (ankle) did not return to Wednesday's 115-97 win over the Clippers. He finished with seven points (3-4 FG, 1-1 FT), four rebounds, two assists and two blocks across nine minutes."
+          }
         }
       ]
     },
@@ -2212,8 +2212,8 @@
       "code": "MIA",
       "espnId": "14",
       "name": "Miami Heat",
-      "retrievedAt": "2026-11-25T23:05:52.965Z",
-      "providerTimestamp": "2026-11-25T23:05:41Z",
+      "retrievedAt": "2026-11-26T08:06:16.004Z",
+      "providerTimestamp": "2026-11-26T08:05:56Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2341,8 +2341,8 @@
       "code": "MIL",
       "espnId": "15",
       "name": "Milwaukee Bucks",
-      "retrievedAt": "2026-11-25T23:05:52.976Z",
-      "providerTimestamp": "2026-11-25T23:05:16Z",
+      "retrievedAt": "2026-11-26T08:06:16.048Z",
+      "providerTimestamp": "2026-11-26T08:06:04Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2477,8 +2477,8 @@
       "code": "MIN",
       "espnId": "16",
       "name": "Minnesota Timberwolves",
-      "retrievedAt": "2026-11-25T23:05:52.995Z",
-      "providerTimestamp": "2026-11-25T23:05:40Z",
+      "retrievedAt": "2026-11-26T08:06:16.019Z",
+      "providerTimestamp": "2026-11-26T08:05:56Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2575,7 +2575,11 @@
           "name": "LaMelo Ball",
           "position": "G",
           "jersey": "1",
-          "report": null
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-26T03:37Z",
+            "comment": "Ball (ankle) did not return to Wednesday's 113-106 win over the Thunder."
+          }
         },
         {
           "id": "5157587",
@@ -2618,8 +2622,8 @@
       "code": "NOP",
       "espnId": "3",
       "name": "New Orleans Pelicans",
-      "retrievedAt": "2026-11-25T23:05:53.034Z",
-      "providerTimestamp": "2026-11-25T23:05:38Z",
+      "retrievedAt": "2026-11-26T08:06:16.080Z",
+      "providerTimestamp": "2026-11-26T08:06:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2770,8 +2774,8 @@
       "code": "NYK",
       "espnId": "18",
       "name": "New York Knicks",
-      "retrievedAt": "2026-11-25T23:05:53.016Z",
-      "providerTimestamp": "2026-11-25T23:05:33Z",
+      "retrievedAt": "2026-11-26T08:06:16.081Z",
+      "providerTimestamp": "2026-11-26T08:06:04Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -2779,7 +2783,11 @@
           "name": "Andre Drummond",
           "position": "C",
           "jersey": "0",
-          "report": null
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-26T03:40Z",
+            "comment": "Drummond (head) did not return to Wednesday's 121-102 win over the Cavaliers."
+          }
         },
         {
           "id": "4897943",
@@ -2832,11 +2840,7 @@
           "name": "Josh Hart",
           "position": "G",
           "jersey": "3",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-25T17:57Z",
-            "comment": "Hart (shoulder) has been upgraded to probable for Wednesday's game against the Cavaliers."
-          }
+          "report": null
         },
         {
           "id": "3136195",
@@ -2865,8 +2869,8 @@
           "position": "G",
           "jersey": "2",
           "report": {
-            "status": "Out",
-            "date": "2026-11-25T17:57Z",
+            "status": "Day-To-Day",
+            "date": "2026-11-26T05:31Z",
             "comment": "McBride (adductor) has been ruled out for Wednesday's game against the Cavaliers."
           }
         },
@@ -2884,8 +2888,8 @@
           "jersey": "8",
           "report": {
             "status": "Out",
-            "date": "2026-11-24T21:53Z",
-            "comment": "Anunoby (calf) is out for Wednesday's game against Cleveland."
+            "date": "2026-11-25T23:19Z",
+            "comment": "Anunoby (calf) participated in on-court work for the first time since sustaining the injury, Ian Begley of SportsNet New York reports."
           }
         },
         {
@@ -2915,8 +2919,8 @@
       "code": "OKC",
       "espnId": "25",
       "name": "Oklahoma City Thunder",
-      "retrievedAt": "2026-11-25T23:05:53.014Z",
-      "providerTimestamp": "2026-11-25T23:05:40Z",
+      "retrievedAt": "2026-11-26T08:06:16.090Z",
+      "providerTimestamp": "2026-11-26T08:06:04Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3079,8 +3083,8 @@
       "code": "ORL",
       "espnId": "19",
       "name": "Orlando Magic",
-      "retrievedAt": "2026-11-25T23:05:53.024Z",
-      "providerTimestamp": "2026-11-25T23:05:39Z",
+      "retrievedAt": "2026-11-26T08:06:16.094Z",
+      "providerTimestamp": "2026-11-26T08:05:50Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3176,6 +3180,13 @@
           }
         },
         {
+          "id": "4397140",
+          "name": "Kevin Porter Jr.",
+          "position": "G",
+          "jersey": "7",
+          "report": null
+        },
+        {
           "id": "6478",
           "name": "Nikola Vucevic",
           "position": "C",
@@ -3224,8 +3235,8 @@
       "code": "PHI",
       "espnId": "20",
       "name": "Philadelphia 76ers",
-      "retrievedAt": "2026-11-25T23:05:53.006Z",
-      "providerTimestamp": "2026-11-25T23:05:39Z",
+      "retrievedAt": "2026-11-26T08:06:16.077Z",
+      "providerTimestamp": "2026-11-26T08:06:08Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3286,7 +3297,11 @@
           "name": "Jaylen Brown",
           "position": "G",
           "jersey": "7",
-          "report": null
+          "report": {
+            "status": "Day-To-Day",
+            "date": "2026-11-26T01:06Z",
+            "comment": "Brown (hamstring) will receive imaging, and the Sixers will provide an update Thursday, Ky Carlin of USA Today reports."
+          }
         },
         {
           "id": "3059318",
@@ -3294,8 +3309,8 @@
           "position": "C",
           "jersey": "21",
           "report": {
-            "status": "Out",
-            "date": "2026-11-25T20:07Z",
+            "status": "Day-To-Day",
+            "date": "2026-11-26T01:06Z",
             "comment": "Embiid (illness) is out for Wednesday's game against Miami, Ira Winderman of the South Florida Sun Sentinel reports."
           }
         },
@@ -3361,8 +3376,8 @@
       "code": "PHX",
       "espnId": "21",
       "name": "Phoenix Suns",
-      "retrievedAt": "2026-11-25T23:05:53.013Z",
-      "providerTimestamp": "2026-11-25T23:05:01Z",
+      "retrievedAt": "2026-11-26T08:06:16.078Z",
+      "providerTimestamp": "2026-11-26T08:06:01Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3494,8 +3509,8 @@
       "code": "POR",
       "espnId": "22",
       "name": "Portland Trail Blazers",
-      "retrievedAt": "2026-11-25T23:05:53.066Z",
-      "providerTimestamp": "2026-11-25T23:05:41Z",
+      "retrievedAt": "2026-11-26T08:06:16.120Z",
+      "providerTimestamp": "2026-11-26T08:06:04Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3639,8 +3654,8 @@
       "code": "SAC",
       "espnId": "23",
       "name": "Sacramento Kings",
-      "retrievedAt": "2026-11-25T23:05:53.049Z",
-      "providerTimestamp": "2026-11-25T23:05:17Z",
+      "retrievedAt": "2026-11-26T08:06:16.132Z",
+      "providerTimestamp": "2026-11-26T08:06:12Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3776,8 +3791,8 @@
           "position": "G",
           "jersey": "8",
           "report": {
-            "status": "Out",
-            "date": "2026-11-25T22:40Z",
+            "status": "Day-To-Day",
+            "date": "2026-11-26T05:33Z",
             "comment": "LaVine (knee) is listed as out for Wednesday's game versus the Warriors."
           }
         }
@@ -3787,8 +3802,8 @@
       "code": "SAS",
       "espnId": "24",
       "name": "San Antonio Spurs",
-      "retrievedAt": "2026-11-25T23:05:53.052Z",
-      "providerTimestamp": "2026-11-25T23:05:31Z",
+      "retrievedAt": "2026-11-26T08:06:16.151Z",
+      "providerTimestamp": "2026-11-26T08:06:10Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -3812,8 +3827,8 @@
           "jersey": "4",
           "report": {
             "status": "Day-To-Day",
-            "date": "2026-11-25T01:27Z",
-            "comment": "Fox (shin) is questionable to play Wednesday's game against the Trail Blazers."
+            "date": "2026-11-26T06:01Z",
+            "comment": "Fox (shin) has been ruled out for Wednesday's game against Portland, Jeff McDonald of the San Antonio Express-News reports."
           }
         },
         {
@@ -3924,11 +3939,7 @@
           "name": "Victor Wembanyama",
           "position": "F",
           "jersey": "1",
-          "report": {
-            "status": "Day-To-Day",
-            "date": "2026-11-25T01:23Z",
-            "comment": "Wembanyama (back) is questionable for Wednesday's game in Portland."
-          }
+          "report": null
         }
       ]
     },
@@ -3936,8 +3947,8 @@
       "code": "TOR",
       "espnId": "28",
       "name": "Toronto Raptors",
-      "retrievedAt": "2026-11-25T23:05:53.078Z",
-      "providerTimestamp": "2026-11-25T23:05:48Z",
+      "retrievedAt": "2026-11-26T08:06:16.135Z",
+      "providerTimestamp": "2026-11-26T08:05:51Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4077,8 +4088,8 @@
       "code": "UTA",
       "espnId": "26",
       "name": "Utah Jazz",
-      "retrievedAt": "2026-11-25T23:05:53.050Z",
-      "providerTimestamp": "2026-11-25T23:05:41Z",
+      "retrievedAt": "2026-11-26T08:06:16.123Z",
+      "providerTimestamp": "2026-11-26T08:05:56Z",
       "injuryFeedAvailable": true,
       "players": [
         {
@@ -4229,8 +4240,8 @@
       "code": "WAS",
       "espnId": "27",
       "name": "Washington Wizards",
-      "retrievedAt": "2026-11-25T23:05:53.051Z",
-      "providerTimestamp": "2026-11-25T23:05:41Z",
+      "retrievedAt": "2026-11-26T08:06:16.118Z",
+      "providerTimestamp": "2026-11-26T08:06:15Z",
       "injuryFeedAvailable": true,
       "players": [
         {

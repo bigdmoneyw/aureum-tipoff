@@ -3,7 +3,7 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-25T23:05:50.499Z",
+  "retrievedAt": "2026-11-26T08:06:13.803Z",
   "records": [
     {
       "code": "ATL",
@@ -13,7 +13,7 @@
     },
     {
       "code": "BKN",
-      "wins": 3,
+      "wins": 4,
       "losses": 13,
       "espnId": "17"
     },
@@ -26,19 +26,19 @@
     {
       "code": "CHA",
       "wins": 4,
-      "losses": 12,
+      "losses": 13,
       "espnId": "30"
     },
     {
       "code": "CHI",
-      "wins": 5,
+      "wins": 6,
       "losses": 12,
       "espnId": "4"
     },
     {
       "code": "CLE",
       "wins": 9,
-      "losses": 9,
+      "losses": 10,
       "espnId": "5"
     },
     {
@@ -61,13 +61,13 @@
     },
     {
       "code": "GSW",
-      "wins": 9,
+      "wins": 10,
       "losses": 8,
       "espnId": "9"
     },
     {
       "code": "HOU",
-      "wins": 13,
+      "wins": 14,
       "losses": 5,
       "espnId": "10"
     },
@@ -80,7 +80,7 @@
     {
       "code": "LAC",
       "wins": 4,
-      "losses": 12,
+      "losses": 13,
       "espnId": "12"
     },
     {
@@ -91,25 +91,25 @@
     },
     {
       "code": "MEM",
-      "wins": 13,
+      "wins": 14,
       "losses": 5,
       "espnId": "29"
     },
     {
       "code": "MIA",
       "wins": 10,
-      "losses": 6,
+      "losses": 7,
       "espnId": "14"
     },
     {
       "code": "MIL",
       "wins": 2,
-      "losses": 16,
+      "losses": 17,
       "espnId": "15"
     },
     {
       "code": "MIN",
-      "wins": 13,
+      "wins": 14,
       "losses": 5,
       "espnId": "16"
     },
@@ -121,14 +121,14 @@
     },
     {
       "code": "NYK",
-      "wins": 11,
+      "wins": 12,
       "losses": 6,
       "espnId": "18"
     },
     {
       "code": "OKC",
       "wins": 10,
-      "losses": 8,
+      "losses": 9,
       "espnId": "25"
     },
     {
@@ -139,32 +139,32 @@
     },
     {
       "code": "PHI",
-      "wins": 14,
+      "wins": 15,
       "losses": 4,
       "espnId": "20"
     },
     {
       "code": "PHX",
       "wins": 9,
-      "losses": 7,
+      "losses": 8,
       "espnId": "21"
     },
     {
       "code": "POR",
-      "wins": 11,
+      "wins": 12,
       "losses": 6,
       "espnId": "22"
     },
     {
       "code": "SAC",
       "wins": 2,
-      "losses": 15,
+      "losses": 16,
       "espnId": "23"
     },
     {
       "code": "SAS",
       "wins": 15,
-      "losses": 3,
+      "losses": 4,
       "espnId": "24"
     },
     {
