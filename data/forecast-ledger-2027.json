@@ -1159,19 +1159,87 @@
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
       "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909326",
+      "home": "NYK",
+      "away": "MIA",
+      "tipoff": "2026-11-28T00:00Z",
+      "recordedAt": "2026-11-26T00:39:19.020Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.6380494937160686,
+      "featureValues": [
+        0.47028368453195524,
+        0,
+        0,
+        0.35,
+        0.2,
+        -0.19233537995796074
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-25T23:05:50.499Z",
+      "modelArchiveAt": "2026-11-25T23:05:50.499Z",
+      "modelStateThrough": "2026-11-24",
+      "modelInputSha256": "51b2e470e807bdd9193c3ed3a31f9a221b14c7915d0044cf6cdb980a81c77367",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909328",
+      "home": "IND",
+      "away": "PHI",
+      "tipoff": "2026-11-28T00:30Z",
+      "recordedAt": "2026-11-26T00:39:19.020Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.31919239506530894,
+      "featureValues": [
+        -2.006712021071869,
+        -0.21428571428571436,
+        0,
+        -0.1142857142857143,
+        0.2,
+        0.30246514232500304
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-25T23:05:50.499Z",
+      "modelArchiveAt": "2026-11-25T23:05:50.499Z",
+      "modelStateThrough": "2026-11-24",
+      "modelInputSha256": "51b2e470e807bdd9193c3ed3a31f9a221b14c7915d0044cf6cdb980a81c77367",
+      "modelTrainingThrough": "2026-04-12"
     }
   ],
   "evaluation": {
     "settled": 25,
-    "recorded": 34,
+    "recorded": 36,
     "brier": 0.24391954959575735,
     "logLoss": 0.6851508180833273,
     "accuracy": 0.6,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
-    "newlyLocked": 0,
-    "skippedPendingGames": 0,
+    "newlyLocked": 2,
+    "skippedPendingGames": 2,
     "sourceArchiveFresh": true
   }
 }
