@@ -886,7 +886,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 111,
+        "awayScore": 104,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909318",
@@ -920,7 +926,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 105,
+        "awayScore": 107,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909319",
@@ -954,7 +966,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 121,
+        "awayScore": 102,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909320",
@@ -988,7 +1006,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 106,
+        "awayScore": 113,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909321",
@@ -1022,7 +1046,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 115,
+        "awayScore": 97,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909322",
@@ -1056,7 +1086,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": false,
+        "homeScore": 97,
+        "awayScore": 104,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909323",
@@ -1090,7 +1126,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 116,
+        "awayScore": 104,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909324",
@@ -1124,7 +1166,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 129,
+        "awayScore": 110,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909325",
@@ -1158,7 +1206,13 @@
       "modelArchiveAt": "2026-11-24T04:43:19.845Z",
       "modelStateThrough": "2026-11-23",
       "modelInputSha256": "337df71bf275feb2062250105f3ed1b32b045dc092ba9362fc6c4ff5f7063663",
-      "modelTrainingThrough": "2026-04-12"
+      "modelTrainingThrough": "2026-04-12",
+      "result": {
+        "homeWon": true,
+        "homeScore": 116,
+        "awayScore": 111,
+        "recordedAt": "2026-11-26T08:53:50.112Z"
+      }
     },
     {
       "id": "401909326",
@@ -1227,19 +1281,325 @@
       "modelStateThrough": "2026-11-24",
       "modelInputSha256": "51b2e470e807bdd9193c3ed3a31f9a221b14c7915d0044cf6cdb980a81c77367",
       "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909327",
+      "home": "DET",
+      "away": "MIL",
+      "tipoff": "2026-11-28T00:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.861914524560658,
+      "featureValues": [
+        2.6017564944140736,
+        0.2857142857142857,
+        0.3333333333333333,
+        0.8142857142857143,
+        0,
+        -0.261449061562384
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909329",
+      "home": "TOR",
+      "away": "BKN",
+      "tipoff": "2026-11-28T00:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.7262376819171954,
+      "featureValues": [
+        1.1659245712954158,
+        -0.07142857142857145,
+        0.6666666666666666,
+        0.1571428571428571,
+        -0.2,
+        0.17541195218897523
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909330",
+      "home": "BOS",
+      "away": "ATL",
+      "tipoff": "2026-11-28T01:00Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.6406003562509938,
+      "featureValues": [
+        0.3904376061753237,
+        -0.1428571428571429,
+        -0.3333333333333333,
+        0.5357142857142856,
+        0.2,
+        0.08084128454880184
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909331",
+      "home": "MIN",
+      "away": "MEM",
+      "tipoff": "2026-11-28T01:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.6583809186681072,
+      "featureValues": [
+        1.0967777551026348,
+        0,
+        0,
+        -0.18571428571428578,
+        0,
+        -0.03285714167275373
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909332",
+      "home": "PHX",
+      "away": "DAL",
+      "tipoff": "2026-11-28T02:00Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.6107933846591947,
+      "featureValues": [
+        0.46595249236633207,
+        0,
+        -0.3333333333333333,
+        0.09285714285714283,
+        0,
+        0.2650246145874796
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909333",
+      "home": "SAS",
+      "away": "LAL",
+      "tipoff": "2026-11-28T02:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.608662148200519,
+      "featureValues": [
+        0.23489665271875537,
+        -0.0714285714285714,
+        -0.6666666666666666,
+        0.5071428571428571,
+        0.2,
+        0.11738695169144357
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909334",
+      "home": "UTA",
+      "away": "DEN",
+      "tipoff": "2026-11-28T02:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.24169549240597904,
+      "featureValues": [
+        -2.6933750166333787,
+        -0.3571428571428572,
+        0.3333333333333333,
+        -0.45,
+        0,
+        0.47489179200341725
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909335",
+      "home": "LAC",
+      "away": "NOP",
+      "tipoff": "2026-11-28T02:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.67551129682121,
+      "featureValues": [
+        0.758788350899249,
+        0.14285714285714288,
+        -0.6666666666666666,
+        0.6357142857142858,
+        0,
+        -0.1864018838087343
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401909336",
+      "home": "POR",
+      "away": "GSW",
+      "tipoff": "2026-11-28T02:30Z",
+      "recordedAt": "2026-11-26T08:53:50.112Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.703128245290085,
+      "featureValues": [
+        0.8934064274884054,
+        0.0714285714285714,
+        0,
+        0.4357142857142858,
+        0.2,
+        0.5494844708579492
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-27",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-26T08:06:13.803Z",
+      "modelArchiveAt": "2026-11-26T08:06:13.803Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
     }
   ],
   "evaluation": {
-    "settled": 25,
-    "recorded": 36,
-    "brier": 0.24391954959575735,
-    "logLoss": 0.6851508180833273,
-    "accuracy": 0.6,
+    "settled": 34,
+    "recorded": 45,
+    "brier": 0.23801898541102673,
+    "logLoss": 0.6712510933968384,
+    "accuracy": 0.5882352941176471,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
-    "newlyLocked": 2,
-    "skippedPendingGames": 2,
+    "newlyLocked": 9,
+    "skippedPendingGames": 0,
     "sourceArchiveFresh": true
   }
 }
