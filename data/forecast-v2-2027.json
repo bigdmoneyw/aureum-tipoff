@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-27T03:14:38.648Z",
-  "sourceArchiveCollectedAt": "2026-11-27T02:47:53.927Z",
+  "retrievedAt": "2026-11-27T14:17:37.479Z",
+  "sourceArchiveCollectedAt": "2026-11-27T13:46:46.027Z",
   "weights": [
     0.2241884729864172,
     0.46952962929520586,
@@ -3197,7 +3197,7 @@
       "games": 19
     }
   },
-  "todayDate": "2026-11-26",
+  "todayDate": "2026-11-27",
   "throughDate": "2026-11-25",
   "horizonModels": {
     "7": {

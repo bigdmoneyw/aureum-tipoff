@@ -1632,7 +1632,7 @@
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
-    "newlyLocked": 1,
+    "newlyLocked": 0,
     "skippedPendingGames": 4,
     "sourceArchiveFresh": true
   }
