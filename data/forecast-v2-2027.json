@@ -2,8 +2,8 @@
   "format": "aureum-forecast-v2",
   "version": "aureum-conditions-v2",
   "season": 2027,
-  "retrievedAt": "2026-11-26T19:49:08.220Z",
-  "sourceArchiveCollectedAt": "2026-11-26T18:22:36.689Z",
+  "retrievedAt": "2026-11-27T03:14:38.648Z",
+  "sourceArchiveCollectedAt": "2026-11-27T02:47:53.927Z",
   "weights": [
     0.2241884729864172,
     0.46952962929520586,

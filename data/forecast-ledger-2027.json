@@ -1587,19 +1587,53 @@
       "modelStateThrough": "2026-11-25",
       "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
       "modelTrainingThrough": "2026-04-12"
+    },
+    {
+      "id": "401910046",
+      "home": "WAS",
+      "away": "ORL",
+      "tipoff": "2026-11-28T22:00Z",
+      "recordedAt": "2026-11-27T03:14:38.648Z",
+      "model": "aureum-conditions-v2",
+      "homeProbability": 0.36565507827257504,
+      "featureValues": [
+        -1.2323103258918968,
+        -0.14285714285714285,
+        0,
+        -0.55,
+        0,
+        0.5198415230329545
+      ],
+      "coefficients": [
+        0.2241884729864172,
+        0.46952962929520586,
+        0,
+        0.16141919168225394,
+        0.4331042602247363,
+        -0.07120893591551944,
+        0.08026044797172296
+      ],
+      "venue": 1,
+      "contextDate": "2026-11-28",
+      "snapshotMode": "latest-completed",
+      "sourceScoreboardAt": "2026-11-27T02:47:53.927Z",
+      "modelArchiveAt": "2026-11-27T02:47:53.927Z",
+      "modelStateThrough": "2026-11-25",
+      "modelInputSha256": "168004c494bce133f6843a783ae74e13c80f46a454956b8a4dd356e0ee9e91cc",
+      "modelTrainingThrough": "2026-04-12"
     }
   ],
   "evaluation": {
     "settled": 34,
-    "recorded": 45,
+    "recorded": 46,
     "brier": 0.23801898541102673,
     "logLoss": 0.6712510933968384,
     "accuracy": 0.5882352941176471,
     "baselineBrier": 0.25,
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
-    "newlyLocked": 0,
-    "skippedPendingGames": 0,
+    "newlyLocked": 1,
+    "skippedPendingGames": 4,
     "sourceArchiveFresh": true
   }
 }
