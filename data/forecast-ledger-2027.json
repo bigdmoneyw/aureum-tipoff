@@ -1633,7 +1633,7 @@
     "sampleStatus": "insufficient-for-reliability-claims",
     "timingWarnings": 0,
     "newlyLocked": 0,
-    "skippedPendingGames": 4,
+    "skippedPendingGames": 8,
     "sourceArchiveFresh": true
   }
 }
