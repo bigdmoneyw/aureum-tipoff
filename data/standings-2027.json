@@ -3,24 +3,24 @@
   "source": "ESPN NBA scoreboard and standings (third-party; not NBA official)",
   "season": 2027,
   "sourceUrl": "https://www.espn.com/nba/standings",
-  "retrievedAt": "2026-11-27T22:39:33.668Z",
+  "retrievedAt": "2026-11-28T07:38:35.639Z",
   "records": [
     {
       "code": "ATL",
-      "wins": 11,
+      "wins": 12,
       "losses": 6,
       "espnId": "1"
     },
     {
       "code": "BKN",
       "wins": 4,
-      "losses": 13,
+      "losses": 14,
       "espnId": "17"
     },
     {
       "code": "BOS",
       "wins": 12,
-      "losses": 6,
+      "losses": 7,
       "espnId": "2"
     },
     {
@@ -43,26 +43,26 @@
     },
     {
       "code": "DAL",
-      "wins": 11,
+      "wins": 12,
       "losses": 7,
       "espnId": "6"
     },
     {
       "code": "DEN",
-      "wins": 10,
+      "wins": 11,
       "losses": 6,
       "espnId": "7"
     },
     {
       "code": "DET",
-      "wins": 11,
+      "wins": 12,
       "losses": 6,
       "espnId": "8"
     },
     {
       "code": "GSW",
       "wins": 10,
-      "losses": 8,
+      "losses": 9,
       "espnId": "9"
     },
     {
@@ -74,55 +74,55 @@
     {
       "code": "IND",
       "wins": 6,
-      "losses": 12,
+      "losses": 13,
       "espnId": "11"
     },
     {
       "code": "LAC",
       "wins": 4,
-      "losses": 13,
+      "losses": 14,
       "espnId": "12"
     },
     {
       "code": "LAL",
       "wins": 15,
-      "losses": 3,
+      "losses": 4,
       "espnId": "13"
     },
     {
       "code": "MEM",
-      "wins": 14,
+      "wins": 15,
       "losses": 5,
       "espnId": "29"
     },
     {
       "code": "MIA",
-      "wins": 10,
+      "wins": 11,
       "losses": 7,
       "espnId": "14"
     },
     {
       "code": "MIL",
       "wins": 2,
-      "losses": 17,
+      "losses": 18,
       "espnId": "15"
     },
     {
       "code": "MIN",
       "wins": 14,
-      "losses": 5,
+      "losses": 6,
       "espnId": "16"
     },
     {
       "code": "NOP",
-      "wins": 5,
+      "wins": 6,
       "losses": 14,
       "espnId": "3"
     },
     {
       "code": "NYK",
       "wins": 12,
-      "losses": 6,
+      "losses": 7,
       "espnId": "18"
     },
     {
@@ -139,19 +139,19 @@
     },
     {
       "code": "PHI",
-      "wins": 15,
+      "wins": 16,
       "losses": 4,
       "espnId": "20"
     },
     {
       "code": "PHX",
       "wins": 9,
-      "losses": 8,
+      "losses": 9,
       "espnId": "21"
     },
     {
       "code": "POR",
-      "wins": 12,
+      "wins": 13,
       "losses": 6,
       "espnId": "22"
     },
@@ -163,20 +163,20 @@
     },
     {
       "code": "SAS",
-      "wins": 15,
+      "wins": 16,
       "losses": 4,
       "espnId": "24"
     },
     {
       "code": "TOR",
-      "wins": 6,
+      "wins": 7,
       "losses": 11,
       "espnId": "28"
     },
     {
       "code": "UTA",
       "wins": 3,
-      "losses": 16,
+      "losses": 17,
       "espnId": "26"
     },
     {
